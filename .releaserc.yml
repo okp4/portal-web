@@ -1,0 +1,26 @@
+branches:
+  - main
+
+plugins:
+  - - '@semantic-release/commit-analyzer'
+    - releaseRules:
+        - type: build
+          release: patch
+        - type: ci
+          release: patch
+        - type: chore
+          release: patch
+  - '@semantic-release/commit-analyzer'
+  - '@semantic-release/release-notes-generator'
+  - - '@semantic-release/changelog'
+    - changelogFile: CHANGELOG.md
+      changelogTitle: '# ØKP4 Portal-Web changelog'
+  - - '@semantic-release/npm'
+    - npmPublish: false
+      tarballDir: 'false'
+  - '@semantic-release/github'
+  - - '@semantic-release/git'
+    - assets:
+        - CHANGELOG.md
+        - package.json
+      message: 'chore(release): perform release ${nextRelease.version}'

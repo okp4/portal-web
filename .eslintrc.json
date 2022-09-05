@@ -1,0 +1,11 @@
+{
+  "extends": ["@okp4", "next"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "functional/immutable-data": 0,
+    "functional/prefer-readonly-type": 0,
+    "functional/no-let": 1
+  }
+}

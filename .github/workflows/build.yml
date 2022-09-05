@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  workflow_call:
+
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-yarn:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Setup node environment (for building)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.0
+
+      - name: Fetch dependencies
+        run: |
+          yarn --frozen-lockfile
+
+      - name: Build project
+        run: |
+          yarn build
+
+  build-docker:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Build docker image
+        run: |
+          docker build .

@@ -1,45 +1,44 @@
 {
-    "name": "@okp4/portal-web",
-    "version": "0.1.0",
-    "private": true,
-    "repository": "git@github.com:okp4/portal-web.git",
-    "license": "BSD-3-Clause",
-    "description": "Portal web app for the ØKP4 network.",
-    "homepage": "https://github.com/okp4/portal-web",
-    "author": {
-      "name": "OKP4",
-      "web": "https://okp4.network"
-    },
-    "engines": {
-      "node": "^16.14.0",
-      "yarn": "~1.22.17"
-    },
-    "scripts": {
-      "dev": "next dev",
-      "build": "next build",
-      "start": "next start",
-      "lint": "next lint"
-    },
-    "dependencies": {
-      "next": "12.2.5",
-      "react": "18.2.0",
-      "react-dom": "18.2.0"
-    },
-    "devDependencies": {
-      "@okp4/eslint-config": "^1.1.0",
-      "@okp4/ui": "^1.13.0",
-      "@types/node": "18.7.15",
-      "@types/react": "18.0.18",
-      "@types/react-dom": "18.0.6",
-      "@typescript-eslint/eslint-plugin": "^5.36.2",
-      "eslint": "8.23.0",
-      "eslint-config-next": "12.2.5",
-      "eslint-plugin-functional": "^4.2.1",
-      "eslint-plugin-react": "^7.31.7",
-      "eslint-plugin-react-hooks": "^4.6.0",
-      "prettier": "^2.7.1",
-      "sass": "^1.54.8",
-      "typescript": "4.8.2"
-    }
+  "name": "@okp4/portal-web",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "git@github.com:okp4/portal-web.git",
+  "license": "BSD-3-Clause",
+  "description": "Portal web app for the ØKP4 network.",
+  "homepage": "https://github.com/okp4/portal-web",
+  "author": {
+    "name": "OKP4",
+    "web": "https://okp4.network"
+  },
+  "engines": {
+    "node": "^16.14.0",
+    "yarn": "~1.22.17"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@okp4/eslint-config": "^1.1.0",
+    "@okp4/ui": "^1.15.0",
+    "@types/node": "18.7.15",
+    "@types/react": "18.0.18",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "eslint": "8.23.0",
+    "eslint-config-next": "12.2.5",
+    "eslint-plugin-functional": "^4.2.1",
+    "eslint-plugin-react": "^7.31.7",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.8",
+    "typescript": "4.8.2"
   }
-  
+}

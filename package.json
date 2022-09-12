@@ -34,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
-    "eslint-plugin-functional": "^4.2.1",
+    "eslint-plugin-functional": "^4.3.0",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",

@@ -168,10 +168,10 @@
     tsutils ">=3.21.0"
     typescript ">=4.6.2"
 
-"@okp4/ui@^1.17.0":
-  version "1.17.0"
-  resolved "https://registry.yarnpkg.com/@okp4/ui/-/ui-1.17.0.tgz#85b2f4cbe9871b4cf83eb031d51a55f178d1b10e"
-  integrity sha512-y9+HOlurlzPS1ZsmdSUJIuaoxEMy/IzOiyTfcgZEkTTyiav7+PakQQD+JD5mXM+qLyMqGA3bI4bCsbeyfYmjrA==
+"@okp4/ui@^1.18.0":
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/@okp4/ui/-/ui-1.18.0.tgz#f589d9b7bd0649ff5f4b99c16ce082efdebbf53e"
+  integrity sha512-PodDcsAJzTMHZtSWrqX9zQS5C4xouZUddnJRn6PFZrjeNAC3dlDAKQmDEPrArUei2kbCvepz98LQ28fOqRotFg==
   dependencies:
     "@radix-ui/react-switch" "^1.0.0"
     "@radix-ui/react-toast" "^1.0.0"

@@ -1,0 +1,230 @@
+@import '@okp4/ui/lib/scss/themes.scss';
+
+.okp4-body-main {
+  @include with-theme() {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 70px 130px 25px 130px;
+    gap: 100px;
+
+    @media screen and (max-width: 1300px) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 50px 90px 25px 90px;
+      gap: 50px;
+    }
+
+    @media screen and (max-width: 995px) {
+      grid-template: auto 1fr /1fr;
+      padding: 25px 70px;
+      gap: 50px 0;
+    }
+    @media screen and (max-width: 480px) {
+      padding: 25px 20px 0 20px;
+    }
+
+    .okp4-body-dashboard {
+      min-width: 330px;
+      grid-column: 1/4;
+      display: grid;
+      grid-auto-rows: minmax(50px, auto);
+      row-gap: 30px;
+      @media screen and (max-width: 1300px) {
+        grid-column: 1/3;
+      }
+
+      @media screen and (max-width: 995px) {
+        grid-column: 1;
+      }
+
+      .okp4-dashboard-dataspace-summary {
+        grid-row: 1;
+        display: grid;
+        gap: 40px;
+        max-height: 235px;
+
+        @media screen and (max-width: 995px) {
+          grid-template: auto 1fr / 1fr;
+          max-height: unset;
+          gap: 25px;
+        }
+
+        .okp4-dataspace-summary-card {
+          grid-column: 1;
+          width: 280px;
+          max-height: inherit;
+          @media screen and (max-width: 995px) {
+            width: unset;
+          }
+          @media screen and (max-width: 700px) {
+            grid-area: 1/1;
+          }
+
+          @media screen and (max-width: 480px) {
+            display: grid;
+            justify-items: center;
+          }
+        }
+
+        .okp4-dataspace-summary-counters {
+          min-width: 150px;
+          grid-column: 2;
+          display: grid;
+
+          @media screen and (max-width: 700px) {
+            grid-area: 2/1;
+            display: grid;
+          }
+
+          .okp4-dataspace-summary-counter {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid themed(text);
+            border-bottom: 1px solid themed(text);
+          }
+        }
+
+        .okp4-dataspace-selection-with-description {
+          grid-column: 3;
+          display: grid;
+          row-gap: 25px;
+          max-height: inherit;
+          @media screen and (max-width: 995px) {
+            grid-area: 2/ 1 / 2 / 3;
+          }
+          @media screen and (max-width: 700px) {
+            grid-area: 3/1;
+          }
+
+          .okp4-dataspace-selection {
+            min-width: 120px;
+            grid-row: 1;
+            @media screen and (max-width: 995px) {
+              grid-area: 2/ 1;
+            }
+          }
+
+          .okp4-dataspace-description {
+            padding-right: 10px;
+            grid-row: 2;
+            overflow-y: auto;
+            @media screen and (max-width: 995px) {
+              grid-area: 3/ 1;
+              max-height: 150px;
+            }
+          }
+        }
+      }
+
+      .okp4-dashboard-dataspace-creation {
+        grid-row: 2;
+        align-self: center;
+        justify-self: flex-end;
+
+        @media screen and (max-width: 1300px) {
+          justify-self: center;
+        }
+        @media screen and (max-width: 995px) {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          grid-area: 2/ 1;
+        }
+      }
+
+      .okp4-dashboard-dataspace-content {
+        grid-row: 3;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        align-items: center;
+
+        @media screen and (max-width: 1300px) {
+          grid-row: 4;
+        }
+
+        @media screen and (max-width: 995px) {
+          grid-area: 4/ 1;
+        }
+
+        .okp4-dataspace-card {
+          display: grid;
+          justify-items: center;
+        }
+      }
+
+      .okp4-dashboard-dataspace-options {
+        grid-row: 4;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+        min-width: 350px;
+
+        @media screen and (max-width: 1300px) {
+          grid-row: 3;
+        }
+
+        @media screen and (max-width: 995px) {
+          grid-area: 3/ 1;
+          grid-template: repeat(2, 1fr) / 1fr;
+          gap: 25px;
+        }
+
+        .okp4-dashboard-data-creation {
+          grid-column: 1;
+          background-color: themed('primary-background');
+          display: grid;
+          grid-template: auto repeat(2, 1fr) / repeat(2, 1fr);
+          column-gap: 10px;
+          padding: 15px;
+
+          @media screen and (max-width: 995px) {
+            grid-area: 1 /1 / 2 / 1;
+            justify-items: center;
+          }
+
+          span {
+            grid-column: 1/3;
+          }
+
+          button {
+            width: 100%;
+            margin-top: 10px;
+          }
+        }
+
+        .okp4-dashboard-data-visualization {
+          grid-column: 2;
+          background-color: themed('primary-background');
+          display: grid;
+          grid-template: auto repeat(2, 1fr) / repeat(2, 1fr);
+          column-gap: 10px;
+          padding: 15px;
+
+          @media screen and (max-width: 995px) {
+            grid-area: 2 /1 / 2 / 1;
+            justify-items: center;
+          }
+
+          span {
+            grid-column: 1/3;
+          }
+
+          button {
+            width: 100%;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .okp4-body-activity {
+      grid-column: -1/-2;
+      border: 1px solid green;
+
+      @media screen and (max-width: 1300px) {
+        grid-column: 1/3;
+      }
+    }
+  }
+}

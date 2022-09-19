@@ -51,7 +51,7 @@ export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element =
   return (
     <div className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
       <Header firstElement={<Logo size="small" />} />
-      {children}
+      <Body />
       <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>
   )

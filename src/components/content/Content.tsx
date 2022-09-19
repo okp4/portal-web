@@ -21,9 +21,9 @@ const languages = [
 
 const Okp4Link = ({ label }: FooterLinkProps): JSX.Element => {
   return (
-    <Typography as="p" color="highlighted-text" fontSize="x-small" fontWeight="xlight" noWrap>
+    <Typography as="p" color="invariant-text" fontSize="x-small" fontWeight="xlight" noWrap>
       {`${label} `}
-      <Typography color="highlighted-text" fontSize="x-small" fontWeight="bold">
+      <Typography color="invariant-text" fontSize="x-small" fontWeight="bold">
         <a
           className="okp4-brand-link"
           href="https://okp4.network/"

@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import { Layout } from '../components/layout/Layout'
 import './styles.scss'
 
 const ThemeProvider = dynamic(async () => (await import('@okp4/ui')).ThemeProvider, {
@@ -10,7 +11,9 @@ const ThemeProvider = dynamic(async () => (await import('@okp4/ui')).ThemeProvid
 const PortalWebApp = ({ Component, pageProps }: AppProps): JSX.Element | null => {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   )
 }

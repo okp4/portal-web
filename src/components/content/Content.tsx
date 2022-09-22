@@ -9,6 +9,10 @@ type ContentProps = {
   readonly children: React.ReactNode
 }
 
+type ContentProps = {
+  readonly children: JSX.Element
+}
+
 type FooterLinkProps = {
   readonly label: string
 }

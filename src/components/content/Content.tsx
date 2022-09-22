@@ -49,15 +49,11 @@ export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element =
   const footerLabel = t('footer:brand-link')
 
   return (
-    <section className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
-      <section>
-        <Header firstElement={<Logo size="small" />} />
-      </section>
+    <div className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
+      <Header firstElement={<Logo size="small" />} />
       {children && children}
-      <section>
-        <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
-      </section>
-    </section>
+      <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
+    </div>
   )
 }
 

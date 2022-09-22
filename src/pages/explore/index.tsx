@@ -1,34 +1,7 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
-
-// Components using document or window elements must disable ssr to be used on client side
-// https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr
-const ContentWithoutSSR = dynamic(async () => import('../../components/content/Content'), {
-  ssr: false,
-  loading: () => <div />
-})
-
-const ExploreTitleWithoutSSR = dynamic(async () => import('../../components/explore/exploreTitle/ExploreTitle'), {
-  ssr: false,
-  loading: () => <div />
-})
-
-const ExploreListConfigurationWithoutSSR = dynamic(async () => import('../../components/explore/exploreListConfiguration/ExploreListConfiguration'), {
-  ssr: false,
-  loading: () => <div />
-})
-
-const ExploreListWithoutSSR = dynamic(async () => import('../../components/explore/exploreList/ExploreList'), {
-  ssr: false,
-  loading: () => <div />
-})
-
-const ExploreFiltersWithoutSSR = dynamic(async () => import('../../components/explore/exploreFilters/ExploreFilters'), {
-  ssr: false,
-  loading: () => <div />
-})
+import { ContentWithoutSSR, ExploreFiltersWithoutSSR, ExploreListConfigurationWithoutSSR, ExploreListWithoutSSR, ExploreTitleWithoutSSR } from './explore-no-ssr-components'
 
 const Explore: NextPage = () => {
   return (

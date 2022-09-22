@@ -1,0 +1,22 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .secondRow {
+      display: flex;
+      gap: 10px;
+      margin: auto;
+      flex-wrap: wrap;
+
+      span {
+        margin: auto 0px;
+      }
+    }
+  }
+}

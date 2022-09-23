@@ -1,31 +1,27 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
-import type { DeepReadonly, SelectValue, UseState, UseTranslationResponse } from '@okp4/ui'
+import type {
+  DeepReadonly,
+  SelectOption,
+  SelectValue,
+  UseState,
+  UseTranslationResponse
+} from '@okp4/ui'
 import './home.scss'
 
-const DataspaceElements = ({
-  dataspaceData
-}: DeepReadonly<{ dataspaceData: FakeDataspaceData[] }>): JSX.Element => {
-  return (
-    <>
-      {dataspaceData.map((data: DeepReadonly<FakeDataspaceData>, index: number) => (
-        <div className="okp4-dataspace-card" key={index}>
-          <Card
-            footer={
-              <div className="okp4-dataspace-card-footer">
-                <Typography>{data.title}</Typography>
-              </div>
-            }
-            header={
-              <div className="okp4-dataspace-card-header">
-                <Typography>{data.type}</Typography>
-              </div>
-            }
-          />
-        </div>
-      ))}
-    </>
-  )
+type FakeDataspaceData = {
+  type: string
+  title: string
+}
+
+type Dataspace = {
+  id: string
+  name: string
+  description: string
+  members: number
+  datasets: number
+  services: number
+  data: DeepReadonly<FakeDataspaceData[]>
 }
 
 type OptionText = {
@@ -55,6 +51,31 @@ const dataspaceOptionsTexts: OptionText[] = [
     reportButton: 'reports'
   }
 ]
+
+const DataspaceElements = ({
+  dataspaceData
+}: DeepReadonly<{ dataspaceData: FakeDataspaceData[] }>): JSX.Element => {
+  return (
+    <>
+      {dataspaceData.map((data: DeepReadonly<FakeDataspaceData>, index: number) => (
+        <div className="okp4-dataspace-card" key={index}>
+          <Card
+            footer={
+              <div className="okp4-dataspace-card-footer">
+                <Typography>{data.title}</Typography>
+              </div>
+            }
+            header={
+              <div className="okp4-dataspace-card-header">
+                <Typography>{data.type}</Typography>
+              </div>
+            }
+          />
+        </div>
+      ))}
+    </>
+  )
+}
 
 const Counters = ({
   dataspaceData,
@@ -137,53 +158,39 @@ const DataspaceOptions = ({
   )
 }
 
-const selectOptions = [
-  {
-    label: 'Rhizome',
-    value: 'RhizomeId'
-  },
-  {
-    label: 'Know Universe',
-    value: 'KnowUniverseId'
-  }
-]
-
-type FakeDataspaceData = {
-  type: string
-  title: string
-}
-
-type Dataspace = {
-  id: string
-  name: string
-  description: string
-  members: number
-  datasets: number
-  services: number
-  data: DeepReadonly<FakeDataspaceData[]>
-}
-
 const fetchDataspace = async (url: string): Promise<Dataspace> => {
   const response = await fetch(url)
+  return await response.json()
+}
+
+const fetchDataspacesList = async (): Promise<SelectOption[]> => {
+  const response = await fetch('/api/fakeData/dataspaces')
   return await response.json()
 }
 
 // eslint-disable-next-line max-lines-per-function
 export const Home = (): JSX.Element | null => {
   const { t }: UseTranslationResponse = useTranslation()
+  const [dataspacesList, setDataspacesList]: UseState<SelectOption[]> = useState<SelectOption[]>([])
   const [dataspace, setDataspace]: UseState<Dataspace | null> = useState<Dataspace | null>(null)
   const isMediumScreen = useMediaType('(max-width: 995px)')
   const isXSmallScreen = useMediaType('(max-width: 700px)')
   const isMobileScreen = useMediaType('(max-width: 480px)')
 
-  const handleChange = useCallback((value: SelectValue) => {
-    fetchDataspace(`/api/fakeData/${value}`)
+  const handleDataspaceChange = useCallback((value: SelectValue) => {
+    fetchDataspace(`/api/fakeData/dataspaces/${value}`)
       .then(setDataspace)
       .catch((error: unknown) => console.error(error))
   }, [])
 
   useEffect(() => {
-    fetchDataspace('/api/fakeData/RhizomeId')
+    fetchDataspacesList()
+      .then(setDataspacesList)
+      .catch((error: unknown) => console.error(error))
+  }, [])
+
+  useEffect(() => {
+    fetchDataspace('/api/fakeData/dataspaces/RhizomeId')
       .then(setDataspace)
       .catch((error: unknown) => console.error(error))
   }, [])
@@ -200,8 +207,8 @@ export const Home = (): JSX.Element | null => {
             <div className="okp4-dataspace-selection">
               <Select
                 fullWidth={isXSmallScreen}
-                onChange={handleChange}
-                options={selectOptions}
+                onChange={handleDataspaceChange}
+                options={dataspacesList}
                 value={dataspace.id}
               />
             </div>

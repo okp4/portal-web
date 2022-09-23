@@ -1,5 +1,5 @@
-import { Button, Card, Icon, Select, Typography, useMediaType } from '@okp4/ui'
-import type { DeepReadonly, SelectValue } from '@okp4/ui'
+import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
+import type { DeepReadonly, SelectValue, UseTranslationResponse } from '@okp4/ui'
 import { useCallback } from 'react'
 import './home.scss'
 
@@ -28,113 +28,90 @@ const DataspaceElements = (): JSX.Element => {
   )
 }
 
-const SelectOptions = [
+type OptionText = {
+  option: string
+  title: string
+  datasetButton: string
+  dahsboardButton: string
+  serviceButton: string
+  reportButton: string
+}
+
+const dataspaceOptionsTexts: OptionText[] = [
   {
-    label: 'Rhizome',
-    value: 'Rhizome'
+    option: 'creation',
+    title: 'add',
+    datasetButton: 'new-dataset',
+    dahsboardButton: 'new-dashboard',
+    serviceButton: 'new-service',
+    reportButton: 'new-report'
+  },
+  {
+    option: 'visualization',
+    title: 'visualize',
+    datasetButton: 'datasets',
+    dahsboardButton: 'dashboards',
+    serviceButton: 'services',
+    reportButton: 'reports'
   }
 ]
 
-// eslint-disable-next-line max-lines-per-function
-export const Body = (): JSX.Element => {
-  const handleChange = useCallback((value: SelectValue) => {
-    console.log(value)
-  }, [])
-
-  const isSmallScreen = useMediaType('(max-width: 995px)')
+  const { t }: UseTranslationResponse = useTranslation()
 
   return (
-    <div className="okp4-body-main">
-      <div className="okp4-body-dashboard">
-        <div className="okp4-dashboard-dataspace-summary">
-          <div className="okp4-dataspace-summary-card">
-            <Card
-              header={<Typography>First Card</Typography>}
-              size={isSmallScreen ? 'medium' : 'small'}
-            />
-          </div>
           <div className="okp4-dataspace-summary-counters">
             <div className="okp4-dataspace-summary-counter">
               <Typography fontSize={isSmallScreen ? 'small' : 'medium'} fontWeight="bold">
                 289
               </Typography>
-              <Typography fontSize="small">MEMBERS</Typography>
+        <Typography fontSize="small">
+          {t(`home:dashboard:dataspace:summary:counters:members`)}
+        </Typography>
             </div>
             <div className="okp4-dataspace-summary-counter">
               <Typography fontSize={isSmallScreen ? 'small' : 'medium'} fontWeight="bold">
-                SEE
+          {t(`home:dashboard:dataspace:summary:counters:see`)}
               </Typography>
-              <Typography fontSize="small">THE RULEBOOK</Typography>
+        <Typography fontSize="small">
+          {t(`home:dashboard:dataspace:summary:counters:rulebook`)}
+        </Typography>
             </div>
             <div className="okp4-dataspace-summary-counter">
               <Typography fontSize={isSmallScreen ? 'small' : 'medium'} fontWeight="bold">
                 376
               </Typography>
-              <Typography fontSize="small">DATASETS</Typography>
+        <Typography fontSize="small"> {t(`home:dashboard:dataspace:options:datasets`)}</Typography>
             </div>
             <div className="okp4-dataspace-summary-counter">
               <Typography fontSize={isSmallScreen ? 'small' : 'medium'} fontWeight="bold">
                 73
               </Typography>
-              <Typography fontSize="small">SERVICES</Typography>
+        <Typography fontSize="small">{t(`home:dashboard:dataspace:options:services`)}</Typography>
             </div>
           </div>
-          <div className="okp4-dataspace-selection-with-description">
-            <div className="okp4-dataspace-selection">
-              <Select
-                fullWidth={isSmallScreen}
-                onChange={handleChange}
-                options={SelectOptions}
-                value="Rhizome"
-              />
-            </div>
-            <div className="okp4-dataspace-description">
-              <Typography fontSize="small">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                with desktop publishing software like Aldus PageMaker including versions of Lorem
-                Ipsum.
-              </Typography>
-            </div>
-          </div>
-        </div>
-        <div className="okp4-dashboard-dataspace-creation">
-          <Button
-            backgroundColor="secondary"
-            label="Create a new data Space"
-            leftIcon={<Icon name="add" size={15} />}
-          />
-        </div>
-        <div className="okp4-dashboard-dataspace-content">
-          <DataspaceElements />
-        </div>
-        <div className="okp4-dashboard-dataspace-options">
-          <div className="okp4-dashboard-data-creation">
+  const { t }: UseTranslationResponse = useTranslation()
+  return (
             <Typography fontSize="small" fontWeight="bold">
-              Add
+            {t(`home:dashboard:dataspace:options:${optionsText.title}`)}
             </Typography>
             <Button
               backgroundColor="secondary"
-              label="New dataset"
+            label={t(`home:dashboard:dataspace:options:${optionsText.datasetButton}`)}
               rightIcon={<Icon name="add" size={15} />}
             />
             <Button
               backgroundColor="secondary"
-              label="New dashboard"
+            label={t(`home:dashboard:dataspace:options:${optionsText.dahsboardButton}`)}
               rightIcon={<Icon name="add" size={15} />}
             />
             <Button
               backgroundColor="secondary"
-              label="New service"
+            label={t(`home:dashboard:dataspace:options:${optionsText.serviceButton}`)}
               rightIcon={<Icon name="add" size={15} />}
             />
             <Button
               backgroundColor="secondary"
-              label="New report"
+            label={t(`home:dashboard:dataspace:options:${optionsText.reportButton}`)}
               rightIcon={<Icon name="add" size={15} />}
             />
           </div>
@@ -149,18 +126,8 @@ export const Body = (): JSX.Element => {
             />
             <Button
               backgroundColor="secondary"
-              label="Dashboards"
-              rightIcon={<Icon name="add" size={15} />}
-            />
-            <Button
-              backgroundColor="secondary"
-              label="Services"
-              rightIcon={<Icon name="add" size={15} />}
-            />
-            <Button
-              backgroundColor="secondary"
-              label="Reports"
-              rightIcon={<Icon name="add" size={15} />}
+            label={t(`home:dashboard:dataspace:creation`)}
+            leftIcon={<Icon name="add" size={15} />}
             />
           </div>
         </div>

@@ -6,6 +6,8 @@ import dataset_en from './dataset/dataset_en.json'
 import dataset_fr from './dataset/dataset_fr.json'
 import footer_en from './footer/footer_en.json'
 import footer_fr from './footer/footer_fr.json'
+import explore_en from './explore/explore_en.json'
+import explore_fr from './explore/explore_fr.json'
 
 const translationsToLoad = [
   { lng: 'en', namespace: 'dataset', resource: dataset_en },
@@ -14,6 +16,8 @@ const translationsToLoad = [
   { lng: 'fr', namespace: 'footer', resource: footer_fr },
   { lng: 'en', namespace: 'dashboard', resource: dashboard_en },
   { lng: 'fr', namespace: 'dashboard', resource: dashboard_fr }
+  { lng: 'en', namespace: 'explore', resource: explore_en },
+  { lng: 'fr', namespace: 'explore', resource: explore_fr },
 ]
 
 loadTranslations(translationsToLoad)

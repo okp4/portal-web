@@ -1,0 +1,18 @@
+{
+  "title": "Explore the Dataverse",
+  "listing": {
+    "configuration": {
+      "show": "Show",
+      "elements": "elements",
+      "display": "Display",
+      "grid": "Grid",
+      "list": "List",
+      "sort": "Sort",
+      "select": {
+        "alphabetical": "Alphabetical"
+      }
+    },
+    "by": "By",
+    "last-update": "Last update"
+  }
+}

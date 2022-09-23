@@ -1,5 +1,11 @@
-import { Typography, Select, Button } from '@okp4/ui'
-import type { DeepReadonly, UseState, SelectValue } from '@okp4/ui'
+import { Typography, Select, Button, useTranslation } from '@okp4/ui'
+import type {
+  DeepReadonly,
+  UseState,
+  SelectValue,
+  UseTranslationResponse,
+  SelectOption
+} from '@okp4/ui'
 import { useState } from 'react'
 import styles from './ExploreListConfiguration.module.scss'
 import { CExploreListConfigurationShowRange } from './constants/CExploreListConfigurationShowRange.constant'
@@ -18,7 +24,7 @@ const ExploreListConfigurationContainer = ({
     <div className={styles.container}>
       <div>
         <Typography as="span" fontSize="small" fontWeight="light">
-          {title}
+          {`${title}:`}
         </Typography>
       </div>
 
@@ -29,6 +35,7 @@ const ExploreListConfigurationContainer = ({
 
 // eslint-disable-next-line max-lines-per-function
 const ExploreListConfiguration = (): JSX.Element => {
+  const { t }: UseTranslationResponse = useTranslation()
   const [range, setRange]: UseState<SelectValue> = useState<SelectValue>(
     CExploreListConfigurationShowRange[0].value
   )
@@ -38,7 +45,7 @@ const ExploreListConfiguration = (): JSX.Element => {
 
   return (
     <div className={`okp4-explore-list-configuration ${styles.content}`}>
-      <ExploreListConfigurationContainer title="Show:">
+      <ExploreListConfigurationContainer title={t('explore:listing:configuration:show')}>
         <>
           <Select
             onChange={setRange}
@@ -47,23 +54,28 @@ const ExploreListConfiguration = (): JSX.Element => {
             value={range}
           />
           <Typography as="span" fontSize="small" fontWeight="light">
-            elements
+            {t('explore:listing:configuration:elements')}
           </Typography>
         </>
       </ExploreListConfigurationContainer>
 
-      <ExploreListConfigurationContainer title="Display:">
+      <ExploreListConfigurationContainer title={t('explore:listing:configuration:display')}>
         <>
-          <Button label="Grid" size="small" />
-          <Button label="List" size="small" />
+          <Button label={t('explore:listing:configuration:grid')} size="small" />
+          <Button label={t('explore:listing:configuration:list')} size="small" />
         </>
       </ExploreListConfigurationContainer>
 
-      <ExploreListConfigurationContainer title="Sort by:">
+      <ExploreListConfigurationContainer title={t('explore:listing:configuration:sort')}>
         <Select
           onChange={setSortBy}
-          options={CExploreListConfigurationSortBy}
-          size="x-small"
+          options={CExploreListConfigurationSortBy.map((item: DeepReadonly<SelectOption>) => {
+            return {
+              label: t(`explore:listing:configuration:select:${item.label}`),
+              value: 'asc'
+            }
+          })}
+          size="small"
           value={sortBy}
         />
       </ExploreListConfigurationContainer>

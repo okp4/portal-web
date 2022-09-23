@@ -1,7 +1,13 @@
 import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { ContentWithoutSSR, ExploreFiltersWithoutSSR, ExploreListConfigurationWithoutSSR, ExploreListWithoutSSR, ExploreTitleWithoutSSR } from './explore-no-ssr-components'
+import {
+  ContentWithoutSSR,
+  ExploreFiltersWithoutSSR,
+  ExploreListConfigurationWithoutSSR,
+  ExploreListWithoutSSR,
+  ExploreTitleWithoutSSR
+} from './explore-no-ssr-components'
 
 const Explore: NextPage = () => {
   return (
@@ -17,7 +23,7 @@ const Explore: NextPage = () => {
       </Head>
       <ContentWithoutSSR>
         <section className="okp4-explore-main">
-          <ExploreTitleWithoutSSR title="Explore the Dataverse" />
+          <ExploreTitleWithoutSSR />
           <ExploreListConfigurationWithoutSSR />
           <ExploreListWithoutSSR />
           <ExploreFiltersWithoutSSR />

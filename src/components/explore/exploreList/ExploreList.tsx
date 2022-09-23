@@ -1,5 +1,5 @@
-import { List, ListItem, Typography } from '@okp4/ui'
-import type { DeepReadonly } from '@okp4/ui'
+import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
+import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
 import { CExplore } from '../../../constants/explore/CExplore.constant'
 import type { Explore } from '../../../types/explore/Explore.type'
 import styles from './ExploreList.module.scss'
@@ -31,11 +31,13 @@ const ItemDescription = ({ type, categories }: DeepReadonly<ItemDescriptionProps
 }
 
 const ItemFooter = ({ provider, updatedAt }: DeepReadonly<ItemFooterProps>): JSX.Element => {
+  const { t }: UseTranslationResponse = useTranslation()
+
   return (
     <div className={styles.itemFooter}>
       {/* COLOR SHOULD BE secondary-button */}
       <Typography as="span" color="inverted-text" fontSize="small" fontWeight="light">
-        {provider}
+        {`${t('explore:listing:by')} ${provider}`}
       </Typography>
 
       <Typography as="span" color="inverted-text" fontSize="small" fontWeight="light">
@@ -43,7 +45,7 @@ const ItemFooter = ({ provider, updatedAt }: DeepReadonly<ItemFooterProps>): JSX
       </Typography>
 
       <Typography as="span" color="inverted-text" fontSize="small" fontWeight="light">
-        {format(updatedAt, 'dd/MM/yyyy')}
+        {`${t('explore:listing:last-update')} ${format(updatedAt, 'dd/MM/yyyy')}`}
       </Typography>
     </div>
   )
@@ -68,4 +70,4 @@ const ExploreList = (): JSX.Element => {
   )
 }
 
-export default ExploreList;
+export default ExploreList

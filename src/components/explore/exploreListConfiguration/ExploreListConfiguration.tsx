@@ -7,31 +7,29 @@ import type {
   SelectOption
 } from '@okp4/ui'
 import { useState } from 'react'
-import styles from './ExploreListConfiguration.module.scss'
+import './ExploreListConfiguration.scss'
 import { CExploreListConfigurationShowRange } from './constants/CExploreListConfigurationShowRange.constant'
 import { CExploreListConfigurationSortBy } from './constants/CExploreListConfigurationSortBy.constant'
 
 type ExploreListConfigurationContainer = {
   readonly title: string
-  readonly children: JSX.Element
+  readonly children: React.ReactNode
 }
 
 const ExploreListConfigurationContainer = ({
   title,
   children
-}: DeepReadonly<ExploreListConfigurationContainer>): JSX.Element => {
-  return (
-    <div className={styles.container}>
-      <div>
-        <Typography as="span" fontSize="small" fontWeight="light">
-          {`${title}:`}
-        </Typography>
-      </div>
-
-      <div className={styles.secondRow}>{children}</div>
+}: DeepReadonly<ExploreListConfigurationContainer>): JSX.Element => (
+  <div className="okp4-explore-list-configuration-container">
+    <div>
+      <Typography as="span" fontSize="small" fontWeight="light">
+        {`${title}:`}
+      </Typography>
     </div>
-  )
-}
+
+    <div className="content">{children}</div>
+  </div>
+)
 
 // eslint-disable-next-line max-lines-per-function
 const ExploreListConfiguration = (): JSX.Element => {
@@ -44,7 +42,7 @@ const ExploreListConfiguration = (): JSX.Element => {
   )
 
   return (
-    <div className={`okp4-explore-list-configuration ${styles.content}`}>
+    <div className="okp4-explore-list-configuration">
       <ExploreListConfigurationContainer title={t('explore:listing:configuration:show')}>
         <>
           <Select

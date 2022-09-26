@@ -13,7 +13,7 @@ body {
   }
 }
 
-main.okp4-portal-layout {
+main {
   @include with-theme {
     height: 100%;
     overflow: auto;

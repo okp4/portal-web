@@ -6,7 +6,7 @@ import '../../i18n/index'
 import React from 'react'
 
 type ContentProps = {
-  readonly children?: JSX.Element
+  readonly children: React.ReactNode
 }
 
 type FooterLinkProps = {
@@ -51,7 +51,7 @@ export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element =
   return (
     <div className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
       <Header firstElement={<Logo size="small" />} />
-      {children && children}
+      {children}
       <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>
   )

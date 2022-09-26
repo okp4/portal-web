@@ -4,7 +4,7 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 type LayoutProps = {
-  readonly children?: JSX.Element
+  readonly children: React.ReactNode
 }
 
 // Components using document or window elements must disable ssr to be used on client side
@@ -12,20 +12,18 @@ type LayoutProps = {
 const ContentWithoutSSR = dynamic(async () => import('../content/Content'), {
   ssr: false
 })
-export const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
-  return (
-    <>
-      <Head>
-        <title>OKP4 Portal</title>
-        <meta
-          content="OKP4, Portal, Data App, Dataverse, Services, Dataset, Data Space, Deposit, Catalog, Files, Blockchain, Metadata, Exploration, Know, Token"
-          name="keywords"
-        />
-        <link href="/okp4-logo.png" rel="icon" type="image/x-icon" />
-      </Head>
-      <main className="okp4-portal-layout">
-        <ContentWithoutSSR>{children}</ContentWithoutSSR>
-      </main>
-    </>
-  )
-}
+export const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => (
+  <>
+    <Head>
+      <title>OKP4 Portal</title>
+      <meta
+        content="OKP4, Portal, Data App, Dataverse, Services, Dataset, Data Space, Deposit, Catalog, Files, Blockchain, Metadata, Exploration, Know, Token"
+        name="keywords"
+      />
+      <link href="/okp4-logo.png" rel="icon" type="image/x-icon" />
+    </Head>
+    <main>
+      <ContentWithoutSSR>{children}</ContentWithoutSSR>
+    </main>
+  </>
+)

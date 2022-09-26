@@ -1,8 +1,13 @@
 import { Footer, Header, Typography, useTheme, useTranslation, Logo } from '@okp4/ui'
-import type { ThemeContextType, UseTranslationResponse } from '@okp4/ui'
+import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
+import React from 'react'
+
+type ContentProps = {
+  readonly children: React.ReactNode
+}
 
 type FooterLinkProps = {
   readonly label: string
@@ -37,7 +42,7 @@ const Okp4Link = ({ label }: FooterLinkProps): JSX.Element => {
   )
 }
 
-export const Content = (): JSX.Element => {
+export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
   const themedImage = theme === 'light' ? lightCosmos.src : darkCosmos.src
@@ -46,6 +51,7 @@ export const Content = (): JSX.Element => {
   return (
     <div className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
       <Header firstElement={<Logo size="small" />} />
+      {children}
       <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>
   )

@@ -1,0 +1,7 @@
+.container {
+  padding-left: 5vh;
+
+  @media screen and (max-width: 1300px) {
+    padding-left: 0px;
+  }
+}

@@ -1,0 +1,42 @@
+.okp4-explore-id {
+  max-width: 1140px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'title title title'
+    'back back back'
+    'resume details details'
+    'resume details details';
+  gap: 25px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 950px;
+    grid-template-areas:
+      'title title title'
+      'back back back'
+      'resume resume resume'
+      'details details details';
+  }
+
+  @media screen and (max-width: 995px) {
+    max-width: 90%;
+  }
+
+  .okp4-explore-title {
+    grid-area: title;
+  }
+
+  .okp4-go-back {
+    grid-area: back;
+  }
+
+  .okp4-explore-card {
+    grid-area: resume;
+  }
+
+  .okp4-explore-details {
+    grid-area: details;
+  }
+}

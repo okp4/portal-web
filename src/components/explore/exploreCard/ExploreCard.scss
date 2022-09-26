@@ -1,0 +1,25 @@
+.okp4-explore-card {
+  .okp4-portal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h2 {
+      margin: 0px;
+    }
+
+    span {
+      &:first-child {
+        text-transform: uppercase;
+      }
+
+      &:nth-child(5) {
+        text-align: end;
+      }
+    }
+
+    button {
+      margin: 10px auto 0px;
+    }
+  }
+}

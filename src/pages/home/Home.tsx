@@ -241,3 +241,5 @@ export const Home = (): JSX.Element | null => {
     </div>
   ) : null
 }
+
+export default Home

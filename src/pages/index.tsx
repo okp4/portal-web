@@ -1,8 +1,11 @@
-import React from 'react'
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
+import React from 'react'
 
-const Home: NextPage = () => {
-  return <div />
-}
+const HomeWithoutSSR = dynamic(async () => import('./home/Home'), {
+  ssr: false
+})
 
-export default Home
+const HomePage: NextPage = () => <HomeWithoutSSR />
+
+export default HomePage

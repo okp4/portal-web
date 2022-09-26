@@ -1,0 +1,56 @@
+.okp4-explore-details {
+  .okp4-portal-card {
+    .explore-details-governance {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        display: flex;
+        gap: 5px;
+
+        @media screen and (max-width: 600px) {
+          flex-direction: column;
+        }
+
+        span {
+          grid-area: name;
+        }
+
+        p {
+          margin: 0px;
+        }
+      }
+
+      button {
+        margin: 0px 0px 0px auto;
+      }
+    }
+
+    .explore-details-metadata {
+      margin-top: 10px;
+
+      .explore-details-metadata-row {
+        display: flex;
+        padding: 12px 15px;
+
+        &:nth-child(odd) {
+          background-color: #293d66;
+        }
+
+        .name {
+          margin: auto 0px;
+          width: 40%;
+
+          span {
+            text-transform: capitalize;
+          }
+        }
+
+        .value {
+          display: flex;
+          width: 60%;
+        }
+      }
+    }
+  }
+}

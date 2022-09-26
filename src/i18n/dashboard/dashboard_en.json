@@ -1,0 +1,29 @@
+{
+    "dataset": "Dataset",
+    "service": "Service",
+    "dataspace": {
+        "summary": {
+            "counters": {
+                "members": "Members",
+                "see": "See",
+                "rulebook":"The rulebook"
+            }
+        },
+        "creation": "Create a new Data Space",
+        "content": {
+            "new": "New"
+        },
+        "options": {
+            "add": "Add",
+            "new-dataset": "New dataset",
+            "new-dashboard": "New dashboard",
+            "new-service": "New service",
+            "new-report": "New report",
+            "visualize": "Visualize",
+            "datasets": "Datasets",
+            "services": "Services",
+            "dashboards":"Dashboards",
+            "reports":"Reports"
+        }
+    }
+}

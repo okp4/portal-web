@@ -11,22 +11,27 @@ const rhizome = {
   servicesNb: 73,
   entities: [
     {
+      id: 'id_1',
       type: 'Dataset',
       label: 'Agreste Normé'
     },
     {
+      id: 'id_2',
       type: 'Service',
       label: 'Jointure'
     },
     {
+      id: 'id_3',
       type: 'Dataset',
       label: 'RPG 2022'
     },
     {
+      id: 'id_4',
       type: 'Service',
       label: 'Données Météo'
     },
     {
+      id: 'id_5',
       type: 'Service',
       label: 'Compta'
     }
@@ -43,22 +48,27 @@ const knowUniverse = {
   servicesNb: 674,
   entities: [
     {
+      id: 'id_1',
       type: 'Service',
       label: 'Contrôle'
     },
     {
+      id: 'id_2',
       type: 'Dataset',
       label: 'Coins'
     },
     {
+      id: 'id_3',
       type: 'Dataset',
       label: 'Validateurs'
     },
     {
+      id: 'id_4',
       type: 'Service',
       label: 'Transaction'
     },
     {
+      id: 'id_5',
       type: 'Service',
       label: 'Validation'
     }

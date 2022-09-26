@@ -1,0 +1,28 @@
+.okp4-dashboard-dataspace-content {
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  align-items: center;
+
+  @media screen and (max-width: 1300px) {
+    grid-row: 4;
+  }
+
+  @media screen and (max-width: 995px) {
+    grid-area: 4/ 1;
+  }
+
+  .okp4-dataspace-card {
+    display: grid;
+    justify-items: center;
+
+    .okp4-dataspace-card-header {
+      padding-top: 10px;
+      text-align: end;
+    }
+    .okp4-dataspace-card-footer {
+      padding-bottom: 10px;
+    }
+  }
+}

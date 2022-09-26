@@ -1,0 +1,121 @@
+@import '@okp4/ui/lib/scss/themes.scss';
+
+.okp4-dashboard-dataspace-summary {
+  @include with-theme() {
+    grid-row: 1;
+    display: grid;
+    gap: 40px;
+    max-height: 235px;
+
+    @media screen and (max-width: 995px) {
+      grid-template: auto 1fr / 2fr 1fr;
+      max-height: unset;
+      gap: 25px;
+    }
+
+    @media screen and (max-width: 700px) {
+      justify-items: center;
+    }
+    @media screen and (max-width: 600px) {
+      grid-template: auto 1fr / 1fr;
+    }
+
+    .okp4-dataspace-summary-card {
+      grid-column: 1;
+      width: 280px;
+      max-height: inherit;
+      @media screen and (max-width: 995px) {
+        width: unset;
+      }
+      @media screen and (max-width: 700px) {
+        width: 100%;
+        display: grid;
+        justify-items: center;
+      }
+
+      @media screen and (max-width: 480px) {
+        display: grid;
+        justify-items: center;
+      }
+    }
+
+    .okp4-dataspace-summary-counters {
+      min-width: 150px;
+      grid-column: 2;
+      display: grid;
+      @media screen and (max-width: 995px) {
+        padding-right: 80px;
+      }
+
+      @media screen and (max-width: 600px) {
+        grid-area: 2/1;
+        display: grid;
+        max-width: 425px;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .okp4-dataspace-summary-counter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-top: 1px solid themed(text);
+        border-bottom: 1px solid themed(text);
+
+        @media screen and (max-width: 600px) {
+          flex-direction: row;
+          justify-content: unset;
+          padding: 10px;
+
+          span:first-child {
+            margin-right: 10px;
+            width: 40px;
+          }
+        }
+      }
+    }
+
+    .okp4-dataspace-selection-with-description {
+      grid-column: 3;
+      display: grid;
+      row-gap: 25px;
+      max-height: inherit;
+      @media screen and (max-width: 995px) {
+        grid-area: 2/ 1 / 2 / 3;
+      }
+      @media screen and (max-width: 600px) {
+        grid-area: 3/1;
+      }
+
+      .okp4-dataspace-selection {
+        min-width: 120px;
+        grid-row: 1;
+        @media screen and (max-width: 995px) {
+          grid-area: 2/ 1;
+        }
+      }
+
+      .okp4-dataspace-description {
+        padding-right: 10px;
+        grid-row: 2;
+        overflow-y: auto;
+        @media screen and (max-width: 995px) {
+          grid-area: 3/ 1;
+          max-height: 150px;
+        }
+      }
+    }
+  }
+}
+
+.okp4-dashboard-dataspace-creation {
+  grid-row: 2;
+  align-self: center;
+  justify-self: flex-end;
+
+  @media screen and (max-width: 995px) {
+    width: 100%;
+    display: flex;
+    grid-area: 2/ 1;
+  }
+}

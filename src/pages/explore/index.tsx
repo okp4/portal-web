@@ -1,4 +1,5 @@
 import React from 'react'
+import "./explore.scss";
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import {

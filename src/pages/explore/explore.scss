@@ -1,0 +1,44 @@
+.okp4-explore-main {
+  max-width: 1140px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-areas:
+    'title title title'
+    '. configuration configuration'
+    'filters list list';
+  gap: 25px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 950px;
+    grid-template-areas:
+      'title title title'
+      'configuration configuration configuration'
+      'filters filters filters'
+      'list list list';
+  }
+
+  @media screen and (max-width: 995px) {
+    max-width: 90%;
+  }
+
+  .okp4-explore-title {
+    grid-area: title;
+  }
+
+  .okp4-explore-list-configuration {
+    grid-area: configuration;
+  }
+
+  .okp4-explore-list {
+    grid-area: list;
+
+    .okp4-list-main {
+      gap: 30px;
+    }
+  }
+
+  .okp4-explore-filters {
+    grid-area: filters;
+  }
+}

@@ -212,7 +212,7 @@
             justify-items: center;
           }
 
-          &.creation {
+          &.add {
             grid-column: 1;
 
             @media screen and (max-width: 995px) {
@@ -220,7 +220,7 @@
             }
           }
 
-          &.visualization {
+          &.visualize {
             grid-column: 2;
 
             @media screen and (max-width: 995px) {

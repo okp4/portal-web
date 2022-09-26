@@ -6,29 +6,29 @@ const rhizome = {
   name: 'Rhizome',
   description:
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
-  members: 289,
-  datasets: 376,
-  services: 73,
-  data: [
+  membersNb: 289,
+  datasetsNb: 376,
+  servicesNb: 73,
+  entities: [
     {
       type: 'Dataset',
-      title: 'Agreste Normé'
+      label: 'Agreste Normé'
     },
     {
       type: 'Service',
-      title: 'Jointure'
+      label: 'Jointure'
     },
     {
       type: 'Dataset',
-      title: 'RPG 2022'
+      label: 'RPG 2022'
     },
     {
       type: 'Service',
-      title: 'Données Météo'
+      label: 'Données Météo'
     },
     {
       type: 'Service',
-      title: 'Compta'
+      label: 'Compta'
     }
   ]
 }
@@ -38,29 +38,29 @@ const knowUniverse = {
   name: 'Know Universe',
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  members: 1178,
-  datasets: 822,
-  services: 674,
-  data: [
-    {
-      type: 'Dataset',
-      title: 'Coins'
-    },
+  membersNb: 1178,
+  datasetsNb: 822,
+  servicesNb: 674,
+  entities: [
     {
       type: 'Service',
-      title: 'Transaction'
+      label: 'Contrôle'
     },
     {
       type: 'Dataset',
-      title: 'Validateurs'
+      label: 'Coins'
+    },
+    {
+      type: 'Dataset',
+      label: 'Validateurs'
     },
     {
       type: 'Service',
-      title: 'Validation'
+      label: 'Transaction'
     },
     {
       type: 'Service',
-      title: 'Contrôle'
+      label: 'Validation'
     }
   ]
 }

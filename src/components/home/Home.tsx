@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
 import type {
   DeepReadonly,
@@ -9,23 +9,22 @@ import type {
 } from '@okp4/ui'
 import './home.scss'
 
-type FakeDataspaceData = {
+type DataspaceEntity = {
+  label: string
   type: string
-  title: string
 }
 
 type Dataspace = {
-  id: string
-  name: string
+  datasetsNb: number
   description: string
-  members: number
-  datasets: number
-  services: number
-  data: DeepReadonly<FakeDataspaceData[]>
+  entities: DeepReadonly<DataspaceEntity[]>
+  id: string
+  membersNb: number
+  name: string
+  servicesNb: number
 }
 
 type OptionText = {
-  option: string
   title: string
   datasetButton: string
   dahsboardButton: string
@@ -35,7 +34,6 @@ type OptionText = {
 
 const dataspaceOptionsTexts: OptionText[] = [
   {
-    option: 'creation',
     title: 'add',
     datasetButton: 'new-dataset',
     dahsboardButton: 'new-dashboard',
@@ -43,7 +41,6 @@ const dataspaceOptionsTexts: OptionText[] = [
     reportButton: 'new-report'
   },
   {
-    option: 'visualization',
     title: 'visualize',
     datasetButton: 'datasets',
     dahsboardButton: 'dashboards',
@@ -52,22 +49,22 @@ const dataspaceOptionsTexts: OptionText[] = [
   }
 ]
 
-const DataspaceElements = ({
-  dataspaceData
-}: DeepReadonly<{ dataspaceData: FakeDataspaceData[] }>): JSX.Element => {
+const DataspaceEntities = ({
+  entities
+}: DeepReadonly<{ entities: DataspaceEntity[] }>): JSX.Element => {
   return (
     <>
-      {dataspaceData.map((data: DeepReadonly<FakeDataspaceData>, index: number) => (
+      {entities.map((entity: DeepReadonly<DataspaceEntity>, index: number) => (
         <div className="okp4-dataspace-card" key={index}>
           <Card
             footer={
               <div className="okp4-dataspace-card-footer">
-                <Typography>{data.title}</Typography>
+                <Typography>{entity.label}</Typography>
               </div>
             }
             header={
               <div className="okp4-dataspace-card-header">
-                <Typography>{data.type}</Typography>
+                <Typography>{entity.type}</Typography>
               </div>
             }
           />
@@ -78,23 +75,25 @@ const DataspaceElements = ({
 }
 
 const Counters = ({
-  dataspaceData,
+  dataspace,
   isMediumScreen
-}: DeepReadonly<{ dataspaceData: Dataspace; isMediumScreen: boolean }>): JSX.Element => {
+}: DeepReadonly<{ dataspace: Dataspace; isMediumScreen: boolean }>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
+  const { membersNb, datasetsNb, servicesNb }: Dataspace = dataspace
+  const fontSize = useMemo(() => (isMediumScreen ? 'small' : 'medium'), [isMediumScreen])
 
   return (
     <div className="okp4-dataspace-summary-counters">
       <div className="okp4-dataspace-summary-counter">
-        <Typography fontSize={isMediumScreen ? 'small' : 'medium'} fontWeight="bold">
-          {dataspaceData.members}
+        <Typography fontSize={fontSize} fontWeight="bold">
+          {membersNb}
         </Typography>
         <Typography fontSize="small">
           {t(`home:dashboard:dataspace:summary:counters:members`)}
         </Typography>
       </div>
       <div className="okp4-dataspace-summary-counter">
-        <Typography fontSize={isMediumScreen ? 'small' : 'medium'} fontWeight="bold">
+        <Typography fontSize={fontSize} fontWeight="bold">
           {t(`home:dashboard:dataspace:summary:counters:see`)}
         </Typography>
         <Typography fontSize="small">
@@ -102,14 +101,14 @@ const Counters = ({
         </Typography>
       </div>
       <div className="okp4-dataspace-summary-counter">
-        <Typography fontSize={isMediumScreen ? 'small' : 'medium'} fontWeight="bold">
-          {dataspaceData.datasets}
+        <Typography fontSize={fontSize} fontWeight="bold">
+          {datasetsNb}
         </Typography>
         <Typography fontSize="small"> {t(`home:dashboard:dataspace:options:datasets`)}</Typography>
       </div>
       <div className="okp4-dataspace-summary-counter">
-        <Typography fontSize={isMediumScreen ? 'small' : 'medium'} fontWeight="bold">
-          {dataspaceData.services}
+        <Typography fontSize={fontSize} fontWeight="bold">
+          {servicesNb}
         </Typography>
         <Typography fontSize="small">{t(`home:dashboard:dataspace:options:services`)}</Typography>
       </div>
@@ -123,37 +122,43 @@ const DataspaceOptions = ({
   const { t }: UseTranslationResponse = useTranslation()
   return (
     <>
-      {dataspaceOptionsTexts.map((optionsText: DeepReadonly<OptionText>, index: number) => (
-        <div className={`okp4-dashboard-data ${optionsText.option}`} key={index}>
-          <Typography fontSize="small" fontWeight="bold">
-            {t(`home:dashboard:dataspace:options:${optionsText.title}`)}
-          </Typography>
-          <Button
-            backgroundColor="primary"
-            label={t(`home:dashboard:dataspace:options:${optionsText.datasetButton}`)}
-            rightIcon={<Icon name="add" size={15} />}
-            size={isMobileScreen ? 'small' : 'medium'}
-          />
-          <Button
-            backgroundColor="primary"
-            label={t(`home:dashboard:dataspace:options:${optionsText.dahsboardButton}`)}
-            rightIcon={<Icon name="add" size={15} />}
-            size={isMobileScreen ? 'small' : 'medium'}
-          />
-          <Button
-            backgroundColor="primary"
-            label={t(`home:dashboard:dataspace:options:${optionsText.serviceButton}`)}
-            rightIcon={<Icon name="add" size={15} />}
-            size={isMobileScreen ? 'small' : 'medium'}
-          />
-          <Button
-            backgroundColor="primary"
-            label={t(`home:dashboard:dataspace:options:${optionsText.reportButton}`)}
-            rightIcon={<Icon name="add" size={15} />}
-            size={isMobileScreen ? 'small' : 'medium'}
-          />
-        </div>
-      ))}
+      {dataspaceOptionsTexts.map((optionsText: DeepReadonly<OptionText>, index: number) => {
+        const { title, datasetButton, dahsboardButton, serviceButton, reportButton }: OptionText =
+          optionsText
+        const buttonSize = isMobileScreen ? 'small' : 'medium'
+
+        return (
+          <div className={`okp4-dashboard-data ${optionsText.title}`} key={index}>
+            <Typography fontSize="small" fontWeight="bold">
+              {t(`home:dashboard:dataspace:options:${title}`)}
+            </Typography>
+            <Button
+              backgroundColor="primary"
+              label={t(`home:dashboard:dataspace:options:${datasetButton}`)}
+              rightIcon={<Icon name="add" size={15} />}
+              size={buttonSize}
+            />
+            <Button
+              backgroundColor="primary"
+              label={t(`home:dashboard:dataspace:options:${dahsboardButton}`)}
+              rightIcon={<Icon name="add" size={15} />}
+              size={buttonSize}
+            />
+            <Button
+              backgroundColor="primary"
+              label={t(`home:dashboard:dataspace:options:${serviceButton}`)}
+              rightIcon={<Icon name="add" size={15} />}
+              size={buttonSize}
+            />
+            <Button
+              backgroundColor="primary"
+              label={t(`home:dashboard:dataspace:options:${reportButton}`)}
+              rightIcon={<Icon name="add" size={15} />}
+              size={buttonSize}
+            />
+          </div>
+        )
+      })}
     </>
   )
 }
@@ -202,7 +207,7 @@ export const Home = (): JSX.Element | null => {
           <div className="okp4-dataspace-summary-card">
             <Card size={isMediumScreen ? 'medium' : 'small'} />
           </div>
-          <Counters dataspaceData={dataspace} isMediumScreen={isMediumScreen} />
+          <Counters dataspace={dataspace} isMediumScreen={isMediumScreen} />
           <div className="okp4-dataspace-selection-with-description">
             <div className="okp4-dataspace-selection">
               <Select
@@ -226,7 +231,7 @@ export const Home = (): JSX.Element | null => {
           />
         </div>
         <div className="okp4-dashboard-dataspace-content">
-          <DataspaceElements dataspaceData={dataspace.data} />
+          <DataspaceEntities entities={dataspace.entities} />
         </div>
         <div className="okp4-dashboard-dataspace-options">
           <DataspaceOptions isMobileScreen={isMobileScreen} />

@@ -1,3 +1,23 @@
 {
-  "title": "Explore the Dataverse"
+  "title": "Explore the Dataverse",
+  "back": "Back",
+  "by": "By",
+  "updatedAt": "Last update",
+  "addThis": "Add this",
+  "toDataspace": "to my Dataspace",
+  "description": "Description",
+  "governance": {
+    "name": "Governance",
+    "view": "View Governance",
+    "based": "Governance based on the $KNOW token"
+  },
+  "metadata": {
+    "name": "Metadata",
+    "size": "Size",
+    "format": "Format",
+    "quality": "Quality",
+    "completude": "Completude",
+    "updatedAt": "Last update",
+    "provider": "Provider"
+  }
 }

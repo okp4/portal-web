@@ -1,5 +1,5 @@
-import { Button, Typography } from '@okp4/ui'
-import type { DeepReadonly } from '@okp4/ui'
+import { Button, Typography, useTranslation } from '@okp4/ui'
+import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
 import { PortalCard } from '../../portalCard/PortalCard'
 import { CExplore } from '../../../constants/explore/CExplore.constant'
 import { CExploreDetailsMetadataType } from './constants/CExploreDetailsMetadataType.constant'
@@ -45,17 +45,25 @@ const DetailsContainer = ({ name, children }: DeepReadonly<DetailsContainerProps
 
 const DetailsGovernance = ({
   governance
-}: DeepReadonly<ExploreDetailsGovernanceProps>): JSX.Element => (
-  <div className="explore-details-governance">
-    <Typography as="p" color="inverted-text" fontSize="small">
-      {`${governance} Governance based on the $KNOW token`}
-    </Typography>
+}: DeepReadonly<ExploreDetailsGovernanceProps>): JSX.Element => {
+  const { t }: UseTranslationResponse = useTranslation()
 
-    <Button label="View Governance" />
-  </div>
-)
+  return (
+    <div className="explore-details-governance">
+      <Typography as="p" color="inverted-text" fontSize="small">
+        {`${governance} ${t('explore:governance:based')}`}
+      </Typography>
 
-const MetadataRowValue = ({ name, value, isEven }: DeepReadonly<MetadataRowValueProps>): JSX.Element => {
+      <Button label={t('explore:governance:view')} />
+    </div>
+  )
+}
+
+const MetadataRowValue = ({
+  name,
+  value,
+  isEven
+}: DeepReadonly<MetadataRowValueProps>): JSX.Element => {
   const item: ExploreDetailsMetadataMapping | undefined = CExploreDetailsMetadataType.find(
     // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
     (tmp: DeepReadonly<ExploreDetailsMetadataMapping>) => tmp.name === name
@@ -83,19 +91,23 @@ const MetadataRowValue = ({ name, value, isEven }: DeepReadonly<MetadataRowValue
   )
 }
 
-const MetadataRow = ({ name, value, isEven }: DeepReadonly<MetadataRowProps>): JSX.Element => (
-  <div className="explore-details-metadata-row">
-    <div className="name">
-      <Typography as="span" color={isEven ? 'invariant-text' : 'inverted-text'} fontSize="small">
-        {name}
-      </Typography>
-    </div>
+const MetadataRow = ({ name, value, isEven }: DeepReadonly<MetadataRowProps>): JSX.Element => {
+  const { t }: UseTranslationResponse = useTranslation()
 
-    <div className="value">
-      <MetadataRowValue isEven={isEven} name={name} value={value} />
+  return (
+    <div className="explore-details-metadata-row">
+      <div className="name">
+        <Typography as="span" color={isEven ? 'invariant-text' : 'inverted-text'} fontSize="small">
+          {t(`explore:metadata:${name}`)}
+        </Typography>
+      </div>
+
+      <div className="value">
+        <MetadataRowValue isEven={isEven} name={name} value={value} />
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 const ExploreDetailsMetadata = ({
   metadata
@@ -121,20 +133,21 @@ const ExploreDetailsMetadata = ({
 
 export const ExploreDetails = (): JSX.Element => {
   const explore: Explore = CExplore[0]
+  const { t }: UseTranslationResponse = useTranslation()
 
   return (
     <div className="okp4-explore-details">
       <PortalCard>
         <>
-          <DetailsContainer name="Description">
+          <DetailsContainer name={t('explore:description')}>
             <Typography as="p" color="inverted-text" fontSize="small">
               {explore.description}
             </Typography>
           </DetailsContainer>
-          <DetailsContainer name="Governance">
+          <DetailsContainer name={t('explore:governance:name')}>
             <DetailsGovernance governance={explore.governance} />
           </DetailsContainer>
-          <DetailsContainer name="Metadata">
+          <DetailsContainer name={t('explore:metadata.name')}>
             <ExploreDetailsMetadata metadata={explore.metadata} />
           </DetailsContainer>
         </>

@@ -6,7 +6,7 @@ import {
   ExploreDetailsWithoutSSR,
   ExploreTitleWithoutSSR,
   GoBackWithoutSSR
-} from './explore-id-no-ssr-components'
+} from '../../components/componentsWithoutSSR/componentsWithoutSSR'
 import './ExploreId.scss'
 import type { Explore } from '../../types/explore/Explore.type'
 

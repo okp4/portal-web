@@ -1,9 +1,14 @@
 import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
-import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
-import { CExplore } from '../../../constants/explore/CExplore.constant'
+import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
 import type { Explore } from '../../../types/explore/Explore.type'
 import './ExploreList.scss'
 import { format } from 'date-fns'
+import { useEffect, useState } from 'react'
+
+type ExploreListProps = {
+  readonly range: string
+  readonly sortBy: string
+}
 
 type ItemDescriptionProps = {
   readonly type: string
@@ -12,7 +17,7 @@ type ItemDescriptionProps = {
 
 type ItemFooterProps = {
   readonly provider: string
-  readonly updatedAt: Date
+  readonly updatedAt: string
 }
 
 const ItemDescription = ({ type, categories }: DeepReadonly<ItemDescriptionProps>): JSX.Element => (
@@ -35,16 +40,34 @@ const ItemFooter = ({ provider, updatedAt }: DeepReadonly<ItemFooterProps>): JSX
     // COLOR SHOULD BE secondary-button
     <Typography as="span" color="inverted-text" fontSize="small" fontWeight="light">
       {`${t('explore:listing:by')} ${provider}`} -{' '}
-      {`${t('explore:listing:last-update')} ${format(updatedAt, 'dd/MM/yyyy')}`}
+      {`${t('explore:listing:last-update')} ${format(new Date(updatedAt), 'dd/MM/yyyy')}`}
     </Typography>
   )
 }
 
-const ExploreList = (): JSX.Element => {
+const fetchItems = async (url: string): Promise<Array<Explore>> => {
+  const response = await fetch(url)
+
+  if (response.status !== 200) {
+    throw new Error(response.statusText)
+  }
+
+  return await response.json()
+}
+
+const ExploreList = ({ range, sortBy }: DeepReadonly<ExploreListProps>): JSX.Element => {
+  const [items, setItems]: UseState<Array<Explore>> = useState<Array<Explore>>([])
+
+  useEffect(() => {
+    fetchItems(`/api/fake/explores?range=${range}&sortBy=${sortBy}`)
+      .then(setItems)
+      .catch((err: unknown) => console.error(err))
+  }, [range, sortBy])
+
   return (
     <div className="okp4-explore-list">
       <List>
-        {CExplore.map((item: DeepReadonly<Explore>): JSX.Element => {
+        {items.map((item: DeepReadonly<Explore>): JSX.Element => {
           return (
             <ListItem
               description={<ItemDescription categories={item.categories} type={item.type} />}

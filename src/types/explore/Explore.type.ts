@@ -17,4 +17,5 @@ export type Explore = {
   readonly provider: string
   readonly governance: string
   readonly metadata: ExploreMetadata
+  readonly updatedAt: string
 }

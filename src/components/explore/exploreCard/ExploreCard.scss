@@ -13,6 +13,12 @@
         text-transform: uppercase;
       }
 
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        text-transform: capitalize;
+      }
+
       &:nth-child(5) {
         text-align: end;
       }

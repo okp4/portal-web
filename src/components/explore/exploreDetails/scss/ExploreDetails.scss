@@ -1,5 +1,13 @@
 .okp4-explore-details {
   .okp4-portal-card {
+    @media screen and (max-width: 480px) {
+      .explore-details-container {
+        &:last-child {
+          margin-top: 15px;
+        }
+      }
+    }
+
     .explore-details-governance {
       display: flex;
       flex-direction: column;

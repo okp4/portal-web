@@ -9,7 +9,8 @@
       "list": "List",
       "sort": "Sort",
       "select": {
-        "alphabetical": "Alphabetical"
+        "alphabetical": "Alphabetical",
+        "createdAt": "Created at"
       }
     },
     "by": "By",

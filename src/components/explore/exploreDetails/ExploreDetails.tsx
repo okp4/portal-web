@@ -1,12 +1,15 @@
 import { Button, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
 import { PortalCard } from '../../portalCard/PortalCard'
-import { CExplore } from '../../../constants/explore/CExplore.constant'
 import { CExploreDetailsMetadataType } from './constants/CExploreDetailsMetadataType.constant'
 import type { Explore, ExploreMetadata } from '../../../types/explore/Explore.type'
 import React from 'react'
 import './scss/ExploreDetails.scss'
 import type { ExploreDetailsMetadataMapping } from './types/ExploreDetailsMetadataMapping.type'
+
+type ExploreDetailsProps = {
+  readonly explore: Explore
+}
 
 type DetailsContainerProps = {
   readonly name: string
@@ -68,7 +71,6 @@ const MetadataRowValue = ({
     // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
     (tmp: DeepReadonly<ExploreDetailsMetadataMapping>) => tmp.name === name
   )
-
   const Component: React.ElementType | undefined = item?.Component
 
   if (item === undefined || Component === undefined) {
@@ -131,8 +133,7 @@ const ExploreDetailsMetadata = ({
   )
 }
 
-export const ExploreDetails = (): JSX.Element => {
-  const explore: Explore = CExplore[0]
+export const ExploreDetails = ({explore}: DeepReadonly<ExploreDetailsProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
 
   return (

@@ -1,10 +1,11 @@
-import type { Explore } from '../../types/explore/Explore.type'
+import { List as ListImmutable } from 'immutable'
+import type { Explore } from '../../../../../types/explore/Explore.type'
 
-export const CExplore: Array<Explore> = [
+export const CExplore = ListImmutable<Explore>([
   {
     id: 'ef347285-e52a-430d-9679-dcb76b962ce7',
     name: 'Rhizome',
-    type: 'data space',
+    type: 'dataspace',
     access: 'PUBLIC',
     categories: ['agriculture', 'open data', 'demonstrator', 'dataviz', 'agreste'],
     description: `Aliquam hendrerit cursus porttitor. Sed a varius massa, at aliquet velit. Sed varius,
@@ -30,6 +31,7 @@ export const CExplore: Array<Explore> = [
       completude: 87,
       provider: 'OKP4',
       updatedAt: new Date().toISOString()
-    }
+    },
+    updatedAt: new Date().toISOString()
   }
-]
+])

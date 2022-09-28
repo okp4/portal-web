@@ -11,6 +11,9 @@
     "view": "Voir la gouvernance",
     "based": "gouvernance basée sur le $KNOW token"
   },
+  "dataspace": "Dataspace",
+  "service": "Service",
+  "jointure": "Jointure",
   "metadata": {
     "name": "Metadonnées",
     "size": "Taille",

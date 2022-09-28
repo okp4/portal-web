@@ -1,5 +1,6 @@
-import React from 'react'
-import "./explore.scss";
+import type { SelectValue, UseState } from '@okp4/ui'
+import React, { useCallback, useState } from 'react'
+import './explore.scss'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import {
@@ -9,8 +10,25 @@ import {
   ExploreListWithoutSSR,
   ExploreTitleWithoutSSR
 } from './explore-no-ssr-components'
+import { CExploreListConfigurationShowRange } from '../../constants/explore/CExploreListConfigurationShowRange.constant'
+import { CExploreListConfigurationSortBy } from '../../constants/explore/CExploreListConfigurationSortBy.constant'
 
 const Explore: NextPage = () => {
+  const [range, setRange]: UseState<string> = useState<string>(
+    CExploreListConfigurationShowRange[0].value
+  )
+  const [sortBy, setSortBy]: UseState<string> = useState<string>(
+    CExploreListConfigurationSortBy[0].value
+  )
+
+  const handleRangeChange = useCallback((value: SelectValue) => {
+    setRange(value as string)
+  }, [])
+
+  const handleSortByChange = useCallback((value: SelectValue) => {
+    setSortBy(value as string)
+  }, [])
+
   return (
     <div className="okp4-portal-main">
       <Head>
@@ -25,8 +43,13 @@ const Explore: NextPage = () => {
       <ContentWithoutSSR>
         <section className="okp4-explore-main">
           <ExploreTitleWithoutSSR />
-          <ExploreListConfigurationWithoutSSR />
-          <ExploreListWithoutSSR />
+          <ExploreListConfigurationWithoutSSR
+            onRangeChange={handleRangeChange}
+            onSortByChange={handleSortByChange}
+            range={range}
+            sortBy={sortBy}
+          />
+          <ExploreListWithoutSSR range={range} sortBy={sortBy} />
           <ExploreFiltersWithoutSSR />
         </section>
       </ContentWithoutSSR>

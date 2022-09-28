@@ -9,7 +9,8 @@
       "list": "Liste",
       "sort": "Trier par",
       "select": {
-        "alphabetical": "Alphabétique"
+        "alphabetical": "Alphabétique",
+        "createdAt": "Date de création"
       }
     },
     "by": "Par",

@@ -1,0 +1,53 @@
+.okp4-dataverse-id {
+  max-width: 1140px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'title title title'
+    'back back back'
+    'preview information information'
+    'preview information information';
+  gap: 25px;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 950px;
+    grid-template-areas:
+      'title title title'
+      'back back back'
+      'preview preview preview'
+      'information information information';
+  }
+
+  @media screen and (max-width: 995px) {
+    max-width: 90%;
+  }
+
+  .okp4-portal-card {
+    background: #ced2d9;
+    border-radius: 9px;
+    padding: 20px;
+    height: fit-content;
+  }
+
+  .okp4-page-title {
+    grid-area: title;
+  }
+
+  .okp4-go-to-previous-page {
+    grid-area: back;
+  }
+
+  .okp4-dataverse-preview {
+    grid-area: preview;
+  }
+
+  .okp4-dataverse-information {
+    grid-area: information;
+
+    .okp4-portal-card {
+      border-radius: 0px 0px 0px 9px;
+    }
+  }
+}

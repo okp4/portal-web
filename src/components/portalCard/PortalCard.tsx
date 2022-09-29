@@ -1,6 +1,6 @@
 import type { DeepReadonly } from '@okp4/ui'
 import React from 'react'
-import './PortalCard.scss'
+import './portalCard.scss'
 
 type PortalCard = {
   readonly children: React.ReactNode

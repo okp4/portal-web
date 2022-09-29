@@ -1,5 +1,5 @@
 export type ExploreDetailsMetadataComponent = {
   className: string
   value: number
-  isEven: boolean
+  color: 'text' | 'inverted-text' | 'invariant-text'
 }

@@ -8,10 +8,10 @@ type ExploreDetailsMetadataDateProps = ExploreDetailsMetadataComponent
 const ExploreDetailsMetadataDate = ({
   className,
   value,
-  isEven
+  color
 }: DeepReadonly<ExploreDetailsMetadataDateProps>): JSX.Element => (
   <div className={`okp4-explore-details-metadata-date ${className}`}>
-    <Typography as="span" color={isEven ? 'invariant-text' : 'inverted-text'} fontSize="small">
+    <Typography as="span" color={color} fontSize="small">
       {format(new Date(value), 'dd/MM/yyyy')}
     </Typography>
   </div>

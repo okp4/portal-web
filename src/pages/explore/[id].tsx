@@ -7,7 +7,7 @@ import {
   ExploreTitleWithoutSSR,
   GoBackWithoutSSR
 } from '../../components/componentsWithoutSSR/componentsWithoutSSR'
-import './ExploreId.scss'
+import './exploreId.scss'
 import type { Explore } from '../../types/explore/Explore.type'
 
 const fetchExplore = async (url: string): Promise<Explore> => {

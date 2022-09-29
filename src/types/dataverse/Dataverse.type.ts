@@ -1,14 +1,6 @@
-export type ExploreMetadata = {
-  readonly size: number
-  readonly format: string
-  readonly quality: number
-  readonly completude: number
-  readonly provider: string
-  readonly updatedAt: string
-}
-
-export type Explore = {
+export type Dataverse = {
   readonly id: string
+  readonly mainPicture: string
   readonly name: string
   readonly type: string
   readonly access: 'PRIVATE' | 'PUBLIC'
@@ -16,6 +8,9 @@ export type Explore = {
   readonly description: string
   readonly provider: string
   readonly governance: string
-  readonly metadata: ExploreMetadata
+  readonly size: number
+  readonly format: string
+  readonly quality: number
+  readonly completude: number
   readonly updatedAt: string
 }

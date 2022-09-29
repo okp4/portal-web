@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import type { NextRouter } from 'next/router'
 import { useCallback } from 'react'
 
-export const GoBack = (): JSX.Element => {
+export const GoToPreviousPage = (): JSX.Element => {
   const router: NextRouter = useRouter()
   const { t }: UseTranslationResponse = useTranslation()
 
@@ -13,10 +13,10 @@ export const GoBack = (): JSX.Element => {
   }, [router])
 
   return (
-    <div className="okp4-go-back">
+    <div className="okp4-go-to-previous-page">
       <Button label={t("explore:back")} leftIcon={<Icon name="arrow-left" size={22} />} onClick={handleClick} />
     </div>
   )
 }
 
-export default GoBack
+export default GoToPreviousPage

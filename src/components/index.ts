@@ -33,7 +33,23 @@ const DataspaceSummary = dynamic(
 )
 
 const ExploreList = dynamic(
-  async () => import('./explore/exploreList/ExploreList'),
+  async () => import('./explore/exploreList/ExploreList'), {
+    ssr: false
+  })
+
+export const GoToPreviousPage = dynamic(async () => import('./goToPreviousPage/GoToPreviousPage'), {
+  ssr: false
+})
+
+export const DataversePreview = dynamic(
+  async () => import('./dataverse/dataversePreview/DataversePreview'),
+  {
+    ssr: false
+  }
+)
+
+export const DataverseInformation = dynamic(
+  async () => import('./dataverse/dataverseInformation/DataverseInformation'),
   {
     ssr: false
   }

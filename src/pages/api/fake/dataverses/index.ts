@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { CExplore } from './constants/CExplore.constant'
+import dataverses from "./dataverses.json";
 
 const RANGE_DEFAULT_VALUE = 10
 
@@ -15,7 +15,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
 
   const range: number = getRange(req.query.range as string)
 
-  res.status(200).json(CExplore.slice(0, range))
+  res.status(200).json(dataverses.slice(0, range))
 }
 
 export default handler

@@ -1,4 +1,4 @@
-.okp4-explore-main {
+.okp4-dataverse {
   max-width: 1140px;
   width: 100%;
   margin: auto;
@@ -22,15 +22,15 @@
     max-width: 90%;
   }
 
-  .okp4-explore-title {
+  .okp4-page-title {
     grid-area: title;
   }
 
-  .okp4-explore-list-configuration {
+  .okp4-dataverse-list-configuration {
     grid-area: configuration;
   }
 
-  .okp4-explore-list {
+  .okp4-dataverse-list {
     grid-area: list;
 
     .okp4-list-main {
@@ -38,7 +38,7 @@
     }
   }
 
-  .okp4-explore-filters {
+  .okp4-dataverse-filters {
     grid-area: filters;
   }
 }

@@ -8,13 +8,17 @@ export const GoToPreviousPage = (): JSX.Element => {
   const router: NextRouter = useRouter()
   const { t }: UseTranslationResponse = useTranslation()
 
-  const handleClick = useCallback((): void => {
+  const onClick = useCallback((): void => {
     router.back()
   }, [router])
 
   return (
     <div className="okp4-go-to-previous-page">
-      <Button label={t("dataverse:back")} leftIcon={<Icon name="arrow-left" size={22} />} onClick={handleClick} />
+      <Button
+        label={t('dataverse:back')}
+        leftIcon={<Icon name="arrow-left" size={22} />}
+        onClick={onClick}
+      />
     </div>
   )
 }

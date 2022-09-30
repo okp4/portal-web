@@ -97,8 +97,6 @@ const Metadata = ({ dataverse, theme }: DeepReadonly<MetadataProps>): JSX.Elemen
       </MetadataRow>
       <MetadataRow name={t('dataverse:quality')}>
         {Array.from(Array(5).keys()).map((arrayValue: number) => (
-          // NEED TO ADD THE STAR ICON IN THE LIB
-          // NEED TO ADD THE COLOR EDITION IN THE LIB
           <Icon
             className={arrayValue <= quality - 1 ? 'filled' : 'empty'}
             invertColor={theme === 'light'}

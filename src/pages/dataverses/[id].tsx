@@ -1,7 +1,12 @@
 import type { UseState } from '@okp4/ui'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
-import { DataversePreview, DataverseInformation, PageTitle, GoToPreviousPage } from '../../components'
+import {
+  DataversePreview,
+  DataverseInformation,
+  PageTitle,
+  GoToPreviousPage
+} from '../../components'
 import './dataverseId.scss'
 import type { Dataverse } from '../../types/dataverse/Dataverse.type'
 
@@ -12,7 +17,8 @@ const fetchDataverse = async (url: string): Promise<Dataverse> => {
     throw new Error(response.statusText)
   }
 
-  return await response.json()
+  const dataverse: Promise<Dataverse>= response.json()
+  return dataverse
 }
 
 const DataverseId: NextPage = () => {
@@ -31,9 +37,7 @@ const DataverseId: NextPage = () => {
       <DataversePreview dataverse={dataverse} />
       <DataverseInformation dataverse={dataverse} />
     </div>
-  ) : (
-    <div className="okp4-dataverse-id" />
-  )
+  ) : null
 }
 
 export default DataverseId

@@ -15,9 +15,9 @@ const translationsToLoad = [
   { lng: 'en', namespace: 'footer', resource: footer_en },
   { lng: 'fr', namespace: 'footer', resource: footer_fr },
   { lng: 'en', namespace: 'dashboard', resource: dashboard_en },
-  { lng: 'fr', namespace: 'dashboard', resource: dashboard_fr }
+  { lng: 'fr', namespace: 'dashboard', resource: dashboard_fr },
   { lng: 'en', namespace: 'explore', resource: explore_en },
-  { lng: 'fr', namespace: 'explore', resource: explore_fr },
+  { lng: 'fr', namespace: 'explore', resource: explore_fr }
 ]
 
 loadTranslations(translationsToLoad)

@@ -1,5 +1,6 @@
 {
-  "title": "Explore the Dataverse",
+  "by": "By",
+  "last-update": "Last update",
   "listing": {
     "configuration": {
       "show": "Show",
@@ -12,8 +13,7 @@
         "alphabetical": "Alphabetical",
         "createdAt": "Created at"
       }
-    },
-    "by": "By",
-    "last-update": "Last update"
-  }
+    }
+  },
+  "title": "Explore the Dataverse"
 }

@@ -1,12 +1,10 @@
 import dynamic from 'next/dynamic'
-
 const DataspaceOptions = dynamic(
   async () => import('./dataspaceDashboard/dataspaceOptions/DataspaceOptions'),
   {
     ssr: false
   }
 )
-
 const DataspaceSummary = dynamic(
   async () => import('./dataspaceDashboard/dataspaceSummary/DataspaceSummary'),
   {
@@ -21,9 +19,12 @@ export const PageTitle = dynamic(async () => import('./pageTitle/PageTitle'), {
   ssr: false
 })
 
-export const PreviousPageButton = dynamic(async () => import('./previousPageButton/PreviousPageButton'), {
-  ssr: false
-})
+export const PreviousPageButton = dynamic(
+  async () => import('./previousPageButton/PreviousPageButton'),
+  {
+    ssr: false
+  }
+)
 
 export const DatasetPreview = dynamic(
   async () => import('./dataset/datasetPreview/DatasetPreview'),

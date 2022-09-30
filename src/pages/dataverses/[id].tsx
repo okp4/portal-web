@@ -15,7 +15,7 @@ const fetchDataverse = async (url: string): Promise<Dataverse> => {
   return await response.json()
 }
 
-const ExploreId: NextPage = () => {
+const DataverseId: NextPage = () => {
   const [dataverse, setDataverse]: UseState<Dataverse | null> = useState<Dataverse | null>(null)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const ExploreId: NextPage = () => {
 
   return dataverse ? (
     <div className="okp4-dataverse-id">
-      <PageTitle title="explore:title" />
+      <PageTitle title="dataverse:title" />
       <GoToPreviousPage />
       <DataversePreview dataverse={dataverse} />
       <DataverseInformation dataverse={dataverse} />
@@ -36,4 +36,4 @@ const ExploreId: NextPage = () => {
   )
 }
 
-export default ExploreId
+export default DataverseId

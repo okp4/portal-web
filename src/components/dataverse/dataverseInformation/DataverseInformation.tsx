@@ -2,7 +2,7 @@ import { Button, Icon, Typography, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import type { Dataverse } from '../../../types/dataverse/Dataverse.type'
 import './dataverseInformation.scss'
-import { formatDate } from '../../../utils/formatDate.util'
+import { formatDate } from '../../../utils/formatDate'
 import Image from 'next/image'
 
 type DataverseInformationProps = {
@@ -64,9 +64,9 @@ const Governance = ({ governance }: DeepReadonly<GovernanceProps>): JSX.Element 
   return (
     <div className="okp4-dataverse-governance">
       <Typography as="p" fontSize="small">
-        {`${governance} ${t('explore:governance:based')}`}
+        {`${governance} ${t('governance:based')}`}
       </Typography>
-      <Button label={t('explore:governance:view')} />
+      <Button label={t('governance:view')} />
     </div>
   )
 }
@@ -89,13 +89,13 @@ const Metadata = ({ dataverse, theme }: DeepReadonly<MetadataProps>): JSX.Elemen
 
   return (
     <div className="okp4-dataverse-metadata">
-      <MetadataRow name={t('explore:metadata:size')} unit="Mo">
+      <MetadataRow name={t('dataverse:size')} unit="Mo">
         <Typography fontSize="small">{size.toString()}</Typography>
       </MetadataRow>
-      <MetadataRow name={t('explore:metadata:format')}>
+      <MetadataRow name={t('dataverse:format')}>
         <Typography fontSize="small">{format.toString().toLocaleUpperCase()}</Typography>
       </MetadataRow>
-      <MetadataRow name={t('explore:metadata:quality')}>
+      <MetadataRow name={t('dataverse:quality')}>
         {Array.from(Array(5).keys()).map((arrayValue: number) => (
           // NEED TO ADD THE STAR ICON IN THE LIB
           // NEED TO ADD THE COLOR EDITION IN THE LIB
@@ -107,13 +107,13 @@ const Metadata = ({ dataverse, theme }: DeepReadonly<MetadataProps>): JSX.Elemen
           />
         ))}
       </MetadataRow>
-      <MetadataRow name={t('explore:metadata:completude')} unit="%">
+      <MetadataRow name={t('dataverse:completude')} unit="%">
         <Typography fontSize="small">{completude.toString()}</Typography>
       </MetadataRow>
-      <MetadataRow name={t('explore:metadata:provider')}>
+      <MetadataRow name={t('dataverse:provider')}>
         <Typography fontSize="small">{provider}</Typography>
       </MetadataRow>
-      <MetadataRow name={t('explore:metadata:updatedAt')}>
+      <MetadataRow name={t('dataverse:updatedAt')}>
         <Typography fontSize="small">{formatDate(updatedAt)}</Typography>
       </MetadataRow>
     </div>
@@ -130,15 +130,15 @@ const DataverseInformation = ({
     <div className="okp4-dataverse-information">
       <BackgroundImage url={dataverse.mainPicture} />
       <div className="okp4-portal-card">
-        <Container name={t('explore:description')} theme={theme}>
+        <Container name={t('dataverse:description')} theme={theme}>
           <Typography as="p" fontSize="small">
             {dataverse.description}
           </Typography>
         </Container>
-        <Container name={t('explore:governance:name')} theme={theme}>
+        <Container name={t('governance:name')} theme={theme}>
           <Governance governance={dataverse.governance} />
         </Container>
-        <Container name={t('explore:metadata.name')} theme={theme}>
+        <Container name={t('dataverse:metadata')} theme={theme}>
           <Metadata dataverse={dataverse} theme={theme} />
         </Container>
       </div>

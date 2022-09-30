@@ -1,0 +1,21 @@
+{
+  "addThis": "Ajouter ce",
+  "back": "Retour",
+  "by": "Par",
+  "completude": "Complétude",
+  "dataset": "Dataset",
+  "dataspace": "Dataspace",
+  "description": "Description",
+  "format": "Format",
+  "jointure": "Jointure",
+  "metadata": "Metadonées",
+  "private": "Privé",
+  "provider": "Créateur",
+  "public": "Public",
+  "quality": "Qualité",
+  "service": "Service",
+  "size": "Taille",
+  "title": "Explorez le Dataverse",
+  "toDataspace": "à mon Dataspace",
+  "updatedAt": "Mis à jour"
+}

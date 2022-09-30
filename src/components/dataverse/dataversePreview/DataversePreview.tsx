@@ -3,7 +3,7 @@ import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@ok
 import './dataversePreview.scss'
 import type { Dataverse } from '../../../types/dataverse/Dataverse.type'
 import { useMemo } from 'react'
-import { formatDate } from '../../../utils/formatDate.util'
+import { formatDate } from '../../../utils/formatDate'
 
 type DataversePreviewProps = {
   readonly dataverse: Dataverse
@@ -23,18 +23,18 @@ export const DataversePreview = ({
       </Typography>
       <Typography color={color}>{dataverse.type}</Typography>
       <Typography color={color} fontSize="small">
-        {dataverse.access.toLocaleLowerCase()}
+        {t(`dataverse:${dataverse.access.toLocaleLowerCase()}`)}
       </Typography>
       <Typography color={color} fontSize="small">
         {dataverse.categories.join(', ')}
       </Typography>
-      <Typography color={color} fontSize="x-small">{`${t('explore:by')} ${dataverse.provider}, ${t(
-        'explore:updatedAt'
+      <Typography color={color} fontSize="x-small">{`${t('dataverse:by')} ${dataverse.provider}, ${t(
+        'dataverse:updatedAt'
       )} ${formatDate(dataverse.updatedAt)}`}</Typography>
       <Button
         backgroundColor="secondary"
-        label={`${t('explore:addThis')} ${t(`explore:${dataverse.type}`)} ${t(
-          'explore:toDataspace'
+        label={`${t('dataverse:addThis')} ${t(`dataverse:${dataverse.type}`)} ${t(
+          'dataverse:toDataspace'
         )}`}
         size="large"
       />

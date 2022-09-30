@@ -8,7 +8,7 @@ type PageTitleProps = {
 
 const PageTitle = ({ title }: PageTitleProps): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
-  const isSmallScreen = useMediaType('(max-width: 995px)')
+  const isSmallScreen: boolean = useMediaType('(max-width: 995px)')
 
   return (
     <div className="okp4-page-title">

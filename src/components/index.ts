@@ -1,11 +1,8 @@
 import dynamic from 'next/dynamic'
 
-const Layout = dynamic(
-  async () => import('./layout/Layout'),
-  {
-    ssr: false
-  }
-)
+const Layout = dynamic(async () => import('./layout/Layout'), {
+  ssr: false
+})
 
 const DataspaceOptions = dynamic(
   async () => import('./dataspaceDashboard/dataspaceOptions/DataspaceOptions'),
@@ -32,24 +29,16 @@ const DataspaceSummary = dynamic(
   }
 )
 
-const ExploreList = dynamic(
-  async () => import('./explore/exploreList/ExploreList'), {
-    ssr: false
-  })
+const ExploreList = dynamic(async () => import('./explore/exploreList/ExploreList'), {
+  ssr: false
+})
 
 export const GoToPreviousPage = dynamic(async () => import('./goToPreviousPage/GoToPreviousPage'), {
   ssr: false
 })
 
-export const DataversePreview = dynamic(
-  async () => import('./dataverse/dataversePreview/DataversePreview'),
-  {
-    ssr: false
-  }
-)
-
-export const DataverseInformation = dynamic(
-  async () => import('./dataverse/dataverseInformation/DataverseInformation'),
+export const DatasetPreview = dynamic(
+  async () => import('./dataset/datasetPreview/DatasetPreview'),
   {
     ssr: false
   }
@@ -60,12 +49,24 @@ const DataspaceEntities = dynamic(
   { ssr: false }
 )
 
+const ExploreFilters = dynamic(async () => import('./explore/exploreFilters/ExploreFilters'), {
+  ssr: false
+})
 
-const ExploreFilters = dynamic(
-  async () => import('./explore/exploreFilters/ExploreFilters'),
+export const DatasetInformation = dynamic(
+  async () => import('./dataset/datasetInformation/DatasetInformation'),
   {
     ssr: false
   }
 )
 
-export { PageTitle, Layout, DataspaceOptions, DataspaceSummary, DataspaceEntities, ExploreFilters, ExploreList, ExploreListConfiguration }
+export {
+  PageTitle,
+  Layout,
+  DataspaceOptions,
+  DataspaceSummary,
+  DataspaceEntities,
+  ExploreFilters,
+  ExploreList,
+  ExploreListConfiguration
+}

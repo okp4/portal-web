@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { Dataverse } from '../../../../types/dataverse/Dataverse.type'
-import dataverses from './dataverses.json'
+import type { Dataset } from '../../../../types/dataset/Dataset.type'
+import datasets from './datasets.json'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
@@ -8,13 +8,13 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
 
   const id = req.query.id as string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const dataverse: unknown | undefined = dataverses.find((item: any) => item.id === id)
+  const dataset: unknown | undefined = datasets.find((item: any) => item.id === id)
 
-  if (!id || dataverse === undefined) {
+  if (!id || dataset === undefined) {
     res.status(404).send('Not found')
   }
 
-  res.status(200).json(dataverse as Dataverse)
+  res.status(200).json(dataset as Dataset)
 }
 
 export default handler

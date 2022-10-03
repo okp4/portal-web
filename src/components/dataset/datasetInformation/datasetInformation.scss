@@ -1,0 +1,100 @@
+@import '@okp4/ui/lib/scss/themes';
+
+.okp4-dataset-information {
+  @include with-theme {
+    @media screen and (max-width: 480px) {
+      .okp4-dataset-information-container {
+        &:last-child {
+          margin-top: 15px;
+        }
+      }
+    }
+
+    .okp4-dataset-background-image {
+      position: relative;
+      height: 175px;
+
+      img {
+        border-radius: 9px 9px 0 0;
+      }
+    }
+
+    .okp4-dataset-information-content {
+      background: themed(text);
+      padding: 20px;
+      height: fit-content;
+      border-radius: 0px 0px 9px 9px;
+
+      .okp4-dataset-information-container {
+        &:not(:first-child) {
+          margin-top: 15px;
+        }
+
+        h2 {
+          margin-top: 0;
+        }
+
+        p {
+          margin: 0;
+          line-height: 20px;
+        }
+
+        .okp4-dataset-governance {
+          display: flex;
+          flex-direction: column;
+
+          @media screen and (max-width: 700px) {
+            gap: 10px;
+          }
+
+          button {
+            align-self: flex-end;
+          }
+        }
+      }
+
+      .okp4-dataset-metadata {
+        margin-top: 10px;
+
+        .okp4-dataset-metadata-row {
+          display: flex;
+          padding: 12px 15px;
+
+          .name {
+            margin: auto 0;
+            width: 40%;
+          }
+
+          .value {
+            display: flex;
+            width: 60%;
+          }
+        }
+      }
+
+      .okp4-dataset-metadata.dark {
+        .okp4-dataset-metadata-row {
+          &:nth-child(odd) {
+            background-color: themed(secondary-button);
+
+            span {
+              color: themed(text);
+            }
+          }
+        }
+      }
+
+      .okp4-dataset-metadata.light {
+        .okp4-dataset-metadata-row {
+          &:nth-child(odd) {
+            background-color: themed(primary-background);
+
+            span {
+              color: themed(text);
+            }
+          }
+        }
+      }
+    }
+  }
+}

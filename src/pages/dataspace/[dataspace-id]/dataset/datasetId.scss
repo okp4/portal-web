@@ -1,4 +1,6 @@
-.okp4-dataverse-id {
+@import '@okp4/ui/lib/scss/themes';
+
+.okp4-dataset-id {
   max-width: 1140px;
   width: 100%;
   margin: auto;
@@ -24,11 +26,13 @@
     max-width: 90%;
   }
 
-  .okp4-portal-card {
-    background: #ced2d9;
-    border-radius: 9px;
-    padding: 20px;
-    height: fit-content;
+  @include with-theme {
+    .okp4-dataset-card-layout {
+      background: themed(text);
+      border-radius: 9px;
+      padding: 20px;
+      height: fit-content;
+    }
   }
 
   .okp4-page-title {
@@ -39,15 +43,11 @@
     grid-area: back;
   }
 
-  .okp4-dataverse-preview {
+  .okp4-dataset-preview {
     grid-area: preview;
   }
 
-  .okp4-dataverse-information {
+  .okp4-dataset-information {
     grid-area: information;
-
-    .okp4-portal-card {
-      border-radius: 0px 0px 9px 9px;
-    }
   }
 }

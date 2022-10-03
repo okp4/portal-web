@@ -25,8 +25,8 @@ export const GoToPreviousPage = dynamic(async () => import('./goToPreviousPage/G
   ssr: false
 })
 
-export const DataversePreview = dynamic(
-  async () => import('./dataverse/dataversePreview/DataversePreview'),
+export const DatasetPreview = dynamic(
+  async () => import('./dataset/datasetPreview/DatasetPreview'),
   {
     ssr: false
   }
@@ -39,8 +39,8 @@ const DataspaceEntities = dynamic(
   }
 )
 
-export const DataverseInformation = dynamic(
-  async () => import('./dataverse/dataverseInformation/DataverseInformation'),
+export const DatasetInformation = dynamic(
+  async () => import('./dataset/datasetInformation/DatasetInformation'),
   {
     ssr: false
   }

@@ -1,0 +1,35 @@
+{
+  "add": "Ajouter ce Dataset à mon Dataspace",
+  "back": "Retour",
+  "by": "Par",
+  "categories": {
+    "agriculture": "Agriculture",
+    "open-data": "Open Data",
+    "demonstrator": "Démonstrateur",
+    "dataviz": "Dataviz",
+    "agreste": "Agreste"
+  },
+  "completude": "Complétude",
+  "dataset": "Dataset",
+  "dataspace": "Dataspace",
+  "description": "Description",
+  "format": "Format",
+  "governance": {
+    "name": "Gouvernance",
+    "view": "Voir la gouvernance",
+    "based": "Gouvernance basée sur le"
+  },
+  "jointure": "Jointure",
+  "metadata": "Metadonées",
+  "private": "Privé",
+  "provider": "Créateur",
+  "public": "Public",
+  "quality": "Qualité",
+  "service": "Service",
+  "size": "Taille",
+  "title": "Explorez le Dataverse",
+  "units": {
+    "mb": "Mo"
+  },
+  "updated-at": "Mis à jour"
+}

@@ -1,4 +1,9 @@
-export type Dataverse = {
+export type DatasetGovernance = {
+  readonly name: string
+  readonly based: string
+}
+
+export type Dataset = {
   readonly id: string
   readonly mainPicture: string
   readonly name: string
@@ -7,7 +12,7 @@ export type Dataverse = {
   readonly categories: Array<string>
   readonly description: string
   readonly provider: string
-  readonly governance: string
+  readonly governance: DatasetGovernance
   readonly size: number
   readonly format: string
   readonly quality: number

@@ -15,7 +15,7 @@ export const GoToPreviousPage = (): JSX.Element => {
   return (
     <div className="okp4-go-to-previous-page">
       <Button
-        label={t('dataverse:back')}
+        label={t('dataset:back')}
         leftIcon={<Icon name="arrow-left" size={22} />}
         onClick={onClick}
       />

@@ -22,8 +22,8 @@ export const PageTitle = dynamic(async () => import('./pageTitle/PageTitle'), {
   ssr: false
 })
 
-export const DataverseListConfiguration = dynamic(
-  async () => import('./dataverse/dataverseListConfiguration/DataverseListConfiguration'),
+export const DataspaceListConfiguration = dynamic(
+  async () => import('./dataspace/dataspaceListConfiguration/DataspaceListConfiguration'),
   {
     ssr: false
   }
@@ -36,8 +36,8 @@ const DataspaceSummary = dynamic(
   }
 )
 
-export const DataverseList = dynamic(
-  async () => import('./dataverse/dataverseList/DataverseList'),
+export const DataspaceList = dynamic(
+  async () => import('./dataspace/dataspaceList/DataspaceList'),
   {
     ssr: false
   }
@@ -48,8 +48,8 @@ const DataspaceEntities = dynamic(
   { ssr: false }
 )
 
-export const DataverseFilters = dynamic(
-  async () => import('./dataverse/dataverseFilters/DataverseFilters'),
+export const DataspaceFilters = dynamic(
+  async () => import('./dataspace/dataspaceFilters/DataspaceFilters'),
   {
     ssr: false
   }

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import dataverses from "./dataverses.json";
+import dataspaces from "./dataspaces.json";
 
 const RANGE_DEFAULT_VALUE = 10
 
@@ -15,7 +15,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
 
   const range: number = getRange(req.query.range as string)
 
-  res.status(200).json(dataverses.slice(0, range))
+  res.status(200).json(dataspaces.slice(0, range))
 }
 
 export default handler

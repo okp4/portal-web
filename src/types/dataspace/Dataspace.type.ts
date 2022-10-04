@@ -1,4 +1,4 @@
-export type Dataverse = {
+export type Dataspace = {
   readonly id: string
   readonly mainPicture: string
   readonly name: string

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { formatDate } from '../../../utils'
 
 type DataspaceListProps = {
+  readonly layout: 'grid' | 'list' | undefined
   readonly range: string
   readonly sortBy: string
 }
@@ -57,7 +58,11 @@ const fetchItems = async (url: string): Promise<Array<Dataspace>> => {
   return items
 }
 
-const DataspaceList = ({ range, sortBy }: DeepReadonly<DataspaceListProps>): JSX.Element => {
+const DataspaceList = ({
+  layout,
+  range,
+  sortBy
+}: DeepReadonly<DataspaceListProps>): JSX.Element => {
   const [items, setItems]: UseState<Array<Dataspace>> = useState<Array<Dataspace>>([])
 
   useEffect(() => {
@@ -68,15 +73,13 @@ const DataspaceList = ({ range, sortBy }: DeepReadonly<DataspaceListProps>): JSX
 
   return (
     <div className="okp4-dataspace-list">
-      <List>
+      <List layout={layout}>
         {items.map(
           (item: DeepReadonly<Dataspace>): JSX.Element => (
             <ListItem
               description={<ItemDescription categories={item.categories} type={item.type} />}
               key={item.id}
-              rightElement={
-                <ItemRightElement provider={item.provider} updatedAt={item.updatedAt} />
-              }
+              lastElement={<ItemRightElement provider={item.provider} updatedAt={item.updatedAt} />}
               title={item.name}
             />
           )

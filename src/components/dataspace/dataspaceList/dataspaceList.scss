@@ -1,4 +1,12 @@
 .okp4-dataspace-list {
+  .okp4-list-main.layout-grid {
+    justify-content: left;
+
+    @media screen and (max-width: 1400px) {
+      justify-content: center
+    }
+  }
+
   .okp4-item-description {
     span,
     p {

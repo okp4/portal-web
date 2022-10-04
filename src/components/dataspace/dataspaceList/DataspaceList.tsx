@@ -1,11 +1,11 @@
 import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
-import type { Dataverse } from '../../../types/dataverse/Dataverse.type'
-import './dataverseList.scss'
+import type { Dataspace } from '../../../types/dataspace/Dataspace.type'
+import './dataspaceList.scss'
 import { useEffect, useState } from 'react'
 import { formatDate } from '../../../utils'
 
-type DataverseListProps = {
+type DataspaceListProps = {
   readonly range: string
   readonly sortBy: string
 }
@@ -35,40 +35,42 @@ const ItemRightElement = ({
   provider,
   updatedAt
 }: DeepReadonly<ItemRightElementProps>): JSX.Element => {
-  const { t }: UseTranslationResponse = useTranslation()
+  const { t, i18n }: UseTranslationResponse = useTranslation()
 
   return (
     <Typography color="inverted-text" fontSize="small">
-      {`${t('dataverse:by')} ${provider}`} -{' '}
-      {`${t('dataverse:last-update')} ${formatDate(updatedAt)}`}
+      {t('dataspace:by')} {provider} - {t('dataspace:last-update')}{' '}
+      {formatDate(updatedAt, i18n.language || '')}
     </Typography>
   )
 }
 
-const fetchItems = async (url: string): Promise<Array<Dataverse>> => {
+const fetchItems = async (url: string): Promise<Array<Dataspace>> => {
   const response = await fetch(url)
 
   if (response.status !== 200) {
     throw new Error(response.statusText)
   }
 
-  return await response.json()
+  const items: Array<Dataspace> = await response.json()
+
+  return items
 }
 
-const DataverseList = ({ range, sortBy }: DeepReadonly<DataverseListProps>): JSX.Element => {
-  const [items, setItems]: UseState<Array<Dataverse>> = useState<Array<Dataverse>>([])
+const DataspaceList = ({ range, sortBy }: DeepReadonly<DataspaceListProps>): JSX.Element => {
+  const [items, setItems]: UseState<Array<Dataspace>> = useState<Array<Dataspace>>([])
 
   useEffect(() => {
-    fetchItems(`/api/fake/dataverses?range=${range}&sortBy=${sortBy}`)
+    fetchItems(`/api/fake/dataspace?range=${range}&sortBy=${sortBy}`)
       .then(setItems)
       .catch((err: unknown) => console.error(err))
   }, [range, sortBy])
 
   return (
-    <div className="okp4-dataverse-list">
+    <div className="okp4-dataspace-list">
       <List>
         {items.map(
-          (item: DeepReadonly<Dataverse>): JSX.Element => (
+          (item: DeepReadonly<Dataspace>): JSX.Element => (
             <ListItem
               description={<ItemDescription categories={item.categories} type={item.type} />}
               key={item.id}
@@ -84,4 +86,4 @@ const DataverseList = ({ range, sortBy }: DeepReadonly<DataverseListProps>): JSX
   )
 }
 
-export default DataverseList
+export default DataspaceList

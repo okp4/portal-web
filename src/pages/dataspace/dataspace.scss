@@ -1,5 +1,5 @@
 .okp4-dataspace {
-  max-width: 1140px;
+  max-width: 1350px;
   width: 100%;
   margin: auto;
   display: grid;
@@ -9,7 +9,7 @@
     'filters list list';
   gap: 25px;
 
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1400px) {
     max-width: 950px;
     grid-template-areas:
       'title title title'

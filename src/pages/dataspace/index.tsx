@@ -2,7 +2,12 @@ import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
 import React, { useCallback, useState } from 'react'
 import './dataspace.scss'
 import type { NextPage } from 'next'
-import { DataspaceFilters, DataspaceList, DataspaceListConfiguration, PageTitle } from '../../components'
+import {
+  DataspaceFilters,
+  DataspaceList,
+  DataspaceListConfiguration,
+  PageTitle
+} from '../../components'
 
 const rangeOptions: Array<SelectOption> = [
   {
@@ -36,6 +41,9 @@ const sortOptions: Array<SelectOption> = [
 const Dataspace: NextPage = () => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
+  const [listLayout, setListLayout]: UseState<'grid' | 'list' | undefined> = useState<
+    'grid' | 'list' | undefined
+  >('grid')
 
   const handleRangeChange = useCallback((value: SelectValue): void => {
     setRange(value as string)
@@ -45,10 +53,15 @@ const Dataspace: NextPage = () => {
     setSortBy(value as string)
   }, [])
 
+  const handleLayoutChange = useCallback((value: 'grid' | 'list' | undefined): void => {
+    setListLayout(value)
+  }, [])
+
   return (
     <section className="okp4-dataspace">
       <PageTitle title="dataspace:title" />
       <DataspaceListConfiguration
+        onLayoutChange={handleLayoutChange}
         onRangeChange={handleRangeChange}
         onSortByChange={handleSortByChange}
         range={range}
@@ -56,7 +69,7 @@ const Dataspace: NextPage = () => {
         sortBy={sortBy}
         sortOptions={sortOptions}
       />
-      <DataspaceList range={range} sortBy={sortBy} />
+      <DataspaceList layout={listLayout} range={range} sortBy={sortBy} />
       <DataspaceFilters />
     </section>
   )

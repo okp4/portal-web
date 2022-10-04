@@ -1,4 +1,4 @@
-.okp4-dataverse {
+.okp4-dataspace {
   max-width: 1140px;
   width: 100%;
   margin: auto;
@@ -26,11 +26,11 @@
     grid-area: title;
   }
 
-  .okp4-dataverse-list-configuration {
+  .okp4-dataspace-list-configuration {
     grid-area: configuration;
   }
 
-  .okp4-dataverse-list {
+  .okp4-dataspace-list {
     grid-area: list;
 
     .okp4-list-main {
@@ -38,7 +38,7 @@
     }
   }
 
-  .okp4-dataverse-filters {
+  .okp4-dataspace-filters {
     grid-area: filters;
   }
 }

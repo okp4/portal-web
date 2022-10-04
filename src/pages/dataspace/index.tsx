@@ -1,8 +1,8 @@
 import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
 import React, { useCallback, useState } from 'react'
-import './dataverse.scss'
+import './dataspace.scss'
 import type { NextPage } from 'next'
-import { DataverseFilters, DataverseList, DataverseListConfiguration, PageTitle } from '../../components'
+import { DataspaceFilters, DataspaceList, DataspaceListConfiguration, PageTitle } from '../../components'
 
 const rangeOptions: Array<SelectOption> = [
   {
@@ -33,7 +33,7 @@ const sortOptions: Array<SelectOption> = [
   }
 ]
 
-const Dataverse: NextPage = () => {
+const Dataspace: NextPage = () => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
 
@@ -46,9 +46,9 @@ const Dataverse: NextPage = () => {
   }, [])
 
   return (
-    <section className="okp4-dataverse">
-      <PageTitle title="dataverse:title" />
-      <DataverseListConfiguration
+    <section className="okp4-dataspace">
+      <PageTitle title="dataspace:title" />
+      <DataspaceListConfiguration
         onRangeChange={handleRangeChange}
         onSortByChange={handleSortByChange}
         range={range}
@@ -56,10 +56,10 @@ const Dataverse: NextPage = () => {
         sortBy={sortBy}
         sortOptions={sortOptions}
       />
-      <DataverseList range={range} sortBy={sortBy} />
-      <DataverseFilters />
+      <DataspaceList range={range} sortBy={sortBy} />
+      <DataspaceFilters />
     </section>
   )
 }
 
-export default Dataverse
+export default Dataspace

@@ -1,8 +1,8 @@
 import { Typography, Select, Button, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, SelectValue, UseTranslationResponse, SelectOption } from '@okp4/ui'
-import './dataverseListConfiguration.scss'
+import './dataspaceListConfiguration.scss'
 
-type ExploreListConfigurationProps = {
+type DataspaceListConfigurationProps = {
   readonly rangeOptions: Array<SelectOption>
   readonly range: string
   readonly onRangeChange: (value: SelectValue) => void
@@ -20,43 +20,39 @@ const ListConfigurationContainer = ({
   children,
   title
 }: DeepReadonly<ListConfigurationContainerProps>): JSX.Element => (
-  <div className="okp4-dataverse-list-configuration-container">
+  <div className="okp4-dataspace-list-configuration-container">
     <Typography fontSize="small">{title}:</Typography>
     <div className="content">{children}</div>
   </div>
 )
 
 // eslint-disable-next-line max-lines-per-function
-const DataverseListConfiguration = ({
+const DataspaceListConfiguration = ({
   range,
   rangeOptions,
   onRangeChange,
   onSortByChange,
   sortBy,
   sortOptions
-}: DeepReadonly<ExploreListConfigurationProps>): JSX.Element => {
+}: DeepReadonly<DataspaceListConfigurationProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
 
   return (
-    <div className="okp4-dataverse-list-configuration">
-      <ListConfigurationContainer title={t('dataverse:listing:configuration:show')}>
-        <>
-          <Select onChange={onRangeChange} options={rangeOptions} size="x-small" value={range} />
-          <Typography fontSize="small">{t('dataverse:listing:configuration:elements')}</Typography>
-        </>
+    <div className="okp4-dataspace-list-configuration">
+      <ListConfigurationContainer title={t('dataspace:listing:configuration:show')}>
+        <Select onChange={onRangeChange} options={rangeOptions} size="x-small" value={range} />
+        <Typography fontSize="small">{t('dataspace:listing:configuration:elements')}</Typography>
       </ListConfigurationContainer>
-      <ListConfigurationContainer title={t('dataverse:listing:configuration:display')}>
-        <>
-          <Button label={t('dataverse:listing:configuration:grid')} size="small" />
-          <Button label={t('dataverse:listing:configuration:list')} size="small" />
-        </>
+      <ListConfigurationContainer title={t('dataspace:listing:configuration:display')}>
+        <Button label={t('dataspace:listing:configuration:grid')} size="small" />
+        <Button label={t('dataspace:listing:configuration:list')} size="small" />
       </ListConfigurationContainer>
-      <ListConfigurationContainer title={t('dataverse:listing:configuration:sort')}>
+      <ListConfigurationContainer title={t('dataspace:listing:configuration:sort')}>
         <Select
           onChange={onSortByChange}
           options={sortOptions.map((item: DeepReadonly<SelectOption>) => {
             return {
-              label: t(`dataverse:listing:configuration:select:${item.label}`),
+              label: t(`dataspace:listing:configuration:select:${item.label}`),
               value: item.value
             }
           })}
@@ -68,4 +64,4 @@ const DataverseListConfiguration = ({
   )
 }
 
-export default DataverseListConfiguration
+export default DataspaceListConfiguration

@@ -1,0 +1,43 @@
+@import '@okp4/ui/lib/scss/themes.scss';
+
+.okp4-dashboard-dataspace-options {
+  .okp4-dashboard-data {
+    @include with-theme() {
+      display: grid;
+      grid-template: auto repeat(2, 1fr) / repeat(2, 1fr);
+      column-gap: 10px;
+      padding: 15px;
+      background-color: themed('primary-background');
+
+      @media screen and (max-width: 995px) {
+        justify-items: center;
+      }
+
+      &.add {
+        grid-column: 1;
+
+        @media screen and (max-width: 995px) {
+          grid-area: 1 / 1 / 2 / 1;
+        }
+      }
+
+      &.visualize {
+        grid-column: 2;
+
+        @media screen and (max-width: 995px) {
+          grid-area: 2 / 1 / 2 / 1;
+        }
+      }
+
+      > span:first-of-type {
+        grid-column: 1 / 3;
+        justify-self: flex-start;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+}

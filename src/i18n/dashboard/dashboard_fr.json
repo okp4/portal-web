@@ -1,0 +1,29 @@
+{
+    "dataset": "Jeu de données",
+    "service": "Service",
+    "dataspace": {
+        "summary": {
+            "counters": {
+                "members": "Membres",
+                "see": "Voir",
+                "rulebook":"Le rulebook"
+            }
+        },
+        "creation": "Créer un nouveau Data Space",
+        "content": {
+            "new": "Nouveau"
+        },
+        "options": {
+            "add": "Ajouter",
+            "new-dataset": "Nouveau jeu de données",
+            "new-dashboard": "Nouveau tableau de bord",
+            "new-service": "Nouveau service",
+            "new-report": "Nouveau rapport",
+            "visualize": "Visualiser",
+            "datasets": "Jeux de données",
+            "services": "Services",
+            "dashboards":"Tableaux de bords",
+            "reports":"Rapports"
+        }
+    }
+}

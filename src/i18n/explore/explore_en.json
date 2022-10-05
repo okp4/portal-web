@@ -1,17 +1,17 @@
 {
   "by": "By",
   "last-update": "Last update",
-  "listing": {
+  "list": {
     "configuration": {
-      "show": "Show",
+      "show": "Show:",
       "elements": "elements",
-      "display": "Display",
+      "display": "Display:",
       "grid": "Grid",
       "list": "List",
-      "sort": "Sort",
+      "sort": "Sort:",
       "select": {
         "alphabetical": "Alphabetical",
-        "createdAt": "Created at"
+        "created-on": "Date of creation"
       }
     }
   },

@@ -1,12 +1,15 @@
+import { useCallback, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import type { NextRouter } from 'next/router'
 import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
 import type { Dataspace } from '../../../types/dataspace/Dataspace.type'
-import './dataspaceList.scss'
-import { useEffect, useState } from 'react'
+import './exploreList.scss'
 import { formatDate } from '../../../utils'
+import type { ExploreListLayout } from '../../../pages/explore'
 
-type DataspaceListProps = {
-  readonly layout: 'grid' | 'list' | undefined
+type ExploreListProps = {
+  readonly layout: ExploreListLayout
   readonly range: string
   readonly sortBy: string
 }
@@ -18,11 +21,11 @@ type ItemDescriptionProps = {
 
 type ItemRightElementProps = {
   readonly provider: string
-  readonly updatedAt: string
+  readonly updatedOn: string
 }
 
 const ItemDescription = ({ type, categories }: DeepReadonly<ItemDescriptionProps>): JSX.Element => (
-  <div className="okp4-item-description">
+  <div className="okp4-explore-list-item-description">
     <Typography color="inverted-text" fontSize="small">
       {type}
     </Typography>
@@ -34,14 +37,16 @@ const ItemDescription = ({ type, categories }: DeepReadonly<ItemDescriptionProps
 
 const ItemRightElement = ({
   provider,
-  updatedAt
+  updatedOn
 }: DeepReadonly<ItemRightElementProps>): JSX.Element => {
   const { t, i18n }: UseTranslationResponse = useTranslation()
 
   return (
     <Typography color="inverted-text" fontSize="small">
-      {t('dataspace:by')} {provider} - {t('dataspace:last-update')}{' '}
-      {formatDate(updatedAt, i18n.language || '')}
+      {`${t('explore:by')} ${provider} - ${t('explore:last-update')} ${formatDate(
+        updatedOn,
+        i18n.language
+      )}`}
     </Typography>
   )
 }
@@ -58,28 +63,38 @@ const fetchItems = async (url: string): Promise<Array<Dataspace>> => {
   return items
 }
 
-const DataspaceList = ({
-  layout,
-  range,
-  sortBy
-}: DeepReadonly<DataspaceListProps>): JSX.Element => {
+const ExploreList = ({ layout, range, sortBy }: DeepReadonly<ExploreListProps>): JSX.Element => {
+  const router: NextRouter = useRouter()
   const [items, setItems]: UseState<Array<Dataspace>> = useState<Array<Dataspace>>([])
 
   useEffect(() => {
-    fetchItems(`/api/fake/dataspace?range=${range}&sortBy=${sortBy}`)
+    fetchItems(`/api/fake/explore?range=${range}&sortBy=${sortBy}`)
       .then(setItems)
       .catch((err: unknown) => console.error(err))
   }, [range, sortBy])
 
+  const onListItemClick = useCallback(
+    (item: DeepReadonly<Dataspace>) => (): void => {
+      if (item.type === 'dataspace') {
+        router.push(`/dataspace/${item.dataspaceId}`)
+        return
+      }
+
+      router.push(`/dataspace/${item.dataspaceId}/${item.type}/${item.id}`)
+    },
+    [router]
+  )
+
   return (
-    <div className="okp4-dataspace-list">
+    <div className="okp4-explore-list">
       <List layout={layout}>
         {items.map(
           (item: DeepReadonly<Dataspace>): JSX.Element => (
             <ListItem
               description={<ItemDescription categories={item.categories} type={item.type} />}
               key={item.id}
-              lastElement={<ItemRightElement provider={item.provider} updatedAt={item.updatedAt} />}
+              lastElement={<ItemRightElement provider={item.provider} updatedOn={item.updatedOn} />}
+              onClick={onListItemClick(item)}
               title={item.name}
             />
           )
@@ -89,4 +104,4 @@ const DataspaceList = ({
   )
 }
 
-export default DataspaceList
+export default ExploreList

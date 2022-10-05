@@ -1,17 +1,17 @@
 {
   "by": "Par",
   "last-update": "Dernière modification",
-  "listing": {
+  "list": {
     "configuration": {
-      "show": "Lister",
+      "show": "Lister:",
       "elements": "éléments",
-      "display": "Afficher",
+      "display": "Afficher:",
       "grid": "Grille",
       "list": "Liste",
-      "sort": "Trier par",
+      "sort": "Trier par:",
       "select": {
         "alphabetical": "Alphabétique",
-        "createdAt": "Date de création"
+        "created-on": "Date de création"
       }
     }
   },

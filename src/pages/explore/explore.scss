@@ -1,4 +1,4 @@
-.okp4-dataspace {
+.okp4-explore {
   max-width: 1350px;
   width: 100%;
   margin: auto;
@@ -9,8 +9,17 @@
     'filters list list';
   gap: 25px;
 
+  // @media screen and (max-width: 1400px) {
+  //   max-width: 950px;
+  //   grid-template-areas:
+  //     'title title title'
+  //     'configuration configuration configuration'
+  //     'filters filters filters'
+  //     'list list list';
+  // }
+
   @media screen and (max-width: 1400px) {
-    max-width: 950px;
+    max-width: 96%;
     grid-template-areas:
       'title title title'
       'configuration configuration configuration'
@@ -26,11 +35,11 @@
     grid-area: title;
   }
 
-  .okp4-dataspace-list-configuration {
+  .okp4-explore-list-configuration {
     grid-area: configuration;
   }
 
-  .okp4-dataspace-list {
+  .okp4-explore-list {
     grid-area: list;
 
     .okp4-list-main {
@@ -38,7 +47,7 @@
     }
   }
 
-  .okp4-dataspace-filters {
+  .okp4-explore-filters {
     grid-area: filters;
   }
 }

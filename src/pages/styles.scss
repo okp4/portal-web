@@ -1,5 +1,3 @@
-@import '@okp4/ui/lib/scss/themes.scss';
-
 html,
 body {
   height: 100%;
@@ -9,27 +7,5 @@ body {
   div#__next,
   div#__next > div {
     height: 100%;
-  }
-}
-
-main {
-  @include with-theme {
-    height: 100%;
-    overflow: auto;
-    background: themed('header-background');
-
-    .okp4-portal-content {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background-repeat: no-repeat;
-      color: themed('text');
-
-      .okp4-brand-link {
-        text-decoration: unset;
-        color: inherit;
-      }
-    }
   }
 }

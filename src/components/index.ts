@@ -1,5 +1,12 @@
 import dynamic from 'next/dynamic'
 
+const Layout = dynamic(
+  async () => import('./layout/Layout'),
+  {
+    ssr: false
+  }
+)
+
 const DataspaceOptions = dynamic(
   async () => import('./dataspaceDashboard/dataspaceOptions/DataspaceOptions'),
   {
@@ -21,4 +28,4 @@ const DataspaceEntities = dynamic(
   }
 )
 
-export { DataspaceOptions, DataspaceSummary, DataspaceEntities }
+export { Layout, DataspaceOptions, DataspaceSummary, DataspaceEntities }

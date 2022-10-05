@@ -35,5 +35,12 @@ main {
         margin-top: 30px;
       }
     }
+
+    .okp4-portal-card-layout {
+      background: themed(text);
+      border-radius: 9px;
+      padding: 20px;
+      height: fit-content;
+    }
   }
 }

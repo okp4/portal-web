@@ -5,7 +5,7 @@ import {
   DatasetPreview,
   DatasetInformation,
   PageTitle,
-  GoToPreviousPage
+  PreviousPageButton
 } from '../../../../components'
 import './datasetId.scss'
 import type { Dataset } from '../../../../types/dataset/Dataset.type'
@@ -38,7 +38,7 @@ const DatasetId: NextPage = () => {
   return dataset ? (
     <div className="okp4-dataset-id">
       <PageTitle title="dataset:title" />
-      <GoToPreviousPage />
+      <PreviousPageButton />
       <DatasetPreview dataset={dataset} />
       <DatasetInformation dataset={dataset} />
     </div>

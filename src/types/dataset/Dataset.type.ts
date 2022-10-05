@@ -16,6 +16,6 @@ export type Dataset = {
   readonly size: number
   readonly format: string
   readonly quality: number
-  readonly completude: number
-  readonly updatedAt: string
+  readonly completeness: number
+  readonly updatedOn: string
 }

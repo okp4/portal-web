@@ -32,9 +32,9 @@ type Metadata = {
   readonly size: number
   readonly format: string
   readonly quality: number
-  readonly completude: number
+  readonly completeness: number
   readonly provider: string
-  readonly updatedAt: string
+  readonly updatedOn: string
 }
 
 type MetadataRowProps = {
@@ -45,7 +45,7 @@ type MetadataRowProps = {
 
 const BackgroundImage = ({ url }: DeepReadonly<BackgroundImageProps>): JSX.Element => (
   <div className="okp4-dataset-background-image">
-    <Image alt="dataset_main_picture" layout="fill" objectFit="cover" src={url} />
+    <Image alt="dataset background image" layout="fill" objectFit="cover" src={url} />
   </div>
 )
 
@@ -64,7 +64,7 @@ const Governance = ({ governance, theme }: DeepReadonly<GovernanceProps>): JSX.E
   return (
     <div className="okp4-dataset-governance">
       <Typography as="p" color="inverted-text" fontSize="small">
-        {governance.name} {t('dataset:governance:based')} {governance.based} token
+        {t('dataset:governance:based', { name: governance.name, token: governance.based })}
       </Typography>
       <Button
         backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}
@@ -76,12 +76,12 @@ const Governance = ({ governance, theme }: DeepReadonly<GovernanceProps>): JSX.E
 
 const MetadataRow = ({ children, name, unit }: DeepReadonly<MetadataRowProps>): JSX.Element => (
   <div className="okp4-dataset-metadata-row">
-    <div className="name">
+    <div className="okp4-dataset-metadata-row-name">
       <Typography color="inverted-text" fontSize="small">
         {name}
       </Typography>
     </div>
-    <div className="value">
+    <div className="okp4-dataset-metadata-row-value">
       {children}
       {unit && (
         <Typography color="inverted-text" fontSize="small">
@@ -94,7 +94,7 @@ const MetadataRow = ({ children, name, unit }: DeepReadonly<MetadataRowProps>): 
 
 const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element => {
   const { t, i18n }: UseTranslationResponse = useTranslation()
-  const { size, format, quality, completude, provider, updatedAt }: Metadata = dataset
+  const { size, format, quality, completeness, provider, updatedOn }: Metadata = dataset
 
   return (
     <div className={`okp4-dataset-metadata ${theme}`}>
@@ -117,9 +117,9 @@ const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element 
           />
         ))}
       </MetadataRow>
-      <MetadataRow name={t('dataset:completude')} unit="%">
+      <MetadataRow name={t('dataset:completeness')} unit="%">
         <Typography color="inverted-text" fontSize="small">
-          {completude.toString()}
+          {completeness.toString()}
         </Typography>
       </MetadataRow>
       <MetadataRow name={t('dataset:provider')}>
@@ -127,9 +127,9 @@ const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element 
           {provider}
         </Typography>
       </MetadataRow>
-      <MetadataRow name={t('dataset:updated-at')}>
+      <MetadataRow name={t('dataset:updated-on')}>
         <Typography color="inverted-text" fontSize="small">
-          {formatDate(updatedAt, i18n.language || 'en')}
+          {formatDate(updatedOn, i18n.language)}
         </Typography>
       </MetadataRow>
     </div>

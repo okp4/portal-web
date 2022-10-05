@@ -21,7 +21,7 @@ export const PageTitle = dynamic(async () => import('./pageTitle/PageTitle'), {
   ssr: false
 })
 
-export const GoToPreviousPage = dynamic(async () => import('./goToPreviousPage/GoToPreviousPage'), {
+export const PreviousPageButton = dynamic(async () => import('./previousPageButton/PreviousPageButton'), {
   ssr: false
 })
 

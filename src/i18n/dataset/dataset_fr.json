@@ -1,5 +1,5 @@
 {
-  "add": "Ajouter ce Dataset à mon Dataspace",
+  "add": "Ajouter ce jeu de données à mon Dataspace",
   "back": "Retour",
   "by": "Par",
   "categories": {
@@ -10,19 +10,19 @@
     "agreste": "Agreste"
   },
   "completude": "Complétude",
-  "dataset": "Dataset",
+  "dataset": "Jeu de données",
   "dataspace": "Dataspace",
   "description": "Description",
   "format": "Format",
   "governance": {
     "name": "Gouvernance",
     "view": "Voir la gouvernance",
-    "based": "Gouvernance basée sur le"
+    "based": "{{name}} Gouvernance basée sur le {{token}} jeton"
   },
   "jointure": "Jointure",
   "metadata": "Metadonées",
   "private": "Privé",
-  "provider": "Créateur",
+  "provider": "Fournisseur",
   "public": "Public",
   "quality": "Qualité",
   "service": "Service",
@@ -31,5 +31,5 @@
   "units": {
     "mb": "Mo"
   },
-  "updated-at": "Mis à jour"
+  "updated-on": "Mis à jour"
 }

@@ -9,10 +9,7 @@
   }
 
   span {
-    text-transform: capitalize;
-
     &:nth-child(5) {
-      text-transform: none;
       text-align: end;
     }
   }

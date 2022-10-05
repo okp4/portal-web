@@ -15,11 +15,11 @@ export const DatasetPreview = ({ dataset }: DeepReadonly<DatasetPreviewProps>): 
   const color = 'inverted-text'
 
   return (
-    <div className="okp4-dataset-preview okp4-dataset-card-layout">
+    <div className="okp4-dataset-preview okp4-portal-card-layout">
       <Typography as="h2" color={color} fontSize="large" fontWeight="bold">
         {dataset.name}
       </Typography>
-      <Typography color={color}>{dataset.type}</Typography>
+      <Typography color={color}>{t(`dataset:${dataset.type}`)}</Typography>
       <Typography color={color} fontSize="small">
         {t(`dataset:${dataset.access.toLocaleLowerCase()}`)}
       </Typography>
@@ -33,8 +33,8 @@ export const DatasetPreview = ({ dataset }: DeepReadonly<DatasetPreviewProps>): 
           .join(', ')}
       </Typography>
       <Typography color={color} fontSize="x-small">
-        {t('dataset:by')} {dataset.provider}, {t('dataset:updated-at')}{' '}
-        {formatDate(dataset.updatedAt, i18n.language || '')}
+        {t('dataset:by')} {dataset.provider}, {t('dataset:updated-on')}{' '}
+        {formatDate(dataset.updatedOn, i18n.language)}
       </Typography>
       <Button
         backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}

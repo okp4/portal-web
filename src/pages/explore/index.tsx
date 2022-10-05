@@ -1,13 +1,10 @@
-import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
 import React, { useCallback, useState } from 'react'
-import './dataspace.scss'
 import type { NextPage } from 'next'
-import {
-  DataspaceFilters,
-  DataspaceList,
-  DataspaceListConfiguration,
-  PageTitle
-} from '../../components'
+import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
+import './explore.scss'
+import { ExploreFilters, ExploreList, ExploreListConfiguration, PageTitle } from '../../components'
+
+export type ExploreListLayout = 'grid' | 'list' | undefined
 
 const rangeOptions: Array<SelectOption> = [
   {
@@ -33,17 +30,16 @@ const sortOptions: Array<SelectOption> = [
     value: 'asc'
   },
   {
-    label: 'createdAt',
-    value: 'createdAt'
+    label: 'created-on',
+    value: 'createdOn'
   }
 ]
 
-const Dataspace: NextPage = () => {
+const Explore: NextPage = () => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
-  const [listLayout, setListLayout]: UseState<'grid' | 'list' | undefined> = useState<
-    'grid' | 'list' | undefined
-  >('grid')
+  const [listLayout, setListLayout]: UseState<ExploreListLayout> =
+    useState<ExploreListLayout>('grid')
 
   const handleRangeChange = useCallback((value: SelectValue): void => {
     setRange(value as string)
@@ -53,14 +49,14 @@ const Dataspace: NextPage = () => {
     setSortBy(value as string)
   }, [])
 
-  const handleLayoutChange = useCallback((value: 'grid' | 'list' | undefined): void => {
+  const handleLayoutChange = useCallback((value: ExploreListLayout): void => {
     setListLayout(value)
   }, [])
 
   return (
-    <section className="okp4-dataspace">
-      <PageTitle title="dataspace:title" />
-      <DataspaceListConfiguration
+    <div className="okp4-explore">
+      <PageTitle title="explore:title" />
+      <ExploreListConfiguration
         onLayoutChange={handleLayoutChange}
         onRangeChange={handleRangeChange}
         onSortByChange={handleSortByChange}
@@ -69,10 +65,10 @@ const Dataspace: NextPage = () => {
         sortBy={sortBy}
         sortOptions={sortOptions}
       />
-      <DataspaceList layout={listLayout} range={range} sortBy={sortBy} />
-      <DataspaceFilters />
-    </section>
+      <ExploreList layout={listLayout} range={range} sortBy={sortBy} />
+      <ExploreFilters />
+    </div>
   )
 }
 
-export default Dataspace
+export default Explore

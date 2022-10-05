@@ -1,6 +1,7 @@
 [
   {
     "id": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Rhizome",
     "type": "dataspace",
@@ -12,15 +13,16 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "ef347285-e52a-430d-9679-dcb76b962cpm",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Rhizome",
-    "type": "data space",
+    "type": "dataspace",
     "access": "PUBLIC",
     "categories": ["agriculture", "open data", "demonstrator", "dataviz", "agreste"],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed purus eget ipsum facilisis porttitor. Pellentesque in ex mauris. Aenean sed ipsum sollicitudin, efficitur urna ut, euismod nisl. In vel est cursus quam imperdiet malesuada. Maecenas dapibus sapien metus, sit amet vulputate nibh molestie nec. Vivamus pulvinar imperdiet magna, vel pharetra mi ultricies sed. Suspendisse ligula sapien, sollicitudin sit amet lorem ut, pharetra dictum erat. Ut non facilisis massa, a egestas dui. Vivamus semper turpis in leo vehicula, in dignissim neque pharetra. Proin mollis pulvinar justo, eget lacinia eros posuere ac. Vestibulum congue congue diam vel varius. Integer blandit consectetur consectetur. Nunc euismod urna ut eros accumsan, eu ultrices turpis dignissim. Sed dolor dui, vulputate in porta id, euismod a odio. Aliquam et est mollis, molestie massa in, dapibus est. Suspendisse elementum consequat ex. Vivamus quis varius nisi, id auctor ex. Fusce quis pretium lectus, sit amet gravida elit. Sed porta magna augue, in bibendum massa tincidunt a. Mauris ac finibus urna. Cras eu placerat nisl. Nam sodales iaculis est, vel maximus purus pellentesque sed. Maecenas faucibus purus non faucibus auctor. Curabitur turpis mauris, tincidunt in volutpat non, congue sit amet nibh. Quisque sed dui odio. Morbi sit amet justo ac est vehicula placerat. Aenean eu diam erat. Nam eget sem non massa consequat semper. Nullam sed ipsum id turpis laoreet malesuada sit amet vel lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
@@ -29,12 +31,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "bf27a8e4-dcef-49e2-8e6b-55bc92671d4d",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "AGRESTE",
     "type": "dataset",
@@ -46,12 +49,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "814f776b-8324-46e3-abee-d8547ba630cf",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Jointure Service",
     "type": "service",
@@ -63,12 +67,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "0093d9ca-512a-407a-9899-eee1f56aeaa8",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Dataset 1",
     "type": "dataset",
@@ -80,12 +85,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "4d3b8d2e-2516-4338-8499-c9fafe0bd02b",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Service 1",
     "type": "service",
@@ -97,12 +103,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "42df230a-1a2d-420d-9ef8-af0721502d52",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Dataset 2",
     "type": "dataset",
@@ -114,15 +121,16 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "ef347285-e52a-430d-9679-dcb76b96211d",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Rhizome",
-    "type": "data space",
+    "type": "dataspace",
     "access": "PUBLIC",
     "categories": ["agriculture", "open data", "demonstrator", "dataviz", "agreste"],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed purus eget ipsum facilisis porttitor. Pellentesque in ex mauris. Aenean sed ipsum sollicitudin, efficitur urna ut, euismod nisl. In vel est cursus quam imperdiet malesuada. Maecenas dapibus sapien metus, sit amet vulputate nibh molestie nec. Vivamus pulvinar imperdiet magna, vel pharetra mi ultricies sed. Suspendisse ligula sapien, sollicitudin sit amet lorem ut, pharetra dictum erat. Ut non facilisis massa, a egestas dui. Vivamus semper turpis in leo vehicula, in dignissim neque pharetra. Proin mollis pulvinar justo, eget lacinia eros posuere ac. Vestibulum congue congue diam vel varius. Integer blandit consectetur consectetur. Nunc euismod urna ut eros accumsan, eu ultrices turpis dignissim. Sed dolor dui, vulputate in porta id, euismod a odio. Aliquam et est mollis, molestie massa in, dapibus est. Suspendisse elementum consequat ex. Vivamus quis varius nisi, id auctor ex. Fusce quis pretium lectus, sit amet gravida elit. Sed porta magna augue, in bibendum massa tincidunt a. Mauris ac finibus urna. Cras eu placerat nisl. Nam sodales iaculis est, vel maximus purus pellentesque sed. Maecenas faucibus purus non faucibus auctor. Curabitur turpis mauris, tincidunt in volutpat non, congue sit amet nibh. Quisque sed dui odio. Morbi sit amet justo ac est vehicula placerat. Aenean eu diam erat. Nam eget sem non massa consequat semper. Nullam sed ipsum id turpis laoreet malesuada sit amet vel lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
@@ -131,12 +139,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "bf27a8e4-dcef-49e2-8e6b-55bc92671aqw",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "AGRESTE",
     "type": "dataset",
@@ -148,12 +157,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "814f776b-8324-46e3-abee-d8547ba63zsx",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Jointure Service",
     "type": "service",
@@ -165,12 +175,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "0093d9ca-512a-407a-9899-eee1f56aeedc",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Dataset 1",
     "type": "dataset",
@@ -182,12 +193,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "4d3b8d2e-2516-4338-8499-c9fafe0bdrfv",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Service 1",
     "type": "service",
@@ -199,12 +211,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "42df230a-1a2d-420d-9ef8-af0721502tgb",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Dataset 2",
     "type": "dataset",
@@ -216,15 +229,16 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "ef347285-e52a-430d-9679-dcb76b962yhn",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Rhizome",
-    "type": "data space",
+    "type": "dataspace",
     "access": "PUBLIC",
     "categories": ["agriculture", "open data", "demonstrator", "dataviz", "agreste"],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed purus eget ipsum facilisis porttitor. Pellentesque in ex mauris. Aenean sed ipsum sollicitudin, efficitur urna ut, euismod nisl. In vel est cursus quam imperdiet malesuada. Maecenas dapibus sapien metus, sit amet vulputate nibh molestie nec. Vivamus pulvinar imperdiet magna, vel pharetra mi ultricies sed. Suspendisse ligula sapien, sollicitudin sit amet lorem ut, pharetra dictum erat. Ut non facilisis massa, a egestas dui. Vivamus semper turpis in leo vehicula, in dignissim neque pharetra. Proin mollis pulvinar justo, eget lacinia eros posuere ac. Vestibulum congue congue diam vel varius. Integer blandit consectetur consectetur. Nunc euismod urna ut eros accumsan, eu ultrices turpis dignissim. Sed dolor dui, vulputate in porta id, euismod a odio. Aliquam et est mollis, molestie massa in, dapibus est. Suspendisse elementum consequat ex. Vivamus quis varius nisi, id auctor ex. Fusce quis pretium lectus, sit amet gravida elit. Sed porta magna augue, in bibendum massa tincidunt a. Mauris ac finibus urna. Cras eu placerat nisl. Nam sodales iaculis est, vel maximus purus pellentesque sed. Maecenas faucibus purus non faucibus auctor. Curabitur turpis mauris, tincidunt in volutpat non, congue sit amet nibh. Quisque sed dui odio. Morbi sit amet justo ac est vehicula placerat. Aenean eu diam erat. Nam eget sem non massa consequat semper. Nullam sed ipsum id turpis laoreet malesuada sit amet vel lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
@@ -233,12 +247,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "bf27a8e4-dcef-49e2-8e6b-55bc92671ujk",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "AGRESTE",
     "type": "dataset",
@@ -250,12 +265,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "814f776b-8324-46e3-abee-d8547ba63iol",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Jointure Service",
     "type": "service",
@@ -267,12 +283,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "0093d9ca-512a-407a-9899-eee1f56aepma",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Dataset 1",
     "type": "dataset",
@@ -284,12 +301,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "4d3b8d2e-2516-4338-8499-c9fafe0bdaze",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Service 1",
     "type": "service",
@@ -301,12 +319,13 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   },
   {
     "id": "42df230a-1a2d-420d-9ef8-af0721502qsd",
+    "dataspaceId": "ok397dh7-e52a-430d-9679-dcb76b962ce7",
     "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "name": "Dataset 2",
     "type": "dataset",
@@ -318,8 +337,8 @@
     "size": 2.34,
     "format": "csv",
     "quality": 3,
-    "completude": 87,
-    "createdAt": "2022-09-29T15:29:16.507Z",
-    "updatedAt": "2022-09-29T15:29:16.507Z"
+    "completness": 87,
+    "createdOn": "2022-09-29T15:29:16.507Z",
+    "updatedOn": "2022-09-29T15:29:16.507Z"
   }
 ]

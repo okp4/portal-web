@@ -1,0 +1,32 @@
+.okp4-explore-list-configuration {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  @media screen and (min-width: 500px) and (max-width: 811px) {
+    justify-content: center;
+  }
+
+  .okp4-explore-list-configuration-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+
+    .okp4-explore-list-configuration-column-content {
+      display: flex;
+      gap: 10px;
+      margin: auto 0;
+      flex-wrap: wrap;
+      height: 61px;
+
+      button {
+        height: fit-content;
+        margin: auto 0;
+      }
+
+      span {
+        margin: auto 0;
+      }
+    }
+  }
+}

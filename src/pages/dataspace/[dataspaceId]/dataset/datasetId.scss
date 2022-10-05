@@ -1,5 +1,3 @@
-@import '@okp4/ui/lib/scss/themes';
-
 .okp4-dataset-id {
   max-width: 1140px;
   width: 100%;
@@ -13,8 +11,7 @@
     'preview information information';
   gap: 25px;
 
-  @media screen and (max-width: 1300px) {
-    max-width: 950px;
+  @media screen and (max-width: 1200px) {
     grid-template-areas:
       'title title title'
       'back back back'
@@ -22,24 +19,11 @@
       'information information information';
   }
 
-  @media screen and (max-width: 995px) {
-    max-width: 90%;
-  }
-
-  @include with-theme {
-    .okp4-dataset-card-layout {
-      background: themed(text);
-      border-radius: 9px;
-      padding: 20px;
-      height: fit-content;
-    }
-  }
-
   .okp4-page-title {
     grid-area: title;
   }
 
-  .okp4-go-to-previous-page {
+  .okp4-previous-page-button {
     grid-area: back;
   }
 

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { Dataset } from '../../../../types/dataset/Dataset.type'
+import type { Dataset } from '../../../dataspace/[dataspaceId]/dataset/[datasetId]'
 import datasets from './datasets.json'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

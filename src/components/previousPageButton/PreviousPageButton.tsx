@@ -4,23 +4,23 @@ import { useRouter } from 'next/router'
 import type { NextRouter } from 'next/router'
 import { useCallback } from 'react'
 
-export const GoToPreviousPage = (): JSX.Element => {
+export const PreviousPageButton = (): JSX.Element => {
   const router: NextRouter = useRouter()
   const { t }: UseTranslationResponse = useTranslation()
 
-  const onClick = useCallback((): void => {
+  const handlePreviousPageClick = useCallback((): void => {
     router.back()
   }, [router])
 
   return (
-    <div className="okp4-go-to-previous-page">
+    <div className="okp4-previous-page-button">
       <Button
         label={t('dataset:back')}
         leftIcon={<Icon name="arrow-left" size={22} />}
-        onClick={onClick}
+        onClick={handlePreviousPageClick}
       />
     </div>
   )
 }
 
-export default GoToPreviousPage
+export default PreviousPageButton

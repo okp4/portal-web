@@ -1,9 +1,13 @@
+import Image from 'next/image'
 import { Button, Icon, Typography, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
-import type { Dataset, DatasetGovernance } from '../../../types/dataset/Dataset.type'
 import './datasetInformation.scss'
 import { formatDate } from '../../../utils'
-import Image from 'next/image'
+import type {
+  Dataset,
+  DatasetGovernance
+} from '../../../pages/dataspace/[dataspaceId]/dataset/[datasetId]'
+import type { TFunction } from 'react-i18next'
 
 type DatasetInformationProps = {
   readonly dataset: Dataset
@@ -21,6 +25,7 @@ type ContainerProps = {
 type GovernanceProps = {
   readonly governance: DatasetGovernance
   readonly theme: string
+  readonly t: TFunction
 }
 
 type MetadataProps = {
@@ -32,9 +37,9 @@ type Metadata = {
   readonly size: number
   readonly format: string
   readonly quality: number
-  readonly completude: number
+  readonly completeness: number
   readonly provider: string
-  readonly updatedAt: string
+  readonly updatedOn: string
 }
 
 type MetadataRowProps = {
@@ -45,7 +50,7 @@ type MetadataRowProps = {
 
 const BackgroundImage = ({ url }: DeepReadonly<BackgroundImageProps>): JSX.Element => (
   <div className="okp4-dataset-background-image">
-    <Image alt="dataset_main_picture" layout="fill" objectFit="cover" src={url} />
+    <Image alt="dataset background image" layout="fill" objectFit="cover" src={url} />
   </div>
 )
 
@@ -58,30 +63,26 @@ const Container = ({ children, name }: DeepReadonly<ContainerProps>): JSX.Elemen
   </div>
 )
 
-const Governance = ({ governance, theme }: DeepReadonly<GovernanceProps>): JSX.Element => {
-  const { t }: UseTranslationResponse = useTranslation()
-
-  return (
-    <div className="okp4-dataset-governance">
-      <Typography as="p" color="inverted-text" fontSize="small">
-        {governance.name} {t('dataset:governance:based')} {governance.based} token
-      </Typography>
-      <Button
-        backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}
-        label={t('dataset:governance:view')}
-      />
-    </div>
-  )
-}
+const Governance = ({ governance, theme, t }: DeepReadonly<GovernanceProps>): JSX.Element => (
+  <div className="okp4-dataset-governance">
+    <Typography as="p" color="inverted-text" fontSize="small">
+      {t('dataset:governance:based', { name: governance.name, token: governance.based })}
+    </Typography>
+    <Button
+      backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}
+      label={t('dataset:governance:view')}
+    />
+  </div>
+)
 
 const MetadataRow = ({ children, name, unit }: DeepReadonly<MetadataRowProps>): JSX.Element => (
   <div className="okp4-dataset-metadata-row">
-    <div className="name">
+    <div className="okp4-dataset-metadata-row-name">
       <Typography color="inverted-text" fontSize="small">
         {name}
       </Typography>
     </div>
-    <div className="value">
+    <div className="okp4-dataset-metadata-row-value">
       {children}
       {unit && (
         <Typography color="inverted-text" fontSize="small">
@@ -94,7 +95,7 @@ const MetadataRow = ({ children, name, unit }: DeepReadonly<MetadataRowProps>): 
 
 const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element => {
   const { t, i18n }: UseTranslationResponse = useTranslation()
-  const { size, format, quality, completude, provider, updatedAt }: Metadata = dataset
+  const { size, format, quality, completeness, provider, updatedOn }: Metadata = dataset
 
   return (
     <div className={`okp4-dataset-metadata ${theme}`}>
@@ -117,9 +118,9 @@ const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element 
           />
         ))}
       </MetadataRow>
-      <MetadataRow name={t('dataset:completude')} unit="%">
+      <MetadataRow name={t('dataset:completeness')} unit="%">
         <Typography color="inverted-text" fontSize="small">
-          {completude.toString()}
+          {completeness.toString()}
         </Typography>
       </MetadataRow>
       <MetadataRow name={t('dataset:provider')}>
@@ -127,9 +128,9 @@ const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element 
           {provider}
         </Typography>
       </MetadataRow>
-      <MetadataRow name={t('dataset:updated-at')}>
+      <MetadataRow name={t('dataset:updated-on')}>
         <Typography color="inverted-text" fontSize="small">
-          {formatDate(updatedAt, i18n.language || 'en')}
+          {formatDate(updatedOn, i18n.language)}
         </Typography>
       </MetadataRow>
     </div>
@@ -150,7 +151,7 @@ const DatasetInformation = ({ dataset }: DeepReadonly<DatasetInformationProps>):
           </Typography>
         </Container>
         <Container name={t('dataset:governance:name')}>
-          <Governance governance={dataset.governance} theme={theme} />
+          <Governance governance={dataset.governance} t={t} theme={theme} />
         </Container>
         <Container name={t('dataset:metadata')}>
           <Metadata dataset={dataset} theme={theme} />

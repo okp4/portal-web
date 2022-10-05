@@ -10,7 +10,6 @@ import explore_fr from './explore/explore_fr.json'
 import dataset_en from './dataset/dataset_en.json'
 import dataset_fr from './dataset/dataset_fr.json'
 
-
 const translationsToLoad = [
   { lng: 'en', namespace: 'header', resource: header_en },
   { lng: 'fr', namespace: 'header', resource: header_fr },

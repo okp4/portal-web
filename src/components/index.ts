@@ -33,7 +33,7 @@ const ExploreList = dynamic(async () => import('./explore/exploreList/ExploreLis
   ssr: false
 })
 
-export const GoToPreviousPage = dynamic(async () => import('./goToPreviousPage/GoToPreviousPage'), {
+export const PreviousPageButton = dynamic(async () => import('./previousPageButton/PreviousPageButton'), {
   ssr: false
 })
 

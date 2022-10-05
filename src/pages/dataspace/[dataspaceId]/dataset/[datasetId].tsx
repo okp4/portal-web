@@ -5,21 +5,44 @@ import {
   DatasetPreview,
   DatasetInformation,
   PageTitle,
-  GoToPreviousPage
+  PreviousPageButton
 } from '../../../../components'
 import './datasetId.scss'
-import type { Dataset } from '../../../../types/dataset/Dataset.type'
 import router from 'next/router'
 import type { ParsedUrlQuery } from 'querystring'
+
+export type DatasetGovernance = {
+  readonly name: string
+  readonly based: string
+}
+
+type Access = 'PRIVATE' | 'PUBLIC'
+
+export type Dataset = {
+  readonly id: string
+  readonly mainPicture: string
+  readonly name: string
+  readonly type: string
+  readonly access: Access
+  readonly categories: Array<string>
+  readonly description: string
+  readonly provider: string
+  readonly governance: DatasetGovernance
+  readonly size: number
+  readonly format: string
+  readonly quality: number
+  readonly completeness: number
+  readonly updatedOn: string
+}
 
 const fetchDataset = async (url: string): Promise<Dataset> => {
   const response = await fetch(url)
 
-  if (response.status !== 200) {
+  if (!response.ok) {
     throw new Error(response.statusText)
   }
 
-  const dataset: Promise<Dataset> = response.json()
+  const dataset: Promise<Dataset> = await response.json()
   return dataset
 }
 
@@ -28,7 +51,7 @@ const DatasetId: NextPage = () => {
   const query: ParsedUrlQuery = router.query
 
   useEffect(() => {
-    if (query['dataset-id']) {
+    if (query.datasetId) {
       fetchDataset('/api/fake/dataset/ef347285-e52a-430d-9679-dcb76b962ce7')
         .then(setDataset)
         .catch((error: unknown) => console.error(error))
@@ -38,7 +61,7 @@ const DatasetId: NextPage = () => {
   return dataset ? (
     <div className="okp4-dataset-id">
       <PageTitle title="dataset:title" />
-      <GoToPreviousPage />
+      <PreviousPageButton />
       <DatasetPreview dataset={dataset} />
       <DatasetInformation dataset={dataset} />
     </div>

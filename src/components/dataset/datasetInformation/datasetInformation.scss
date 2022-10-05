@@ -23,9 +23,11 @@
       background: themed(text);
       padding: 20px;
       height: fit-content;
-      border-radius: 0px 0px 9px 9px;
+      border-radius: 0 0 9px 9px;
 
       .okp4-dataset-information-container {
+        overflow-y: auto;
+        
         &:not(:first-child) {
           margin-top: 15px;
         }
@@ -37,15 +39,16 @@
         p {
           margin: 0;
           line-height: 20px;
+
+          @media screen and (max-width: 480px) {
+            max-height: 100vh;
+          }
         }
 
         .okp4-dataset-governance {
           display: flex;
           flex-direction: column;
-
-          @media screen and (max-width: 700px) {
-            gap: 10px;
-          }
+          gap: 10px;
 
           button {
             align-self: flex-end;
@@ -60,14 +63,14 @@
           display: flex;
           padding: 12px 15px;
 
-          .name {
+          .okp4-dataset-metadata-row-name {
             margin: auto 0;
-            width: 40%;
+            width: 50%;
           }
 
-          .value {
+          .okp4-dataset-metadata-row-value {
             display: flex;
-            width: 60%;
+            width: 50%;
           }
         }
       }

@@ -1,7 +1,7 @@
 {
   "add": "Add this Dataset to my Dataspace",
   "back": "Back",
-  "by": "By",
+  "by": "By {{provider}}, Last update {{- updated}}",
   "categories": {
     "agriculture": "Agriculture",
     "open-data": "Open Data",
@@ -9,7 +9,7 @@
     "dataviz": "Dataviz",
     "agreste": "Agreste"
   },
-  "completude": "Completude",
+  "completeness": "Completeness",
   "dataset": "Dataset",
   "dataspace": "Dataspace",
   "description": "Description",
@@ -17,7 +17,7 @@
   "governance": {
     "name": "Governance",
     "view": "View Governance",
-    "based": "Governance based on the"
+    "based": "{{name}} Governance based on the {{token}} token"
   },
   "jointure": "Jointure",
   "metadata": "Metadata",
@@ -31,5 +31,5 @@
   "units": {
     "mb": "Mb"
   },
-  "updated-at": "Last update"
+  "updated-on": "Last update"
 }

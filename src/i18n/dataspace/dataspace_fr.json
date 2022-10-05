@@ -11,7 +11,7 @@
       "sort": "Trier par",
       "select": {
         "alphabetical": "Alphabétique",
-        "createdAt": "Date de création"
+        "created-on": "Date de création"
       }
     }
   },

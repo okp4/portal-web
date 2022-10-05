@@ -33,8 +33,8 @@ const sortOptions: Array<SelectOption> = [
     value: 'asc'
   },
   {
-    label: 'createdAt',
-    value: 'createdAt'
+    label: 'created-on',
+    value: 'createdOn'
   }
 ]
 

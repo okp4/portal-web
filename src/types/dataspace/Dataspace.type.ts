@@ -1,5 +1,6 @@
 export type Dataspace = {
   readonly id: string
+  readonly dataspaceId: string
   readonly mainPicture: string
   readonly name: string
   readonly type: string
@@ -12,6 +13,6 @@ export type Dataspace = {
   readonly format: string
   readonly quality: number
   readonly completude: number
-  readonly createdAt: string
-  readonly updatedAt: string
+  readonly createdOn: string
+  readonly updatedOn: string
 }

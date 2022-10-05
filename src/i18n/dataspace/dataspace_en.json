@@ -11,7 +11,7 @@
       "sort": "Sort",
       "select": {
         "alphabetical": "Alphabetical",
-        "createdAt": "Created at"
+        "created-on": "Created on"
       }
     }
   },

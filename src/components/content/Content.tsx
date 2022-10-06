@@ -4,8 +4,9 @@ import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
 import './content.scss'
-import React from 'react'
+import React, { useCallback } from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 
 type ContentProps = {
   readonly children: React.ReactNode
@@ -54,10 +55,10 @@ export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element =
   const { t }: UseTranslationResponse = useTranslation()
   const themedImage = theme === 'light' ? lightCosmos.src : darkCosmos.src
   const footerLabel = t('footer:brand-link')
-  const CreateSystemNavItem = (
+  const CreateNavItem = (
     <Typography as="div" fontSize="small" fontWeight="bold">
       <a
-        href="https://ui.okp4.space/?path=/docs/welcome--page"
+        href="https://xd.adobe.com/view/0994d8fe-0e3f-44e0-b8bf-3c399bf524d9-5cc7/screen/007b4c59-2299-452d-90d6-6218e46b55f9/"
         rel="noopener noreferrer"
         style={{ wordBreak: 'normal' }}
         target="_blank"
@@ -104,11 +105,21 @@ export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element =
     </Typography>
   )
 
-  const navMenu = [CreateSystemNavItem, ExploreNavItem, InteractNavItem, LearnNavItem, okp4NavItem]
+  const navMenu = [CreateNavItem, ExploreNavItem, InteractNavItem, LearnNavItem, okp4NavItem]
+  const backHome = useCallback(() => {
+    Router.push('/')
+  }, [])
 
   return (
     <div className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
-      <Header firstElement={<Logo size="small" />} navigationMenu={navMenu} />
+      <Header
+        firstElement={
+          <div onClick={backHome} style={{ cursor: 'pointer' }}>
+            <Logo size="small" />
+          </div>
+        }
+        navigationMenu={navMenu}
+      />
       {children}
       <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>

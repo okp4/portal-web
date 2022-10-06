@@ -28,6 +28,7 @@ const DatasetId: NextPage = () => {
   const query: ParsedUrlQuery = router.query
 
   useEffect(() => {
+    console.log('here')
     if (query['dataset-id']) {
       fetchDataset('/api/fake/dataset/ef347285-e52a-430d-9679-dcb76b962ce7')
         .then(setDataset)

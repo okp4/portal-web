@@ -76,6 +76,7 @@ const DataspaceList = ({
 
   const onListItemClick = useCallback(
     (item: DeepReadonly<Dataspace>) => (): void => {
+      console.log('lalala item.dataspaceId', item.dataspaceId)
       if (item.type === 'dataspace') {
         router.push(`/dataspace/${item.dataspaceId}`)
         return

@@ -1,0 +1,8 @@
+@import '@okp4/ui/lib/scss/themes.scss';
+
+a {
+  @include with-theme() {
+    text-decoration: none;
+    color: themed(text);
+  }
+}

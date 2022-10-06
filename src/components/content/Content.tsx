@@ -3,6 +3,7 @@ import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@ok
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
+import './content.scss'
 import React from 'react'
 
 type ContentProps = {
@@ -46,15 +47,74 @@ const Okp4Link = ({ label }: FooterLinkProps): JSX.Element => {
   )
 }
 
+// eslint-disable-next-line max-lines-per-function
 export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
   const themedImage = theme === 'light' ? lightCosmos.src : darkCosmos.src
   const footerLabel = t('footer:brand-link')
+  const CreateSystemNavItem = (
+    <Typography as="div" fontSize="small" fontWeight="bold">
+      <a
+        href="https://ui.okp4.space/?path=/docs/welcome--page"
+        rel="noopener noreferrer"
+        style={{ wordBreak: 'normal' }}
+        target="_blank"
+      >
+        {t('header:create')}
+      </a>
+    </Typography>
+  )
+
+  const ExploreNavItem = (
+    <Typography as="div" fontSize="small" fontWeight="bold">
+      <a
+        href="https://ui.okp4.space/?path=/docs/getting-started--page"
+        rel="noopener noreferrer"
+        style={{ wordBreak: 'normal' }}
+        target="_blank"
+      >
+        {t('header:explore')}
+      </a>
+    </Typography>
+  )
+  const InteractNavItem = (
+    <Typography as="div" fontSize="small" fontWeight="bold">
+      {t('header:interact')}
+    </Typography>
+  )
+
+  const LearnNavItem = (
+    <Typography as="div" fontSize="small" fontWeight="bold">
+      <a
+        href="https://docs.okp4.network/docs/whitepaper/abstract"
+        rel="noopener noreferrer"
+        style={{ wordBreak: 'normal' }}
+        target="_blank"
+      >
+        {t('header:learn')}
+      </a>
+    </Typography>
+  )
+
+  const okp4NavItem = (
+    <Typography as="div" fontSize="small" fontWeight="bold">
+      <a
+        href="https://okp4.network/#protocol"
+        rel="noopener noreferrer"
+        style={{ wordBreak: 'normal' }}
+        target="_blank"
+      >
+        {t('header:okp4')}
+      </a>
+    </Typography>
+  )
+
+  const navMenu = [CreateSystemNavItem, ExploreNavItem, InteractNavItem, LearnNavItem, okp4NavItem]
 
   return (
     <div className="okp4-portal-content" style={{ backgroundImage: `url(${themedImage})` }}>
-      <Header firstElement={<Logo size="small" />} />
+      <Header firstElement={<Logo size="small" />} navigationMenu={navMenu} />
       {children}
       <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
     </div>

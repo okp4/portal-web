@@ -1,11 +1,12 @@
 import dynamic from 'next/dynamic'
-const DataspaceOptions = dynamic(
+
+export const DataspaceOptions = dynamic(
   async () => import('./dataspaceDashboard/dataspaceOptions/DataspaceOptions'),
   {
     ssr: false
   }
 )
-const DataspaceSummary = dynamic(
+export const DataspaceSummary = dynamic(
   async () => import('./dataspaceDashboard/dataspaceSummary/DataspaceSummary'),
   {
     ssr: false
@@ -33,7 +34,7 @@ export const DatasetPreview = dynamic(
   }
 )
 
-const DataspaceEntities = dynamic(
+export const DataspaceEntities = dynamic(
   async () => import('./dataspaceDashboard/dataspaceEntities/DataspaceEntities'),
   {
     ssr: false
@@ -47,4 +48,23 @@ export const DatasetInformation = dynamic(
   }
 )
 
-export { DataspaceOptions, DataspaceSummary, DataspaceEntities }
+export const DataspaceListConfiguration = dynamic(
+  async () => import('./dataspace/dataspaceListConfiguration/DataspaceListConfiguration'),
+  {
+    ssr: false
+  }
+)
+
+export const DataspaceList = dynamic(
+  async () => import('./dataspace/dataspaceList/DataspaceList'),
+  {
+    ssr: false
+  }
+)
+
+export const DataspaceFilters = dynamic(
+  async () => import('./dataspace/dataspaceFilters/DataspaceFilters'),
+  {
+    ssr: false
+  }
+)

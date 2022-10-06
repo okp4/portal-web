@@ -5,6 +5,7 @@ import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
 import './content.scss'
 import React from 'react'
+import Link from 'next/link'
 
 type ContentProps = {
   readonly children: React.ReactNode
@@ -68,14 +69,7 @@ export const Content = ({ children }: DeepReadonly<ContentProps>): JSX.Element =
 
   const ExploreNavItem = (
     <Typography as="div" fontSize="small" fontWeight="bold">
-      <a
-        href="https://ui.okp4.space/?path=/docs/getting-started--page"
-        rel="noopener noreferrer"
-        style={{ wordBreak: 'normal' }}
-        target="_blank"
-      >
-        {t('header:explore')}
-      </a>
+      <Link href="/explore">{t('header:explore')}</Link>
     </Typography>
   )
   const InteractNavItem = (

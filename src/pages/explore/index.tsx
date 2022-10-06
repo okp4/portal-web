@@ -1,6 +1,6 @@
 import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
 import React, { useCallback, useState } from 'react'
-import './dataspace.scss'
+import './explore.scss'
 import type { NextPage } from 'next'
 import {
   DataspaceFilters,
@@ -38,7 +38,7 @@ const sortOptions: Array<SelectOption> = [
   }
 ]
 
-const Dataspace: NextPage = () => {
+const Explore: NextPage = () => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
   const [listLayout, setListLayout]: UseState<'grid' | 'list' | undefined> = useState<
@@ -75,4 +75,4 @@ const Dataspace: NextPage = () => {
   )
 }
 
-export default Dataspace
+export default Explore

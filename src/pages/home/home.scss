@@ -1,26 +1,19 @@
 @import '@okp4/ui/lib/scss/themes.scss';
-
 .okp4-body-main {
   @include with-theme() {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    padding: 70px 130px 25px 130px;
     gap: 100px;
 
     @media screen and (max-width: 1300px) {
       grid-template-columns: repeat(2, 1fr);
-      padding: 50px 90px 25px 90px;
       gap: 50px;
     }
 
     @media screen and (max-width: 995px) {
       grid-template: auto 1fr /1fr;
-      padding: 50px 70px 25px 70px;
       gap: 50px 0;
-    }
-    @media screen and (max-width: 480px) {
-      padding: 25px 20px 0 20px;
     }
 
     .okp4-body-dashboard {
@@ -32,21 +25,17 @@
       @media screen and (max-width: 1300px) {
         grid-column: 1/3;
       }
-
       @media screen and (max-width: 995px) {
         grid-column: 1;
       }
-
       .okp4-dashboard-dataspace-options {
         grid-row: 4;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 25px;
-
         @media screen and (max-width: 1300px) {
           grid-row: 3;
         }
-
         @media screen and (max-width: 995px) {
           grid-area: 3/ 1;
           grid-template: repeat(2, 1fr) / 1fr;
@@ -54,10 +43,8 @@
         }
       }
     }
-
     .okp4-body-activity {
       grid-column: -1/-2;
-
       @media screen and (max-width: 1300px) {
         grid-column: 1/3;
       }

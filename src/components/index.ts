@@ -12,9 +12,6 @@ export const DataspaceSummary = dynamic(
     ssr: false
   }
 )
-export const Content = dynamic(async () => import('./content/Content'), {
-  ssr: false
-})
 
 export const PageTitle = dynamic(async () => import('./pageTitle/PageTitle'), {
   ssr: false
@@ -68,3 +65,7 @@ export const DataspaceFilters = dynamic(
     ssr: false
   }
 )
+
+export const Layout = dynamic(async () => import('./layout/Layout'), {
+  ssr: false
+})

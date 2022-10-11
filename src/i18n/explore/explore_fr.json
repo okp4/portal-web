@@ -1,6 +1,5 @@
 {
-  "by": "Par",
-  "last-update": "Dernière modification",
+  "by": "Par {{provider}} - Dernière modification {{- updated}}",
   "list": {
     "configuration": {
       "show": "Lister:",

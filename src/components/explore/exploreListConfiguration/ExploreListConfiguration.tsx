@@ -40,7 +40,7 @@ const ExploreListConfiguration = ({
 }: DeepReadonly<ExploreListConfigurationProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
 
-  const hanldeGridClick = useCallback(
+  const handleGridClick = useCallback(
     (value: ExploreListLayout) => (): void => {
       onLayoutChange(value)
     },
@@ -56,12 +56,12 @@ const ExploreListConfiguration = ({
       <ListConfigurationColumn title={t('explore:list:configuration:display')}>
         <Button
           label={t('explore:list:configuration:grid')}
-          onClick={hanldeGridClick('grid')}
+          onClick={handleGridClick('grid')}
           size="small"
         />
         <Button
           label={t('explore:list:configuration:list')}
-          onClick={hanldeGridClick('list')}
+          onClick={handleGridClick('list')}
           size="small"
         />
       </ListConfigurationColumn>

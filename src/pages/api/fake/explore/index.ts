@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import type { DeepReadonly } from '@okp4/ui';
 import dataspaces from "./dataspaces.json";
 
 const RANGE_DEFAULT_VALUE = 10
@@ -9,8 +10,7 @@ const getRange = (range: string | undefined): number => {
   return parseInt(range)
 }
 
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const handler = (req: NextApiRequest, res: NextApiResponse): void => {
+const handler = (req: DeepReadonly<NextApiRequest>, res: DeepReadonly<NextApiResponse>): void => {
   if (req.method !== 'GET') res.status(404).send('Not found')
 
   const range: number = getRange(req.query.range as string)

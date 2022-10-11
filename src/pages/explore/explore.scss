@@ -9,16 +9,7 @@
     'filters list list';
   gap: 25px;
 
-  // @media screen and (max-width: 1400px) {
-  //   max-width: 950px;
-  //   grid-template-areas:
-  //     'title title title'
-  //     'configuration configuration configuration'
-  //     'filters filters filters'
-  //     'list list list';
-  // }
-
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1300px) {
     max-width: 96%;
     grid-template-areas:
       'title title title'
@@ -33,6 +24,10 @@
 
   .okp4-page-title {
     grid-area: title;
+
+    @media screen and (min-width: 636px) and (max-width: 951px) {
+      text-align: center;
+    }
   }
 
   .okp4-explore-list-configuration {

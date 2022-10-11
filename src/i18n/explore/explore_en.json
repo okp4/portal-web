@@ -1,6 +1,5 @@
 {
-  "by": "By",
-  "last-update": "Last update",
+  "by": "By {{provider}} - Last update {{- updated}}",
   "list": {
     "configuration": {
       "show": "Show:",

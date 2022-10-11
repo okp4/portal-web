@@ -1,0 +1,37 @@
+@import '@okp4/ui/lib/scss/themes.scss';
+
+#layout {
+  @include with-theme {
+    height: 100%;
+    overflow: auto;
+    background: themed('header-background');
+
+    main {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-repeat: no-repeat;
+      color: themed('text');
+      padding: 70px 130px 35px 130px;
+
+      @media screen and (max-width: 1300px) {
+        padding: 50px 90px 25px 90px;
+      }
+
+      @media screen and (max-width: 995px) {
+        padding: 50px 70px 25px 70px;
+      }
+      @media screen and (max-width: 480px) {
+        padding: 25px 20px;
+      }
+    }
+
+    .okp4-footer-main {
+      .okp4-brand-link {
+        text-decoration: unset;
+        color: inherit;
+      }
+    }
+  }
+}

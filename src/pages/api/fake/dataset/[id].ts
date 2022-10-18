@@ -1,14 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import type { DeepReadonly } from '@okp4/ui'
 import type { Dataset } from '../../../dataspace/[dataspaceId]/dataset/[datasetId]'
-import datasets from './datasets.json'
+import untypedDatasets from './datasets.json'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
   if (req.method !== 'GET') res.status(404).send('Not found')
 
+  const datasets: Array<Dataset> = untypedDatasets
   const id = req.query.id as string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const dataset: unknown | undefined = datasets.find((item: any) => item.id === id)
+  const dataset = datasets.find(
+    (item: DeepReadonly<Dataset>) => item.id === id
+  )
 
   if (!id || dataset === undefined) {
     res.status(404).send('Not found')

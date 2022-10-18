@@ -7,7 +7,6 @@ import type {
   Dataset,
   DatasetGovernance
 } from '../../../pages/dataspace/[dataspaceId]/dataset/[datasetId]'
-import type { TFunction } from 'react-i18next'
 
 type DatasetInformationProps = {
   readonly dataset: Dataset
@@ -25,7 +24,6 @@ type ContainerProps = {
 type GovernanceProps = {
   readonly governance: DatasetGovernance
   readonly theme: string
-  readonly t: TFunction
 }
 
 type MetadataProps = {
@@ -63,17 +61,22 @@ const Container = ({ children, name }: DeepReadonly<ContainerProps>): JSX.Elemen
   </div>
 )
 
-const Governance = ({ governance, theme, t }: DeepReadonly<GovernanceProps>): JSX.Element => (
-  <div className="okp4-dataset-governance">
-    <Typography as="p" color="inverted-text" fontSize="small">
-      {t('dataset:governance:based', { name: governance.name, token: governance.based })}
-    </Typography>
-    <Button
-      backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}
-      label={t('dataset:governance:view')}
-    />
-  </div>
-)
+const Governance = ({ governance, theme }: DeepReadonly<GovernanceProps>): JSX.Element => {
+  const { t }: UseTranslationResponse = useTranslation()
+
+  return (
+    <div className="okp4-dataset-governance">
+      <Typography as="p" color="inverted-text" fontSize="small">
+        {t('dataset:governance:based', { name: governance.name, token: governance.based })}
+      </Typography>
+      <Button
+        // TODO: Should be removed with the next design system evolution of the okp4/ui
+        backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}
+        label={t('dataset:governance:view')}
+      />
+    </div>
+  )
+}
 
 const MetadataRow = ({ children, name, unit }: DeepReadonly<MetadataRowProps>): JSX.Element => (
   <div className="okp4-dataset-metadata-row">
@@ -151,7 +154,7 @@ const DatasetInformation = ({ dataset }: DeepReadonly<DatasetInformationProps>):
           </Typography>
         </Container>
         <Container name={t('dataset:governance:name')}>
-          <Governance governance={dataset.governance} t={t} theme={theme} />
+          <Governance governance={dataset.governance} theme={theme} />
         </Container>
         <Container name={t('dataset:metadata')}>
           <Metadata dataset={dataset} theme={theme} />

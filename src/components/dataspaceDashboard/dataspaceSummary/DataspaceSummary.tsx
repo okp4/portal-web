@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Button, Card, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
+import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
 import type {
   DeepReadonly,
   SelectOption,
@@ -85,7 +85,6 @@ const DataspaceSummary = ({
   const { t }: UseTranslationResponse = useTranslation()
   const [dataspacesList, setDataspacesList]: UseState<SelectOption[]> = useState<SelectOption[]>([])
   const isMediumScreen = useMediaType('(max-width: 995px)')
-  const isXSmallScreen = useMediaType('(max-width: 700px)')
 
   const navigateToGovernance = useCallback(() => {
     governanceUrl && router.push(governanceUrl)
@@ -104,13 +103,14 @@ const DataspaceSummary = ({
           <Card size={isMediumScreen ? 'medium' : 'small'} />
         </div>
         <Counters dataspace={dataspace} isMediumScreen={isMediumScreen} />
-        <div className="okp4-dataspace-selection-with-description">
-          <div className="okp4-dataspace-selection">
-            <Select
-              fullWidth={isXSmallScreen}
-              onChange={onDataspaceChange}
-              options={dataspacesList}
-              value={dataspace.id}
+        <div className="okp4-dataspace-options-with-description">
+          <div className="okp4-dataspace-options">
+            <Select onChange={onDataspaceChange} options={dataspacesList} value={dataspace.id} />
+            <Button
+              backgroundColor="primary"
+              label={t(`dashboard:dataspace:creation`)}
+              leftIcon={<Icon name="add" size={15} />}
+              size="small"
             />
           </div>
           <div className="okp4-dataspace-description">

@@ -11,6 +11,12 @@ import type {
 import type { DataspaceEntity } from '../dataspaceEntities/DataspaceEntities'
 import './dataspaceSummary.scss'
 
+type DataspaceSummaryProps = {
+  dataspace: Dataspace
+  onDataspaceChange: (value: SelectValue) => void
+  governanceUrl: string
+}
+
 export type Dataspace = {
   datasetsNb: number
   description: string
@@ -73,11 +79,9 @@ const Counters = ({
 
 const DataspaceSummary = ({
   dataspace,
+  governanceUrl,
   onDataspaceChange
-}: DeepReadonly<{
-  dataspace: Dataspace
-  onDataspaceChange: (value: SelectValue) => void
-}>): JSX.Element => {
+}: DeepReadonly<DataspaceSummaryProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
   const [dataspacesList, setDataspacesList]: UseState<SelectOption[]> = useState<SelectOption[]>([])
   const isMediumScreen = useMediaType('(max-width: 995px)')

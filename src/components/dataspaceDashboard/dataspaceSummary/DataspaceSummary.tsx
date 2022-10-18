@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
+import Link from 'next/link'
+import { Button, Card, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
 import type {
   DeepReadonly,
   SelectOption,
@@ -24,6 +25,9 @@ const fetchDataspacesList = async (): Promise<SelectOption[]> => {
   const response = await fetch('/api/fakeData/dataspaces')
   return await response.json()
 }
+
+const governanceLink =
+  'https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen'
 
 const Counters = ({
   dataspace,
@@ -106,12 +110,10 @@ const DataspaceSummary = ({
           </div>
         </div>
       </div>
-      <div className="okp4-dashboard-dataspace-creation">
-        <Button
-          backgroundColor="primary"
-          label={t(`dashboard:dataspace:creation`)}
-          leftIcon={<Icon name="add" size={15} />}
-        />
+      <div className="okp4-dashboard-governance-link">
+        <Link href={governanceLink}>
+          <Button label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })} />
+        </Link>
       </div>
     </>
   )

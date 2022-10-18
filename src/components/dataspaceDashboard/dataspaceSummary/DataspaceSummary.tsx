@@ -32,9 +32,6 @@ const fetchDataspacesList = async (): Promise<SelectOption[]> => {
   return await response.json()
 }
 
-const governanceLink =
-  'https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen'
-
 const Counters = ({
   dataspace,
   isMediumScreen
@@ -77,6 +74,7 @@ const Counters = ({
   )
 }
 
+// eslint-disable-next-line max-lines-per-function
 const DataspaceSummary = ({
   dataspace,
   governanceUrl,
@@ -115,7 +113,7 @@ const DataspaceSummary = ({
         </div>
       </div>
       <div className="okp4-dashboard-governance-link">
-        <Link href={governanceLink}>
+        <Link href={governanceUrl}>
           <Button label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })} />
         </Link>
       </div>

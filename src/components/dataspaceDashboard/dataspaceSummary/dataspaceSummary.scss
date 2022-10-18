@@ -80,6 +80,7 @@
       display: grid;
       row-gap: 25px;
       max-height: inherit;
+      overflow-y: auto;
       @media screen and (max-width: 995px) {
         grid-area: 2/ 1 / 2 / 3;
       }
@@ -90,6 +91,7 @@
       .okp4-dataspace-selection {
         min-width: 120px;
         grid-row: 1;
+        padding-right: 2px;
         @media screen and (max-width: 995px) {
           grid-area: 2/ 1;
         }

@@ -6,8 +6,6 @@ export type Config = {
   }
 }
 
-export const server = process.env.SERVER_URL
-
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export default function handler(_req: NextApiRequest, res: NextApiResponse<Config>): void {
   const config: Config = {

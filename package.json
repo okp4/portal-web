@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@okp4/eslint-config": "^1.1.0",
-    "@okp4/ui": "^1.18.0",
+    "@okp4/ui": "^2.0.0",
     "@types/node": "18.11.0",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",

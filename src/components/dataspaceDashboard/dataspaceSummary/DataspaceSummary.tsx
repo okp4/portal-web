@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import Link from 'next/link'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
 import { Button, Card, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
 import type {
   DeepReadonly,
@@ -14,7 +14,7 @@ import './dataspaceSummary.scss'
 type DataspaceSummaryProps = {
   dataspace: Dataspace
   onDataspaceChange: (value: SelectValue) => void
-  governanceUrl: string
+  governanceUrl: string | null
 }
 
 export type Dataspace = {
@@ -80,10 +80,15 @@ const DataspaceSummary = ({
   governanceUrl,
   onDataspaceChange
 }: DeepReadonly<DataspaceSummaryProps>): JSX.Element => {
+  const router = useRouter()
   const { t }: UseTranslationResponse = useTranslation()
   const [dataspacesList, setDataspacesList]: UseState<SelectOption[]> = useState<SelectOption[]>([])
   const isMediumScreen = useMediaType('(max-width: 995px)')
   const isXSmallScreen = useMediaType('(max-width: 700px)')
+
+  const navigateToGovernance = useCallback(() => {
+    governanceUrl && router.push(governanceUrl)
+  }, [governanceUrl, router])
 
   useEffect(() => {
     fetchDataspacesList()
@@ -113,9 +118,11 @@ const DataspaceSummary = ({
         </div>
       </div>
       <div className="okp4-dashboard-governance-link">
-        <Link href={governanceUrl}>
-          <Button label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })} />
-        </Link>
+        <Button
+          disabled={!governanceUrl}
+          label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })}
+          onClick={navigateToGovernance}
+        />
       </div>
     </>
   )

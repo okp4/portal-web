@@ -56,6 +56,24 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@javelin/core@1.0.0-alpha.12":
+  version "1.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@javelin/core/-/core-1.0.0-alpha.12.tgz#d80295ba22608123fccb2dd9cd3033265a2ce015"
+  integrity sha512-U3KgZjpMNwO6SF1cVcn4XedpE+AE17aaoNr1S6W973qF7MBrfhRaeoEMjiPM5U2g9VxBJMr4rD9XzZRtyZPaYA==
+
+"@javelin/ecs@^1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@javelin/ecs/-/ecs-1.0.0-alpha.13.tgz#16894895364b2692c778d4326b4dbded4d38c872"
+  integrity sha512-TzBOEtDtb8SEsH1Kpjp3fkmLN81/XTXm4N0S3eWBn05bPYCkqr9iHTREIZT2KPz4URaaMnIqzWSE+slXNegeZA==
+  dependencies:
+    "@javelin/core" "1.0.0-alpha.12"
+    "@javelin/isomorphic-utils" "1.0.0-alpha.12"
+
+"@javelin/isomorphic-utils@1.0.0-alpha.12":
+  version "1.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@javelin/isomorphic-utils/-/isomorphic-utils-1.0.0-alpha.12.tgz#c2469341fefb499dc447d1cc607a51a461aff2c5"
+  integrity sha512-TBz3kD75v3QOdibJWCShVjexhhor1e+p4lHprQM+wq27HneDKz1e1JjZd8dY4N916fwgCaMgV/p1FYTtfw+Tng==
+
 "@next/env@12.3.1":
   version "12.3.1"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.3.1.tgz#18266bd92de3b4aa4037b1927aa59e6f11879260"
@@ -163,11 +181,12 @@
     tsutils ">=3.21.0"
     typescript ">=4.6.2"
 
-"@okp4/ui@^1.18.0":
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/@okp4/ui/-/ui-1.18.0.tgz#f589d9b7bd0649ff5f4b99c16ce082efdebbf53e"
-  integrity sha512-PodDcsAJzTMHZtSWrqX9zQS5C4xouZUddnJRn6PFZrjeNAC3dlDAKQmDEPrArUei2kbCvepz98LQ28fOqRotFg==
+"@okp4/ui@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@okp4/ui/-/ui-2.0.0.tgz#387f54130aad74e78722d997354bfc1f87e98383"
+  integrity sha512-0JAw867+119TmYf5f5cGml5rsl9Mt20N7KWVhad3Ki0s1ZlcmVcY0F7sDzxCvuOPK/+5PYQdC0FpF6pdtBQNpA==
   dependencies:
+    "@javelin/ecs" "^1.0.0-alpha.13"
     "@radix-ui/react-switch" "^1.0.0"
     "@radix-ui/react-toast" "^1.0.0"
     "@urql/core" "^3.0.1"
@@ -179,6 +198,8 @@
     i18next-browser-languagedetector "^6.1.4"
     immutable "^4.1.0"
     lodash "^4.17.21"
+    ngraph.forcelayout "^3.3.0"
+    ngraph.graph "^20.0.0"
     react-i18next "^11.16.7"
     react-redux "^8.0.2"
     redux "^4.1.2"
@@ -1717,6 +1738,37 @@ next@12.3.1:
     "@next/swc-win32-arm64-msvc" "12.3.1"
     "@next/swc-win32-ia32-msvc" "12.3.1"
     "@next/swc-win32-x64-msvc" "12.3.1"
+
+ngraph.events@^1.0.0, ngraph.events@^1.2.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/ngraph.events/-/ngraph.events-1.2.2.tgz#3ceb92d676a04a4e7ce60a09fa8e17a4f0346d7f"
+  integrity sha512-JsUbEOzANskax+WSYiAPETemLWYXmixuPAlmZmhIbIj6FH/WDgEGCGnRwUQBK0GjOnVm8Ui+e5IJ+5VZ4e32eQ==
+
+ngraph.forcelayout@^3.3.0:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/ngraph.forcelayout/-/ngraph.forcelayout-3.3.1.tgz#981e1baee5e0593c490bc27219169f9cedfa4f8b"
+  integrity sha512-MKBuEh1wujyQHFTW57y5vd/uuEOK0XfXYxm3lC7kktjJLRdt/KEKEknyOlc6tjXflqBKEuYBBcu7Ax5VY+S6aw==
+  dependencies:
+    ngraph.events "^1.0.0"
+    ngraph.merge "^1.0.0"
+    ngraph.random "^1.0.0"
+
+ngraph.graph@^20.0.0:
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/ngraph.graph/-/ngraph.graph-20.0.1.tgz#579470d1d805583239704dc913e2095540aaf371"
+  integrity sha512-VFsQ+EMkT+7lcJO1QP8Ik3w64WbHJl27Q53EO9hiFU9CRyxJ8HfcXtfWz/U8okuoYKDctbciL6pX3vG5dt1rYA==
+  dependencies:
+    ngraph.events "^1.2.1"
+
+ngraph.merge@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ngraph.merge/-/ngraph.merge-1.0.0.tgz#d763cdfa48b1bbd4270ea246f06c9c8ff5d3477c"
+  integrity sha512-5J8YjGITUJeapsomtTALYsw7rFveYkM+lBj3QiYZ79EymQcuri65Nw3knQtFxQBU1r5iOaVRXrSwMENUPK62Vg==
+
+ngraph.random@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ngraph.random/-/ngraph.random-1.1.0.tgz#5345c4bb63865c85d98ee6f13eab1395d8545a90"
+  integrity sha512-h25UdUN/g8U7y29TzQtRm/GvGr70lK37yQPvPKXXuVfs7gCm82WipYFZcksQfeKumtOemAzBIcT7lzzyK/edLw==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"

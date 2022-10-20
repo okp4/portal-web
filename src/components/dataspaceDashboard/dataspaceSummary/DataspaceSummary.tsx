@@ -9,6 +9,7 @@ import type {
 } from '@okp4/ui'
 import type { DataspaceEntity } from '../dataspaceEntities/DataspaceEntities'
 import './dataspaceSummary.scss'
+import Link from 'next/link'
 
 export type Dataspace = {
   datasetsNb: number
@@ -19,6 +20,9 @@ export type Dataspace = {
   name: string
   servicesNb: number
 }
+
+const governanceLink =
+  'https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen'
 
 const fetchDataspacesList = async (): Promise<SelectOption[]> => {
   const response = await fetch('/api/fakeData/dataspaces')
@@ -67,6 +71,7 @@ const Counters = ({
   )
 }
 
+// eslint-disable-next-line max-lines-per-function
 const DataspaceSummary = ({
   dataspace,
   onDataspaceChange
@@ -77,7 +82,6 @@ const DataspaceSummary = ({
   const { t }: UseTranslationResponse = useTranslation()
   const [dataspacesList, setDataspacesList]: UseState<SelectOption[]> = useState<SelectOption[]>([])
   const isMediumScreen = useMediaType('(max-width: 995px)')
-  const isXSmallScreen = useMediaType('(max-width: 700px)')
 
   useEffect(() => {
     fetchDataspacesList()
@@ -92,13 +96,14 @@ const DataspaceSummary = ({
           <Card size={isMediumScreen ? 'medium' : 'small'} />
         </div>
         <Counters dataspace={dataspace} isMediumScreen={isMediumScreen} />
-        <div className="okp4-dataspace-selection-with-description">
-          <div className="okp4-dataspace-selection">
-            <Select
-              fullWidth={isXSmallScreen}
-              onChange={onDataspaceChange}
-              options={dataspacesList}
-              value={dataspace.id}
+        <div className="okp4-dataspace-options-with-description">
+          <div className="okp4-dataspace-options">
+            <Select onChange={onDataspaceChange} options={dataspacesList} value={dataspace.id} />
+            <Button
+              backgroundColor="primary"
+              label={t(`dashboard:dataspace:creation`)}
+              leftIcon={<Icon name="add" size={15} />}
+              size="small"
             />
           </div>
           <div className="okp4-dataspace-description">
@@ -106,12 +111,10 @@ const DataspaceSummary = ({
           </div>
         </div>
       </div>
-      <div className="okp4-dashboard-dataspace-creation">
-        <Button
-          backgroundColor="primary"
-          label={t(`dashboard:dataspace:creation`)}
-          leftIcon={<Icon name="add" size={15} />}
-        />
+      <div className="okp4-dashboard-governance-link">
+        <Link href={governanceLink}>
+          <Button label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })} />
+        </Link>
       </div>
     </>
   )

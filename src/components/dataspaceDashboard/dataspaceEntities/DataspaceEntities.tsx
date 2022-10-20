@@ -25,6 +25,7 @@ const DataspaceEntities = ({
               <Typography>{entity.type}</Typography>
             </div>
           }
+          size="small"
         />
       </div>
     ))}

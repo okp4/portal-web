@@ -10,7 +10,7 @@ import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
 import './layout.scss'
-import React from 'react'
+import React, { useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -101,10 +101,8 @@ const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
     menuItem: (
       <Typography as="div" fontSize="small" fontWeight="bold">
         <a
-          href="https://xd.adobe.com/view/0994d8fe-0e3f-44e0-b8bf-3c399bf524d9-5cc7/screen/007b4c59-2299-452d-90d6-6218e46b55f9/"
-          rel="noopener noreferrer"
+          href="https://xd.adobe.com/view/0994d8fe-0e3f-44e0-b8bf-3c399bf524d9-5cc7/screen/007b4c59-2299-452d-90d6-6218e46b55f9/?fullscreen"
           style={{ wordBreak: 'normal' }}
-          target="_blank"
         >
           {t('header:create')}
         </a>
@@ -123,10 +121,16 @@ const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
   const InteractNavItem: NavigationItem = {
     menuItem: (
       <Typography as="div" fontSize="small" fontWeight="bold">
-        {t('header:interact')}
+        <a
+          href="https://discord.com/channels/946759919678406696/968040263006179358"
+          rel="noopener noreferrer"
+          style={{ wordBreak: 'normal' }}
+          target="_blank"
+        >
+          {t('header:interact')}
+        </a>
       </Typography>
-    ),
-    subMenu: [DesignSystemNavItem, PhilosophyNavItem, StartNavItem]
+    )
   }
 
   const LearnNavItem: NavigationItem = {
@@ -160,9 +164,9 @@ const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
   }
 
   const navMenu = [CreateNavItem, ExploreNavItem, InteractNavItem, LearnNavItem, okp4NavItem]
-  const backHome = (): void => {
+  const backHome = useCallback((): void => {
     router.push('/')
-  }
+  }, [router])
 
   return (
     <>

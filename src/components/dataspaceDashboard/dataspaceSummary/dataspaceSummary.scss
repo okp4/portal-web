@@ -75,10 +75,10 @@
       }
     }
 
-    .okp4-dataspace-selection-with-description {
+    .okp4-dataspace-options-with-description {
       grid-column: 3;
       display: grid;
-      row-gap: 25px;
+      row-gap: 15px;
       max-height: inherit;
       @media screen and (max-width: 995px) {
         grid-area: 2/ 1 / 2 / 3;
@@ -87,9 +87,9 @@
         grid-area: 3/1;
       }
 
-      .okp4-dataspace-selection {
-        min-width: 120px;
-        grid-row: 1;
+      .okp4-dataspace-options {
+        display: grid;
+        gap: 15px;
         @media screen and (max-width: 995px) {
           grid-area: 2/ 1;
         }
@@ -108,7 +108,7 @@
   }
 }
 
-.okp4-dashboard-dataspace-creation {
+.okp4-dashboard-governance-link {
   grid-row: 2;
   align-self: center;
   justify-self: flex-end;

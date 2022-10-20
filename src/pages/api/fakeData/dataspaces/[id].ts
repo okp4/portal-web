@@ -5,7 +5,7 @@ const rhizome = {
   id: 'RhizomeId',
   name: 'Rhizome',
   description:
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
+    'Rhizome is a OKP4 operated Dataspace, currently under development on top of OKP4 technology. Rhizome demonstrates the power of data processing and data sharing, and the value that we can gain when effectively connecting different open access agricutlural data sources under different data formats. Rhizome aims to connect as much data as possible, and to deliver high value visuals and metrics about different agricultural-related fields such as Land use and territory management, crop and livestock management, and forest resources and wood industry.',
   membersNb: 289,
   datasetsNb: 376,
   servicesNb: 73,
@@ -16,11 +16,6 @@ const rhizome = {
       label: 'Agreste Normé'
     },
     {
-      id: 'id_2',
-      type: 'Service',
-      label: 'Jointure'
-    },
-    {
       id: 'id_3',
       type: 'Dataset',
       label: 'RPG 2022'
@@ -29,11 +24,6 @@ const rhizome = {
       id: 'id_4',
       type: 'Service',
       label: 'Données Météo'
-    },
-    {
-      id: 'id_5',
-      type: 'Service',
-      label: 'Compta'
     }
   ]
 }
@@ -48,11 +38,6 @@ const knowUniverse = {
   servicesNb: 674,
   entities: [
     {
-      id: 'id_1',
-      type: 'Service',
-      label: 'Contrôle'
-    },
-    {
       id: 'id_2',
       type: 'Dataset',
       label: 'Coins'
@@ -66,11 +51,6 @@ const knowUniverse = {
       id: 'id_4',
       type: 'Service',
       label: 'Transaction'
-    },
-    {
-      id: 'id_5',
-      type: 'Service',
-      label: 'Validation'
     }
   ]
 }

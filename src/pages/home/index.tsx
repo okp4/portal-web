@@ -27,8 +27,8 @@ export const Home = (): JSX.Element | null => {
     <div className="okp4-body-main">
       <div className="okp4-body-dashboard">
         <DataspaceSummary dataspace={dataspace} onDataspaceChange={retrieveAndSetDataspace} />
-        <DataspaceEntities entities={dataspace.entities} />
         <DataspaceOptions />
+        <DataspaceEntities entities={dataspace.entities} />
       </div>
       <div className="okp4-body-activity" />
     </div>

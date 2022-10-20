@@ -36,14 +36,16 @@ const DatasetId: NextPage = () => {
     }
   }, [query])
 
-  return dataset ? (
-    <div className="okp4-dataset-id">
-      <PageTitle title="dataset:title" />
-      <PreviousPageButton />
-      <DatasetPreview dataset={dataset} />
-      <DatasetInformation dataset={dataset} />
-    </div>
-  ) : null
+  return (
+    dataset && (
+      <div className="okp4-dataset-id">
+        <PageTitle title="dataset:title" />
+        <PreviousPageButton />
+        <DatasetPreview dataset={dataset} />
+        <DatasetInformation dataset={dataset} />
+      </div>
+    )
+  )
 }
 
 export default DatasetId

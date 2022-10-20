@@ -1,4 +1,3 @@
-export const kgSample = `
 digraph {
     rankdir=LR
     nodesep=0.6
@@ -30,4 +29,3 @@ digraph {
     s04 -> s14 -> s12 -> s16
     s05 -> s15 -> s18
 }
-`

@@ -1,0 +1,14 @@
+[
+    {
+      "id": "ef347285-e52a-430d-9679-dcb76b962ce7",
+      "type": "dataspace",
+      "name": "Rhizome",
+      "access": "PUBLIC",
+      "creator": "OKP4",
+      "categories": ["agriculture", "open data", "demonstrateur", "dataviz"],
+      "description": "Data Space ouvert permettant de mieux valoriser les Open Data du secteur agricole en France et en Europe. L’objectif est de fédérer différents acteurs pour encourager la création de nouvelles connaissances, favorisant la transition vers une agriculture plus durable.",
+      "token": "KNOW",
+      "createdOn": "2022-10-30T15:29:16.507Z",
+      "updatedOn": "2022-10-30T15:29:16.507Z"
+    }
+]

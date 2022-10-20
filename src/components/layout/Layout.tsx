@@ -1,18 +1,40 @@
 import React from 'react'
 import Head from 'next/head'
-import { Footer, Header, Logo, Typography, useTheme, useTranslation } from '@okp4/ui'
-import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
+import { Footer, Header, Logo, Typography, Icon, useTheme, useTranslation } from '@okp4/ui'
+import type { DeepReadonly, ThemeContextType, UseTranslationResponse, IconName } from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
-import "./layout.scss"
+import './layout.scss'
+import type { Config } from '../../pages/api/config'
 
 type LayoutProps = {
+  config: Config | null
   readonly children: React.ReactNode
 }
 
 type FooterLinkProps = {
-  readonly label: string
+  label: string
+  url: string
+}
+
+type SocialMediaIcon = {
+  icon: IconName
+  url: string
+}
+
+type SocialMediaUrls = {
+  discordUrl: string
+  githubUrl: string
+  linkedinUrl: string
+  mediumUrl: string
+  telegramUrl: string
+  twitterUrl: string
+}
+
+type FooterSocialMedia = {
+  isLightTheme: boolean
+  socialMediaUrls: SocialMediaUrls
 }
 
 const languages = [
@@ -26,28 +48,79 @@ const languages = [
   }
 ]
 
-const Okp4Link = ({ label }: FooterLinkProps): JSX.Element => {
-  return (
-    <Typography as="p" color="invariant-text" fontSize="x-small" fontWeight="xlight" noWrap>
-      {`${label} `}
-      <Typography color="invariant-text" fontSize="x-small" fontWeight="bold">
-        <a
-          className="okp4-brand-link"
-          href="https://okp4.network/"
-          rel="author noreferrer"
-          target="_blank"
-        >
-          ØKP4
-        </a>
-      </Typography>
+const Okp4Link = ({ label, url }: DeepReadonly<FooterLinkProps>): JSX.Element => (
+  <Typography as="p" color="invariant-text" fontSize="x-small" fontWeight="xlight" noWrap>
+    {`${label} `}
+    <Typography color="invariant-text" fontSize="x-small" fontWeight="bold">
+      <a className="okp4-brand-link" href={url} rel="author noreferrer" target="_blank">
+        ØKP4
+      </a>
     </Typography>
+  </Typography>
+)
+
+// eslint-disable-next-line max-lines-per-function
+const Okp4SocialMedia = ({
+  isLightTheme,
+  socialMediaUrls
+}: DeepReadonly<FooterSocialMedia>): JSX.Element => {
+  const {
+    discordUrl,
+    githubUrl,
+    linkedinUrl,
+    mediumUrl,
+    telegramUrl,
+    twitterUrl
+  }: SocialMediaUrls = socialMediaUrls
+  const socialMediaIcons: SocialMediaIcon[] = [
+    {
+      icon: 'github-round',
+      url: githubUrl
+    },
+    {
+      icon: 'medium-round',
+      url: mediumUrl
+    },
+    {
+      icon: 'linkedin-round',
+      url: linkedinUrl
+    },
+    {
+      icon: 'twitter-round',
+      url: twitterUrl
+    },
+    {
+      icon: 'discord-round',
+      url: discordUrl
+    },
+    {
+      icon: 'telegram-round',
+      url: telegramUrl
+    }
+  ]
+
+  return (
+    <div className="okp4-footer-last-element-social-medias">
+      {socialMediaIcons.map(
+        ({ icon, url }: DeepReadonly<SocialMediaIcon>): JSX.Element => (
+          <a href={url} key={icon} rel="noreferrer" target="_blank">
+            <Icon
+              className="okp4-footer-last-element-icon"
+              invertColor={isLightTheme}
+              name={icon}
+            />
+          </a>
+        )
+      )}
+    </div>
   )
 }
 
-const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
+const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
-  const themedImage = theme === 'light' ? lightCosmos.src : darkCosmos.src
+  const isLightTheme = theme === 'light'
+  const themedImage = isLightTheme ? lightCosmos.src : darkCosmos.src
   const footerLabel = t('footer:brand-link')
 
   return (
@@ -63,7 +136,22 @@ const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
       <div id="layout">
         <Header firstElement={<Logo size="small" />} />
         <main style={{ backgroundImage: `url(${themedImage})` }}>{children}</main>
-        <Footer languages={languages} lastElement={<Okp4Link label={footerLabel} />} />
+        {config ? (
+          <Footer
+            languages={languages}
+            lastElement={
+              <div className="okp4-footer-last-element">
+                <Okp4SocialMedia
+                  isLightTheme={isLightTheme}
+                  socialMediaUrls={config.app.socialMediaUrls}
+                />
+                <Okp4Link label={footerLabel} url={config.app.websiteUrl} />
+              </div>
+            }
+          />
+        ) : (
+          <Footer languages={languages} />
+        )}
       </div>
     </>
   )

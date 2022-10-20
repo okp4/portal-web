@@ -28,9 +28,33 @@
     }
 
     .okp4-footer-main {
-      .okp4-brand-link {
-        text-decoration: unset;
-        color: inherit;
+      .okp4-footer-last-element {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template: auto / auto auto;
+        gap: 10px 40px;
+
+        .okp4-footer-last-element-social-medias {
+          display: grid;
+          grid-auto-flow: column;
+          align-items: center;
+          grid-template-columns: repeat(auto-fit, minmax(20px, auto));
+          gap: 10px;
+
+          .okp4-footer-last-element-icon:hover {
+            opacity: 0.5;
+          }
+        }
+
+        .okp4-brand-link {
+          text-decoration: unset;
+          color: inherit;
+        }
+
+        @media screen and (max-width: 480px) {
+          grid-template: auto auto / auto;
+          justify-items: center;
+        }
       }
     }
   }

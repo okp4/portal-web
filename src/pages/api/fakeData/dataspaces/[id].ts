@@ -35,7 +35,8 @@ const rhizome = {
       type: 'Service',
       label: 'Compta'
     }
-  ]
+  ],
+  governance: process.env.GOVERNANCE_URL
 }
 
 const knowUniverse = {
@@ -72,7 +73,8 @@ const knowUniverse = {
       type: 'Service',
       label: 'Validation'
     }
-  ]
+  ],
+  governance: process.env.GOVERNANCE_URL
 }
 
 const dataspaces = Map({ [rhizome.id]: rhizome, [knowUniverse.id]: knowUniverse })

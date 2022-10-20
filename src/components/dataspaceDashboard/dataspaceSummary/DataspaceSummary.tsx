@@ -25,6 +25,7 @@ export type Dataspace = {
   membersNb: number
   name: string
   servicesNb: number
+  governance: string
 }
 
 const fetchDataspacesList = async (): Promise<SelectOption[]> => {

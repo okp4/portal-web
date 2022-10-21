@@ -6,7 +6,7 @@
       "access": "PUBLIC",
       "creator": "OKP4",
       "categories": ["agriculture", "open data", "demonstrateur", "dataviz"],
-      "description": "Data Space ouvert permettant de mieux valoriser les Open Data du secteur agricole en France et en Europe. L’objectif est de fédérer différents acteurs pour encourager la création de nouvelles connaissances, favorisant la transition vers une agriculture plus durable.",
+      "description": "Rhizome est un data space exploité par OKP4, actuellement en cours de développement sur la base de la technologie OKP4. Rhizome démontre la puissance du traitement et du partage des données, et la valeur que nous pouvons obtenir en connectant efficacement différentes sources de données agricoles en libre accès sous différents formats de données. Rhizome vise à connecter autant de données que possible et à fournir des visuels et métriques de grande valeur dans différents domaines liés à l'agriculture, tels que l'utilisation des terres et la gestion du territoire, la gestion des cultures et du bétail, ainsi que les ressources forestières et l'industrie du bois.",
       "token": "KNOW",
       "createdOn": "2022-10-30T15:29:16.507Z",
       "updatedOn": "2022-10-30T15:29:16.507Z"

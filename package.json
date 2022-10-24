@@ -11,7 +11,7 @@
     "web": "https://okp4.network"
   },
   "engines": {
-    "node": "^16.14.0",
+    "node": "^16.18.0",
     "yarn": "~1.22.17"
   },
   "scripts": {

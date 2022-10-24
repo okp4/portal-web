@@ -5,12 +5,9 @@
     height: 100%;
     overflow: auto;
     background: themed('header-background');
+    display: grid;
 
     main {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       background-repeat: no-repeat;
       color: themed('text');
       padding: 70px 130px 35px 130px;
@@ -31,6 +28,10 @@
       .okp4-brand-link {
         text-decoration: unset;
         color: inherit;
+      }
+
+      @media screen and (max-width: 480px) {
+        min-height: auto;
       }
     }
   }

@@ -75,12 +75,14 @@
       }
     }
 
-    .okp4-dataspace-selection-with-description {
+    .okp4-dataspace-options-with-description {
       grid-column: 3;
       display: grid;
-      row-gap: 25px;
+      row-gap: 15px;
+      width: fit-content;
       max-height: inherit;
       overflow-y: auto;
+      overflow-x: hidden;
       @media screen and (max-width: 995px) {
         grid-area: 2/ 1 / 2 / 3;
       }
@@ -88,8 +90,9 @@
         grid-area: 3/1;
       }
 
-      .okp4-dataspace-selection {
-        min-width: 120px;
+      .okp4-dataspace-options {
+        display: grid;
+        gap: 15px;
         grid-row: 1;
         padding-right: 2px;
         @media screen and (max-width: 995px) {

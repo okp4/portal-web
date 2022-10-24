@@ -1,8 +1,15 @@
 import React, { useMemo } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import getConfig from 'next/config'
 import { Footer, Header, Logo, Typography, Icon, useTheme, useTranslation } from '@okp4/ui'
-import type { DeepReadonly, ThemeContextType, UseTranslationResponse, IconName } from '@okp4/ui'
+import type {
+  DeepReadonly,
+  ThemeContextType,
+  UseTranslationResponse,
+  IconName,
+  NavigationItem
+} from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
@@ -41,6 +48,20 @@ type FooterSocialMedia = {
   socialMediaUrls: SocialMediaUrls
 }
 
+type NavigationMenuUrls = {
+  createUrl: string
+  exploreUrl: string
+  interactUrl: string
+  learnUrl: string
+  okp4Url: string
+}
+
+type MenuItem = {
+  namespace: string
+  url: string | undefined
+  externalLink: boolean
+}
+
 const languages = [
   {
     name: 'English',
@@ -59,7 +80,9 @@ const Okp4Link = ({ label, url }: DeepReadonly<FooterLinkProps>): JSX.Element =>
       <a className="okp4-brand-link" href={url} rel="author noreferrer" target="_blank">
         ØKP4
       </a>
-      <Typography color="invariant-text" fontSize="x-small" fontWeight="xlight"> - v{publicRuntimeConfig.version}</Typography>
+      <Typography color="invariant-text" fontSize="x-small" fontWeight="xlight">
+        {` - v${publicRuntimeConfig.version}`}
+      </Typography>
     </Typography>
   </Typography>
 )
@@ -124,12 +147,70 @@ const Okp4SocialMedia = ({
   )
 }
 
+// eslint-disable-next-line max-lines-per-function
 const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
   const isLightTheme = theme === 'light'
   const themedImage = isLightTheme ? lightCosmos.src : darkCosmos.src
   const footerLabel = t('footer:brand-link')
+  const {
+    createUrl,
+    exploreUrl,
+    interactUrl,
+    learnUrl,
+    okp4Url
+  }: NavigationMenuUrls | Record<string, undefined> = config?.app.navigationMenuUrls ?? {
+    createUrl: undefined,
+    exploreUrl: undefined,
+    interactUrl: undefined,
+    learnUrl: undefined,
+    okp4Url: undefined
+  }
+
+  const navigationItems: NavigationItem[] = useMemo(() => {
+    const menuItems: MenuItem[] = [
+      {
+        namespace: 'header:create',
+        url: createUrl,
+        externalLink: true
+      },
+      {
+        namespace: 'header:explore',
+        url: exploreUrl,
+        externalLink: false
+      },
+      {
+        namespace: 'header:interact',
+        url: interactUrl,
+        externalLink: true
+      },
+      {
+        namespace: 'header:learn',
+        url: learnUrl,
+        externalLink: true
+      },
+      {
+        namespace: 'header:okp4',
+        url: okp4Url,
+        externalLink: true
+      }
+    ]
+
+    return menuItems.map(
+      ({ url, namespace, externalLink }: DeepReadonly<MenuItem>, index: number) => ({
+        menuItem: (
+          <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
+            {externalLink ? (
+              <a href={url}>{t(namespace)}</a>
+            ) : (
+              <Link href={{ pathname: url }}>{t(namespace)}</Link>
+            )}
+          </Typography>
+        )
+      })
+    )
+  }, [createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
 
   return (
     <>
@@ -143,7 +224,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
         <link href="/okp4-logo.png" rel="icon" type="image/x-icon" />
       </Head>
       <div id="layout">
-        <Header firstElement={<Logo size="small" />} />
+        <Header firstElement={<Logo size="small" />} navigationMenu={navigationItems} />
         <main style={{ backgroundImage: `url(${themedImage})` }}>{children}</main>
         <Footer
           languages={languages}

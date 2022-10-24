@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import Head from 'next/head'
+import getConfig from 'next/config'
 import { Footer, Header, Logo, Typography, Icon, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse, IconName } from '@okp4/ui'
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
@@ -7,6 +8,9 @@ import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
 import './layout.scss'
 import type { Config } from '../../pages/api/config'
+
+// eslint-disable-next-line @typescript-eslint/typedef
+const { publicRuntimeConfig } = getConfig()
 
 type LayoutProps = {
   config: Config | null
@@ -55,6 +59,7 @@ const Okp4Link = ({ label, url }: DeepReadonly<FooterLinkProps>): JSX.Element =>
       <a className="okp4-brand-link" href={url} rel="author noreferrer" target="_blank">
         ØKP4
       </a>
+      <Typography color="invariant-text" fontSize="x-small" fontWeight="xlight"> - v{publicRuntimeConfig.version}</Typography>
     </Typography>
   </Typography>
 )

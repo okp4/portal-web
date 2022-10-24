@@ -139,6 +139,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
           content="OKP4, Portal, Data App, Dataverse, Services, Dataset, Data Space, Deposit, Catalog, Files, Blockchain, Metadata, Exploration, Know, Token"
           name="keywords"
         />
+        <meta content={publicRuntimeConfig.version} name="version" />
         <link href="/okp4-logo.png" rel="icon" type="image/x-icon" />
       </Head>
       <div id="layout">

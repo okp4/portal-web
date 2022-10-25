@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { DatasetDto } from '../../../../../../dto/DatasetDto'
-import { datasets } from '../../../../init'
+import { datasets } from '../../../../store'
 import type { DeepReadonly } from '@okp4/ui'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

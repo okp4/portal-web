@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { ServiceDto } from '../../../../../../dto/ServiceDto'
-import { services } from '../../../../init'
+import { services } from '../../../../store'
 import type { DeepReadonly } from '@okp4/ui'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

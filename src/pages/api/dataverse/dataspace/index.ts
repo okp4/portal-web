@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { dataspaces } from '../../init'
+import { dataspaces } from '../../store'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {

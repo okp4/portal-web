@@ -12,6 +12,6 @@ export type DatasetDto = {
   format: string
   quality: number
   completude: number
-  createdOn: Date
-  updatedOn: Date
+  createdOn: string
+  updatedOn: string
 }

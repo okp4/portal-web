@@ -7,6 +7,6 @@ export type DataspaceDto = {
   categories: string[]
   description: string
   token: string
-  createdOn: Date
-  updatedOn: Date
+  createdOn: string
+  updatedOn: string
 }

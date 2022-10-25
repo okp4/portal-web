@@ -12,6 +12,6 @@ export type ServiceDto = {
   inputFormat: string[]
   nbOutputFiles: number
   outputFormat: string[] | null
-  createdOn: Date
-  updatedOn: Date
+  createdOn: string
+  updatedOn: string
 }

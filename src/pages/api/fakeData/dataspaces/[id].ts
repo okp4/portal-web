@@ -24,16 +24,6 @@ const rhizome = {
       id: 'id_3',
       type: 'Dataset',
       label: 'RPG 2022'
-    },
-    {
-      id: 'id_4',
-      type: 'Service',
-      label: 'Données Météo'
-    },
-    {
-      id: 'id_5',
-      type: 'Service',
-      label: 'Compta'
     }
   ],
   governance: process.env.GOVERNANCE_URL
@@ -62,16 +52,6 @@ const knowUniverse = {
       id: 'id_3',
       type: 'Dataset',
       label: 'Validateurs'
-    },
-    {
-      id: 'id_4',
-      type: 'Service',
-      label: 'Transaction'
-    },
-    {
-      id: 'id_5',
-      type: 'Service',
-      label: 'Validation'
     }
   ],
   governance: process.env.GOVERNANCE_URL

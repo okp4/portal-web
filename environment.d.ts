@@ -10,3 +10,13 @@ declare namespace NodeJS {
     OKP4_WEBSITE_URL: string
   }
 }
+
+declare module 'next/config' {
+  declare const _default: () => {
+    publicRuntimeConfig: {
+      version: string
+    }
+  }
+
+  export default _default
+}

@@ -30,23 +30,6 @@
       @media screen and (max-width: 995px) {
         grid-column: 1;
       }
-
-      .okp4-dashboard-dataspace-options {
-        grid-row: 4;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 25px;
-
-        @media screen and (max-width: 1300px) {
-          grid-row: 3;
-        }
-
-        @media screen and (max-width: 995px) {
-          grid-area: 3/ 1;
-          grid-template: repeat(2, 1fr) / 1fr;
-          gap: 25px;
-        }
-      }
     }
 
     .okp4-body-activity {

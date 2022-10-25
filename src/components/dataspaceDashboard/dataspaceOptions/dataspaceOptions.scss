@@ -1,6 +1,14 @@
 @import '@okp4/ui/lib/scss/themes.scss';
 
 .okp4-dashboard-dataspace-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+
+  @media screen and (max-width: 995px) {
+    grid-template: repeat(2, 1fr) / 1fr;
+  }
+
   .okp4-dashboard-data {
     @include with-theme() {
       display: grid;

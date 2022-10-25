@@ -33,8 +33,8 @@ export const HomePage: NextPage = () => {
             governanceUrl={dataspace.governance}
             onDataspaceChange={retrieveAndSetDataspace}
           />
-          <DataspaceEntities entities={dataspace.entities} />
           <DataspaceOptions />
+          <DataspaceEntities entities={dataspace.entities} />
         </div>
         <div className="okp4-body-activity" />
       </div>

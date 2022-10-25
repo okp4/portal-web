@@ -8,5 +8,7 @@ declare namespace NodeJS {
     OKP4_TELEGRAM_URL: string
     OKP4_TWITTER_URL: string
     OKP4_WEBSITE_URL: string
+    // The data folder path
+    DATA_PATH: string
   }
 }

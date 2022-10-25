@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Head from 'next/head'
 import { Footer, Header, Logo, Typography, Icon, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse, IconName } from '@okp4/ui'
@@ -72,32 +72,35 @@ const Okp4SocialMedia = ({
     telegramUrl,
     twitterUrl
   }: SocialMediaUrls = socialMediaUrls
-  const socialMediaIcons: SocialMediaIcon[] = [
-    {
-      icon: 'github-round',
-      url: githubUrl
-    },
-    {
-      icon: 'medium-round',
-      url: mediumUrl
-    },
-    {
-      icon: 'linkedin-round',
-      url: linkedinUrl
-    },
-    {
-      icon: 'twitter-round',
-      url: twitterUrl
-    },
-    {
-      icon: 'discord-round',
-      url: discordUrl
-    },
-    {
-      icon: 'telegram-round',
-      url: telegramUrl
-    }
-  ]
+  const socialMediaIcons: SocialMediaIcon[] = useMemo(
+    () => [
+      {
+        icon: 'github-round',
+        url: githubUrl
+      },
+      {
+        icon: 'medium-round',
+        url: mediumUrl
+      },
+      {
+        icon: 'linkedin-round',
+        url: linkedinUrl
+      },
+      {
+        icon: 'twitter-round',
+        url: twitterUrl
+      },
+      {
+        icon: 'discord-round',
+        url: discordUrl
+      },
+      {
+        icon: 'telegram-round',
+        url: telegramUrl
+      }
+    ],
+    [discordUrl, githubUrl, linkedinUrl, mediumUrl, telegramUrl, twitterUrl]
+  )
 
   return (
     <div className="okp4-footer-last-element-social-medias">
@@ -136,10 +139,10 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
       <div id="layout">
         <Header firstElement={<Logo size="small" />} />
         <main style={{ backgroundImage: `url(${themedImage})` }}>{children}</main>
-        {config ? (
-          <Footer
-            languages={languages}
-            lastElement={
+        <Footer
+          languages={languages}
+          {...(config && {
+            lastElement: (
               <div className="okp4-footer-last-element">
                 <Okp4SocialMedia
                   isLightTheme={isLightTheme}
@@ -147,11 +150,9 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
                 />
                 <Okp4Link label={footerLabel} url={config.app.websiteUrl} />
               </div>
-            }
-          />
-        ) : (
-          <Footer languages={languages} />
-        )}
+            )
+          })}
+        />
       </div>
     </>
   )

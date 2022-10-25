@@ -5,7 +5,10 @@ import type { DeepReadonly } from '@okp4/ui'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
-  if (req.method !== 'GET') res.status(405).send('Method Not Allowed')
+  if (req.method !== 'GET') {
+    res.status(405).send(null)
+    return
+  }
 
   const dataspaceId = req.query.dataspaceId as string
   const serviceId = req.query.serviceId as string
@@ -14,7 +17,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
     .get(serviceId)
 
   if (service === undefined) {
-    res.status(404).send('Not found')
+    res.status(404).send(null)
+    return
   }
 
   res.status(200).json(service)

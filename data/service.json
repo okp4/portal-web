@@ -1,7 +1,7 @@
 [
     {
       "id": "16c4cd10-521a-4829-b1bd-a1e2ac60459a",
-      "dataspaceId": ["ef347285-e52a-430d-9679-dcb76b962ce7"],
+      "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
       "type": "service",
       "name": "Data Connector",
       "access": "PUBLIC",
@@ -18,7 +18,7 @@
     },
     {
         "id": "fbe11a63-85da-4f82-97c4-f719ac1f4ce8",
-        "dataspaceId": ["ef347285-e52a-430d-9679-dcb76b962ce7"],
+        "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
         "type": "service",
         "name": "Data Selector",
         "access": "PUBLIC",
@@ -35,7 +35,7 @@
       },
       {
         "id": "6272c8d0-f5ed-4394-8f54-a7b429faec13",
-        "dataspaceId": ["ef347285-e52a-430d-9679-dcb76b962ce7"],
+        "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
         "type": "service",
         "name": "Data Refactor",
         "access": "PUBLIC",
@@ -52,7 +52,7 @@
       },
       {
         "id": "6636b94a-b2f7-4139-9227-6838de9d3ef3",
-        "dataspaceId": ["ef347285-e52a-430d-9679-dcb76b962ce7"],
+        "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
         "type": "service",
         "name": "Data Join Tabular",
         "access": "PUBLIC",
@@ -69,7 +69,7 @@
       },
       {
         "id": "e4fa9cb1-59f8-4f40-9ba3-f00f8a18e3de",
-        "dataspaceId": ["ef347285-e52a-430d-9679-dcb76b962ce7"],
+        "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
         "type": "service",
         "name": "Data Join Geospatial",
         "access": "PUBLIC",
@@ -86,7 +86,7 @@
       },
       {
         "id": "987e1ffd-05e7-48e4-a429-1172689477ee",
-        "dataspaceId": ["ef347285-e52a-430d-9679-dcb76b962ce7"],
+        "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
         "type": "service",
         "name": "Data Grouping",
         "access": "PUBLIC",

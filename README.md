@@ -13,7 +13,7 @@
 
 ## Purpose
 
-🚀 Heart of the OKP4 Dataverse: a rich portal to explore, use and contribute to this infinite universe of digital resource (dataset, algorithm, storage or computation resource)! 🪐
+🚀 Heart of the [ØKP4]([okp4.network](https://okp4.network)) Dataverse: a rich portal to explore, use and contribute to this infinite universe of digital resource (dataset, algorithm, storage or computation resource)! 🪐
 
 ## Setup
 
@@ -25,9 +25,16 @@ yarn
 yarn build
 ```
 
+## Use
+
+### Environment
+
+To launch the Web App, you need to set some environment variables. Default values are provided for the development environment in the file `.env.development`.
+Feel free to adapt the values to your needs.
+
 ### Launch
 
-Run the server with the following command line:
+Run the server with the following command line.
 
 ```sh
 yarn start

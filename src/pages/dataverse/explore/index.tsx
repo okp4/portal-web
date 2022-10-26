@@ -27,7 +27,7 @@ const rangeOptions: Array<SelectOption> = [
 const sortOptions: Array<SelectOption> = [
   {
     label: 'alphabetical',
-    value: 'asc'
+    value: 'name'
   },
   {
     label: 'created-on',
@@ -65,7 +65,7 @@ const Explore: NextPage = () => {
         sortBy={sortBy}
         sortOptions={sortOptions}
       />
-      <ExploreList layout={listLayout} range={range} sortBy={sortBy} />
+      <ExploreList layout={listLayout} range={parseInt(range)} sortBy={sortBy} />
       <ExploreFilters />
     </div>
   )

@@ -4,31 +4,15 @@ import type { NextRouter } from 'next/router'
 import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
 import './exploreList.scss'
-import { formatDate } from '../../../utils'
+import { fetchConfig, formatDate } from '../../../utils'
 import type { ExploreListLayout } from '../../../pages/dataverse/explore'
-
-export type ExploreItem = {
-  readonly id: string
-  readonly dataspaceId: string
-  readonly mainPicture: string
-  readonly name: string
-  readonly type: string
-  readonly access: 'PRIVATE' | 'PUBLIC'
-  readonly categories: Array<string>
-  readonly description: string
-  readonly provider: string
-  readonly governance: string
-  readonly size: number
-  readonly format: string
-  readonly quality: number
-  readonly completness: number
-  readonly createdOn: string
-  readonly updatedOn: string
-}
+import type { DataspaceDto } from '../../../dto/DataspaceDto'
+import type { DatasetDto } from '../../../dto/DatasetDto'
+import type { ServiceDto } from '../../../dto/ServiceDto'
 
 type ExploreListProps = {
   readonly layout: ExploreListLayout
-  readonly range: string
+  readonly range: number
   readonly sortBy: string
 }
 
@@ -41,6 +25,8 @@ type ItemRightElementProps = {
   readonly provider: string
   readonly updatedOn: string
 }
+
+type DataverseEntity = DataspaceDto | DatasetDto | ServiceDto
 
 const ItemDescription = ({ type, categories }: DeepReadonly<ItemDescriptionProps>): JSX.Element => (
   <div className="okp4-explore-list-item-description">
@@ -69,32 +55,60 @@ const ItemRightElement = ({
   )
 }
 
-const fetchItems = async (url: string): Promise<Array<ExploreItem>> => {
-  const response = await fetch(url)
+const fetchItems = async (
+  range: number,
+  sortBy: string
+): Promise<DeepReadonly<DataverseEntity[]>> => {
+  const config = await fetchConfig()
+  const responses = [
+    await fetch(`${config.app.apiUri}/dataverse/dataspace/`),
+    await fetch(`${config.app.apiUri}/dataverse/dataset/`),
+    await fetch(`${config.app.apiUri}/dataverse/service/`)
+  ]
 
-  if (response.status !== 200) {
-    throw new Error(response.statusText)
+  const items = (
+    await Promise.all(
+      responses.map(
+        async (item: DeepReadonly<Response>): Promise<DataverseEntity> =>
+          item.ok ? await item.json() : []
+      )
+    )
+  ).flat()
+
+  switch (sortBy) {
+    case 'name':
+      items.sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+        a.name.localeCompare(b.name)
+      )
+      break
+    case 'createdOn':
+      items.sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+        b.createdOn.localeCompare(a.createdOn)
+      )
+      break
+    default:
+      break
   }
 
-  const items: Array<ExploreItem> = await response.json()
-
-  return items
+  return items.slice(0, range)
 }
 
 const ExploreList = ({ layout, range, sortBy }: DeepReadonly<ExploreListProps>): JSX.Element => {
   const router: NextRouter = useRouter()
-  const [items, setItems]: UseState<Array<ExploreItem>> = useState<Array<ExploreItem>>([])
+  const [items, setItems]: UseState<DeepReadonly<DataverseEntity[]>> = useState<
+    DeepReadonly<DataverseEntity[]>
+  >([])
 
   useEffect(() => {
-    fetchItems(`/api/fake/explore?range=${range}&sortBy=${sortBy}`)
+    fetchItems(range, sortBy)
       .then(setItems)
       .catch((err: DeepReadonly<Error>) => console.error(err))
   }, [range, sortBy])
 
   const onListItemClick = useCallback(
-    (item: DeepReadonly<ExploreItem>) => (): void => {
+    (item: DeepReadonly<DataverseEntity>) => (): void => {
       if (item.type === 'dataspace') {
-        router.push(`/dataspace/${item.dataspaceId}`)
+        router.push(`/dataspace/${item.id}`)
       } else {
         router.push(`/dataspace/${item.dataspaceId}/${item.type}/${item.id}`)
       }
@@ -106,11 +120,16 @@ const ExploreList = ({ layout, range, sortBy }: DeepReadonly<ExploreListProps>):
     <div className="okp4-explore-list">
       <List layout={layout}>
         {items.map(
-          (item: DeepReadonly<ExploreItem>): JSX.Element => (
+          (item: DeepReadonly<DataverseEntity>): JSX.Element => (
             <ListItem
               description={<ItemDescription categories={item.categories} type={item.type} />}
               key={item.id}
-              lastElement={<ItemRightElement provider={item.provider} updatedOn={item.updatedOn} />}
+              lastElement={
+                <ItemRightElement
+                  provider={item.type === 'dataspace' ? item.creator : item.provider}
+                  updatedOn={item.updatedOn}
+                />
+              }
               onClick={onListItemClick(item)}
               title={item.name}
             />

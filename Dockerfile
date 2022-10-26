@@ -40,7 +40,10 @@ ENV NODE_ENV=production \
   OKP4_MEDIUM_URL='https://blog.okp4.network/' \
   OKP4_TELEGRAM_URL='https://t.me/okp4network' \
   OKP4_TWITTER_URL='https://twitter.com/OKP4_Protocol' \
-  OKP4_WEBSITE_URL='https://okp4.network/'
+  OKP4_WEBSITE_URL='https://okp4.network/' \
+  DATA_PATH='./data' \
+  API_URI='http://localhost:3000/api' \
+  NEXT_PUBLIC_SERVER_URI='http://localhost:3000'
 
 RUN \
   addgroup --system --gid 1001 nodejs && \

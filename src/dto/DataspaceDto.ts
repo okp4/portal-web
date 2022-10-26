@@ -1,6 +1,6 @@
 export type DataspaceDto = {
   id: string
-  type: string
+  type: "dataspace"
   name: string
   access: string
   creator: string

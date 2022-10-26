@@ -18,8 +18,11 @@ export type Config = {
       telegramUrl: string
       twitterUrl: string
     }
+    apiUri: string
   }
 }
+
+export const server = process.env.NEXT_PUBLIC_SERVER_URI
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export default function handler(_req: NextApiRequest, res: NextApiResponse<Config>): void {
@@ -40,7 +43,8 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
         mediumUrl: process.env.OKP4_MEDIUM_URL,
         telegramUrl: process.env.OKP4_TELEGRAM_URL,
         twitterUrl: process.env.OKP4_TWITTER_URL
-      }
+      },
+      apiUri: process.env.API_URI
     }
   }
   return res.status(200).json(config)

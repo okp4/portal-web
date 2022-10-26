@@ -28,7 +28,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production \
   NEXT_TELEMETRY_DISABLED=1 \
-  GOVERNANCE_URL="https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen" \
+  NEXT_PUBLIC_GOVERNANCE_URL="https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen" \
   NAVIGATION_MENU_CREATE_URL="https://xd.adobe.com/view/0994d8fe-0e3f-44e0-b8bf-3c399bf524d9-5cc7/screen/007b4c59-2299-452d-90d6-6218e46b55f9/?fullscreen" \
   NAVIGATION_MENU_EXPLORE_URL="/dataverse/explore" \
   NAVIGATION_MENU_INTERACT_URL="https://discord.com/channels/946759919678406696/968040263006179358" \
@@ -42,7 +42,9 @@ ENV NODE_ENV=production \
   OKP4_TWITTER_URL='https://twitter.com/OKP4_Protocol' \
   OKP4_WEBSITE_URL='https://okp4.network/' \
   DATA_PATH='./data' \
-  API_URI='http://localhost:3000/api'
+  API_URI='http://localhost:3000/api' \
+  NEXT_PUBLIC_SERVER_URI='http://localhost:3000' \
+  NEXT_PUBLIC_DEFAULT_DATASPACE_ID='ef347285-e52a-430d-9679-dcb76b962ce7'
 
 RUN \
   addgroup --system --gid 1001 nodejs && \

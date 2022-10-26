@@ -6,27 +6,24 @@ import './dataspaceSummary.scss'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
 
 type DataspaceSummaryProps = {
-  dataspaces: DataspaceDto[]
   dataspace: DataspaceDto
-  governanceUrl: string | null
+  dataspaces: DataspaceDto[]
   onDataspaceChange: (value: SelectValue) => void
 }
 
-const Counters = ({ isMediumScreen }: DeepReadonly<{ isMediumScreen: boolean }>): JSX.Element => {
+const Counters = ({
+  dataspace,
+  isMediumScreen
+}: DeepReadonly<{ dataspace: DataspaceDto; isMediumScreen: boolean }>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { membersNb, datasetsNb, servicesNb }: any = {
-    membersNb: 1178,
-    datasetsNb: 822,
-    servicesNb: 674
-  }
+  const { members, datasets, services }: DeepReadonly<DataspaceDto> = dataspace
   const fontSize = useMemo(() => (isMediumScreen ? 'small' : 'medium'), [isMediumScreen])
 
   return (
     <div className="okp4-dataspace-summary-counters">
       <div className="okp4-dataspace-summary-counter">
         <Typography fontSize={fontSize} fontWeight="bold">
-          {membersNb}
+          {members}
         </Typography>
         <Typography fontSize="small">
           {t('dashboard:dataspace:summary:counters:members')}
@@ -42,13 +39,13 @@ const Counters = ({ isMediumScreen }: DeepReadonly<{ isMediumScreen: boolean }>)
       </div>
       <div className="okp4-dataspace-summary-counter">
         <Typography fontSize={fontSize} fontWeight="bold">
-          {datasetsNb}
+          {datasets}
         </Typography>
         <Typography fontSize="small"> {t('dashboard:dataspace:options:datasets')}</Typography>
       </div>
       <div className="okp4-dataspace-summary-counter">
         <Typography fontSize={fontSize} fontWeight="bold">
-          {servicesNb}
+          {services}
         </Typography>
         <Typography fontSize="small">{t('dashboard:dataspace:options:services')}</Typography>
       </div>
@@ -60,7 +57,6 @@ const Counters = ({ isMediumScreen }: DeepReadonly<{ isMediumScreen: boolean }>)
 const DataspaceSummary = ({
   dataspace,
   dataspaces,
-  governanceUrl,
   onDataspaceChange
 }: DeepReadonly<DataspaceSummaryProps>): JSX.Element => {
   const router = useRouter()
@@ -76,8 +72,8 @@ const DataspaceSummary = ({
   )
 
   const navigateToGovernance = useCallback(() => {
-    governanceUrl && router.push(governanceUrl)
-  }, [governanceUrl, router])
+    dataspace.governanceUrl && router.push(dataspace.governanceUrl)
+  }, [dataspace.governanceUrl, router])
 
   return (
     <>
@@ -85,7 +81,7 @@ const DataspaceSummary = ({
         <div className="okp4-dataspace-summary-card">
           <Card size={isMediumScreen ? 'medium' : 'small'} />
         </div>
-        <Counters isMediumScreen={isMediumScreen} />
+        <Counters dataspace={dataspace} isMediumScreen={isMediumScreen} />
         <div className="okp4-dataspace-options-with-description">
           <div className="okp4-dataspace-options">
             <Select onChange={onDataspaceChange} options={dataspacesList} value={dataspace.id} />
@@ -107,7 +103,7 @@ const DataspaceSummary = ({
       </div>
       <div className="okp4-dashboard-governance-link">
         <Button
-          disabled={!governanceUrl}
+          disabled={!dataspace.governanceUrl}
           label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })}
           onClick={navigateToGovernance}
         />

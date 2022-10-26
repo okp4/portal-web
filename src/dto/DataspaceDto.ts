@@ -10,6 +10,7 @@ export type DataspaceDto = {
   members: number
   datasets: number
   services: number
+  governanceUrl: string | null
   createdOn: string
   updatedOn: string
 }

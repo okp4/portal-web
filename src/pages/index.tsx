@@ -38,7 +38,6 @@ export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<H
           <DataspaceSummary
             dataspace={dataspace}
             dataspaces={dataspaces}
-            governanceUrl={process.env.NEXT_PUBLIC_GOVERNANCE_URL}
             onDataspaceChange={handleChangeSelectedDataspace}
           />
           <DataspaceEntities dataspaceId={dataspace.id} />

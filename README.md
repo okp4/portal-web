@@ -12,7 +12,7 @@
 
 ## Purpose
 
-🚀 This webapp is the heart of the OKP4 Dataverse: a rich portal to explore, use and contribute to this inifite universe ! 🪐
+🚀 Heart of the OKP4 Dataverse: a rich portal to explore, use and contribute to this infinite universe of digital resource (dataset, algorithm, storage or computation resource)! 🪐
 
 ## Setup
 

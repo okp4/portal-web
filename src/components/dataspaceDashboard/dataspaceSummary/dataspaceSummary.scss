@@ -2,7 +2,6 @@
 
 .okp4-dashboard-dataspace-summary {
   @include with-theme() {
-    grid-row: 1;
     display: grid;
     gap: 40px;
     max-height: 235px;

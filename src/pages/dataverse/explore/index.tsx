@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import type { NextPage } from 'next'
 import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
 import './explore.scss'
-import { ExploreFilters, ExploreList, ExploreListConfiguration, PageTitle } from '../../components'
+import { ExploreFilters, ExploreList, ExploreListConfiguration, PageTitle } from '../../../components'
 
 export type ExploreListLayout = 'grid' | 'list' | undefined
 

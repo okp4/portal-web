@@ -5,7 +5,7 @@ import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
 import './exploreList.scss'
 import { formatDate } from '../../../utils'
-import type { ExploreListLayout } from '../../../pages/explore'
+import type { ExploreListLayout } from '../../../pages/dataverse/explore'
 
 export type ExploreItem = {
   readonly id: string

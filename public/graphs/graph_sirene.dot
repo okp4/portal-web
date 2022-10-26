@@ -1,0 +1,42 @@
+digraph {
+    rankdir=LR
+    nodesep=0.6
+    bgcolor="none"
+    edge [minlen="3"]
+    graph [class="knowledge-graph"]
+    s01 [shape="circle" xlabel="ADMIN EXPRESS COG \n 2022 COMMUNE" label=""]
+    s02 [shape="circle" xlabel="ADMIN EXPRESS COG \n 2022 DEPARTEMENT" label=""]
+    s03 [shape="circle" xlabel="ADMIN EXPRESS COG \n 2022 REGION" label=""]
+    s04 [shape="circle" xlabel="BASE SIRÈNE   \n  STOCK ETABLISSEMENT \n OCTOBRE 2022" label=""]
+    s05 [shape="circle" xlabel="Table référentielle\n des codes NAF Rév2" label=""]
+    s06 [shape="rectangle" style="rounded,filled" label="Data Selector" ]
+    s07 [shape="rectangle" style="rounded,filled" label="Data Selector" ]
+    s08 [shape="rectangle" style="rounded,filled" label="Data Selector" ]
+    s09 [shape="rectangle" style="rounded,filled" label="Data Selector" ]
+    s10 [shape="rectangle" style="rounded,filled" label="Data Refactor" ]
+    s11 [shape="rectangle" style="rounded,filled" label="Data Refactor" ]
+    s12 [shape="rectangle" style="rounded,filled" label="Data Refactor" ]
+    s13 [shape="rectangle" style="rounded,filled" label="Data Refactor" ]
+    s14 [shape="rectangle" style="rounded,filled" label="Data Join Tabular"]
+    s15 [shape="rectangle" style="rounded,filled" label="Data Join Tabular" ]
+    s16 [shape="rectangle" style="rounded,filled" label="Data Join Tabular" ]
+    s17 [shape="rectangle" style="rounded,filled" label="Data Join Tabular" ]
+    s18 [shape="circle" style="rounded,filled" xlabel="BASE SIRÈNE \n Exploitation agricole" label=""]
+    s01  -> s06
+    s06  -> s10
+    s10  -> s14
+    s02  -> s07 
+    s07  -> s11
+    s11  -> s14
+    s03  -> s08 
+    s08  -> s12
+    s12  -> s16
+    s04  -> s09 
+    s09  -> s13 
+    s13  -> s15
+    s05  -> s15
+    s15  -> s17
+    s14  -> s16 
+    s16  -> s17
+    s17  -> s18
+}

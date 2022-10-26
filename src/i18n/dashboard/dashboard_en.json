@@ -9,6 +9,7 @@
         "rulebook": "The rulebook"
       }
     },
+    "description": "Rhizome is a OKP4 operated Dataspace, currently under development on top of OKP4 technology. Rhizome demonstrates the power of data processing and data sharing, and the value that we can gain when effectively connecting different open access agricutlural data sources under different data formats. Rhizome aims to connect as much data as possible, and to deliver high value visuals and metrics about different agricultural-related fields such as Land use and territory management, crop and livestock management, and forest resources and wood industry.",
     "creation": "Create a new Data Space",
     "governance": "See {{dataspace}} governance",
     "content": {

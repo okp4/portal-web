@@ -1,6 +1,6 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    GOVERNANCE_URL: string // The temporary governance link to our governance model
+    NEXT_PUBLIC_GOVERNANCE_URL: string // The temporary governance link to our governance model
     NAVIGATION_MENU_CREATE_URL: string
     NAVIGATION_MENU_EXPLORE_URL: string
     NAVIGATION_MENU_INTERACT_URL: string
@@ -17,6 +17,10 @@ declare namespace NodeJS {
     DATA_PATH: string
     // THE API uri
     API_URI: string
+    // The server uri to get the config
+    NEXT_PUBLIC_SERVER_URI: string
+    // Default dataspace loaded inside the homepage
+    NEXT_PUBLIC_DEFAULT_DATASPACE_ID: string
   }
 }
 

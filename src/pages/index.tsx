@@ -1,28 +1,35 @@
 import { useCallback, useEffect, useState } from 'react'
-import type { SelectValue, UseState } from '@okp4/ui'
-import type { NextPage } from 'next'
-import type { Dataspace } from '../components/dataspaceDashboard/dataspaceSummary/DataspaceSummary'
-import { DataspaceSummary, DataspaceEntities, DataspaceOptions } from '../components/index'
+import type { GetServerSideProps, NextPage } from 'next'
+import type { DeepReadonly, SelectValue, UseState } from '@okp4/ui'
+import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../components/index'
 import './index.scss'
+import { fetchConfig } from '../utils'
+import type { DataspaceDto } from '../dto/DataspaceDto'
 
-const fetchDataspace = async (url: string): Promise<Dataspace> => {
-  const response = await fetch(url)
-  const dataspace: Dataspace = await response.json()
-  return dataspace
+type HomePageProps = {
+  dataspaces: DataspaceDto[]
 }
 
-export const HomePage: NextPage = () => {
-  const [dataspace, setDataspace]: UseState<Dataspace | null> = useState<Dataspace | null>(null)
+// eslint-disable-next-line max-lines-per-function
+export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<HomePageProps>) => {
+  const [dataspace, setDataspace]: UseState<DeepReadonly<DataspaceDto> | null> =
+    useState<DeepReadonly<DataspaceDto> | null>(null)
 
-  const retrieveAndSetDataspace = useCallback((value: SelectValue) => {
-    fetchDataspace(`/api/fakeData/dataspaces/${value}`)
-      .then(setDataspace)
-      .catch((error: unknown) => console.error(error))
-  }, [])
+  const selectDataspace = useCallback((id: string) => {
+    const tmp: DeepReadonly<DataspaceDto> | undefined = dataspaces.find(
+      (item: DeepReadonly<DataspaceDto>) => item.id === id
+    )
+
+    if (tmp !== undefined) setDataspace(tmp)
+  }, [dataspaces])
+
+  const handleChangeSelectedDataspace = useCallback((value: SelectValue) => {
+    selectDataspace(value as string)
+  }, [selectDataspace])
 
   useEffect(() => {
-    retrieveAndSetDataspace('RhizomeId')
-  }, [retrieveAndSetDataspace])
+    selectDataspace(process.env.NEXT_PUBLIC_DEFAULT_DATASPACE_ID)
+  }, [dataspaces, selectDataspace])
 
   return (
     dataspace && (
@@ -30,11 +37,12 @@ export const HomePage: NextPage = () => {
         <div className="okp4-body-dashboard">
           <DataspaceSummary
             dataspace={dataspace}
-            governanceUrl={dataspace.governance}
-            onDataspaceChange={retrieveAndSetDataspace}
+            dataspaces={dataspaces}
+            governanceUrl={process.env.NEXT_PUBLIC_GOVERNANCE_URL}
+            onDataspaceChange={handleChangeSelectedDataspace}
           />
+          <DataspaceEntities dataspaceId={dataspace.id} />
           <DataspaceOptions />
-          <DataspaceEntities entities={dataspace.entities} />
         </div>
         <div className="okp4-body-activity" />
       </div>
@@ -43,3 +51,15 @@ export const HomePage: NextPage = () => {
 }
 
 export default HomePage
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const config = await fetchConfig()
+  const res = await fetch(`${config.app.apiUri}/dataverse/dataspace`)
+  const dataspaces: DataspaceDto[] = await res.json()
+
+  return {
+    props: {
+      dataspaces
+    }
+  }
+}

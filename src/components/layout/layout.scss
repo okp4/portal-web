@@ -7,6 +7,13 @@
     background: themed('header-background');
     display: grid;
 
+    header {
+      a {
+        text-decoration: none;
+        color: themed(text);
+      }
+    }
+
     main {
       background-repeat: no-repeat;
       color: themed('text');

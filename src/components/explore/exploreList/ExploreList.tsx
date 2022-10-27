@@ -60,20 +60,17 @@ const fetchItems = async (
   sortBy: string
 ): Promise<DeepReadonly<DataverseEntity[]>> => {
   const config = await fetchConfig()
-  const responses = [
-    await fetch(`${config.app.apiUri}/dataverse/dataspace/`),
-    await fetch(`${config.app.apiUri}/dataverse/dataset/`),
-    await fetch(`${config.app.apiUri}/dataverse/service/`)
-  ]
-
-  const items = (
-    await Promise.all(
-      responses.map(
-        async (item: DeepReadonly<Response>): Promise<DataverseEntity> =>
-          item.ok ? await item.json() : []
-      )
+  const items = await Promise.all([
+    fetch(`${config.app.apiUri}/dataverse/dataspace/`).then(
+      async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
+    ),
+    fetch(`${config.app.apiUri}/dataverse/dataset`).then(
+      async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
+    ),
+    fetch(`${config.app.apiUri}/dataverse/service`).then(
+      async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
     )
-  ).flat()
+  ]).then((arrays: DeepReadonly<DataverseEntity[]>) => arrays.flat())
 
   switch (sortBy) {
     case 'name':

@@ -43,8 +43,7 @@ ENV NODE_ENV=production \
   OKP4_WEBSITE_URL='https://okp4.network/' \
   DATA_PATH='./data' \
   API_URI='http://localhost:3000/api' \
-  NEXT_PUBLIC_SERVER_URI='http://localhost:3000' \
-  NEXT_PUBLIC_DEFAULT_DATASPACE_ID='ef347285-e52a-430d-9679-dcb76b962ce7'
+  NEXT_PUBLIC_SERVER_URI='http://localhost:3000'
 
 RUN \
   addgroup --system --gid 1001 nodejs && \

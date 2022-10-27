@@ -1,10 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { GetServerSideProps, NextPage } from 'next'
+import getConfig from 'next/config'
 import type { DeepReadonly, SelectValue, UseState } from '@okp4/ui'
 import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../components/index'
 import './index.scss'
 import { fetchConfig } from '../utils'
 import type { DataspaceDto } from '../dto/DataspaceDto'
+
+// eslint-disable-next-line @typescript-eslint/typedef
+const { publicRuntimeConfig } = getConfig()
 
 type HomePageProps = {
   dataspaces: DataspaceDto[]
@@ -28,7 +32,7 @@ export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<H
   }, [selectDataspace])
 
   useEffect(() => {
-    selectDataspace(process.env.NEXT_PUBLIC_DEFAULT_DATASPACE_ID)
+    selectDataspace(publicRuntimeConfig.defaultDataspaceId)
   }, [dataspaces, selectDataspace])
 
   return (

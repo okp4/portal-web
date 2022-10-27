@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
-import * as path from 'path';
-import pkg from './package.json' assert { type: "json" };
+import * as path from 'path'
+import pkg from './package.json' assert { type: 'json' }
 
 const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
-    version: pkg.version
+    version: pkg.version,
+    defaultDataspaceId: 'ef347285-e52a-430d-9679-dcb76b962ce7'
   },
   output: 'standalone',
   webpack(config) {

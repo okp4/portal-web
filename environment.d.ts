@@ -19,8 +19,6 @@ declare namespace NodeJS {
     API_URI: string
     // The server uri to get the config
     NEXT_PUBLIC_SERVER_URI: string
-    // Default dataspace loaded inside the homepage
-    NEXT_PUBLIC_DEFAULT_DATASPACE_ID: string
   }
 }
 
@@ -28,6 +26,8 @@ declare module 'next/config' {
   declare const _default: () => {
     publicRuntimeConfig: {
       version: string
+      // Default dataspace loaded inside the homepage
+      defaultDataspaceId: string
     }
   }
 

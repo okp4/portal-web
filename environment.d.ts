@@ -17,8 +17,6 @@ declare namespace NodeJS {
     DATA_PATH: string
     // THE API uri
     API_URI: string
-    // The server uri to get the config
-    NEXT_PUBLIC_SERVER_URI: string
   }
 }
 

@@ -1,5 +1,4 @@
 import type { Config } from './pages/api/config'
-import { server } from './pages/api/config'
 
 const languages: Record<string, string> = {
   en: 'en-US',
@@ -19,7 +18,7 @@ export const formatDate = (date: string, language?: string): string => {
 }
 
 export const fetchConfig = async (): Promise<Config> => {
-  const res = await fetch(`${server}/api/config`)
+  const res = await fetch('http:localhost:3000/api/config')
 
   return await res.json()
 }

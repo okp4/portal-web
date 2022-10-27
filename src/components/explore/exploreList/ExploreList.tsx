@@ -93,6 +93,7 @@ const fetchItems = async (
   return items.slice(0, range)
 }
 
+// eslint-disable-next-line max-lines-per-function
 const ExploreList = ({ layout, range, sortBy }: DeepReadonly<ExploreListProps>): JSX.Element => {
   const router: NextRouter = useRouter()
   const [items, setItems]: UseState<DeepReadonly<DataverseEntity[]>> = useState<
@@ -107,10 +108,18 @@ const ExploreList = ({ layout, range, sortBy }: DeepReadonly<ExploreListProps>):
 
   const onListItemClick = useCallback(
     (item: DeepReadonly<DataverseEntity>) => (): void => {
-      if (item.type === 'dataspace') {
-        router.push(`/dataspace/${item.id}`)
-      } else {
-        router.push(`/dataspace/${item.dataspaceId}/${item.type}/${item.id}`)
+      switch (item.type) {
+        case 'dataspace':
+          router.push(`/dataverse/explore/dataspace/${item.id}`)
+          return
+        case 'dataset':
+          router.push(`/dataverse/explore/dataspace/${item.dataspaceId}/dataset/${item.id}`)
+          return
+        case 'service':
+          router.push(`/dataverse/explore/dataspace/${item.dataspaceId}/service/${item.id}`)
+          return
+        default:
+          return
       }
     },
     [router]

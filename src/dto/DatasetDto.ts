@@ -1,6 +1,7 @@
 export type DatasetDto = {
   id: string
   dataspaceId: string
+  mainPicture: string
   type: "dataset"
   name: string
   access: string

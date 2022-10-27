@@ -2,11 +2,11 @@ import React, { useMemo } from 'react'
 import { Button, Typography, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import './datasetPreview.scss'
-import type { Dataset } from '../../../pages/dataverse/explore/dataspace/[dataspaceId]/dataset/[datasetId]'
 import { formatDate } from '../../../utils'
+import type { DatasetDto } from '../../../dto/DatasetDto'
 
 type DatasetPreviewProps = {
-  dataset: Dataset
+  dataset: DatasetDto
 }
 
 export const DatasetPreview = ({ dataset }: DeepReadonly<DatasetPreviewProps>): JSX.Element => {
@@ -15,11 +15,8 @@ export const DatasetPreview = ({ dataset }: DeepReadonly<DatasetPreviewProps>): 
   const invertedTextColor = 'inverted-text'
 
   const categoriesAsString: string = useMemo(
-    () =>
-      dataset.categories
-        .map((category: string): string => t(`dataset:categories:${category}`, category))
-        .join(', '),
-    [t, dataset.categories]
+    () => dataset.categories.map((category: string): string => category).join(', '),
+    [dataset.categories]
   )
 
   return (

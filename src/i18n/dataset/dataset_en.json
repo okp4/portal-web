@@ -2,13 +2,6 @@
   "add": "Add this Dataset to my Dataspace",
   "back": "Back",
   "by": "By {{provider}}, Last update {{- updated}}",
-  "categories": {
-    "agriculture": "Agriculture",
-    "open-data": "Open Data",
-    "demonstrator": "Demonstrator",
-    "dataviz": "Dataviz",
-    "agreste": "Agreste"
-  },
   "completeness": "Completeness",
   "dataset": "Dataset",
   "dataspace": "Dataspace",

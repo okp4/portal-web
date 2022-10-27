@@ -2,6 +2,7 @@
   {
     "id": "79ec2986-0d71-4e92-a48d-95379b3da9ed",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "ADMIN EXPRESS COG 2020 DEPARTEMENT",
     "access": "PUBLIC",
@@ -19,6 +20,7 @@
   {
     "id": "cb6ea0aa-e32d-4d79-8492-a6ebcc80b897",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "ADMIN EXPRESS COG 2020 REGION",
     "access": "PUBLIC",
@@ -36,6 +38,7 @@
   {
     "id": "3545ec2f-13cd-4909-a52f-df938e8c7a61",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "RPG FRANCE 2020",
     "access": "PUBLIC",
@@ -53,6 +56,7 @@
   {
     "id": "2c039dd5-6cc6-41bb-88eb-ab39e9f2ea81",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "Table référentielle des cultures et des groupes de cultures du RPG",
     "access": "PUBLIC",
@@ -70,6 +74,7 @@
   {
     "id": "957df710-4e35-45fb-add8-34d49904a77a",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "AGRESTE 2020",
     "access": "PUBLIC",
@@ -95,6 +100,7 @@
   {
     "id": "ca752b42-9740-4436-a86f-cd3c5e084d33",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "RPG AGRESTE 2020",
     "access": "PUBLIC",
@@ -121,6 +127,7 @@
   {
     "id": "7ff3d2a4-e6b2-4b06-8619-4fc8740dad86",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "ADMIN EXPRESS COG 2022 COMMUNE",
     "access": "PUBLIC",
@@ -138,6 +145,7 @@
   {
     "id": "142dacec-eb0f-4cd3-ab2b-d2095b8552b3",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "ADMIN EXPRESS COG 2022 DEPARTEMENT",
     "access": "PUBLIC",
@@ -155,6 +163,7 @@
   {
     "id": "5a5def4d-8328-4830-b71e-b19d9e2394bc",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "ADMIN EXPRESS COG 2022 REGION",
     "access": "PUBLIC",
@@ -172,6 +181,7 @@
   {
     "id": "65eda3f4-ecb6-4322-90e7-1832ed3178e9",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "BASE SIRÈNE - STOCK ETABLISSEMENT - OCTOBRE 2022",
     "access": "PUBLIC",
@@ -189,6 +199,7 @@
   {
     "id": "d22f0f6c-669d-4837-ba91-111d519b6f56",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "Table référentielle des codes NAF Rév2",
     "access": "PUBLIC",
@@ -206,6 +217,7 @@
   {
     "id": "d41e0628-e77a-446f-a3f9-624d5b061762",
     "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
     "type": "dataset",
     "name": "BASE SIRÈNE - Exploitation agricole",
     "access": "PUBLIC",

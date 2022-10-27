@@ -16,40 +16,21 @@ import {
 import './datasetId.scss'
 import type { Config } from '../../../../../api/config'
 import { fetchConfig } from '../../../../../../utils'
-
-export type DatasetGovernance = {
-  readonly name: string
-  readonly based: string
-}
-
-export type Dataset = {
-  readonly id: string
-  readonly mainPicture: string
-  readonly name: string
-  readonly type: string
-  readonly access: string
-  readonly categories: Array<string>
-  readonly description: string
-  readonly provider: string
-  readonly governance: DatasetGovernance
-  readonly size: number
-  readonly format: string
-  readonly quality: number
-  readonly completeness: number
-  readonly updatedOn: string
-}
+import type { DatasetDto } from '../../../../../../dto/DatasetDto'
+import type { DataspaceDto } from '../../../../../../dto/DataspaceDto'
 
 type Props = {
-  dataset: Dataset | null
+  dataspace: DataspaceDto | null
+  dataset: DatasetDto | null
 }
 
-const DatasetId: NextPage<Props> = ({ dataset }: DeepReadonly<Props>) =>
+const DatasetId: NextPage<Props> = ({ dataspace, dataset }: DeepReadonly<Props>) =>
   dataset && (
     <div className="okp4-dataset-id">
       <PageTitle title="dataset:title" />
       <PreviousPageButton />
       <DatasetPreview dataset={dataset} />
-      <DatasetInformation dataset={dataset} />
+      <DatasetInformation dataset={dataset} dataspace={dataspace} />
     </div>
   )
 
@@ -64,11 +45,21 @@ export const getStaticProps: GetStaticProps = async (
   context: DeepReadonly<GetStaticPropsContext>
 ): Promise<GetStaticPropsResult<Props>> => {
   const config: Config = await fetchConfig()
-  const res = await fetch(`${config.app.apiUri}/api/fake/dataset/${context.params?.datasetId}`)
-  const dataset: Dataset | null = res.ok ? await res.json() : null
+  const dataspaceId = context.params?.dataspaceId
+  const datasetId = context.params?.datasetId
+
+  const dataspaceResponse = await fetch(`${config.app.apiUri}/dataverse/dataspace/${dataspaceId}`)
+  const datasetResponse = await fetch(
+    `${config.app.apiUri}/dataverse/dataspace/${dataspaceId}/dataset/${datasetId}`
+  )
+
+  const dataspace: DataspaceDto | null = dataspaceResponse.ok
+    ? await dataspaceResponse.json()
+    : null
+  const dataset: DatasetDto | null = datasetResponse.ok ? await datasetResponse.json() : null
 
   return {
-    props: { dataset }
+    props: { dataspace, dataset }
   }
 }
 

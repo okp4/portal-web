@@ -2,13 +2,6 @@
   "add": "Ajouter ce jeu de données à mon Dataspace",
   "back": "Retour",
   "by": "By {{provider}}, Mis à jour {{- updated}}",
-  "categories": {
-    "agriculture": "Agriculture",
-    "open-data": "Open Data",
-    "demonstrator": "Démonstrateur",
-    "dataviz": "Dataviz",
-    "agreste": "Agreste"
-  },
   "completeness": "Complétude",
   "dataset": "Jeu de données",
   "dataspace": "Dataspace",

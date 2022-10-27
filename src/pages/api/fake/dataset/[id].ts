@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { DeepReadonly } from '@okp4/ui'
-import type { Dataset } from '../../../dataspace/[dataspaceId]/dataset/[datasetId]'
+import type { Dataset } from '../../../dataverse/explore/dataspace/[dataspaceId]/dataset/[datasetId]'
 import untypedDatasets from './datasets.json'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

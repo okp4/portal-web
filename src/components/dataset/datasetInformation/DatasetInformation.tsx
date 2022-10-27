@@ -6,7 +6,7 @@ import { formatDate } from '../../../utils'
 import type {
   Dataset,
   DatasetGovernance
-} from '../../../pages/dataspace/[dataspaceId]/dataset/[datasetId]'
+} from '../../../pages/dataverse/explore/dataspace/[dataspaceId]/dataset/[datasetId]'
 
 type DatasetInformationProps = {
   readonly dataset: Dataset

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { Button, Typography, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
 import './datasetPreview.scss'
-import type { Dataset } from '../../../pages/dataspace/[dataspaceId]/dataset/[datasetId]'
+import type { Dataset } from '../../../pages/dataverse/explore/dataspace/[dataspaceId]/dataset/[datasetId]'
 import { formatDate } from '../../../utils'
 
 type DatasetPreviewProps = {

@@ -12,10 +12,10 @@ import {
   DatasetInformation,
   PageTitle,
   PreviousPageButton
-} from '../../../../components'
+} from '../../../../../../components'
 import './datasetId.scss'
-import type { Config } from '../../../api/config'
-import { fetchConfig } from '../../../../utils'
+import type { Config } from '../../../../../api/config'
+import { fetchConfig } from '../../../../../../utils'
 
 export type DatasetGovernance = {
   readonly name: string

@@ -22,3 +22,5 @@ export const fetchConfig = async (): Promise<Config> => {
 
   return await res.json()
 }
+
+export const isExternalUrl: (url: string) => boolean = (url:string): boolean => (!url.startsWith('/'))

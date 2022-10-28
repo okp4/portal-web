@@ -15,6 +15,7 @@ import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
 import './layout.scss'
 import type { Config } from '../../pages/api/config'
+import { isExternalUrl } from '../../utils'
 
 // eslint-disable-next-line @typescript-eslint/typedef
 const { publicRuntimeConfig } = getConfig()
@@ -59,7 +60,6 @@ type NavigationMenuUrls = {
 type MenuItem = {
   namespace: string
   url: string | undefined
-  externalLink: boolean
 }
 
 const languages = [
@@ -173,35 +173,30 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
       {
         namespace: 'header:create',
         url: createUrl,
-        externalLink: true
       },
       {
         namespace: 'header:explore',
         url: exploreUrl,
-        externalLink: false
       },
       {
         namespace: 'header:interact',
         url: interactUrl,
-        externalLink: true
       },
       {
         namespace: 'header:learn',
         url: learnUrl,
-        externalLink: true
       },
       {
         namespace: 'header:okp4',
         url: okp4Url,
-        externalLink: true
       }
     ]
-
+    
     return menuItems.map(
-      ({ url, namespace, externalLink }: DeepReadonly<MenuItem>, index: number) => ({
+      ({ url, namespace }: DeepReadonly<MenuItem>, index: number) => ({
         menuItem: (
           <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
-            {externalLink ? (
+            {url && isExternalUrl(url) ? (
               <a href={url}>{t(namespace)}</a>
             ) : (
               <Link href={{ pathname: url }}>{t(namespace)}</Link>

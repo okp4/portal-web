@@ -18,7 +18,7 @@ export const formatDate = (date: string, language?: string): string => {
 }
 
 export const fetchConfig = async (): Promise<Config> => {
-  const res = await fetch('http:localhost:3000/api/config')
+  const res = await fetch('/api/config')
 
   return await res.json()
 }

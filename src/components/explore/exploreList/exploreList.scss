@@ -1,0 +1,16 @@
+.okp4-explore-list {
+  .okp4-list-main.layout-grid {
+    justify-content: left;
+
+    @media screen and (max-width: 1300px) {
+      justify-content: center
+    }
+  }
+
+  .okp4-explore-list-item-description {
+    span,
+    p {
+      text-transform: capitalize;
+    }
+  }
+}

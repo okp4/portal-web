@@ -1,7 +1,7 @@
 export type DatasetDto = {
   id: string
   dataspaceId: string
-  type: string
+  type: "dataset"
   name: string
   access: string
   categories: string[]

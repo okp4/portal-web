@@ -15,6 +15,8 @@ declare namespace NodeJS {
     OKP4_WEBSITE_URL: string
     // The data folder path
     DATA_PATH: string
+    // THE API uri
+    API_URI: string
   }
 }
 

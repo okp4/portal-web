@@ -14,6 +14,17 @@ const DataspaceOptions = dynamic(
   }
 )
 
+const PageTitle = dynamic(async () => import('./pageTitle/PageTitle'), {
+  ssr: false
+})
+
+const ExploreListConfiguration = dynamic(
+  async () => import('./explore/exploreListConfiguration/ExploreListConfiguration'),
+  {
+    ssr: false
+  }
+)
+
 const DataspaceSummary = dynamic(
   async () => import('./dataspaceDashboard/dataspaceSummary/DataspaceSummary'),
   {
@@ -21,11 +32,24 @@ const DataspaceSummary = dynamic(
   }
 )
 
-const DataspaceEntities = dynamic(
-  async () => import('./dataspaceDashboard/dataspaceEntities/DataspaceEntities'),
+const ExploreList = dynamic(
+  async () => import('./explore/exploreList/ExploreList'),
   {
     ssr: false
   }
 )
 
-export { Layout, DataspaceOptions, DataspaceSummary, DataspaceEntities }
+const DataspaceEntities = dynamic(
+  async () => import('./dataspaceDashboard/dataspaceEntities/DataspaceEntities'),
+  { ssr: false }
+)
+
+
+const ExploreFilters = dynamic(
+  async () => import('./explore/exploreFilters/ExploreFilters'),
+  {
+    ssr: false
+  }
+)
+
+export { PageTitle, Layout, DataspaceOptions, DataspaceSummary, DataspaceEntities, ExploreFilters, ExploreList, ExploreListConfiguration }

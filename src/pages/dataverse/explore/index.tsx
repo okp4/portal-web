@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
+import type { GetServerSideProps, GetServerSidePropsResult, NextPage } from 'next'
 import type { DeepReadonly, SelectOption, SelectValue, UseState } from '@okp4/ui'
 import './explore.scss'
 import {
@@ -49,7 +49,6 @@ const sortOptions: Array<SelectOption> = [
   }
 ]
 
-// eslint-disable-next-line max-lines-per-function
 const fetchItems = async (
   range: number,
   sortBy: string,
@@ -161,9 +160,10 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
 
 export default Explore
 
-export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
+export const getServerSideProps: GetServerSideProps = async (): Promise<
+  GetServerSidePropsResult<Props>
+> => {
   const dataspacesResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/`)
-
   const dataspaces: DataspaceDto[] = dataspacesResponse.ok ? await dataspacesResponse.json() : []
 
   return {

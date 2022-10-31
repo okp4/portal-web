@@ -9,7 +9,6 @@ type ExploreFiltersProps = {
   readonly onFiltersChange: (values: SelectValue) => void
 }
 
-// eslint-disable-next-line max-lines-per-function
 const ExploreFilters = ({
   filters,
   filtersOptions,
@@ -29,7 +28,7 @@ const ExploreFilters = ({
       <Typography as="h2">{t('explore:filters:title')}</Typography>
 
       <Select
-        multiple={true}
+        multiple
         onChange={handleChange}
         options={filtersOptions}
         size="small"

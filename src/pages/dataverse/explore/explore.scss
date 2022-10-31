@@ -1,16 +1,17 @@
 .okp4-explore {
-  max-width: 1350px;
   width: 100%;
   margin: auto;
   display: grid;
+  grid-template-columns: 340px auto auto;
   grid-template-areas:
     'title title title'
     '. configuration configuration'
     'filters list list';
   gap: 25px;
 
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1354px) {
     max-width: 96%;
+    grid-template-columns: auto auto auto;
     grid-template-areas:
       'title title title'
       'configuration configuration configuration'

@@ -1,0 +1,14 @@
+@import '@okp4/ui/lib/scss/themes.scss';
+
+.okp4-explore-filters {
+  @include with-theme {
+    height: fit-content;
+    border-radius: 9px;
+    background-color: themed('secondary-background');
+    padding: 25px;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}

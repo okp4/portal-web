@@ -4,11 +4,23 @@
   @include with-theme {
     height: fit-content;
     border-radius: 9px;
-    background-color: themed('secondary-background');
     padding: 25px;
+    width: fit-content;
+
+    .okp4-explore-filters-dataspace-select {
+      max-width: 300px;
+    }
 
     h2 {
       margin-top: 0;
+    }
+
+    &.dark {
+      background-color: themed('secondary-button');
+    }
+
+    &.light {
+      background-color: themed('border');
     }
   }
 }

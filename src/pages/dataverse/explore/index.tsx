@@ -71,15 +71,20 @@ const fetchItems = async (
   ).then((arrays: DataverseEntity[][]) => arrays.flat())
 
   switch (sortBy) {
-    case 'name':
-      items.sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
-        a.name.localeCompare(b.name)
-      )
+    case 'name': {
+      items
+        .slice()
+        .sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+          a.name.localeCompare(b.name)
+        )
       break
+    }
     case 'createdOn':
-      items.sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
-        b.createdOn.localeCompare(a.createdOn)
-      )
+      items
+        .slice()
+        .sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+          b.createdOn.localeCompare(a.createdOn)
+        )
       break
     default:
       break
@@ -147,13 +152,11 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
       />
       <ExploreList entities={entities} layout={listLayout} />
 
-      {filters.length > 0 && (
-        <ExploreFilters
-          filters={filters}
-          filtersOptions={filtersOptions}
-          onFiltersChange={handleFiltersChange}
-        />
-      )}
+      <ExploreFilters
+        filters={filters}
+        filtersOptions={filtersOptions}
+        onFiltersChange={handleFiltersChange}
+      />
     </div>
   )
 }

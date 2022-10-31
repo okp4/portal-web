@@ -14,8 +14,6 @@ import {
   PreviousPageButton
 } from '../../../../../../components'
 import './datasetId.scss'
-import type { Config } from '../../../../../api/config'
-import { fetchConfig } from '../../../../../../utils'
 import type { DatasetDto } from '../../../../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../../../../dto/DataspaceDto'
 
@@ -44,13 +42,12 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<GetStaticPathsRe
 export const getStaticProps: GetStaticProps = async (
   context: DeepReadonly<GetStaticPropsContext>
 ): Promise<GetStaticPropsResult<Props>> => {
-  const config: Config = await fetchConfig()
   const dataspaceId = context.params?.dataspaceId
   const datasetId = context.params?.datasetId
 
-  const dataspaceResponse = await fetch(`${config.app.apiUri}/dataverse/dataspace/${dataspaceId}`)
+  const dataspaceResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/${dataspaceId}`)
   const datasetResponse = await fetch(
-    `${config.app.apiUri}/dataverse/dataspace/${dataspaceId}/dataset/${datasetId}`
+    `${process.env.API_URI}/dataverse/dataspace/${dataspaceId}/dataset/${datasetId}`
   )
 
   const dataspace: DataspaceDto | null = dataspaceResponse.ok

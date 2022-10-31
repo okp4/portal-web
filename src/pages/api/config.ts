@@ -47,5 +47,3 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
   }
   return res.status(200).json(config)
 }
-
-export const server = process.env.SERVER_URI

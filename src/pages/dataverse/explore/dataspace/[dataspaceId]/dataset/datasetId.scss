@@ -1,0 +1,37 @@
+.okp4-dataset-id {
+  max-width: 1140px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'title title title'
+    'back back back'
+    'preview information information'
+    'preview information information';
+  gap: 25px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-areas:
+      'title title title'
+      'back back back'
+      'preview preview preview'
+      'information information information';
+  }
+
+  .okp4-page-title {
+    grid-area: title;
+  }
+
+  .okp4-previous-page-button {
+    grid-area: back;
+  }
+
+  .okp4-dataset-preview {
+    grid-area: preview;
+  }
+
+  .okp4-dataset-information {
+    grid-area: information;
+  }
+}

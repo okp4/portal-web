@@ -9,11 +9,19 @@ const nextConfig = {
   },
   output: 'standalone',
   webpack(config) {
-    config.module.rules[2].oneOf?.forEach((one) => {
-      if (!`${one.issuer?.and}`.includes('_app')) return;
-        one.issuer.and = [path.resolve()];
-    });
-    return config;
+    config.module.rules[2].oneOf?.forEach(one => {
+      if (!`${one.issuer?.and}`.includes('_app')) return
+      one.issuer.and = [path.resolve()]
+    })
+    return config
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: "**",
+      },
+    ],
   },
 }
 

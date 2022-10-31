@@ -1,0 +1,28 @@
+{
+  "add": "Add this Dataset to my Dataspace",
+  "back": "Back",
+  "by": "By {{provider}}, Last update {{- updated}}",
+  "completeness": "Completeness",
+  "dataset": "Dataset",
+  "dataspace": "Dataspace",
+  "description": "Description",
+  "format": "Format",
+  "governance": {
+    "name": "Governance",
+    "view": "View Governance",
+    "based": "{{name}} Governance based on the {{token}} token"
+  },
+  "jointure": "Jointure",
+  "metadata": "Metadata",
+  "private": "Private",
+  "provider": "Provider",
+  "public": "Public",
+  "quality": "Quality",
+  "service": "Service",
+  "size": "Size",
+  "title": "Explore the Dataverse",
+  "units": {
+    "mb": "Mb"
+  },
+  "updated-on": "Last update"
+}

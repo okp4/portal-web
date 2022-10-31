@@ -1,0 +1,28 @@
+{
+  "add": "Ajouter ce jeu de données à mon Dataspace",
+  "back": "Retour",
+  "by": "By {{provider}}, Mis à jour {{- updated}}",
+  "completeness": "Complétude",
+  "dataset": "Jeu de données",
+  "dataspace": "Dataspace",
+  "description": "Description",
+  "format": "Format",
+  "governance": {
+    "name": "Gouvernance",
+    "view": "Voir la gouvernance",
+    "based": "{{name}} Gouvernance basée sur le {{token}} jeton"
+  },
+  "jointure": "Jointure",
+  "metadata": "Metadonées",
+  "private": "Privé",
+  "provider": "Fournisseur",
+  "public": "Public",
+  "quality": "Qualité",
+  "service": "Service",
+  "size": "Taille",
+  "title": "Explorez le Dataverse",
+  "units": {
+    "mb": "Mo"
+  },
+  "updated-on": "Mis à jour"
+}

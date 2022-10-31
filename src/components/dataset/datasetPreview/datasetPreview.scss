@@ -1,0 +1,27 @@
+@import '@okp4/ui/lib/scss/themes';
+
+.okp4-dataset-preview {
+  @include with-theme {
+    background: themed(text);
+    border-radius: 9px;
+    padding: 20px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h2 {
+      margin: 0;
+    }
+
+    span {
+      &:nth-child(5) {
+        text-align: end;
+      }
+    }
+
+    button {
+      margin: 10px auto 0;
+    }
+  }
+}

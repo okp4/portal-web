@@ -4,7 +4,7 @@ import type { NextRouter } from 'next/router'
 import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
 import './exploreList.scss'
-import { fetchConfig, formatDate } from '../../../utils'
+import { formatDate } from '../../../utils'
 import type { ExploreListLayout } from '../../../pages/dataverse/explore'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
 import type { DatasetDto } from '../../../dto/DatasetDto'
@@ -59,18 +59,14 @@ const fetchItems = async (
   range: number,
   sortBy: string
 ): Promise<DeepReadonly<DataverseEntity[]>> => {
-  const config = await fetchConfig()
-  const items = await Promise.all([
-    fetch(`${config.app.apiUri}/dataverse/dataspace/`).then(
-      async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
-    ),
-    fetch(`${config.app.apiUri}/dataverse/dataset`).then(
-      async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
-    ),
-    fetch(`${config.app.apiUri}/dataverse/service`).then(
-      async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
+  const items = await Promise.all(
+    ['dataspace', 'dataset', 'service'].map(
+      async (type: DeepReadonly<string>): Promise<DataverseEntity> =>
+        fetch(`/api/dataverse/${type}/`).then(async (res: DeepReadonly<Response>) =>
+          res.ok ? await res.json() : []
+        )
     )
-  ]).then((arrays: DeepReadonly<DataverseEntity[]>) => arrays.flat())
+  ).then((arrays: DeepReadonly<DataverseEntity[]>) => arrays.flat())
 
   switch (sortBy) {
     case 'name':

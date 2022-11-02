@@ -1,4 +1,21 @@
 [
+  {
+    "id": "fbe11a63-85da-4f82-97c4-f719ac1f4ce8",
+    "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+    "type": "service",
+    "name": "Data Selector",
+    "access": "PUBLIC",
+    "categories": ["traitement de données", "selection"],
+    "description": "L'outil Data Selector permet de sélectionner un échantillon de l'ensemble de données, en spécifiant un nombre de lignes. Il est possible de supprimer ou de conserver des colonnes. Un autre paramètre permet de sélectionner les données d'une colonne en fonction de sa (ses) valeur(s).",
+    "provider": "OKP4",
+    "creator": "OKP4",
+    "nbInputFiles": 1,
+    "inputFormat": ["geojson", "shp", "xlsx", "xls", "Xlsx", "csv"],
+    "nbOutputFiles": 1,
+    "outputFormat": ["csv"],
+    "createdOn": "2022-09-28T11:13:13Z",
+    "updatedOn": "2022-09-28T11:13:13Z"
+    },
     {
       "id": "16c4cd10-521a-4829-b1bd-a1e2ac60459a",
       "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
@@ -17,23 +34,6 @@
       "updatedOn": "2022-09-16T03:54:18Z"
     },
     {
-        "id": "fbe11a63-85da-4f82-97c4-f719ac1f4ce8",
-        "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
-        "type": "service",
-        "name": "Data Selector",
-        "access": "PUBLIC",
-        "categories": ["traitement de données", "selection"],
-        "description": "L'outil Data Selector permet de sélectionner un échantillon de l'ensemble de données, en spécifiant un nombre de lignes. Il est possible de supprimer ou de conserver des colonnes. Un autre paramètre permet de sélectionner les données d'une colonne en fonction de sa (ses) valeur(s).",
-        "provider": "OKP4",
-        "creator": "OKP4",
-        "nbInputFiles": 1,
-        "inputFormat": ["geojson", "shp", "xlsx", "xls", "Xlsx", "csv"],
-        "nbOutputFiles": 1,
-        "outputFormat": ["csv"],
-        "createdOn": "2022-09-28T11:13:13Z",
-        "updatedOn": "2022-09-28T11:13:13Z"
-      },
-      {
         "id": "6272c8d0-f5ed-4394-8f54-a7b429faec13",
         "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
         "type": "service",

@@ -1,8 +1,13 @@
 .okp4-dashboard-dataspace-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(277px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(277px, auto));
   gap: 25px;
   align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 1301px) and (max-width: 1467px), (max-width: 1060px) {
+    justify-content: space-around;
+  }
 
   .okp4-dataspace-card {
     display: grid;

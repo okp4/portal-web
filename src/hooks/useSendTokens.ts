@@ -70,10 +70,6 @@ export type Bech32Config = {
 
 export type UseSendTokensArgs = {
   chainInfo: ChainInfo
-  recipientAddress: string
-  amount: Amount
-  fee: Fee
-  memo?: string
 }
 
 export type UseSendTokensResponse = {
@@ -84,7 +80,12 @@ export type UseSendTokensResponse = {
   error: Error | null
 }
 
-export type UseSendTokensHandler = () => void
+export type UseSendTokensHandler = (
+  recipientAddress: string,
+  amount: DeepReadonly<Amount>,
+  fee: DeepReadonly<Fee>,
+  memo?: string
+) => void
 
 export type UseSendTokensTuple = [handler: UseSendTokensHandler, response: UseSendTokensResponse]
 
@@ -129,15 +130,20 @@ export const useSendTokens = (args: DeepReadonly<UseSendTokensArgs>): UseSendTok
   const [loading, setLoading] = useState<UseSendTokensResponse['loading']>(false)
   const [error, setError] = useState<UseSendTokensResponse['error']>(null)
 
-  const handler = async (): Promise<void> => {
-    const { chainInfo, recipientAddress, amount, memo, fee }: DeepReadonly<UseSendTokensArgs> = args
+  const handler = async (
+    recipientAddress: string,
+    amount: DeepReadonly<Amount>,
+    fee: DeepReadonly<Fee>,
+    memo?: string
+  ): Promise<void> => {
+    const { chainInfo }: DeepReadonly<UseSendTokensArgs> = args
     const { chainId, rpc } = chainInfo
     try {
       await enableKeplr(chainInfo)
       const offlineSigner = getKeplr().getOfflineSigner(chainId)
       const accounts = await offlineSigner.getAccounts()
       const client = await SigningStargateClient.connectWithSigner(rpc, offlineSigner)
-      
+
       setLoading(true)
       const result = await client.sendTokens(
         accounts[0].address,

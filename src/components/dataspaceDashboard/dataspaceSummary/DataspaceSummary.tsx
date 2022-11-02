@@ -98,9 +98,9 @@ const DataspaceSummary = ({
           </div>
           <div className="okp4-dataspace-description">
             <Typography fontSize="small">
-              {dataspace.id === publicRuntimeConfig.defaultDataspaceId
-                ? t('dashboard:dataspace:description')
-                : dataspace.description}
+              {t(
+                `dashboard:dataspace:description:${dataspace.name.toLowerCase().replace(/ /g, '-')}`
+              )}
             </Typography>
           </div>
         </div>

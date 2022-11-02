@@ -9,12 +9,14 @@ type DataverseEntity = DatasetDto | ServiceDto
 
 const fetchEntities = async (id: string): Promise<DataverseEntity[]> => {
   return await Promise.all(
-    ['dataset', 'service'].map(
-      async (type: DeepReadonly<string>): Promise<DataverseEntity> =>
-        fetch(`/api/dataverse/dataspace/${id}/${type}/`).then(async (res: DeepReadonly<Response>) =>
-          res.ok ? await res.json() : []
-        )
-    )
+    [
+      await fetch(`/api/dataverse/dataspace/${id}/dataset?final_dataset=true&size=2`).then(
+        async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
+      ),
+      await fetch(`/api/dataverse/dataspace/${id}/service?size=1`).then(
+        async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
+      )
+    ]
     // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
   ).then((arrays: DataverseEntity[]) => arrays.flat())
 }

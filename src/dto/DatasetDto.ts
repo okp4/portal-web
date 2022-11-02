@@ -1,8 +1,9 @@
 export type DatasetDto = {
   id: string
   dataspaceId: string
+  final_dataset?: boolean
   mainPicture: string
-  type: "dataset"
+  type: 'dataset'
   name: string
   access: string
   categories: string[]

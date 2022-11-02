@@ -4,8 +4,72 @@ import { SigningStargateClient } from '@cosmjs/stargate'
 import type { DeepReadonly } from '@okp4/ui'
 import { useState } from 'react'
 
-export type UseSendTokensArgs = {
+export type Currency = {
+  coinDenom: string
+  coinMinimalDenom: string
+  coinDecimals: number
+  coinGeckoId?: string
+  coinImageUrl?: string
+}
+export type CW20Currency = Currency & {
+  type: 'cw20'
+  contractAddress: string
+}
+export type Secret20Currency = Currency & {
+  type: 'secret20'
+  contractAddress: string
+  viewingKey: string
+}
+
+export type IBCCurrency = Currency & {
+  paths: {
+    portId: string
+    channelId: string
+  }[]
+  originChainId: string | undefined
+  originCurrency: Currency | CW20Currency | Secret20Currency | undefined
+}
+
+export type AppCurrency = Currency | CW20Currency | Secret20Currency | IBCCurrency
+
+export type ChainInfo = {
+  rpc: string
+  rest: string
   chainId: string
+  chainName: string
+  stakeCurrency: Currency
+  walletUrl?: string
+  walletUrlForStaking?: string
+  bip44: BIP44
+  alternativeBIP44s?: BIP44[]
+  bech32Config: Bech32Config
+  currencies: AppCurrency[]
+  feeCurrencies: Currency[]
+  coinType?: number
+  gasPriceStep?: {
+    low: number
+    average: number
+    high: number
+  }
+  features?: string[]
+  beta?: boolean
+}
+
+export type BIP44 = {
+  coinType: number
+}
+
+export type Bech32Config = {
+  bech32PrefixAccAddr: string
+  bech32PrefixAccPub: string
+  bech32PrefixValAddr: string
+  bech32PrefixValPub: string
+  bech32PrefixConsAddr: string
+  bech32PrefixConsPub: string
+}
+
+export type UseSendTokensArgs = {
+  chainInfo: ChainInfo
   recipientAddress: string
   amount: Amount
   fee: Fee
@@ -34,21 +98,31 @@ export type Fee = {
   gas: string
 }
 
-const checkKeplrExtensionAvailability = (): void => {
-  if (!window.getOfflineSigner || !window.keplr) {
+const getKeplr = (): Keplr => {
+  if (!window.keplr?.getOfflineSigner) {
     throw new Error(
       'The Keplr extension must be installed and activated in your browser in order to use it.'
     )
   }
+  return window.keplr
 }
 
-const enableKeplr = async (chainId: string): Promise<void> =>
-  window.keplr &&
-  (await window.keplr.enable(chainId).catch(() => {
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const enableKeplr = async (chainInfo: DeepReadonly<ChainInfo>): Promise<void> => {
+  const throwError: () => void = () => {
     throw new Error(
       'Oops, an error occurred while trying to connect to the wallet. Please try again later or contact us.'
     )
-  }))
+  }
+  const keplr = getKeplr()
+
+  return keplr.enable(chainInfo.chainId).catch(() => {
+    getKeplr()
+      .experimentalSuggestChain(chainInfo as ChainInfo)
+      .then(async () => await keplr.enable(chainInfo.chainId))
+      .catch(throwError)
+  })
+}
 
 export const useSendTokens = (args: DeepReadonly<UseSendTokensArgs>): UseSendTokensTuple => {
   const [data, setData] = useState<UseSendTokensResponse['data']>(null)
@@ -56,16 +130,14 @@ export const useSendTokens = (args: DeepReadonly<UseSendTokensArgs>): UseSendTok
   const [error, setError] = useState<UseSendTokensResponse['error']>(null)
 
   const handler = async (): Promise<void> => {
-    const { chainId, recipientAddress, amount, memo, fee }: DeepReadonly<UseSendTokensArgs> = args
+    const { chainInfo, recipientAddress, amount, memo, fee }: DeepReadonly<UseSendTokensArgs> = args
+    const { chainId, rpc } = chainInfo
     try {
-      checkKeplrExtensionAvailability()
-      await enableKeplr(chainId)
-      const offlineSigner = (window.keplr as Keplr).getOfflineSigner(chainId)
+      await enableKeplr(chainInfo)
+      const offlineSigner = getKeplr().getOfflineSigner(chainId)
       const accounts = await offlineSigner.getAccounts()
-      const client = await SigningStargateClient.connectWithSigner(
-        'https://api.devnet.okp4.network:443/rpc',
-        offlineSigner
-      )
+      const client = await SigningStargateClient.connectWithSigner(rpc, offlineSigner)
+      
       setLoading(true)
       const result = await client.sendTokens(
         accounts[0].address,

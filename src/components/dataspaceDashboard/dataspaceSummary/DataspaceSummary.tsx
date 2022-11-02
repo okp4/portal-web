@@ -1,13 +1,9 @@
 import { useCallback, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import getConfig from 'next/config'
 import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, SelectOption, SelectValue, UseTranslationResponse } from '@okp4/ui'
 import './dataspaceSummary.scss'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
-
-// eslint-disable-next-line @typescript-eslint/typedef
-const { publicRuntimeConfig } = getConfig()
 
 type DataspaceSummaryProps = {
   dataspace: DataspaceDto

@@ -44,6 +44,7 @@ const DataspaceEntities = ({ dataspaceId }: DeepReadonly<{ dataspaceId: string }
                   <Typography>{entity.type}</Typography>
                 </div>
               }
+              size="small"
             />
           </div>
         )

@@ -17,10 +17,10 @@
     "name": "Know Universe",
     "access": "PUBLIC",
     "creator": "OKP4",
-    "categories": ["agriculture", "open data", "demonstrateur", "dataviz"],
-    "description": "estibulum pharetra, magna eget imperdiet fringilla, metus orci sagittis elit, blandit pretium felis sem sed neque. Etiam commodo nisi lorem, non fringilla tellus euismod at.",
+    "categories": ["cosmos", "open data", "blockchain", "OKP4"],
+    "description": " Le Data Space Know Universe vise à valoriser des données financières inhérentes à l'économie du jeton $KNOW. Ces données peuvent par exemple être partagées par l'un des 150 validateurs de la blockchain OKP4",
     "token": "KNOW",
-    "createdOn": "2022-10-30T15:29:16.507Z",
-    "updatedOn": "2022-10-30T15:29:16.507Z"
+    "createdOn": "2022-10-28T15:33:16.507Z",
+    "updatedOn": "2022-10-28T15:33:16.507Z"
   }
 ]

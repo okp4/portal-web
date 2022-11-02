@@ -1,5 +1,6 @@
 declare namespace NodeJS {
   interface ProcessEnv {
+    NAVIGATION_MENU_HOME_URL: string
     NAVIGATION_MENU_CREATE_URL: string
     NAVIGATION_MENU_EXPLORE_URL: string
     NAVIGATION_MENU_INTERACT_URL: string

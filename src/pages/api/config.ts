@@ -4,6 +4,7 @@ export type Config = {
   app: {
     websiteUrl: string
     navigationMenuUrls: {
+      homeUrl: string
       createUrl: string
       exploreUrl: string
       interactUrl: string
@@ -28,6 +29,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
     app: {
       websiteUrl: process.env.OKP4_WEBSITE_URL,
       navigationMenuUrls: {
+        homeUrl: process.env.NAVIGATION_MENU_HOME_URL,
         createUrl: process.env.NAVIGATION_MENU_CREATE_URL,
         exploreUrl: process.env.NAVIGATION_MENU_EXPLORE_URL,
         interactUrl: process.env.NAVIGATION_MENU_INTERACT_URL,

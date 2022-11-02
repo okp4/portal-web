@@ -2,8 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import type { GetServerSideProps, NextPage } from 'next'
 import getConfig from 'next/config'
 import type { DeepReadonly, SelectValue, UseState } from '@okp4/ui'
-import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../components/index'
-import type { DataspaceDto } from '../dto/DataspaceDto'
+import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../../components/index'
+import type { DataspaceDto } from '../../dto/DataspaceDto'
 import './index.scss'
 
 // eslint-disable-next-line @typescript-eslint/typedef

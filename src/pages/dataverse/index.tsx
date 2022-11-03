@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useState } from 'react'
-import type { GetServerSideProps, NextPage } from 'next'
-import getConfig from 'next/config'
+import type { NextPage } from 'next'
 import type { DeepReadonly, SelectValue, UseState } from '@okp4/ui'
 import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../../components/index'
 import type { DataspaceDto } from '../../dto/DataspaceDto'
 import './index.scss'
-
-// eslint-disable-next-line @typescript-eslint/typedef
-const { publicRuntimeConfig } = getConfig()
+import type { Config } from '../api/config'
 
 type HomePageProps = {
-  dataspaces: DataspaceDto[]
+  config: Config | null
 }
 
-export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<HomePageProps>) => {
+// eslint-disable-next-line max-lines-per-function
+export const HomePage: NextPage<HomePageProps> = ({ config }: DeepReadonly<HomePageProps>) => {
+  const [dataspaces, setDataspaces]: UseState<DeepReadonly<DataspaceDto[]>> = useState<
+    DeepReadonly<DataspaceDto[]>
+  >([])
   const [dataspace, setDataspace]: UseState<DeepReadonly<DataspaceDto> | null> =
     useState<DeepReadonly<DataspaceDto> | null>(null)
 
@@ -36,8 +37,22 @@ export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<H
   )
 
   useEffect(() => {
-    selectDataspace(publicRuntimeConfig.defaultDataspaceId)
-  }, [dataspaces, selectDataspace])
+    if (config) {
+      fetch(`${config.app.apiUri}/dataverse/dataspace`)
+        // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+        .then(async (resp: Response) => {
+          return resp.json()
+        })
+        .then(setDataspaces)
+        .catch((error: unknown) => console.error(error))
+    }
+  }, [config, config?.app.apiUri])
+
+  useEffect(() => {
+    if (config) {
+      selectDataspace(config.app.defaultDataspaceId)
+    }
+  }, [dataspaces, config?.app.defaultDataspaceId, selectDataspace, config])
 
   return (
     dataspace && (
@@ -58,14 +73,3 @@ export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<H
 }
 
 export default HomePage
-
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const res = await fetch(`${process.env.API_URI}/dataverse/dataspace`)
-  const dataspaces: DataspaceDto[] = res.ok ? await res.json() : []
-
-  return {
-    props: {
-      dataspaces
-    }
-  }
-}

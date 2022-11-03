@@ -1,72 +1,8 @@
 /* eslint-disable @typescript-eslint/typedef */
-import type { Keplr } from '@keplr-wallet/types'
+import type { ChainInfo, Keplr } from '@keplr-wallet/types'
 import { SigningStargateClient } from '@cosmjs/stargate'
 import type { DeepReadonly } from '@okp4/ui'
 import { useState } from 'react'
-
-export type Currency = {
-  coinDenom: string
-  coinMinimalDenom: string
-  coinDecimals: number
-  coinGeckoId?: string
-  coinImageUrl?: string
-}
-export type CW20Currency = Currency & {
-  type: 'cw20'
-  contractAddress: string
-}
-export type Secret20Currency = Currency & {
-  type: 'secret20'
-  contractAddress: string
-  viewingKey: string
-}
-
-export type IBCCurrency = Currency & {
-  paths: {
-    portId: string
-    channelId: string
-  }[]
-  originChainId: string | undefined
-  originCurrency: Currency | CW20Currency | Secret20Currency | undefined
-}
-
-export type AppCurrency = Currency | CW20Currency | Secret20Currency | IBCCurrency
-
-export type ChainInfo = {
-  rpc: string
-  rest: string
-  chainId: string
-  chainName: string
-  stakeCurrency: Currency
-  walletUrl?: string
-  walletUrlForStaking?: string
-  bip44: BIP44
-  alternativeBIP44s?: BIP44[]
-  bech32Config: Bech32Config
-  currencies: AppCurrency[]
-  feeCurrencies: Currency[]
-  coinType?: number
-  gasPriceStep?: {
-    low: number
-    average: number
-    high: number
-  }
-  features?: string[]
-  beta?: boolean
-}
-
-export type BIP44 = {
-  coinType: number
-}
-
-export type Bech32Config = {
-  bech32PrefixAccAddr: string
-  bech32PrefixAccPub: string
-  bech32PrefixValAddr: string
-  bech32PrefixValPub: string
-  bech32PrefixConsAddr: string
-  bech32PrefixConsPub: string
-}
 
 export type UseSendTokensArgs = {
   chainInfo: ChainInfo
@@ -130,6 +66,12 @@ export const useSendTokens = (args: DeepReadonly<UseSendTokensArgs>): UseSendTok
   const [loading, setLoading] = useState<UseSendTokensResponse['loading']>(false)
   const [error, setError] = useState<UseSendTokensResponse['error']>(null)
 
+  const flushState = (): void => {
+    setData(null)
+    setLoading(false)
+    setError(null)
+  }
+
   const handler = async (
     recipientAddress: string,
     amount: DeepReadonly<Amount>,
@@ -139,6 +81,7 @@ export const useSendTokens = (args: DeepReadonly<UseSendTokensArgs>): UseSendTok
     const { chainInfo }: DeepReadonly<UseSendTokensArgs> = args
     const { chainId, rpc } = chainInfo
     try {
+      flushState()
       await enableKeplr(chainInfo)
       const offlineSigner = getKeplr().getOfflineSigner(chainId)
       const accounts = await offlineSigner.getAccounts()

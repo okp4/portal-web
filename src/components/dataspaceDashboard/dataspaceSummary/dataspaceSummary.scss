@@ -23,6 +23,7 @@
       grid-column: 1;
       width: 280px;
       max-height: inherit;
+
       @media screen and (max-width: 995px) {
         width: unset;
       }
@@ -35,6 +36,15 @@
       @media screen and (max-width: 480px) {
         display: grid;
         justify-items: center;
+      }
+
+      &.know-universe > :first-child > :first-child {
+        background: center/cover no-repeat
+          url('../../../assets/images/card-background-know-universe.png') !important;
+      }
+
+      &.rhizome > :first-child > :first-child {
+        background: center/cover no-repeat url('../../../assets/images/card-background-rhizome.png') !important;
       }
     }
 

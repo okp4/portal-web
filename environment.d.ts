@@ -19,6 +19,13 @@ declare namespace NodeJS {
     API_URI: string
     // Default dataspace loaded inside the homepage
     DEFAULT_DATASPACE_ID: string
+    CHAIN_ID: string
+    CHAIN_NAME: string
+    CHAIN_RPC_ENDPOINT: string
+    CHAIN_REST_ENDPOINT: string
+    TX_MEMO: string
+    TX_RECIPIENT_ADDRESS: string
+    OKP4_BI_URL: string
   }
 }
 

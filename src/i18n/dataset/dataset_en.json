@@ -24,5 +24,9 @@
   "units": {
     "mb": "Mb"
   },
-  "updated-on": "Last update"
+  "updated-on": "Last update",
+  "see": "See in OKP4 BI",
+  "tx": {
+    "sending": "Sending transaction..."
+  }
 }

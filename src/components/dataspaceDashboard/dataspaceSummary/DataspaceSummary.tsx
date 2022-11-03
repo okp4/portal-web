@@ -4,6 +4,7 @@ import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } 
 import type { DeepReadonly, SelectOption, SelectValue, UseTranslationResponse } from '@okp4/ui'
 import './dataspaceSummary.scss'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
+import classNames from 'classnames'
 
 type DataspaceSummaryProps = {
   selectedDataspace: DataspaceDto
@@ -78,13 +79,22 @@ const DataspaceSummary = ({
   return (
     <>
       <div className="okp4-dashboard-dataspace-summary">
-        <div className="okp4-dataspace-summary-card">
+        <div
+          className={classNames(
+            'okp4-dataspace-summary-card',
+            selectedDataspace.name.toLowerCase().replace(/\s/g, '-')
+          )}
+        >
           <Card size={isMediumScreen ? 'medium' : 'small'} />
         </div>
         <Counters dataspace={selectedDataspace} isMediumScreen={isMediumScreen} />
         <div className="okp4-dataspace-options-with-description">
           <div className="okp4-dataspace-options">
-            <Select onChange={onDataspaceChange} options={dataspacesList} value={selectedDataspace.id} />
+            <Select
+              onChange={onDataspaceChange}
+              options={dataspacesList}
+              value={selectedDataspace.id}
+            />
             <Button
               backgroundColor="primary"
               label={t('dashboard:dataspace:creation')}
@@ -95,7 +105,9 @@ const DataspaceSummary = ({
           <div className="okp4-dataspace-description">
             <Typography fontSize="small">
               {t(
-                `dashboard:dataspace:description:${selectedDataspace.name.toLowerCase().replace(/ /g, '-')}`
+                `dashboard:dataspace:description:${selectedDataspace.name
+                  .toLowerCase()
+                  .replace(/ /g, '-')}`
               )}
             </Typography>
           </div>

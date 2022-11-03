@@ -7,10 +7,26 @@
     background: themed('header-background');
     display: grid;
 
-    header {
-      a {
-        text-decoration: none;
-        color: themed(text);
+    .okp4-header-main {
+      &.with-navigation {
+        /* This is a hack to make sure the grids have enough width
+        * TODO: remove this hack when this is fixed in the @okp4/ui
+        */
+        grid-template-columns: auto 1fr auto;
+
+        @media screen and (max-width: 995px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        // End of hack
+
+        .okp4-header-navigation-row-list {
+          max-width: 960px;
+        }
+
+        a {
+          text-decoration: none;
+          color: themed(text);
+        }
       }
     }
 

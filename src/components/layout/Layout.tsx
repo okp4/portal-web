@@ -50,6 +50,7 @@ type FooterSocialMedia = {
 }
 
 type NavigationMenuUrls = {
+  homeUrl: string
   createUrl: string
   exploreUrl: string
   interactUrl: string
@@ -155,12 +156,14 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
   const themedImage = isLightTheme ? lightCosmos.src : darkCosmos.src
   const footerLabel = t('footer:brand-link')
   const {
+    homeUrl,
     createUrl,
     exploreUrl,
     interactUrl,
     learnUrl,
     okp4Url
   }: NavigationMenuUrls | Record<string, undefined> = config?.app.navigationMenuUrls ?? {
+    homeUrl: undefined,
     createUrl: undefined,
     exploreUrl: undefined,
     interactUrl: undefined,
@@ -171,41 +174,43 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
   const navigationItems: NavigationItem[] = useMemo(() => {
     const menuItems: MenuItem[] = [
       {
+        namespace: 'header:home',
+        url: homeUrl
+      },
+      {
         namespace: 'header:create',
-        url: createUrl,
+        url: createUrl
       },
       {
         namespace: 'header:explore',
-        url: exploreUrl,
+        url: exploreUrl
       },
       {
         namespace: 'header:interact',
-        url: interactUrl,
+        url: interactUrl
       },
       {
         namespace: 'header:learn',
-        url: learnUrl,
+        url: learnUrl
       },
       {
         namespace: 'header:okp4',
-        url: okp4Url,
+        url: okp4Url
       }
     ]
-    
-    return menuItems.map(
-      ({ url, namespace }: DeepReadonly<MenuItem>, index: number) => ({
-        menuItem: (
-          <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
-            {url && isExternalUrl(url) ? (
-              <a href={url}>{t(namespace)}</a>
-            ) : (
-              <Link href={{ pathname: url }}>{t(namespace)}</Link>
-            )}
-          </Typography>
-        )
-      })
-    )
-  }, [createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
+
+    return menuItems.map(({ url, namespace }: DeepReadonly<MenuItem>, index: number) => ({
+      menuItem: (
+        <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
+          {url && isExternalUrl(url) ? (
+            <a href={url}>{t(namespace)}</a>
+          ) : (
+            <Link href={{ pathname: url }}>{t(namespace)}</Link>
+          )}
+        </Typography>
+      )
+    }))
+  }, [homeUrl, createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
 
   return (
     <>

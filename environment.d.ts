@@ -1,6 +1,5 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    NEXT_PUBLIC_GOVERNANCE_URL: string // The temporary governance link to our governance model
     NAVIGATION_MENU_CREATE_URL: string
     NAVIGATION_MENU_EXPLORE_URL: string
     NAVIGATION_MENU_INTERACT_URL: string
@@ -17,8 +16,8 @@ declare namespace NodeJS {
     DATA_PATH: string
     // THE API uri
     API_URI: string
-    // The server uri to get the config
-    NEXT_PUBLIC_SERVER_URI: string
+    // Default dataspace loaded inside the homepage
+    DEFAULT_DATASPACE_ID: string
   }
 }
 
@@ -26,7 +25,6 @@ declare module 'next/config' {
   declare const _default: () => {
     publicRuntimeConfig: {
       version: string
-      // Default dataspace loaded inside the homepage
       defaultDataspaceId: string
     }
   }

@@ -6,7 +6,7 @@ const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
     version: pkg.version,
-    defaultDataspaceId: 'ef347285-e52a-430d-9679-dcb76b962ce7'
+    defaultDataspaceId: process.env.DEFAULT_DATASPACE_ID
   },
   output: 'standalone',
   webpack(config) {

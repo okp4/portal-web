@@ -176,13 +176,13 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
   const currentMenu = useMemo(() => {
     const tmp = pathname.split('/')
 
-    return tmp.length < 3 ? '' : tmp[2]
+    return tmp.length < 3 ? 'dataverse' : tmp[2]
   }, [pathname])
 
   const navigationItems: NavigationItem[] = useMemo(() => {
     const menuItems: MenuItem[] = [
       {
-        category: 'home',
+        category: 'dataverse',
         namespace: 'header:home',
         url: homeUrl
       },

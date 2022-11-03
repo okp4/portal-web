@@ -14,5 +14,11 @@
       }
     }
   },
+  "filters": {
+    "title": "Filters",
+    "dataspace": "Dataspace",
+    "dataset": "Dataset",
+    "service": "Service"
+  },
   "title": "Explore the Dataverse"
 }

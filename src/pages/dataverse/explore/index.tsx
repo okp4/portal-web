@@ -1,10 +1,24 @@
-import React, { useCallback, useState } from 'react'
-import type { NextPage } from 'next'
-import type { SelectOption, SelectValue, UseState } from '@okp4/ui'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import type { GetServerSideProps, GetServerSidePropsResult, NextPage } from 'next'
+import type { DeepReadonly, SelectOption, SelectValue, UseState } from '@okp4/ui'
 import './explore.scss'
-import { ExploreFilters, ExploreList, ExploreListConfiguration, PageTitle } from '../../../components'
+import {
+  ExploreFilters,
+  ExploreList,
+  ExploreListConfiguration,
+  PageTitle
+} from '../../../components'
+import type { DatasetDto } from '../../../dto/DatasetDto'
+import type { ServiceDto } from '../../../dto/ServiceDto'
+import type { DataspaceDto } from '../../../dto/DataspaceDto'
 
 export type ExploreListLayout = 'grid' | 'list' | undefined
+
+export type DataverseEntity = DatasetDto | ServiceDto
+
+type Props = {
+  dataspaces: DataspaceDto[]
+}
 
 const rangeOptions: Array<SelectOption> = [
   {
@@ -35,23 +49,94 @@ const sortOptions: Array<SelectOption> = [
   }
 ]
 
-const Explore: NextPage = () => {
+const fetchItems = async (
+  range: number,
+  sortBy: string,
+  dataspacesId: DeepReadonly<string[]>
+): Promise<DataverseEntity[]> => {
+  const items = await Promise.all(
+    dataspacesId.map(
+      async (dataspaceId: DeepReadonly<string>) =>
+        await Promise.all(
+          ['dataset', 'service'].map(
+            async (type: DeepReadonly<string>): Promise<DataverseEntity[]> =>
+              await fetch(`/api/dataverse/dataspace/${dataspaceId}/${type}/`).then(
+                async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
+              )
+          )
+          // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+        ).then((res: DataverseEntity[][]) => res.flat())
+    )
+    // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+  ).then((arrays: DataverseEntity[][]) => arrays.flat())
+
+  switch (sortBy) {
+    case 'name': {
+      items
+        .slice()
+        .sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+          a.name.localeCompare(b.name)
+        )
+      break
+    }
+    case 'createdOn':
+      items
+        .slice()
+        .sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+          b.createdOn.localeCompare(a.createdOn)
+        )
+      break
+    default:
+      break
+  }
+
+  return items.slice(0, range)
+}
+
+// eslint-disable-next-line max-lines-per-function
+const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
+  const [filters, setFilters]: UseState<string[]> = useState<string[]>(
+    dataspaces.map((dataspace: DeepReadonly<DataspaceDto>) => dataspace.id).flat()
+  )
   const [listLayout, setListLayout]: UseState<ExploreListLayout> =
     useState<ExploreListLayout>('grid')
+  const [entities, setEntities]: UseState<DataverseEntity[]> = useState<DataverseEntity[]>([])
 
-  const handleRangeChange = useCallback((value: SelectValue): void => {
-    setRange(value as string)
-  }, [])
+  const filtersOptions = useMemo(
+    () =>
+      dataspaces.map(
+        (dataspace: DeepReadonly<DataspaceDto>): SelectOption => ({
+          label: dataspace.name,
+          value: dataspace.id
+        })
+      ),
+    [dataspaces]
+  )
 
-  const handleSortByChange = useCallback((value: SelectValue): void => {
-    setSortBy(value as string)
-  }, [])
+  const handleRangeChange = useCallback((value: SelectValue): void => setRange(value as string), [])
 
-  const handleLayoutChange = useCallback((value: ExploreListLayout): void => {
-    setListLayout(value)
-  }, [])
+  const handleSortByChange = useCallback(
+    (value: SelectValue): void => setSortBy(value as string),
+    []
+  )
+
+  const handleLayoutChange = useCallback(
+    (value: ExploreListLayout): void => setListLayout(value),
+    []
+  )
+
+  const handleFiltersChange = useCallback(
+    (values: SelectValue): void => setFilters(values as string[]),
+    []
+  )
+
+  useEffect(() => {
+    fetchItems(parseInt(range), sortBy, filters)
+      .then(setEntities)
+      .catch(() => [])
+  }, [range, sortBy, filters])
 
   return (
     <div className="okp4-explore">
@@ -65,10 +150,26 @@ const Explore: NextPage = () => {
         sortBy={sortBy}
         sortOptions={sortOptions}
       />
-      <ExploreList layout={listLayout} range={parseInt(range)} sortBy={sortBy} />
-      <ExploreFilters />
+      <ExploreList entities={entities} layout={listLayout} />
+
+      <ExploreFilters
+        filters={filters}
+        filtersOptions={filtersOptions}
+        onFiltersChange={handleFiltersChange}
+      />
     </div>
   )
 }
 
 export default Explore
+
+export const getServerSideProps: GetServerSideProps = async (): Promise<
+  GetServerSidePropsResult<Props>
+> => {
+  const dataspacesResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/`)
+  const dataspaces: DataspaceDto[] = dataspacesResponse.ok ? await dataspacesResponse.json() : []
+
+  return {
+    props: { dataspaces }
+  }
+}

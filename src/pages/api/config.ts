@@ -20,6 +20,7 @@ export type Config = {
       twitterUrl: string
     }
     apiUri: string
+    defaultDataspaceId: string
     okp4BiUrl: string
   }
   chain: {
@@ -58,6 +59,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
         twitterUrl: process.env.OKP4_TWITTER_URL
       },
       apiUri: process.env.API_URI,
+      defaultDataspaceId: process.env.DEFAULT_DATASPACE_ID,
       okp4BiUrl: process.env.OKP4_BI_URL
     },
     chain: {

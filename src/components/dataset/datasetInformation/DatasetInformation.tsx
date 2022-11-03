@@ -191,8 +191,12 @@ const DatasetInformation = ({
         <Container name={t('dataset:metadata')}>
           <Metadata dataset={dataset} theme={theme} />
         </Container>
+      </div>
+      <div className="okp4-dataset-information-knowledge-graph-container">
         <Container name={t('dataset:knowledge-graph')}>
-          <KnowledgeGraph dataset={dataset} theme={theme} />
+          <div className="okp4-dataset-information-knowledge-graph-wrapper">
+            <KnowledgeGraph dataset={dataset} theme={theme} />
+          </div>
         </Container>
       </div>
     </div>

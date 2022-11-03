@@ -27,7 +27,7 @@
 
       .okp4-dataset-information-container {
         overflow-y: auto;
-        
+
         &:not(:first-child) {
           margin-top: 15px;
         }
@@ -97,6 +97,16 @@
             }
           }
         }
+      }
+    }
+    .okp4-dataset-information-knowledge-graph-container {
+      background: themed(text);
+      padding: 20px;
+      height: fit-content;
+      border-radius: 9px;
+      margin-top: 20px;
+      .okp4-dataset-information-knowledge-graph-wrapper {
+        overflow-y: auto;
       }
     }
   }

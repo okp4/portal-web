@@ -2,7 +2,7 @@ export type DatasetDto = {
   id: string
   dataspaceId: string
   mainPicture: string
-  type: "dataset"
+  type: 'dataset'
   name: string
   access: string
   categories: string[]
@@ -15,4 +15,6 @@ export type DatasetDto = {
   completude: number
   createdOn: string
   updatedOn: string
+  final_dataset?: boolean
+  knowledge_graph?: string
 }

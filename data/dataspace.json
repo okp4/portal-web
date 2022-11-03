@@ -8,6 +8,10 @@
     "categories": ["agriculture", "open data", "demonstrateur", "dataviz"],
     "description": "Rhizome est un data space exploité par OKP4, actuellement en cours de développement sur la base de la technologie OKP4. Rhizome démontre la puissance du traitement et du partage des données, et la valeur que nous pouvons obtenir en connectant efficacement différentes sources de données agricoles en libre accès sous différents formats de données. Rhizome vise à connecter autant de données que possible et à fournir des visuels et métriques de grande valeur dans différents domaines liés à l'agriculture, tels que l'utilisation des terres et la gestion du territoire, la gestion des cultures et du bétail, ainsi que les ressources forestières et l'industrie du bois.",
     "token": "KNOW",
+    "members": 1178,
+    "datasets": 822,
+    "services": 674,
+    "governanceUrl": "https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen",
     "createdOn": "2022-10-30T15:29:16.507Z",
     "updatedOn": "2022-10-30T15:29:16.507Z"
   },
@@ -20,7 +24,11 @@
     "categories": ["cosmos", "open data", "blockchain", "OKP4"],
     "description": "Le Data Space Know Universe vise à valoriser des données financières inhérentes à l'économie du jeton $KNOW. Ces données peuvent par exemple être partagées par l'un des 150 validateurs de la blockchain OKP4.",
     "token": "KNOW",
-    "createdOn": "2022-10-28T15:33:16.507Z",
-    "updatedOn": "2022-10-28T15:33:16.507Z"
+    "members": 945,
+    "datasets": 745,
+    "services": 520,
+    "governanceUrl": "https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen",
+    "createdOn": "2022-10-30T15:29:16.507Z",
+    "updatedOn": "2022-10-30T15:29:16.507Z"
   }
 ]

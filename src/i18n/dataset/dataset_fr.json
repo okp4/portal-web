@@ -24,5 +24,9 @@
   "units": {
     "mb": "Mo"
   },
-  "updated-on": "Mis à jour"
+  "updated-on": "Mis à jour",
+  "see": "Voir dans OKP4 BI",
+  "tx": {
+    "sending": "Envoi de la transaction..."
+  }
 }

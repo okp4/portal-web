@@ -16,18 +16,26 @@ import {
 import './datasetId.scss'
 import type { DatasetDto } from '../../../../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../../../../dto/DataspaceDto'
+import type { Config } from '../../../../../api/config'
 
 type Props = {
   dataspace: DataspaceDto | null
   dataset: DatasetDto | null
+  config: Config | null
 }
 
-const DatasetId: NextPage<Props> = ({ dataspace, dataset }: DeepReadonly<Props>) =>
-  dataset && (
+const DatasetId: NextPage<Props> = ({ dataspace, dataset, config }: DeepReadonly<Props>) =>
+  dataset &&
+  config && (
     <div className="okp4-dataset-id">
       <PageTitle title="dataset:title" />
       <PreviousPageButton />
-      <DatasetPreview dataset={dataset} />
+      <DatasetPreview
+        chain={config.chain}
+        dataset={dataset}
+        okp4BiUrl={config.app.okp4BiUrl}
+        transaction={config.transaction}
+      />
       <DatasetInformation dataset={dataset} dataspace={dataspace} />
     </div>
   )
@@ -41,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<GetStaticPathsRe
 
 export const getStaticProps: GetStaticProps = async (
   context: DeepReadonly<GetStaticPropsContext>
-): Promise<GetStaticPropsResult<Props>> => {
+): Promise<GetStaticPropsResult<Omit<Props, 'config'>>> => {
   const dataspaceId = context.params?.dataspaceId
   const datasetId = context.params?.datasetId
 

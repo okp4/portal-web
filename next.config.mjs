@@ -20,10 +20,19 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: "**",
-      },
-    ],
+        hostname: '**'
+      }
+    ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/dataverse',
+        permanent: true
+      }
+    ]
+  }
 }
 
 export default nextConfig

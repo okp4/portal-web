@@ -173,6 +173,7 @@ const DatasetInformation = ({
 }: DeepReadonly<DatasetInformationProps>): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
+  const { knowledge_graph }: DeepReadonly<DatasetDto> = dataset
 
   return (
     <div className="okp4-dataset-information">
@@ -192,13 +193,15 @@ const DatasetInformation = ({
           <Metadata dataset={dataset} theme={theme} />
         </Container>
       </div>
-      <div className="okp4-dataset-information-knowledge-graph-container">
-        <Container name={t('dataset:knowledge-graph')}>
-          <div className="okp4-dataset-information-knowledge-graph-wrapper">
-            <KnowledgeGraph dataset={dataset} theme={theme} />
-          </div>
-        </Container>
-      </div>
+      {knowledge_graph && (
+        <div className="okp4-dataset-information-knowledge-graph-container">
+          <Container name={t('dataset:knowledge-graph')}>
+            <div className="okp4-dataset-information-knowledge-graph-wrapper">
+              <KnowledgeGraph dataset={dataset} theme={theme} />
+            </div>
+          </Container>
+        </div>
+      )}
     </div>
   )
 }

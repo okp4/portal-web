@@ -1,6 +1,6 @@
 .okp4-dashboard-dataspace-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(277px, auto));
+  grid-template-columns: repeat(auto-fill, 277px);
   gap: 25px;
   align-items: center;
   justify-content: space-between;
@@ -9,17 +9,13 @@
     justify-content: space-around;
   }
 
-  .okp4-dataspace-card {
-    display: grid;
-    justify-items: center;
+  .okp4-dataspace-card-header {
+    padding-top: 10px;
+    text-align: end;
+    text-transform: capitalize;
+  }
 
-    .okp4-dataspace-card-header {
-      padding-top: 10px;
-      text-align: end;
-      text-transform: capitalize;
-    }
-    .okp4-dataspace-card-footer {
-      padding-bottom: 10px;
-    }
+  .okp4-dataspace-card-footer {
+    padding-bottom: 10px;
   }
 }

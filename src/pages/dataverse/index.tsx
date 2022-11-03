@@ -44,9 +44,9 @@ export const HomePage: NextPage<HomePageProps> = ({ dataspaces }: DeepReadonly<H
       <div className="okp4-body-main">
         <div className="okp4-body-dashboard">
           <DataspaceSummary
-            dataspace={dataspace}
             dataspaces={dataspaces}
             onDataspaceChange={handleChangeSelectedDataspace}
+            selectedDataspace={dataspace}
           />
           <DataspaceEntities dataspaceId={dataspace.id} />
           <DataspaceOptions />

@@ -32,21 +32,20 @@ const DataspaceEntities = ({ dataspaceId }: DeepReadonly<{ dataspaceId: string }
     <div className="okp4-dashboard-dataspace-content">
       {entities.map(
         (entity: DeepReadonly<DataverseEntity>): JSX.Element => (
-          <div className="okp4-dataspace-card" key={entity.id}>
-            <Card
-              footer={
-                <div className="okp4-dataspace-card-footer">
-                  <Typography>{entity.name}</Typography>
-                </div>
-              }
-              header={
-                <div className="okp4-dataspace-card-header">
-                  <Typography>{entity.type}</Typography>
-                </div>
-              }
-              size="small"
-            />
-          </div>
+          <Card
+            footer={
+              <div className="okp4-dataspace-card-footer">
+                <Typography>{entity.name}</Typography>
+              </div>
+            }
+            header={
+              <div className="okp4-dataspace-card-header">
+                <Typography>{entity.type}</Typography>
+              </div>
+            }
+            key={entity.id}
+            size="small"
+          />
         )
       )}
     </div>

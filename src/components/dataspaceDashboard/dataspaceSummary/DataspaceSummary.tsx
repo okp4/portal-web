@@ -6,7 +6,7 @@ import './dataspaceSummary.scss'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
 
 type DataspaceSummaryProps = {
-  dataspace: DataspaceDto
+  selectedDataspace: DataspaceDto
   dataspaces: DataspaceDto[]
   onDataspaceChange: (value: SelectValue) => void
 }
@@ -55,7 +55,7 @@ const Counters = ({
 
 // eslint-disable-next-line max-lines-per-function
 const DataspaceSummary = ({
-  dataspace,
+  selectedDataspace,
   dataspaces,
   onDataspaceChange
 }: DeepReadonly<DataspaceSummaryProps>): JSX.Element => {
@@ -72,8 +72,8 @@ const DataspaceSummary = ({
   )
 
   const navigateToGovernance = useCallback(() => {
-    dataspace.governanceUrl && router.push(dataspace.governanceUrl)
-  }, [dataspace.governanceUrl, router])
+    selectedDataspace.governanceUrl && router.push(selectedDataspace.governanceUrl)
+  }, [selectedDataspace.governanceUrl, router])
 
   return (
     <>
@@ -81,10 +81,10 @@ const DataspaceSummary = ({
         <div className="okp4-dataspace-summary-card">
           <Card size={isMediumScreen ? 'medium' : 'small'} />
         </div>
-        <Counters dataspace={dataspace} isMediumScreen={isMediumScreen} />
+        <Counters dataspace={selectedDataspace} isMediumScreen={isMediumScreen} />
         <div className="okp4-dataspace-options-with-description">
           <div className="okp4-dataspace-options">
-            <Select onChange={onDataspaceChange} options={dataspacesList} value={dataspace.id} />
+            <Select onChange={onDataspaceChange} options={dataspacesList} value={selectedDataspace.id} />
             <Button
               backgroundColor="primary"
               label={t('dashboard:dataspace:creation')}
@@ -95,7 +95,7 @@ const DataspaceSummary = ({
           <div className="okp4-dataspace-description">
             <Typography fontSize="small">
               {t(
-                `dashboard:dataspace:description:${dataspace.name.toLowerCase().replace(/ /g, '-')}`
+                `dashboard:dataspace:description:${selectedDataspace.name.toLowerCase().replace(/ /g, '-')}`
               )}
             </Typography>
           </div>
@@ -103,8 +103,8 @@ const DataspaceSummary = ({
       </div>
       <div className="okp4-dashboard-governance-link">
         <Button
-          disabled={!dataspace.governanceUrl}
-          label={t(`dashboard:dataspace:governance`, { dataspace: dataspace.name })}
+          disabled={!selectedDataspace.governanceUrl}
+          label={t(`dashboard:dataspace:governance`, { dataspace: selectedDataspace.name })}
           onClick={navigateToGovernance}
         />
       </div>

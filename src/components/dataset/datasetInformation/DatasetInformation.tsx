@@ -1,10 +1,12 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button, Icon, Typography, useTheme, useTranslation } from '@okp4/ui'
-import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
+import type { DeepReadonly, ThemeContextType, UseState, UseTranslationResponse } from '@okp4/ui'
 import './datasetInformation.scss'
 import { formatBytes, formatDate } from '../../../utils'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
+import { Graphviz } from 'graphviz-react'
 
 type DatasetInformationProps = {
   readonly dataset: DatasetDto
@@ -31,6 +33,11 @@ type MetadataRowProps = {
   readonly children: React.ReactNode
   readonly name: string
   readonly unit?: string
+}
+
+type KnowledgeGraphProps = {
+  readonly dataset: DatasetDto
+  readonly theme: string
 }
 
 const BackgroundImage = ({ url }: DeepReadonly<{ url: string }>): JSX.Element => (
@@ -128,6 +135,38 @@ const Metadata = ({ dataset, theme }: DeepReadonly<MetadataProps>): JSX.Element 
   )
 }
 
+const KnowledgeGraph = ({ dataset }: DeepReadonly<KnowledgeGraphProps>): JSX.Element => {
+  const { knowledge_graph }: DeepReadonly<DatasetDto> = dataset
+  const [dot, setDot]: UseState<DatasetDto['knowledge_graph']> =
+    useState<DatasetDto['knowledge_graph']>()
+
+  useEffect(() => {
+    if (knowledge_graph) {
+      fetch(`/graphs/${knowledge_graph}`)
+        // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+        .then(async (resp: Response) => {
+          return resp.text()
+        })
+        .then(setDot)
+        .catch((error: unknown) => console.error(error))
+    }
+  }, [knowledge_graph])
+
+  return (
+    <div>
+      {dot && (
+        <Graphviz
+          dot={dot}
+          options={{
+            width: '150%',
+            height: '100%'
+          }}
+        />
+      )}
+    </div>
+  )
+}
+
 const DatasetInformation = ({
   dataset,
   dataspace
@@ -151,6 +190,9 @@ const DatasetInformation = ({
         )}
         <Container name={t('dataset:metadata')}>
           <Metadata dataset={dataset} theme={theme} />
+        </Container>
+        <Container name={t('dataset:knowledge-graph')}>
+          <KnowledgeGraph dataset={dataset} theme={theme} />
         </Container>
       </div>
     </div>

@@ -20,6 +20,19 @@ export type Config = {
       twitterUrl: string
     }
     apiUri: string
+    okp4BiUrl: string
+  }
+  chain: {
+    id: string
+    name: string
+    endpoints: {
+      rpc: string
+      rest: string
+    }
+  }
+  transaction: {
+    memo: string
+    recipientAddress: string
   }
 }
 
@@ -44,7 +57,20 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
         telegramUrl: process.env.OKP4_TELEGRAM_URL,
         twitterUrl: process.env.OKP4_TWITTER_URL
       },
-      apiUri: process.env.API_URI
+      apiUri: process.env.API_URI,
+      okp4BiUrl: process.env.OKP4_BI_URL
+    },
+    chain: {
+      id: process.env.CHAIN_ID,
+      name: process.env.CHAIN_NAME,
+      endpoints: {
+        rpc: process.env.CHAIN_RPC_ENDPOINT,
+        rest: process.env.CHAIN_REST_ENDPOINT
+      }
+    },
+    transaction: {
+      memo: process.env.TX_MEMO,
+      recipientAddress: process.env.TX_RECIPIENT_ADDRESS
     }
   }
   return res.status(200).json(config)

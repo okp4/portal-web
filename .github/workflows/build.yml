@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   build-yarn:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
           yarn build
 
   build-docker:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v3

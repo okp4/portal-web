@@ -3,7 +3,6 @@ import type { NextPage } from 'next'
 import type { DeepReadonly, SelectValue, UseState } from '@okp4/ui'
 import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../../components/index'
 import type { DataspaceDto } from '../../dto/DataspaceDto'
-import './index.scss'
 import type { Config } from '../api/config'
 
 type HomePageProps = {

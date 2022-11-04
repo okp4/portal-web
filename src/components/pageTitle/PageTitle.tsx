@@ -1,6 +1,5 @@
 import { Typography, useBreakpoint, useTranslation } from '@okp4/ui'
 import type { Breakpoints, UseTranslationResponse } from '@okp4/ui'
-import './pageTitle.scss'
 
 type PageTitleProps = {
   readonly title: string
@@ -8,7 +7,7 @@ type PageTitleProps = {
 
 const PageTitle = ({ title }: PageTitleProps): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
-  const { isXSmall, isSmall }: Breakpoints = useBreakpoint();
+  const { isXSmall, isSmall }: Breakpoints = useBreakpoint()
 
   return (
     <div className="okp4-page-title">

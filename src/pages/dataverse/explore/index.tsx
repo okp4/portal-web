@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import type { GetServerSideProps, GetServerSidePropsResult, NextPage } from 'next'
 import type { DeepReadonly, SelectOption, SelectValue, UseState } from '@okp4/ui'
-import './explore.scss'
 import {
   ExploreFilters,
   ExploreList,

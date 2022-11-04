@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Card, Typography } from '@okp4/ui'
 import type { DeepReadonly, UseState } from '@okp4/ui'
-import './dataspaceEntities.scss'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
 

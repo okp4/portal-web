@@ -1,7 +1,6 @@
 import { useCallback } from 'react'
 import { Typography, Select, Button, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, SelectValue, UseTranslationResponse, SelectOption } from '@okp4/ui'
-import './exploreListConfiguration.scss'
 import type { ExploreListLayout } from '../../../pages/dataverse/explore'
 
 type ExploreListConfigurationProps = {

@@ -13,7 +13,6 @@ import type {
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
-import './layout.scss'
 import type { Config } from '../../pages/api/config'
 import { isExternalUrl } from '../../utils'
 

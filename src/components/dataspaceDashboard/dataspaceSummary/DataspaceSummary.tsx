@@ -2,7 +2,6 @@ import { useCallback, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { Button, Card, Icon, Select, Typography, useMediaType, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, SelectOption, SelectValue, UseTranslationResponse } from '@okp4/ui'
-import './dataspaceSummary.scss'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
 import classNames from 'classnames'
 

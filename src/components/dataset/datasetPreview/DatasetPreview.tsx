@@ -3,7 +3,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Button, Toast, Typography, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseTranslationResponse } from '@okp4/ui'
-import './datasetPreview.scss'
 import { formatDate } from '../../../utils'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { UseSendTokensTuple } from '../../../hooks/useSendTokens'

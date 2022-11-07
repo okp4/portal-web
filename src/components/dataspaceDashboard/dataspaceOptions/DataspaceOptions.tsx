@@ -1,6 +1,5 @@
 import { useTranslation, Typography, Button, Icon, useMediaType } from '@okp4/ui'
 import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
-import './dataspaceOptions.scss'
 
 type OptionText = {
   title: string

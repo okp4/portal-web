@@ -1,9 +1,8 @@
-import { useCallback} from 'react'
+import { useCallback } from 'react'
 import { useRouter } from 'next/router'
 import type { NextRouter } from 'next/router'
 import { List, ListItem, Typography, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
-import './exploreList.scss'
 import { formatDate } from '../../../utils'
 import type { DataverseEntity, ExploreListLayout } from '../../../pages/dataverse/explore'
 

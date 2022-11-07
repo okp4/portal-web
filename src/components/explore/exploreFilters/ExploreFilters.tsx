@@ -7,7 +7,6 @@ import type {
   ThemeContextType
 } from '@okp4/ui'
 import { useTheme, Select, Typography, useTranslation } from '@okp4/ui'
-import './ExploreFilters.scss'
 import classNames from 'classnames'
 
 type ExploreFiltersProps = {

@@ -13,7 +13,6 @@ import {
   PageTitle,
   PreviousPageButton
 } from '../../../../../../components'
-import './datasetId.scss'
 import type { DatasetDto } from '../../../../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../../../../dto/DataspaceDto'
 import type { Config } from '../../../../../api/config'

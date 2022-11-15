@@ -1,6 +1,6 @@
 @import '@okp4/ui/lib/scss/themes.scss';
 
-#layout {
+.layout {
   @include with-theme {
     height: 100%;
     overflow: auto;

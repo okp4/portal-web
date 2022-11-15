@@ -1,6 +1,6 @@
 @import '@okp4/ui/lib/scss/themes.scss';
 
-#layout {
+.layout {
   @include with-theme {
     height: 100%;
     overflow: auto;
@@ -33,14 +33,14 @@
     main {
       background-repeat: no-repeat;
       color: themed('text');
-      padding: 70px 130px 35px 130px;
+      padding: 70px 130px 35px;
 
       @media screen and (max-width: 1300px) {
-        padding: 50px 90px 25px 90px;
+        padding: 50px 90px 25px;
       }
 
       @media screen and (max-width: 995px) {
-        padding: 50px 70px 25px 70px;
+        padding: 50px 70px 25px;
       }
       @media screen and (max-width: 480px) {
         padding: 25px 20px;

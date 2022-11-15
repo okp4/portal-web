@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "indentation": 2,
+    "color-hex-length": "long",
+    "color-named": ["always-where-possible"],
+    "scss/at-import-partial-extension-blacklist": null,
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 7,
+    "scss/at-extend-no-missing-placeholder": null,
+    "color-no-invalid-hex": true,
+    "function-parentheses-space-inside": ["never-single-line"],
+    "selector-max-compound-selectors": 6
+  }
+}

@@ -222,7 +222,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
         <meta content={publicRuntimeConfig.version} name="version" />
         <link href="/okp4-logo.png" rel="icon" type="image/x-icon" />
       </Head>
-      <div id="layout">
+      <div className="layout">
         <Header firstElement={<Logo size="small" />} navigationMenu={navigationItems} />
         <main style={{ backgroundImage: `url(${themedImage})` }}>{children}</main>
         <Footer

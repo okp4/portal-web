@@ -99,12 +99,14 @@
         }
       }
     }
+
     .okp4-dataset-information-knowledge-graph-container {
       background: themed(text);
       padding: 20px;
       height: fit-content;
       border-radius: 9px;
       margin-top: 20px;
+
       .okp4-dataset-information-knowledge-graph-wrapper {
         overflow-y: auto;
       }

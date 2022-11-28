@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import type { GetServerSideProps, GetServerSidePropsResult, NextPage } from 'next'
+import type {
+  GetStaticProps,
+  GetStaticPropsResult,
+  NextPage
+} from 'next'
 import type { DeepReadonly, SelectOption, SelectValue, UseState } from '@okp4/ui'
 import {
   ExploreFilters,
@@ -10,6 +14,8 @@ import {
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
+import { dataspaces } from '../../api/store'
+// import { config } from '../../../lib/config'
 
 export type ExploreListLayout = 'grid' | 'list' | undefined
 
@@ -102,7 +108,6 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
   const [listLayout, setListLayout]: UseState<ExploreListLayout> =
     useState<ExploreListLayout>('grid')
   const [entities, setEntities]: UseState<DataverseEntity[]> = useState<DataverseEntity[]>([])
-
   const filtersOptions = useMemo(
     () =>
       dataspaces.map(
@@ -162,13 +167,11 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
 
 export default Explore
 
-export const getServerSideProps: GetServerSideProps = async (): Promise<
-  GetServerSidePropsResult<Props>
-> => {
-  const dataspacesResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/`)
-  const dataspaces: DataspaceDto[] = dataspacesResponse.ok ? await dataspacesResponse.json() : []
 
+export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
   return {
-    props: { dataspaces }
+    props: {
+      dataspaces: dataspaces.toIndexedSeq().toArray()
+    }
   }
 }

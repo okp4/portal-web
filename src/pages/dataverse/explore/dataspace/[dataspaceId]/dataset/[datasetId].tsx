@@ -16,6 +16,7 @@ import {
 import type { DatasetDto } from '../../../../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../../../../dto/DataspaceDto'
 import type { Config } from '../../../../../api/config'
+import { datasets, dataspaces } from '../../../../../api/store'
 
 type Props = {
   dataspace: DataspaceDto | null
@@ -40,8 +41,15 @@ const DatasetId: NextPage<Props> = ({ dataspace, dataset, config }: DeepReadonly
   )
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<GetStaticPathsResult> => {
+  const paths = datasets
+    .toIndexedSeq()
+    .toArray()
+    .map((dataset: DeepReadonly<DatasetDto>) => ({
+      params: { dataspaceId: dataset.dataspaceId, datasetId: dataset.id }
+    }))
+
   return {
-    paths: [],
+    paths,
     fallback: true
   }
 }
@@ -49,18 +57,10 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<GetStaticPathsRe
 export const getStaticProps: GetStaticProps = async (
   context: DeepReadonly<GetStaticPropsContext>
 ): Promise<GetStaticPropsResult<Omit<Props, 'config'>>> => {
-  const dataspaceId = context.params?.dataspaceId
-  const datasetId = context.params?.datasetId
-
-  const dataspaceResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/${dataspaceId}`)
-  const datasetResponse = await fetch(
-    `${process.env.API_URI}/dataverse/dataspace/${dataspaceId}/dataset/${datasetId}`
-  )
-
-  const dataspace: DataspaceDto | null = dataspaceResponse.ok
-    ? await dataspaceResponse.json()
-    : null
-  const dataset: DatasetDto | null = datasetResponse.ok ? await datasetResponse.json() : null
+  const dataspaceId = context.params?.dataspaceId ?? ""
+  const datasetId = context.params?.datasetId ?? ""
+  const dataspace = dataspaces.get(dataspaceId.toString()) ?? null;
+  const dataset = datasets.get(datasetId.toString()) ?? null;
 
   return {
     props: { dataspace, dataset }

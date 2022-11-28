@@ -8,10 +8,9 @@ import { dataspaces as storeDataspaces } from '../api/store'
 
 type HomePageProps = {
   readonly dataspaces: DataspaceDto[]
-  readonly defaultDataspaceId: string;
 }
 
-export const HomePage: NextPage<DeepReadonly<HomePageProps>> = ({ dataspaces, defaultDataspaceId }: DeepReadonly<HomePageProps>) => {
+export const HomePage: NextPage<DeepReadonly<HomePageProps>> = ({ dataspaces }: DeepReadonly<HomePageProps>) => {
   const [dataspace, setDataspace]: UseState<DeepReadonly<DataspaceDto> | null> =
     useState<DeepReadonly<DataspaceDto> | null>(null)
 
@@ -34,8 +33,8 @@ export const HomePage: NextPage<DeepReadonly<HomePageProps>> = ({ dataspaces, de
   )
 
   useEffect(() => {
-    selectDataspace(defaultDataspaceId)
-  }, [dataspaces, defaultDataspaceId, selectDataspace])
+    selectDataspace(config.app.defaultDataspaceId)
+  }, [dataspaces, selectDataspace])
 
   return (
     dataspace && (
@@ -62,7 +61,6 @@ export const getStaticProps: GetStaticProps = (): GetStaticPropsResult<HomePageP
   return {
     props: {
       dataspaces: storeDataspaces.toIndexedSeq().toArray(),
-      defaultDataspaceId: config.app.defaultDataspaceId,
     }
   }
 }

@@ -15,13 +15,12 @@ import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
 import { dataspaces } from '../../api/store'
-// import { config } from '../../../lib/config'
 
 export type ExploreListLayout = 'grid' | 'list' | undefined
 
 export type DataverseEntity = DatasetDto | ServiceDto
 
-type Props = {
+type ExploreProps = {
   dataspaces: DataspaceDto[]
 }
 
@@ -99,7 +98,7 @@ const fetchItems = async (
 }
 
 // eslint-disable-next-line max-lines-per-function
-const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
+const Explore: NextPage<ExploreProps> = ({ dataspaces }: DeepReadonly<ExploreProps>) => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
   const [filters, setFilters]: UseState<string[]> = useState<string[]>(
@@ -168,7 +167,7 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
 export default Explore
 
 
-export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
+export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<ExploreProps>> => {
   return {
     props: {
       dataspaces: dataspaces.toIndexedSeq().toArray()

@@ -1,5 +1,5 @@
 import type { DeepReadonly } from '@okp4/ui'
-import type { Config } from '../pages/api/config'
+import type { Config } from '../types/config.type'
 
 export type Currency = {
   coinDenom: string

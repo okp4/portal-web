@@ -15,18 +15,16 @@ import {
 } from '../../../../../../components'
 import type { DatasetDto } from '../../../../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../../../../dto/DataspaceDto'
-import type { Config } from '../../../../../api/config'
+import { config } from '../../../../../../lib/config'
 import { datasets, dataspaces } from '../../../../../api/store'
 
-type Props = {
+type DatasetIdProps = {
   dataspace: DataspaceDto | null
   dataset: DatasetDto | null
-  config: Config | null
 }
 
-const DatasetId: NextPage<Props> = ({ dataspace, dataset, config }: DeepReadonly<Props>) =>
-  dataset &&
-  config && (
+const DatasetId: NextPage<DatasetIdProps> = ({ dataspace, dataset }: DeepReadonly<DatasetIdProps>) =>
+  dataset && (
     <div className="okp4-dataset-id">
       <PageTitle title="dataset:title" />
       <PreviousPageButton />
@@ -56,9 +54,10 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<GetStaticPathsRe
 
 export const getStaticProps: GetStaticProps = async (
   context: DeepReadonly<GetStaticPropsContext>
-): Promise<GetStaticPropsResult<Omit<Props, 'config'>>> => {
+): Promise<GetStaticPropsResult<DatasetIdProps>> => {
   const dataspaceId = context.params?.dataspaceId ?? ""
   const datasetId = context.params?.datasetId ?? ""
+  
   const dataspace = dataspaces.get(dataspaceId.toString()) ?? null;
   const dataset = datasets.get(datasetId.toString()) ?? null;
 

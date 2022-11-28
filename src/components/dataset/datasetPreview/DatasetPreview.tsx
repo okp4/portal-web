@@ -10,7 +10,7 @@ import { useSendTokens } from '../../../hooks/useSendTokens'
 import type { NextRouter } from 'next/router'
 import { useRouter } from 'next/router'
 import { keplrChainConfig } from '../../../chain/keplr'
-import type { Config } from '../../../pages/api/config'
+import type { Config } from '../../../types/config.type'
 
 type DatasetPreviewProps = {
   dataset: DatasetDto

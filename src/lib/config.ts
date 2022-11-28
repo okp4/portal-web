@@ -19,7 +19,7 @@ export const config: Config = {
       telegramUrl: process.env.OKP4_TELEGRAM_URL,
       twitterUrl: process.env.OKP4_TWITTER_URL
     },
-    apiUri: 'http://localhost:3000/api',
+    apiUri: process.env.API_URI,
     defaultDataspaceId: process.env.DEFAULT_DATASPACE_ID,
     okp4BiUrl: process.env.OKP4_BI_URL,
     createDataspaceUrl: process.env.CREATE_DATASPACE_URL

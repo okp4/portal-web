@@ -28,7 +28,7 @@ const PortalWebApp = ({ Component, pageProps }: AppProps): JSX.Element | null =>
   return (
     <ThemeProvider>
       <Layout config={config}>
-        <Component {...pageProps} config={config} />
+        <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
   )

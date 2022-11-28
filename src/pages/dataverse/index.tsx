@@ -1,19 +1,17 @@
 import { useCallback, useEffect, useState } from 'react'
-import type { NextPage } from 'next'
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
 import type { DeepReadonly, SelectValue, UseState } from '@okp4/ui'
 import { DataspaceSummary, DataspaceOptions, DataspaceEntities } from '../../components/index'
 import type { DataspaceDto } from '../../dto/DataspaceDto'
-import type { Config } from '../api/config'
+import { config } from '../../lib/config'
+import { dataspaces as storeDataspaces } from '../api/store'
 
 type HomePageProps = {
-  config: Config | null
+  readonly dataspaces: DataspaceDto[]
+  readonly defaultDataspaceId: string;
 }
 
-// eslint-disable-next-line max-lines-per-function
-export const HomePage: NextPage<HomePageProps> = ({ config }: DeepReadonly<HomePageProps>) => {
-  const [dataspaces, setDataspaces]: UseState<DeepReadonly<DataspaceDto[]>> = useState<
-    DeepReadonly<DataspaceDto[]>
-  >([])
+export const HomePage: NextPage<DeepReadonly<HomePageProps>> = ({ dataspaces, defaultDataspaceId }: DeepReadonly<HomePageProps>) => {
   const [dataspace, setDataspace]: UseState<DeepReadonly<DataspaceDto> | null> =
     useState<DeepReadonly<DataspaceDto> | null>(null)
 
@@ -36,29 +34,15 @@ export const HomePage: NextPage<HomePageProps> = ({ config }: DeepReadonly<HomeP
   )
 
   useEffect(() => {
-    if (config) {
-      fetch(`${config.app.apiUri}/dataverse/dataspace`)
-        // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-        .then(async (resp: Response) => {
-          return resp.json()
-        })
-        .then(setDataspaces)
-        .catch((error: unknown) => console.error(error))
-    }
-  }, [config, config?.app.apiUri])
-
-  useEffect(() => {
-    if (config) {
-      selectDataspace(config.app.defaultDataspaceId)
-    }
-  }, [dataspaces, config?.app.defaultDataspaceId, selectDataspace, config])
+    selectDataspace(defaultDataspaceId)
+  }, [dataspaces, defaultDataspaceId, selectDataspace])
 
   return (
     dataspace && (
       <div className="okp4-body-main">
         <div className="okp4-body-dashboard">
           <DataspaceSummary
-            createDataspaceUrl={config?.app.createDataspaceUrl}
+            createDataspaceUrl={config.app.createDataspaceUrl}
             dataspaces={dataspaces}
             onDataspaceChange={handleChangeSelectedDataspace}
             selectedDataspace={dataspace}
@@ -73,3 +57,12 @@ export const HomePage: NextPage<HomePageProps> = ({ config }: DeepReadonly<HomeP
 }
 
 export default HomePage
+
+export const getStaticProps: GetStaticProps = (): GetStaticPropsResult<HomePageProps> => {
+  return {
+    props: {
+      dataspaces: storeDataspaces.toIndexedSeq().toArray(),
+      defaultDataspaceId: config.app.defaultDataspaceId,
+    }
+  }
+}

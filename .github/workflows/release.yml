@@ -25,7 +25,7 @@ jobs:
           token: ${{ secrets.OKP4_TOKEN }}
 
       - name: Release project
-        uses: cycjimmy/semantic-release-action@v2
+        uses: cycjimmy/semantic-release-action@v3
         with:
           semantic_version: 19.0.2
           branch: main

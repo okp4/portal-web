@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import type { GetServerSideProps, GetServerSidePropsResult, NextPage } from 'next'
+import type {
+  GetStaticProps,
+  GetStaticPropsResult,
+  NextPage
+} from 'next'
 import type { DeepReadonly, SelectOption, SelectValue, UseState } from '@okp4/ui'
 import {
   ExploreFilters,
@@ -10,12 +14,13 @@ import {
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
+import { dataspaces } from '../../api/store'
 
 export type ExploreListLayout = 'grid' | 'list' | undefined
 
 export type DataverseEntity = DatasetDto | ServiceDto
 
-type Props = {
+type ExploreProps = {
   dataspaces: DataspaceDto[]
 }
 
@@ -93,7 +98,7 @@ const fetchItems = async (
 }
 
 // eslint-disable-next-line max-lines-per-function
-const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
+const Explore: NextPage<ExploreProps> = ({ dataspaces }: DeepReadonly<ExploreProps>) => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
   const [filters, setFilters]: UseState<string[]> = useState<string[]>(
@@ -102,7 +107,6 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
   const [listLayout, setListLayout]: UseState<ExploreListLayout> =
     useState<ExploreListLayout>('grid')
   const [entities, setEntities]: UseState<DataverseEntity[]> = useState<DataverseEntity[]>([])
-
   const filtersOptions = useMemo(
     () =>
       dataspaces.map(
@@ -162,13 +166,11 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
 
 export default Explore
 
-export const getServerSideProps: GetServerSideProps = async (): Promise<
-  GetServerSidePropsResult<Props>
-> => {
-  const dataspacesResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/`)
-  const dataspaces: DataspaceDto[] = dataspacesResponse.ok ? await dataspacesResponse.json() : []
 
+export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<ExploreProps>> => {
   return {
-    props: { dataspaces }
+    props: {
+      dataspaces: dataspaces.toIndexedSeq().toArray()
+    }
   }
 }

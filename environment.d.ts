@@ -1,11 +1,11 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    NAVIGATION_MENU_HOME_URL: string
-    NAVIGATION_MENU_CREATE_URL: string
-    NAVIGATION_MENU_EXPLORE_URL: string
-    NAVIGATION_MENU_INTERACT_URL: string
-    NAVIGATION_MENU_LEARN_URL: string
-    NAVIGATION_MENU_OKP4_URL: string
+    NEXT_PUBLIC_NAVIGATION_MENU_HOME_URL: string
+    NEXT_PUBLIC_NAVIGATION_MENU_CREATE_URL: string
+    NEXT_PUBLIC_NAVIGATION_MENU_EXPLORE_URL: string
+    NEXT_PUBLIC_NAVIGATION_MENU_INTERACT_URL: string
+    NEXT_PUBLIC_NAVIGATION_MENU_LEARN_URL: string
+    NEXT_PUBLIC_NAVIGATION_MENU_OKP4_URL: string
     OKP4_DISCORD_URL: string
     OKP4_GITHUB_URL: string
     OKP4_LINKEDIN_URL: string
@@ -18,7 +18,7 @@ declare namespace NodeJS {
     // THE API uri
     API_URI: string
     // Default dataspace loaded inside the homepage
-    DEFAULT_DATASPACE_ID: string
+    NEXT_PUBLIC_DEFAULT_DATASPACE_ID: string
     CHAIN_ID: string
     CHAIN_NAME: string
     CHAIN_RPC_ENDPOINT: string

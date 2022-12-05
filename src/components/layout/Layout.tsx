@@ -13,14 +13,13 @@ import type {
 import lightCosmos from '@okp4/ui/lib/assets/images/cosmos-clear.png'
 import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
-import type { Config } from '../../pages/api/config'
 import { isExternalUrl } from '../../utils'
+import { config } from '../../lib/config'
 
 // eslint-disable-next-line @typescript-eslint/typedef
 const { publicRuntimeConfig } = getConfig()
 
 type LayoutProps = {
-  config: Config | null
   readonly children: React.ReactNode
 }
 
@@ -148,7 +147,7 @@ const Okp4SocialMedia = ({
 }
 
 // eslint-disable-next-line max-lines-per-function
-const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element => {
+const Layout = ({ children }: DeepReadonly<LayoutProps>): JSX.Element => {
   const { theme }: ThemeContextType = useTheme()
   const { t }: UseTranslationResponse = useTranslation()
   const isLightTheme = theme === 'light'
@@ -161,14 +160,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
     interactUrl,
     learnUrl,
     okp4Url
-  }: NavigationMenuUrls | Record<string, undefined> = config?.app.navigationMenuUrls ?? {
-    homeUrl: undefined,
-    createUrl: undefined,
-    exploreUrl: undefined,
-    interactUrl: undefined,
-    learnUrl: undefined,
-    okp4Url: undefined
-  }
+  }: NavigationMenuUrls | Record<string, undefined> = config.app.navigationMenuUrls
 
   const navigationItems: NavigationItem[] = useMemo(() => {
     const menuItems: MenuItem[] = [
@@ -227,7 +219,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
         <main style={{ backgroundImage: `url(${themedImage})` }}>{children}</main>
         <Footer
           languages={languages}
-          {...(config && {
+          {...{
             lastElement: (
               <div className="okp4-footer-last-element">
                 <Okp4SocialMedia
@@ -237,7 +229,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
                 <Okp4Link label={footerLabel} url={config.app.websiteUrl} />
               </div>
             )
-          })}
+          }}
         />
       </div>
     </>

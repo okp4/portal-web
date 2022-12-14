@@ -60,7 +60,7 @@ type NavigationMenuUrls = {
 }
 
 type MenuItem = {
-  category: string
+  subdirectory: string
   namespace: string
   url: string | undefined
 }
@@ -173,48 +173,52 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
     okp4Url: undefined
   }
   const { pathname }: NextRouter = useRouter()
-  const currentMenu = useMemo(() => {
-    const tmp = pathname.split('/')
+  const currentSubdirectory = useMemo(() => {
+    const subdirectories = pathname.split('/')
 
-    return tmp.length < 3 ? 'dataverse' : tmp[2]
+    return subdirectories.length < 3 ? 'dataverse' : subdirectories[2]
   }, [pathname])
 
+  // eslint-disable-next-line max-lines-per-function
   const navigationItems: NavigationItem[] = useMemo(() => {
     const menuItems: MenuItem[] = [
       {
-        category: 'dataverse',
+        subdirectory: 'dataverse',
         namespace: 'header:home',
         url: homeUrl
       },
       {
-        category: 'create',
+        subdirectory: 'create',
         namespace: 'header:create',
         url: createUrl
       },
       {
-        category: 'explore',
+        subdirectory: 'explore',
         namespace: 'header:explore',
         url: exploreUrl
       },
       {
-        category: 'interact',
+        subdirectory: 'interact',
         namespace: 'header:interact',
         url: interactUrl
       },
       {
-        category: 'learn',
+        subdirectory: 'learn',
         namespace: 'header:learn',
         url: learnUrl
       },
       {
-        category: 'okp4',
+        subdirectory: 'okp4',
         namespace: 'header:okp4',
         url: okp4Url
       }
     ]
 
     return menuItems.map(
-      ({ url, namespace, category }: DeepReadonly<MenuItem>, index: number): NavigationItem => ({
+      (
+        { url, namespace, subdirectory }: DeepReadonly<MenuItem>,
+        index: number
+      ): NavigationItem => ({
         menuItem: (
           <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
             {url && isExternalUrl(url) ? (
@@ -224,10 +228,10 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
             )}
           </Typography>
         ),
-        isSelectedFromStart: category === currentMenu
+        isSelectedFromStart: subdirectory === currentSubdirectory
       })
     )
-  }, [homeUrl, currentMenu, createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
+  }, [homeUrl, currentSubdirectory, createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
 
   return (
     <>

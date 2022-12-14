@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button, Icon, Typography, useTheme, useTranslation } from '@okp4/ui'
 import type { DeepReadonly, ThemeContextType, UseState, UseTranslationResponse } from '@okp4/ui'
@@ -6,6 +6,7 @@ import { formatBytes, formatDate } from '../../../utils'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { DataspaceDto } from '../../../dto/DataspaceDto'
 import { Graphviz } from 'graphviz-react'
+import { useRouter } from 'next/router'
 
 type DatasetInformationProps = {
   readonly dataset: DatasetDto
@@ -21,6 +22,7 @@ type GovernanceProps = {
   readonly name: string
   readonly theme: string
   readonly token: string
+  readonly dataspace: string
 }
 
 type MetadataProps = {
@@ -54,8 +56,18 @@ const Container = ({ children, name }: DeepReadonly<ContainerProps>): JSX.Elemen
   </div>
 )
 
-const Governance = ({ name, theme, token }: DeepReadonly<GovernanceProps>): JSX.Element => {
+const Governance = ({
+  name,
+  theme,
+  token,
+  dataspace
+}: DeepReadonly<GovernanceProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
+  const router = useRouter()
+
+  const navigateToGovernance = useCallback(() => {
+    router.push(`/dataverse/dataspace/${dataspace}/governance`)
+  }, [dataspace, router])
 
   return (
     <div className="okp4-dataset-governance">
@@ -66,6 +78,7 @@ const Governance = ({ name, theme, token }: DeepReadonly<GovernanceProps>): JSX.
         // TODO: Should be removed with the next design system evolution of the okp4/ui
         backgroundColor={theme === 'dark' ? 'secondary' : 'primary'}
         label={t('dataset:governance:view')}
+        onClick={navigateToGovernance}
       />
     </div>
   )
@@ -185,7 +198,12 @@ const DatasetInformation = ({
         </Container>
         {dataspace && (
           <Container name={t('dataset:governance:name')}>
-            <Governance name={dataspace.name} theme={theme} token={dataspace.token} />
+            <Governance
+              dataspace={dataspace.id}
+              name={dataspace.name}
+              theme={theme}
+              token={dataspace.token}
+            />
           </Container>
         )}
         <Container name={t('dataset:metadata')}>

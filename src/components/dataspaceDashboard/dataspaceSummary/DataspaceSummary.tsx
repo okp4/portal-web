@@ -89,8 +89,9 @@ const DataspaceSummary = ({
   )
 
   const navigateToGovernance = useCallback(() => {
-    selectedDataspace.governanceUrl && router.push(selectedDataspace.governanceUrl)
-  }, [selectedDataspace.governanceUrl, router])
+    selectedDataspace.governanceUrl &&
+      router.push(`/dataverse/dataspace/${selectedDataspace.id}/governance`)
+  }, [selectedDataspace.governanceUrl, selectedDataspace.id, router])
 
   const handleCreateDataspaceClick = useCallback(
     () => createDataspaceUrl && router.push(createDataspaceUrl),

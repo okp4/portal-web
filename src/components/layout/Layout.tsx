@@ -2,6 +2,8 @@ import React, { useMemo } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import getConfig from 'next/config'
+import type { NextRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { Footer, Header, Logo, Typography, Icon, useTheme, useTranslation } from '@okp4/ui'
 import type {
   DeepReadonly,
@@ -58,6 +60,7 @@ type NavigationMenuUrls = {
 }
 
 type MenuItem = {
+  subdirectory: string
   namespace: string
   url: string | undefined
 }
@@ -169,47 +172,66 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
     learnUrl: undefined,
     okp4Url: undefined
   }
+  const { pathname }: NextRouter = useRouter()
+  const currentSubdirectory = useMemo(() => {
+    const subdirectories = pathname.split('/')
 
+    return subdirectories.length < 3 ? 'dataverse' : subdirectories[2]
+  }, [pathname])
+
+  // eslint-disable-next-line max-lines-per-function
   const navigationItems: NavigationItem[] = useMemo(() => {
     const menuItems: MenuItem[] = [
       {
+        subdirectory: 'dataverse',
         namespace: 'header:home',
         url: homeUrl
       },
       {
+        subdirectory: 'create',
         namespace: 'header:create',
         url: createUrl
       },
       {
+        subdirectory: 'explore',
         namespace: 'header:explore',
         url: exploreUrl
       },
       {
+        subdirectory: 'interact',
         namespace: 'header:interact',
         url: interactUrl
       },
       {
+        subdirectory: 'learn',
         namespace: 'header:learn',
         url: learnUrl
       },
       {
+        subdirectory: 'okp4',
         namespace: 'header:okp4',
         url: okp4Url
       }
     ]
 
-    return menuItems.map(({ url, namespace }: DeepReadonly<MenuItem>, index: number) => ({
-      menuItem: (
-        <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
-          {url && isExternalUrl(url) ? (
-            <a href={url}>{t(namespace)}</a>
-          ) : (
-            <Link href={{ pathname: url }}>{t(namespace)}</Link>
-          )}
-        </Typography>
-      )
-    }))
-  }, [homeUrl, createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
+    return menuItems.map(
+      (
+        { url, namespace, subdirectory }: DeepReadonly<MenuItem>,
+        index: number
+      ): NavigationItem => ({
+        menuItem: (
+          <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
+            {url && isExternalUrl(url) ? (
+              <a href={url}>{t(namespace)}</a>
+            ) : (
+              <Link href={{ pathname: url }}>{t(namespace)}</Link>
+            )}
+          </Typography>
+        ),
+        isSelectedFromStart: subdirectory === currentSubdirectory
+      })
+    )
+  }, [homeUrl, currentSubdirectory, createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
 
   return (
     <>

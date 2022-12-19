@@ -7,7 +7,7 @@ import type {
   GetStaticPropsResult,
   NextPage
 } from 'next'
-import { GovernanceSummary } from '../../../../../components'
+import { GovernanceSummary, PreviousPageButton } from '../../../../../components'
 import type { DataspaceDto } from '../../../../../dto/DataspaceDto'
 
 type GovernanceProps = {
@@ -20,6 +20,7 @@ const Governance: NextPage<GovernanceProps> = ({ dataspace }: DeepReadonly<Gover
       {dataspace && (
         <GovernanceSummary dataspaceName={dataspace.name} governance={dataspace.governance} />
       )}
+      <PreviousPageButton variant="round" />
     </div>
   )
 }

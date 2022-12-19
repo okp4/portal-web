@@ -38,13 +38,28 @@
         justify-items: center;
       }
 
-      &.know-universe > :first-child > :first-child {
-        background: center/cover no-repeat
-          url('../../../assets/images/card-background-know-universe.png') !important;
+      &.dark {
+        &.know-universe > :first-child > :first-child {
+          background: center/cover no-repeat
+            url('../../../assets/images/card-background-know-universe_dark.png') !important;
+        }
+
+        &.rhizome > :first-child > :first-child {
+          background: center/cover no-repeat
+            url('../../../assets/images/card-background-rhizome_dark.png') !important;
+        }
       }
 
-      &.rhizome > :first-child > :first-child {
-        background: center/cover no-repeat url('../../../assets/images/card-background-rhizome.png') !important;
+      &.light {
+        &.know-universe > :first-child > :first-child {
+          background: center/cover no-repeat
+            url('../../../assets/images/card-background-know-universe_light.png') !important;
+        }
+
+        &.rhizome > :first-child > :first-child {
+          background: center/cover no-repeat
+            url('../../../assets/images/card-background-rhizome_light.png') !important;
+        }
       }
     }
 

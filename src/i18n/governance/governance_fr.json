@@ -1,0 +1,10 @@
+{
+  "title": "Gouvernance {{dataspace}}",
+  "categories": {
+    "accessControl": "contrôle d'accès",
+    "dataManagement": "gestion de données",
+    "serviceManagement": "gestion de services",
+    "businessModel": "modèle d'affaires",
+    "governance": "gouvernance"
+  }
+}

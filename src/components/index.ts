@@ -33,9 +33,12 @@ const ExploreList = dynamic(async () => import('./explore/exploreList/ExploreLis
   ssr: false
 })
 
-export const PreviousPageButton = dynamic(async () => import('./previousPageButton/PreviousPageButton'), {
-  ssr: false
-})
+export const PreviousPageButton = dynamic(
+  async () => import('./previousPageButton/PreviousPageButton'),
+  {
+    ssr: false
+  }
+)
 
 export const DatasetPreview = dynamic(
   async () => import('./dataset/datasetPreview/DatasetPreview'),
@@ -55,6 +58,13 @@ const ExploreFilters = dynamic(async () => import('./explore/exploreFilters/Expl
 
 export const DatasetInformation = dynamic(
   async () => import('./dataset/datasetInformation/DatasetInformation'),
+  {
+    ssr: false
+  }
+)
+
+export const GovernanceSummary = dynamic(
+  async () => import('./dataspace/governance/governanceSummary/GovernanceSummary'),
   {
     ssr: false
   }

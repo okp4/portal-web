@@ -1,0 +1,10 @@
+{
+  "title": "{{dataspace}} governance",
+  "categories": {
+    "accessControl": "access control",
+    "dataManagement": "data management",
+    "serviceManagement": "service management",
+    "businessModel": "business model",
+    "governance": "governance"
+  }
+}

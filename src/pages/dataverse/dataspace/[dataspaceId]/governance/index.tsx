@@ -7,14 +7,21 @@ import type {
   GetStaticPropsResult,
   NextPage
 } from 'next'
+import { GovernanceSummary } from '../../../../../components'
 import type { DataspaceDto } from '../../../../../dto/DataspaceDto'
 
 type GovernanceProps = {
   dataspace: DataspaceDto | null
 }
 
-const Governance: NextPage<GovernanceProps> = () => {
-  return <div className="okp4-governance-main"></div>
+const Governance: NextPage<GovernanceProps> = ({ dataspace }: DeepReadonly<GovernanceProps>) => {
+  return (
+    <div className="okp4-governance-main">
+      {dataspace && (
+        <GovernanceSummary dataspaceName={dataspace.name} governance={dataspace.governance} />
+      )}
+    </div>
+  )
 }
 
 export default Governance

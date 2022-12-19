@@ -9,6 +9,8 @@ import explore_en from './explore/explore_en.json'
 import explore_fr from './explore/explore_fr.json'
 import dataset_en from './dataset/dataset_en.json'
 import dataset_fr from './dataset/dataset_fr.json'
+import governance_en from './governance/governance_en.json'
+import governance_fr from './governance/governance_fr.json'
 
 const translationsToLoad = [
   { lng: 'en', namespace: 'header', resource: header_en },
@@ -21,6 +23,8 @@ const translationsToLoad = [
   { lng: 'fr', namespace: 'footer', resource: footer_fr },
   { lng: 'en', namespace: 'dataset', resource: dataset_en },
   { lng: 'fr', namespace: 'dataset', resource: dataset_fr },
+  { lng: 'en', namespace: 'governance', resource: governance_en },
+  { lng: 'fr', namespace: 'governance', resource: governance_fr }
 ]
 
 loadTranslations(translationsToLoad)

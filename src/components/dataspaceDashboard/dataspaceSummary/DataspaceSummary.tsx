@@ -89,9 +89,8 @@ const DataspaceSummary = ({
   )
 
   const navigateToGovernance = useCallback(() => {
-    selectedDataspace.governanceUrl &&
-      router.push(`/dataverse/dataspace/${selectedDataspace.id}/governance`)
-  }, [selectedDataspace.governanceUrl, selectedDataspace.id, router])
+    router.push(`/dataverse/dataspace/${selectedDataspace.id}/governance`)
+  }, [selectedDataspace.id, router])
 
   const handleCreateDataspaceClick = useCallback(
     () => createDataspaceUrl && router.push(createDataspaceUrl),
@@ -139,7 +138,7 @@ const DataspaceSummary = ({
       </div>
       <div className="okp4-dashboard-governance-link">
         <Button
-          disabled={!selectedDataspace.governanceUrl}
+          disabled={!selectedDataspace.governance}
           label={t(`dashboard:dataspace:governance`, { dataspace: selectedDataspace.name })}
           onClick={navigateToGovernance}
         />

@@ -1,6 +1,24 @@
+export type Rule = {
+  title: string
+  rule: string
+}
+
+export type GovernanceContent = {
+  subCategory?: string
+  rules: Rule[]
+}
+
+export type Governance = {
+  accessControl: GovernanceContent[]
+  dataManagement: GovernanceContent[]
+  serviceManagement: GovernanceContent[]
+  businessModel: GovernanceContent[]
+  governance: GovernanceContent[]
+}
+
 export type DataspaceDto = {
   id: string
-  type: "dataspace"
+  type: 'dataspace'
   name: string
   access: string
   creator: string
@@ -10,7 +28,7 @@ export type DataspaceDto = {
   members: number
   datasets: number
   services: number
-  governanceUrl: string | null
+  governance: Governance
   createdOn: string
   updatedOn: string
 }

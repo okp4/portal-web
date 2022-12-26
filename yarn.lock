@@ -287,10 +287,10 @@
   resolved "https://registry.yarnpkg.com/@javelin/isomorphic-utils/-/isomorphic-utils-1.0.0-alpha.12.tgz#c2469341fefb499dc447d1cc607a51a461aff2c5"
   integrity sha512-TBz3kD75v3QOdibJWCShVjexhhor1e+p4lHprQM+wq27HneDKz1e1JjZd8dY4N916fwgCaMgV/p1FYTtfw+Tng==
 
-"@keplr-wallet/types@^0.11.21":
-  version "0.11.21"
-  resolved "https://registry.yarnpkg.com/@keplr-wallet/types/-/types-0.11.21.tgz#42527d05d39178f469a619f01df1f539844d8d97"
-  integrity sha512-oSv8SBBxTQz3hahOWVZmrb3ll0kXVuiUfqnM9q6aWGNOqSiXg8etKQd5c6hSFEYX8iuaAsHa48/NZA0cn+TAgA==
+"@keplr-wallet/types@^0.11.29":
+  version "0.11.29"
+  resolved "https://registry.yarnpkg.com/@keplr-wallet/types/-/types-0.11.29.tgz#c0f77735d5aa52a5a85c06bd355f4e1eca899f6e"
+  integrity sha512-DO3iB8j6hwi9M78251Vrhw7a3GNao1OtZiwMnLgIKgPWPR4YW4avPyy+h+GfWAC8MWYG2xstcEQMZlf+qHK3WQ==
   dependencies:
     axios "^0.27.2"
     long "^4.0.0"

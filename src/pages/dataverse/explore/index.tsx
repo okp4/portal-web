@@ -13,7 +13,7 @@ import type { DataspaceDto } from '../../../dto/DataspaceDto'
 
 export type ExploreListLayout = 'grid' | 'list' | undefined
 
-export type DataverseEntity = DatasetDto | ServiceDto
+export type DataverseEntity = DatasetDto | ServiceDto | DataspaceDto
 
 type Props = {
   dataspaces: DataspaceDto[]
@@ -21,20 +21,12 @@ type Props = {
 
 const rangeOptions: Array<SelectOption> = [
   {
-    label: '10',
-    value: '10'
-  },
-  {
     label: '25',
     value: '25'
   },
   {
     label: '50',
     value: '50'
-  },
-  {
-    label: '100',
-    value: '100'
   }
 ]
 const sortOptions: Array<SelectOption> = [
@@ -57,11 +49,13 @@ const fetchItems = async (
     dataspacesId.map(
       async (dataspaceId: DeepReadonly<string>) =>
         await Promise.all(
-          ['dataset', 'service'].map(
-            async (type: DeepReadonly<string>): Promise<DataverseEntity[]> =>
-              await fetch(`/api/dataverse/dataspace/${dataspaceId}/${type}/`).then(
+          ['dataset', 'service', 'dataspace'].map(
+            async (type: string): Promise<DataverseEntity[]> => {
+              const url = `/api/dataverse/dataspace/${dataspaceId}`
+              return await fetch(type !== 'dataspace' ? url.concat('/', type) : url).then(
                 async (res: DeepReadonly<Response>) => (res.ok ? await res.json() : [])
               )
+            }
           )
           // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
         ).then((res: DataverseEntity[][]) => res.flat())
@@ -71,19 +65,15 @@ const fetchItems = async (
 
   switch (sortBy) {
     case 'name': {
-      items
-        .slice()
-        .sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
-          a.name.localeCompare(b.name)
-        )
+      items.sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+        a.name.localeCompare(b.name)
+      )
       break
     }
     case 'createdOn':
-      items
-        .slice()
-        .sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
-          b.createdOn.localeCompare(a.createdOn)
-        )
+      items.sort((a: DeepReadonly<DataverseEntity>, b: DeepReadonly<DataverseEntity>) =>
+        b.createdOn.localeCompare(a.createdOn)
+      )
       break
     default:
       break
@@ -97,7 +87,7 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
   const [filters, setFilters]: UseState<string[]> = useState<string[]>(
-    dataspaces.map((dataspace: DeepReadonly<DataspaceDto>) => dataspace.id).flat()
+    dataspaces.map((dataspace: DeepReadonly<DataspaceDto>) => dataspace.id)
   )
   const [listLayout, setListLayout]: UseState<ExploreListLayout> =
     useState<ExploreListLayout>('grid')
@@ -167,7 +157,6 @@ export const getServerSideProps: GetServerSideProps = async (): Promise<
 > => {
   const dataspacesResponse = await fetch(`${process.env.API_URI}/dataverse/dataspace/`)
   const dataspaces: DataspaceDto[] = dataspacesResponse.ok ? await dataspacesResponse.json() : []
-
   return {
     props: { dataspaces }
   }

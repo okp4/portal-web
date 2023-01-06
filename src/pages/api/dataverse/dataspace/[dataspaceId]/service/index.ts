@@ -11,7 +11,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
   }
 
   const dataspaceId = req.query.dataspaceId as string
-  const size = req.query.size as string
+  const size = req.query.size ? parseInt(req.query.size as string) : 10
   const data = services.filter((item: DeepReadonly<ServiceDto>) => item.dataspaceId === dataspaceId)
 
   if (data.size === 0) {
@@ -19,12 +19,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
     return
   }
 
-  if (size !== '') {
-    res.status(200).json(data.slice(0, parseInt(size)).toIndexedSeq().toArray())
-    return
-  }
-
-  res.status(200).json(data.toIndexedSeq().toArray())
+  res.status(200).json(data.slice(0, size).toIndexedSeq().toArray())
 }
 
 export default handler

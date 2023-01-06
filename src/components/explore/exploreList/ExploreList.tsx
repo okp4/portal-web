@@ -17,7 +17,7 @@ type ItemDescriptionProps = {
 }
 
 type ItemRightElementProps = {
-  readonly provider: string
+  readonly provider?: string
   readonly updatedOn: string
 }
 
@@ -40,8 +40,12 @@ const ItemRightElement = ({
 
   return (
     <Typography color="inverted-text" fontSize="small">
-      {t('explore:by', {
-        provider: provider,
+      {provider &&
+        `
+        ${t('explore:by', {
+          provider
+        })} - `}
+      {t('explore:updatedAt', {
         updated: formatDate(updatedOn, i18n.language)
       })}
     </Typography>
@@ -53,6 +57,7 @@ const ExploreList = ({ entities, layout }: DeepReadonly<ExploreListProps>): JSX.
 
   const onListItemClick = useCallback(
     (entity: DeepReadonly<DataverseEntity>) => async () =>
+      entity.type === 'dataset' &&
       router.push(`/dataverse/explore/dataspace/${entity.dataspaceId}/${entity.type}/${entity.id}`),
     [router]
   )
@@ -65,7 +70,12 @@ const ExploreList = ({ entities, layout }: DeepReadonly<ExploreListProps>): JSX.
             <ListItem
               description={<ItemDescription categories={item.categories} type={item.type} />}
               key={item.id}
-              lastElement={<ItemRightElement provider={item.provider} updatedOn={item.updatedOn} />}
+              lastElement={
+                <ItemRightElement
+                  {...(item.type !== 'dataspace' && { provider: item.provider })}
+                  updatedOn={item.updatedOn}
+                />
+              }
               onClick={onListItemClick(item)}
               title={item.name}
             />

@@ -11,7 +11,10 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
   }
 
   const dataspaceId = req.query.dataspaceId as string
-  const size = req.query.size ? parseInt(req.query.size as string) : 10
+  const size =
+    req.query.size && parseInt(req.query.size as string) < 100
+      ? parseInt(req.query.size as string)
+      : 10
   const data = services.filter((item: DeepReadonly<ServiceDto>) => item.dataspaceId === dataspaceId)
 
   if (data.size === 0) {

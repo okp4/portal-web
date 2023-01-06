@@ -41,8 +41,7 @@ const ItemRightElement = ({
   return (
     <Typography color="inverted-text" fontSize="small">
       {provider &&
-        `
-        ${t('explore:by', {
+        `${t('explore:by', {
           provider
         })} - `}
       {t('explore:updatedAt', {

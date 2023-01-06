@@ -15,7 +15,8 @@ export const formatDate = (date: string, language?: string): string => {
   })
 }
 
-export const isExternalUrl: (url: string) => boolean = (url:string): boolean => (!url.startsWith('/'));
+export const isExternalUrl: (url: string) => boolean = (url: string): boolean =>
+  !url.startsWith('/')
 
 export const formatBytes = (bytes: number, decimals: number = 2): string => {
   const k = 1000
@@ -25,4 +26,14 @@ export const formatBytes = (bytes: number, decimals: number = 2): string => {
   const i = Math.floor(Math.log(bytes) / Math.log(k))
 
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+}
+
+export const getParsedParameter = (
+  parameter: string | Readonly<string[]> | undefined,
+  defaultValue: number
+): number | Error => {
+  if (!parameter || typeof parameter !== 'string') return defaultValue
+  const parsedNumber = parseInt(parameter)
+  if (isNaN(parsedNumber)) return new Error(`Invalid parameter <${parsedNumber}>`)
+  return parsedNumber
 }

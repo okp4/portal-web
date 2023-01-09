@@ -1,3 +1,5 @@
+@import '@okp4/ui/lib/scss/themes';
+
 .okp4-dashboard-dataspace-content {
   display: grid;
   grid-template-columns: repeat(auto-fill, 277px);
@@ -17,5 +19,19 @@
 
   .okp4-dataspace-card-footer {
     padding-bottom: 10px;
+  }
+
+  &.dark {
+    > div > div {
+      background: center/cover no-repeat
+        url('../../../assets/images/card-background-dataspace-content_dark.png') !important;
+    }
+  }
+
+  &.light {
+    > div > div {
+      background: center/cover no-repeat
+        url('../../../assets/images/card-background-dataspace-content_light.png') !important;
+    }
   }
 }

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Card, Typography } from '@okp4/ui'
-import type { DeepReadonly, UseState } from '@okp4/ui'
+import { Card, Typography, useTheme } from '@okp4/ui'
+import type { ThemeContextType, DeepReadonly, UseState } from '@okp4/ui'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
+import classNames from 'classnames'
 
 type DataverseEntity = DatasetDto | ServiceDto
 
@@ -22,13 +23,13 @@ const fetchEntities = async (id: string): Promise<DataverseEntity[]> => {
 
 const DataspaceEntities = ({ dataspaceId }: DeepReadonly<{ dataspaceId: string }>): JSX.Element => {
   const [entities, setEntities]: UseState<DataverseEntity[]> = useState<DataverseEntity[]>([])
-
+  const { theme }: ThemeContextType = useTheme()
   useEffect(() => {
     fetchEntities(dataspaceId).then(setEntities)
   }, [dataspaceId])
 
   return (
-    <div className="okp4-dashboard-dataspace-content">
+    <div className={classNames('okp4-dashboard-dataspace-content', theme)}>
       {entities.map(
         (entity: DeepReadonly<DataverseEntity>): JSX.Element => (
           <Card

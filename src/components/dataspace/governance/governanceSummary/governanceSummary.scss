@@ -1,0 +1,78 @@
+@import '@okp4/ui/lib/scss/themes';
+
+.okp4-governance-summary-main {
+  @include with-theme {
+    margin-bottom: 130px;
+
+    .okp4-governance-summary-title {
+      border-radius: 5px;
+      padding: 20px 20px 20px 0;
+
+      &.dark {
+        background: themed(info);
+      }
+
+      &.light {
+        background: themed('secondary-background');
+      }
+
+      span {
+        margin-left: 30px;
+      }
+    }
+
+    .okp4-governance-summary-content {
+      margin: 40px 0 0 30px;
+
+      h3 {
+        word-spacing: -0.3em;
+      }
+
+      .okp4-governance-summary-line-separator {
+        height: 1px;
+        background: themed(info);
+        opacity: 0.5;
+        margin: 2px 0;
+
+        &.item {
+          background: themed('warning');
+        }
+      }
+
+      .okp4-governance-summary-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+        gap: 25px;
+        margin: 20px 15px;
+
+        .okp4-governance-summary-item {
+          border-radius: 10px;
+          padding: 13px 30px 13px 13px;
+          max-width: 380px;
+
+          &.dark {
+            background-color: themed('secondary-button');
+          }
+
+          &.light {
+            background-color: themed('border');
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 860px) {
+      .okp4-governance-summary-content {
+        .okp4-governance-summary-items {
+          grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        }
+      }
+    }
+
+    @media screen and (max-width: 650px) {
+      .okp4-governance-summary-content {
+        margin: 40px 0 0;
+      }
+    }
+  }
+}

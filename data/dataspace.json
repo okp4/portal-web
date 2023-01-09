@@ -11,7 +11,96 @@
     "members": 1178,
     "datasets": 822,
     "services": 674,
-    "governanceUrl": "https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen",
+    "governance": {
+      "accessControl": [
+        {
+          "subCategory": "data spaces",
+          "rules": [
+            {
+              "title": "authentication",
+              "rule": "Login with wallet"
+            }
+          ]
+        },
+        {
+          "subCategory": "datasets",
+          "rules": [
+            {
+              "title": "uploading",
+              "rule": "User is authenticated"
+            }
+          ]
+        }
+      ],
+      "dataManagement": [
+        {
+          "rules": [
+            {
+              "title": "field",
+              "rule": "Agriculture or food"
+            },
+            {
+              "title": "size",
+              "rule": "Smaller than 5 GB"
+            },
+            {
+              "title": "licence",
+              "rule": "Etalab-2.0, 0GL, CC-BY 2.0, ODC-BY or 0Dbl 1.0"
+            },
+            {
+              "title": "geographical area",
+              "rule": "Metropolitan France, French Overseas Territories or Europe"
+            },
+            {
+              "title": "metadata",
+              "rule": "To be specified"
+            },
+            {
+              "title": "authorship",
+              "rule": "To be specified"
+            },
+            {
+              "title": "personal data",
+              "rule": "To be excluded"
+            }
+          ]
+        }
+      ],
+      "serviceManagement": [
+        {
+          "rules": [
+            {
+              "title": "language",
+              "rule": "English or French"
+            }
+          ]
+        }
+      ],
+      "businessModel": [
+        {
+          "rules": [
+            {
+              "title": "open",
+              "rule": "Demonstrator available for free"
+            }
+          ]
+        }
+      ],
+      "governance": [
+        {
+          "rules": [
+            {
+              "title": "can modify",
+              "rule": "OKP4"
+            },
+            {
+              "title": "can moderate",
+              "rule": "OKP4"
+            }
+          ]
+        }
+      ]
+    },
     "createdOn": "2022-10-30T15:29:16.507Z",
     "updatedOn": "2022-10-30T15:29:16.507Z"
   },
@@ -27,7 +116,96 @@
     "members": 945,
     "datasets": 745,
     "services": 520,
-    "governanceUrl": "https://xd.adobe.com/view/31a3d2a5-9f07-4e31-a612-20059ff929a5-64f0/screen/d8a45cb1-7433-40b3-b6ce-4237bfcd0678/?fullscreen",
+    "governance": {
+      "accessControl": [
+        {
+          "subCategory": "data spaces",
+          "rules": [
+            {
+              "title": "authentication",
+              "rule": "Login with wallet"
+            }
+          ]
+        },
+        {
+          "subCategory": "datasets",
+          "rules": [
+            {
+              "title": "uploading",
+              "rule": "User is authenticated"
+            }
+          ]
+        }
+      ],
+      "dataManagement": [
+        {
+          "rules": [
+            {
+              "title": "field",
+              "rule": "Agriculture or food"
+            },
+            {
+              "title": "size",
+              "rule": "Smaller than 5 GB"
+            },
+            {
+              "title": "licence",
+              "rule": "Etalab-2.0, 0GL, CC-BY 2.0, ODC-BY or 0Dbl 1.0"
+            },
+            {
+              "title": "geographical area",
+              "rule": "Metropolitan France, French Overseas Territories or Europe"
+            },
+            {
+              "title": "metadata",
+              "rule": "To be specified"
+            },
+            {
+              "title": "authorship",
+              "rule": "To be specified"
+            },
+            {
+              "title": "personal data",
+              "rule": "To be excluded"
+            }
+          ]
+        }
+      ],
+      "serviceManagement": [
+        {
+          "rules": [
+            {
+              "title": "language",
+              "rule": "English or French"
+            }
+          ]
+        }
+      ],
+      "businessModel": [
+        {
+          "rules": [
+            {
+              "title": "open",
+              "rule": "Demonstrator available for free"
+            }
+          ]
+        }
+      ],
+      "governance": [
+        {
+          "rules": [
+            {
+              "title": "can modify",
+              "rule": "OKP4"
+            },
+            {
+              "title": "can moderate",
+              "rule": "OKP4"
+            }
+          ]
+        }
+      ]
+    },
     "createdOn": "2022-10-30T15:29:16.507Z",
     "updatedOn": "2022-10-30T15:29:16.507Z"
   }

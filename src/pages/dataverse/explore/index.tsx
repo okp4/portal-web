@@ -86,9 +86,7 @@ const fetchItems = async (
 const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
   const [range, setRange]: UseState<string> = useState<string>(rangeOptions[0].value)
   const [sortBy, setSortBy]: UseState<string> = useState<string>(sortOptions[0].value)
-  const [filters, setFilters]: UseState<string[]> = useState<string[]>(
-    dataspaces.map((dataspace: DeepReadonly<DataspaceDto>) => dataspace.id)
-  )
+  const [filters, setFilters]: UseState<string[]> = useState<string[]>([])
   const [listLayout, setListLayout]: UseState<ExploreListLayout> =
     useState<ExploreListLayout>('grid')
   const [entities, setEntities]: UseState<DataverseEntity[]> = useState<DataverseEntity[]>([])
@@ -122,10 +120,16 @@ const Explore: NextPage<Props> = ({ dataspaces }: DeepReadonly<Props>) => {
   )
 
   useEffect(() => {
-    fetchItems(parseInt(range), sortBy, filters)
+    fetchItems(
+      parseInt(range),
+      sortBy,
+      filters.length
+        ? filters
+        : dataspaces.map((dataspace: DeepReadonly<DataspaceDto>) => dataspace.id)
+    )
       .then(setEntities)
       .catch(() => [])
-  }, [range, sortBy, filters])
+  }, [range, sortBy, filters, dataspaces])
 
   return (
     <div className="okp4-explore">

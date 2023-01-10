@@ -222,7 +222,9 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
         menuItem: (
           <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
             {url && isExternalUrl(url) ? (
-              <a href={url}>{t(namespace)}</a>
+              <a href={url} rel="noreferrer" target="_blank">
+                {t(namespace)}
+              </a>
             ) : (
               <Link href={{ pathname: url }}>{t(namespace)}</Link>
             )}

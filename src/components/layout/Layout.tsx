@@ -206,7 +206,8 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
       {
         subdirectory: 'learn',
         namespace: 'header:learn',
-        url: learnUrl
+        url: learnUrl,
+        target: '_blank'
       },
       {
         subdirectory: 'okp4',

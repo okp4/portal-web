@@ -63,6 +63,7 @@ type MenuItem = {
   subdirectory: string
   namespace: string
   url: string | undefined
+  target?: '_blank' | '_self'
 }
 
 const languages = [
@@ -216,13 +217,15 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
 
     return menuItems.map(
       (
-        { url, namespace, subdirectory }: DeepReadonly<MenuItem>,
+        { url, namespace, subdirectory, target = '_self' }: DeepReadonly<MenuItem>,
         index: number
       ): NavigationItem => ({
         menuItem: (
           <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
             {url && isExternalUrl(url) ? (
-              <a href={url}>{t(namespace)}</a>
+              <a href={url} target={target}>
+                {t(namespace)}
+              </a>
             ) : (
               <Link href={{ pathname: url }}>{t(namespace)}</Link>
             )}

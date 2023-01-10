@@ -4,7 +4,16 @@ import Link from 'next/link'
 import getConfig from 'next/config'
 import type { NextRouter } from 'next/router'
 import { useRouter } from 'next/router'
-import { Footer, Header, Logo, Typography, Icon, useTheme, useTranslation } from '@okp4/ui'
+import {
+  Footer,
+  Header,
+  Logo,
+  Typography,
+  Icon,
+  useTheme,
+  useTranslation,
+  useMediaType
+} from '@okp4/ui'
 import type {
   DeepReadonly,
   ThemeContextType,
@@ -17,6 +26,7 @@ import darkCosmos from '@okp4/ui/lib/assets/images/cosmos-dark.png'
 import '../../i18n/index'
 import type { Config } from '../../pages/api/config'
 import { isExternalUrl } from '../../utils'
+import classNames from 'classnames'
 
 // eslint-disable-next-line @typescript-eslint/typedef
 const { publicRuntimeConfig } = getConfig()
@@ -173,6 +183,8 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
     okp4Url: undefined
   }
   const { pathname }: NextRouter = useRouter()
+
+  const hasBurgerMenu = useMediaType('(max-width: 995px)') // Header hack.
   const currentSubdirectory = useMemo(() => {
     const subdirectories = pathname.split('/')
 
@@ -213,27 +225,53 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
         url: okp4Url
       }
     ]
-
+    /*
+    Header hack:
+    We are hacking the behaviour of the Header component by adding the arrow icons 
+    and the div wrapper. We are obligated to it this way since the Header adds the 
+    arrows to the menuItem when clicked indiscriminatory of wether or not you want it.
+     */
     return menuItems.map(
       (
         { url, namespace, subdirectory }: DeepReadonly<MenuItem>,
         index: number
       ): NavigationItem => ({
         menuItem: (
-          <Typography as="div" fontSize="small" fontWeight="bold" key={index} noWrap>
-            {url && isExternalUrl(url) ? (
-              <a href={url} rel="noreferrer" target="_blank">
-                {t(namespace)}
-              </a>
-            ) : (
-              <Link href={{ pathname: url }}>{t(namespace)}</Link>
-            )}
-          </Typography>
+          <div
+            className={classNames('okp4-header-navigation-interior-item', {
+              current: currentSubdirectory === subdirectory,
+              row: !hasBurgerMenu,
+              burger: hasBurgerMenu
+            })}
+            key={index}
+          >
+            {<Icon name={hasBurgerMenu ? 'arrow-right' : 'arrow-down'} size={15} />}
+            <Typography as="div" fontSize="small" fontWeight="bold" noWrap>
+              {url && isExternalUrl(url) ? (
+                <a href={url} rel="noreferrer" target="_blank">
+                  {t(namespace)}
+                </a>
+              ) : (
+                <Link href={{ pathname: url }}>{t(namespace)}</Link>
+              )}
+            </Typography>
+            {!hasBurgerMenu && <Icon name="arrow-up" size={15} />}
+          </div>
         ),
         isSelectedFromStart: subdirectory === currentSubdirectory
       })
     )
-  }, [homeUrl, currentSubdirectory, createUrl, exploreUrl, interactUrl, learnUrl, okp4Url, t])
+  }, [
+    homeUrl,
+    createUrl,
+    exploreUrl,
+    interactUrl,
+    learnUrl,
+    okp4Url,
+    hasBurgerMenu,
+    t,
+    currentSubdirectory
+  ])
 
   return (
     <>

@@ -27,6 +27,47 @@
           text-decoration: none;
           color: themed(text);
         }
+
+        /*
+        Header hack:
+        We are hacking the behaviour of the Header component by removing the Header
+        arrows from document flow and nulling the opacity style change when the 
+        class is not current. We are obligated to it this way since the Header currently 
+        adds the arrows to the menuItem when clicked indiscriminatory of wether or not 
+        you want it.
+        */
+        .okp4-header-navigation-item-container > div {
+          opacity: 1 !important;
+
+          svg {
+            display: none;
+          }
+
+          .okp4-header-navigation-interior-item {
+            &.row {
+              display: grid;
+              justify-items: center;
+            }
+
+            &.burger {
+              display: flex;
+              align-items: center;
+
+              svg {
+                margin-right: 5px;
+              }
+            }
+
+            &.current {
+              opacity: 0.6;
+
+              > svg {
+                display: grid;
+              }
+            }
+          }
+        }
+        // End of hack
       }
     }
 

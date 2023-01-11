@@ -119,6 +119,7 @@ const DataspaceSummary = ({
             />
             <Button
               backgroundColor="primary"
+              disabled
               label={t('dashboard:dataspace:creation')}
               leftIcon={<Icon name="add" size={15} />}
               onClick={handleCreateDataspaceClick}

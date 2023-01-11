@@ -55,9 +55,20 @@ const ExploreList = ({ entities, layout }: DeepReadonly<ExploreListProps>): JSX.
   const router: NextRouter = useRouter()
 
   const onListItemClick = useCallback(
-    (entity: DeepReadonly<DataverseEntity>) => async () =>
-      entity.type === 'dataset' &&
-      router.push(`/dataverse/explore/dataspace/${entity.dataspaceId}/${entity.type}/${entity.id}`),
+    (entity: DeepReadonly<DataverseEntity>) => () => {
+      switch (entity.type) {
+        case 'dataset':
+          router.push(
+            `/dataverse/explore/dataspace/${entity.dataspaceId}/${entity.type}/${entity.id}`
+          )
+          break
+        case 'dataspace':
+          router.push(`/dataverse/dataspace/${entity.id}/governance`)
+          break
+        default:
+          break
+      }
+    },
     [router]
   )
 

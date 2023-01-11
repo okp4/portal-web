@@ -21,7 +21,6 @@ import type { DataspaceDto } from '../../../dto/DataspaceDto'
 import classNames from 'classnames'
 
 type DataspaceSummaryProps = {
-  createDataspaceUrl?: string
   selectedDataspace: DataspaceDto
   dataspaces: DataspaceDto[]
   onDataspaceChange: (value: SelectValue) => void
@@ -71,7 +70,6 @@ const Counters = ({
 
 // eslint-disable-next-line max-lines-per-function
 const DataspaceSummary = ({
-  createDataspaceUrl,
   selectedDataspace,
   dataspaces,
   onDataspaceChange
@@ -91,11 +89,6 @@ const DataspaceSummary = ({
   const navigateToGovernance = useCallback(() => {
     router.push(`/dataverse/dataspace/${selectedDataspace.id}/governance`)
   }, [selectedDataspace.id, router])
-
-  const handleCreateDataspaceClick = useCallback(
-    () => createDataspaceUrl && router.push(createDataspaceUrl),
-    [createDataspaceUrl, router]
-  )
 
   return (
     <>
@@ -122,7 +115,6 @@ const DataspaceSummary = ({
               disabled
               label={t('dashboard:dataspace:creation')}
               leftIcon={<Icon name="add" size={15} />}
-              onClick={handleCreateDataspaceClick}
               size="small"
             />
           </div>

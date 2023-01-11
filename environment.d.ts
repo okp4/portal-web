@@ -26,7 +26,6 @@ declare namespace NodeJS {
     TX_MEMO: string
     TX_RECIPIENT_ADDRESS: string
     OKP4_BI_URL: string
-    CREATE_DATASPACE_URL: string
   }
 }
 

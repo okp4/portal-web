@@ -22,7 +22,6 @@ export type Config = {
     apiUri: string
     defaultDataspaceId: string
     okp4BiUrl: string
-    createDataspaceUrl: string
   }
   chain: {
     id: string
@@ -61,8 +60,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
       },
       apiUri: process.env.API_URI,
       defaultDataspaceId: process.env.DEFAULT_DATASPACE_ID,
-      okp4BiUrl: process.env.OKP4_BI_URL,
-      createDataspaceUrl: process.env.CREATE_DATASPACE_URL
+      okp4BiUrl: process.env.OKP4_BI_URL
     },
     chain: {
       id: process.env.CHAIN_ID,

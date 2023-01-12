@@ -1,6 +1,6 @@
 {
   "name": "@okp4/portal-web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "repository": "git@github.com:okp4/portal-web.git",
   "license": "BSD-3-Clause",

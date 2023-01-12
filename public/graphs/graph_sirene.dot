@@ -21,7 +21,7 @@ digraph {
     s15 [shape="rectangle" style="rounded,filled" label="Data Join Tabular" ]
     s16 [shape="rectangle" style="rounded,filled" label="Data Join Tabular" ]
     s17 [shape="rectangle" style="rounded,filled" label="Data Join Tabular" ]
-    s18 [shape="circle" style="rounded,filled" xlabel="BASE SIRÈNE \n Exploitation agricole" label=""]
+    s18 [shape="circle" style="rounded,filled" xlabel="BASE SIRENE \n agriculture sylviculture pêche" label=""]
     s01  -> s06
     s06  -> s10
     s10  -> s14

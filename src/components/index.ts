@@ -70,6 +70,12 @@ export const GovernanceSummary = dynamic(
   }
 )
 
+export const CreateIntroduction = dynamic(
+  async () => import('./create/createIntroduction/CreateIntroduction'),
+  {
+    ssr: false
+  }
+)
 export {
   PageTitle,
   Layout,

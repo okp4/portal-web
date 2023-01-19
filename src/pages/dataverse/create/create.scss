@@ -1,0 +1,21 @@
+.okp4-create-main {
+  width: 100%;
+  display: grid;
+  gap: 25px;
+
+  @media screen and (max-width: 1354px) {
+    max-width: 96%;
+  }
+
+  @media screen and (min-width: 995px) and (max-width: 1353px) {
+    max-width: 90%;
+  }
+
+  @media screen and (max-width: 994px) {
+    max-width: 100%;
+  }
+
+  .okp4-create-return-button {
+    margin: 30px 0;
+  }
+}

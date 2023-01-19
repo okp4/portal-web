@@ -1,4 +1,41 @@
 {
   "title": "Knowledge Builder",
-  "description": "Orchestrate datasets and services to build your own knowledge workflow.\n Created knowledge can be used later to build further workflows or to inject in your own Data Apps, or Data Apps provided by OKP4 or third-party."
+  "description": "Orchestrate datasets and services to build your own knowledge workflow.\n Created knowledge can be used later to build further workflows or to inject in your own Data Apps, or Data Apps provided by OKP4 or third-party.",
+  "composer": {
+    "title": "Create new knowledge!",
+    "datasets": {
+      "description": "Select the datasets you want to use",
+      "placeholder1": "datasets 1",
+      "placeholder2": "datasets 2"
+    },
+    "service": {
+      "description": "Choose the service you want to apply",
+      "placeholder": "service"
+    }
+  },
+  "metaData": {
+    "title": "Enter the new dataset meta data",
+    "fields": {
+      "name": {
+        "placeholder": "name"
+      },
+      "description": {
+        "placeholder": "description"
+      },
+      "provider": {
+        "placeholder": "provider"
+      },
+      "labels": {
+        "placeholder": "labels"
+      }
+    },
+    "submit": {
+      "button": "Create new knowledge",
+      "message": {
+        "loading": "Workflow loading",
+        "error": "Workflow error",
+        "success": "All the governance rules of Rhizome are respected"
+      }
+    }
+  }
 }

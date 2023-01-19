@@ -76,6 +76,13 @@ export const CreateIntroduction = dynamic(
     ssr: false
   }
 )
+export const WorkflowBuilder = dynamic(
+  async () => import('./create/workflowBuilder/WorkflowBuilder'),
+  {
+    ssr: false
+  }
+)
+
 export {
   PageTitle,
   Layout,

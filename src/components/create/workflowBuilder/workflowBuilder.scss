@@ -1,0 +1,102 @@
+@import '@okp4/ui/lib/scss/themes';
+
+.okp4-workflow-builder-main {
+  @include with-theme {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: minmax(250px, 300px) minmax(280px, 750px);
+    margin: auto;
+
+    input,
+    textarea {
+      font-size: 15px !important;
+    }
+
+    .okp4-workflow-builder-composer {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: themed(text);
+      border-radius: 9px;
+    }
+
+    .okp4-workflow-builder-meta-data {
+      display: grid;
+      gap: 10px;
+      padding: 20px;
+      background: themed(text);
+      border-radius: 9px;
+
+      .okp4-workflow-builder-meta-data-text-field {
+        &.disabled {
+          opacity: 0.5;
+        }
+      }
+
+      .okp4-workflow-builder-meta-data-submit {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: auto auto;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        &.button-only {
+          justify-content: right;
+        }
+      }
+
+      .okp4-workflow-builder-meta-data-submit-message {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        padding: 10px;
+        border-radius: 9px;
+        max-width: 300px;
+
+        &.loading {
+          background: themed('field');
+        }
+
+        &.error {
+          background: themed('error');
+        }
+
+        &.success {
+          background: themed('success');
+        }
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      grid-template-columns: unset;
+      grid-template-rows: minmax(400px, auto);
+
+      .okp4-workflow-builder-meta-data-form {
+        .okp4-workflow-builder-meta-data-submit {
+          grid-template-columns: unset;
+
+          .okp4-workflow-builder-meta-data-submit-button {
+            justify-self: center;
+          }
+
+          .okp4-workflow-builder-meta-data-submit-message {
+            max-width: unset;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 660px) {
+      .okp4-workflow-builder-meta-data-form {
+        .okp4-workflow-builder-meta-data-submit {
+          grid-template-columns: unset;
+
+          .okp4-workflow-builder-meta-data-submit-button {
+            justify-self: center;
+          }
+        }
+      }
+    }
+  }
+}

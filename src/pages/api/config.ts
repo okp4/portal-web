@@ -86,7 +86,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
     workflow: {
       argo: {
         apiUrl: process.env.WORKFLOW_ARGO_API_URL,
-        clientUrl: process.env.WORKFLOW_ARGO_CLIENT_URL,
+        clientUrl: process.env.WORKFLOW_ARGO_WEB_URL,
         authentication: {
           bearer: process.env.WORKFLOW_ARGO_AUTHENTICATION_BEARER
         }

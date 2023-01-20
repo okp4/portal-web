@@ -41,7 +41,7 @@ const retrieveWorkflow = async (id: string): Promise<WorkflowResponse | null> =>
         return {
           status: workflow.items[0].status.phase,
           visualizationUrl: join(
-            process.env.WORKFLOW_ARGO_CLIENT_URL,
+            process.env.WORKFLOW_ARGO_WEB_URL,
             workflow.items[0].metadata.name
           )
         }

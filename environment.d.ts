@@ -27,7 +27,7 @@ declare namespace NodeJS {
     TX_RECIPIENT_ADDRESS: string
     OKP4_BI_URL: string
     WORKFLOW_ARGO_API_URL: string
-    WORKFLOW_ARGO_CLIENT_URL: string
+    WORKFLOW_ARGO_WEB_URL: string
     WORKFLOW_ARGO_AUTHENTICATION_BEARER: string
   }
 }

@@ -39,7 +39,7 @@ export type Config = {
     argo: {
       apiUrl: string
       clientUrl: string
-      authentication: {
+      authorization: {
         bearer: string
       }
     }
@@ -87,8 +87,8 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
       argo: {
         apiUrl: process.env.WORKFLOW_ARGO_API_URL,
         clientUrl: process.env.WORKFLOW_ARGO_WEB_URL,
-        authentication: {
-          bearer: process.env.WORKFLOW_ARGO_AUTHENTICATION_BEARER
+        authorization: {
+          bearer: process.env.WORKFLOW_ARGO_AUTHORIZATION_BEARER
         }
       }
     }

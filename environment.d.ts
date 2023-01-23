@@ -28,7 +28,7 @@ declare namespace NodeJS {
     OKP4_BI_URL: string
     WORKFLOW_ARGO_API_URL: string
     WORKFLOW_ARGO_WEB_URL: string
-    WORKFLOW_ARGO_AUTHENTICATION_BEARER: string
+    WORKFLOW_ARGO_AUTHORIZATION_BEARER: string
   }
 }
 

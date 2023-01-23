@@ -25,7 +25,7 @@ type WorkflowResponse = {
 const retrieveWorkflow = async (id: string): Promise<WorkflowResponse | null> =>
   fetch(`${process.env.WORKFLOW_ARGO_API_URL}?listOptions.labelSelector=origin=${id}`, {
     headers: {
-      Authorization: `Bearer ${process.env.WORKFLOW_ARGO_AUTHENTICATION_BEARER}`
+      Authorization: `Bearer ${process.env.WORKFLOW_ARGO_AUTHORIZATION_BEARER}`
     }
   })
     .then(async (res: DeepReadonly<Response>) => {
@@ -40,10 +40,7 @@ const retrieveWorkflow = async (id: string): Promise<WorkflowResponse | null> =>
       if (workflow.items?.length)
         return {
           status: workflow.items[0].status.phase,
-          visualizationUrl: join(
-            process.env.WORKFLOW_ARGO_WEB_URL,
-            workflow.items[0].metadata.name
-          )
+          visualizationUrl: join(process.env.WORKFLOW_ARGO_WEB_URL, workflow.items[0].metadata.name)
         }
 
       return null

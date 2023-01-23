@@ -1,0 +1,110 @@
+{
+  "id": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "type": "dataspace",
+  "name": "Rhizome",
+  "access": "PUBLIC",
+  "creator": "OKP4",
+  "categories": [
+    "agriculture",
+    "open data",
+    "demonstrateur",
+    "dataviz"
+  ],
+  "description": "Rhizome est un data space exploité par OKP4, actuellement en cours de développement sur la base de la technologie OKP4. Rhizome démontre la puissance du traitement et du partage des données, et la valeur que nous pouvons obtenir en connectant efficacement différentes sources de données agricoles en libre accès sous différents formats de données. Rhizome vise à connecter autant de données que possible et à fournir des visuels et métriques de grande valeur dans différents domaines liés à l'agriculture, tels que l'utilisation des terres et la gestion du territoire, la gestion des cultures et du bétail, ainsi que les ressources forestières et l'industrie du bois.",
+  "token": "KNOW",
+  "members": 1178,
+  "datasets": 822,
+  "services": 674,
+  "governance": {
+    "accessControl": [
+      {
+        "subCategory": "data spaces",
+        "rules": [
+          {
+            "title": "authentication",
+            "rule": "Login with wallet"
+          }
+        ]
+      },
+      {
+        "subCategory": "datasets",
+        "rules": [
+          {
+            "title": "uploading",
+            "rule": "User is authenticated"
+          }
+        ]
+      }
+    ],
+    "dataManagement": [
+      {
+        "rules": [
+          {
+            "title": "field",
+            "rule": "Agriculture or food"
+          },
+          {
+            "title": "size",
+            "rule": "Smaller than 5 GB"
+          },
+          {
+            "title": "licence",
+            "rule": "Etalab-2.0, 0GL, CC-BY 2.0, ODC-BY or 0Dbl 1.0"
+          },
+          {
+            "title": "geographical area",
+            "rule": "Metropolitan France, French Overseas Territories or Europe"
+          },
+          {
+            "title": "metadata",
+            "rule": "To be specified"
+          },
+          {
+            "title": "authorship",
+            "rule": "To be specified"
+          },
+          {
+            "title": "personal data",
+            "rule": "To be excluded"
+          }
+        ]
+      }
+    ],
+    "serviceManagement": [
+      {
+        "rules": [
+          {
+            "title": "language",
+            "rule": "English or French"
+          }
+        ]
+      }
+    ],
+    "businessModel": [
+      {
+        "rules": [
+          {
+            "title": "open",
+            "rule": "Demonstrator available for free"
+          }
+        ]
+      }
+    ],
+    "governance": [
+      {
+        "rules": [
+          {
+            "title": "can modify",
+            "rule": "OKP4"
+          },
+          {
+            "title": "can moderate",
+            "rule": "OKP4"
+          }
+        ]
+      }
+    ]
+  },
+  "createdOn": "2022-10-30T15:29:16.507Z",
+  "updatedOn": "2022-10-30T15:29:16.507Z"
+}

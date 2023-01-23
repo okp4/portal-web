@@ -1,0 +1,110 @@
+{
+  "id": "ti847285-e52a-430d-9679-dcb76b962ce7",
+  "type": "dataspace",
+  "name": "Know Universe",
+  "access": "PUBLIC",
+  "creator": "OKP4",
+  "categories": [
+    "cosmos",
+    "open data",
+    "blockchain",
+    "OKP4"
+  ],
+  "description": "Le Data Space Know Universe vise à valoriser des données financières inhérentes à l'économie du jeton $KNOW. Ces données peuvent par exemple être partagées par l'un des 150 validateurs de la blockchain OKP4.",
+  "token": "KNOW",
+  "members": 945,
+  "datasets": 745,
+  "services": 520,
+  "governance": {
+    "accessControl": [
+      {
+        "subCategory": "data spaces",
+        "rules": [
+          {
+            "title": "authentication",
+            "rule": "Login with wallet"
+          }
+        ]
+      },
+      {
+        "subCategory": "datasets",
+        "rules": [
+          {
+            "title": "uploading",
+            "rule": "User is authenticated"
+          }
+        ]
+      }
+    ],
+    "dataManagement": [
+      {
+        "rules": [
+          {
+            "title": "field",
+            "rule": "Agriculture or food"
+          },
+          {
+            "title": "size",
+            "rule": "Smaller than 5 GB"
+          },
+          {
+            "title": "licence",
+            "rule": "Etalab-2.0, 0GL, CC-BY 2.0, ODC-BY or 0Dbl 1.0"
+          },
+          {
+            "title": "geographical area",
+            "rule": "Metropolitan France, French Overseas Territories or Europe"
+          },
+          {
+            "title": "metadata",
+            "rule": "To be specified"
+          },
+          {
+            "title": "authorship",
+            "rule": "To be specified"
+          },
+          {
+            "title": "personal data",
+            "rule": "To be excluded"
+          }
+        ]
+      }
+    ],
+    "serviceManagement": [
+      {
+        "rules": [
+          {
+            "title": "language",
+            "rule": "English or French"
+          }
+        ]
+      }
+    ],
+    "businessModel": [
+      {
+        "rules": [
+          {
+            "title": "open",
+            "rule": "Demonstrator available for free"
+          }
+        ]
+      }
+    ],
+    "governance": [
+      {
+        "rules": [
+          {
+            "title": "can modify",
+            "rule": "OKP4"
+          },
+          {
+            "title": "can moderate",
+            "rule": "OKP4"
+          }
+        ]
+      }
+    ]
+  },
+  "createdOn": "2022-10-30T15:29:16.507Z",
+  "updatedOn": "2022-10-30T15:29:16.507Z"
+}

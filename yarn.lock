@@ -344,10 +344,10 @@
     tsutils ">=3.21.0"
     typescript ">=4.6.2"
 
-"@okp4/ui@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@okp4/ui/-/ui-3.0.0.tgz#204e97fdfebb552db99b8d6ecd8dae1df4ec1a04"
-  integrity sha512-/INwD/NR7A3LNOpUZyqKVjgboaolr9O85jQ7vFF5YIi4vrB1WA+CSd3aSshco4Q17LhGZb2Zs429L7XhbCJjRQ==
+"@okp4/ui@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@okp4/ui/-/ui-4.0.0.tgz#f4b415bb72db9205a09c7bb7ea4f1834443a4340"
+  integrity sha512-UdG1kgZHK3X+FHExGhBa6kQ02C4WX7fxcByQimIhvngr0TDhRuHAy7sEn+qe9iCxlV2AUx9tRmliEKvTLz6IhA==
   dependencies:
     "@javelin/ecs" "^1.0.0-alpha.13"
     "@radix-ui/react-switch" "^1.0.0"
@@ -1128,12 +1128,7 @@ chalk@^4.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-classnames@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
-  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
-
-classnames@^2.3.2:
+classnames@^2.3.1, classnames@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==

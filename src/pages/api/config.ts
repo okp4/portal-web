@@ -35,6 +35,15 @@ export type Config = {
     memo: string
     recipientAddress: string
   }
+  workflow: {
+    argo: {
+      apiUrl: string
+      clientUrl: string
+      authorization: {
+        bearer: string
+      }
+    }
+  }
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
@@ -73,6 +82,15 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse<Confi
     transaction: {
       memo: process.env.TX_MEMO,
       recipientAddress: process.env.TX_RECIPIENT_ADDRESS
+    },
+    workflow: {
+      argo: {
+        apiUrl: process.env.WORKFLOW_ARGO_API_URL,
+        clientUrl: process.env.WORKFLOW_ARGO_WEB_URL,
+        authorization: {
+          bearer: process.env.WORKFLOW_ARGO_AUTHORIZATION_BEARER
+        }
+      }
     }
   }
   return res.status(200).json(config)

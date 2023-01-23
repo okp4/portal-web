@@ -1,14 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { services } from '../../store'
+import {getAllServices} from '../../store'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const handler = (req: NextApiRequest, res: NextApiResponse): void => {
+const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method !== 'GET') {
-    res.status(405).send(null)
+    res.status(405).end()
     return
   }
 
-  res.status(200).json(services.toIndexedSeq().toArray())
+  try {
+    const services = await getAllServices()
+    res.status(200).json(services.slice(0, 100).map((v: string) => JSON.parse(v)))
+  } catch (err: unknown) {
+    console.error(err)
+    res.status(500).end()
+  }
 }
 
 export default handler

@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 const fsp = fs.promises
+
 const dataspacesPath = path.join(process.env.DATA_PATH, 'dataspaces')
 const dataspaceFilename = 'dataspace.json'
 const datasetsDir = `datasets`
@@ -81,3 +82,12 @@ export const getDataset = async (dataspaceId: string, id: string): Promise<any> 
   }
   throw err
 })
+
+export const createDataset = async (dataspaceId: string, dataset: any): Promise<void> => {
+  dataset.dataspaceId = dataspaceId
+
+  return fsp.writeFile(
+    path.join(dataspacesPath, dataspaceId, datasetsDir, `${dataset.id}.json`),
+    JSON.stringify(dataset)
+  ).then(() => dataset.id)
+}

@@ -1,0 +1,9 @@
+.okp4-create-introduction-main {
+  .okp4-create-introduction-description {
+    max-width: 800px;
+  }
+
+  @media screen and (min-width: 636px) and (max-width: 951px) {
+    text-align: center;
+  }
+}

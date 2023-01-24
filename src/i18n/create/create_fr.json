@@ -1,0 +1,41 @@
+{
+  "title": "Constructeur de connaissance",
+  "description": "Orchestrez des ensembles de données et des services pour créer votre propre workflow de connaissances.\n Les connaissances créées peuvent être utilisées ultérieurement pour créer d'autres workflow ou pour injecter dans vos propres applications de données, ou des applications de données fournies par OKP4 ou un tiers.",
+  "composer": {
+    "title": "Créez de la nouvelle connaissance!",
+    "datasets": {
+      "description": "Sélectionnez les jeux de données que vous voulez utiliser",
+      "placeholder1": "jeu de données 1",
+      "placeholder2": "jeu de données 2"
+    },
+    "service": {
+      "description": "Choisissez le service que vous voulez appliquer",
+      "placeholder": "service"
+    }
+  },
+  "metaData": {
+    "title": "Saisissez les données meta du nouveau jeu de données",
+    "fields": {
+      "name": {
+        "placeholder": "nom"
+      },
+      "description": {
+        "placeholder": "description"
+      },
+      "provider": {
+        "placeholder": "fournisseur"
+      },
+      "labels": {
+        "placeholder": "étiquettes"
+      }
+    },
+    "submit": {
+      "button": "Créez de la nouvelle connaissance",
+      "message": {
+        "loading": "Workflow en train de charger",
+        "error": "Workflow erreur",
+        "success": "Toutes les règles de gouvernance de Rhizome sont respectées"
+      }
+    }
+  }
+}

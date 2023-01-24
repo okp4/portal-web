@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getDataspaceServices } from '../../../../store'
 
@@ -9,13 +10,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
 
   const dataspaceId = req.query.dataspaceId as string
+  const limit = parseInt(req.query.size as string)
   try {
     const services = await getDataspaceServices(dataspaceId)
     if (!services) {
       res.status(404).end()
       return
     }
-    res.status(200).json(services.slice(0, 100).map((v: string) => JSON.parse(v)))
+    res.status(200).json(
+      services.slice(0, Math.min(100, limit))
+        .map((v: string) => JSON.parse(v))
+    )
   } catch (err: unknown) {
     console.error(err)
     res.status(500).end()

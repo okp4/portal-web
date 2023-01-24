@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types, @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createDataset, getDataset, getDataspace, getDataspaceDatasets } from '../../../../store'
 
@@ -7,13 +7,23 @@ const getDatasets = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
+  const finalDatasetFilter = req.query.final_dataset ?
+    (ds: any): boolean => (ds.final_dataset ? ds.final_dataset : false) === (req.query.final_dataset === 'true') :
+    (): boolean => true
+  const limit = req.query.size ? parseInt(req.query.size as string) : 100
+
   try {
     const datasets = await getDataspaceDatasets(dataspace)
     if (!datasets) {
       res.status(404).end()
       return
     }
-    res.status(200).json(datasets.slice(0, 100).map((v: string) => JSON.parse(v)))
+
+    res.status(200).json(
+      datasets.map((v: string) => JSON.parse(v))
+        .filter(finalDatasetFilter)
+        .slice(0, Math.min(100, limit))
+    )
   } catch (err: unknown) {
     console.error(err)
     res.status(500).end()

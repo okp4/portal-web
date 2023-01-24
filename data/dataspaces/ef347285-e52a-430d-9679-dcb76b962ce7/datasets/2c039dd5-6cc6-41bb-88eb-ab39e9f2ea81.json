@@ -1,0 +1,18 @@
+{
+  "id": "2c039dd5-6cc6-41bb-88eb-ab39e9f2ea81",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "Table référentielle des cultures et des groupes de cultures du RPG",
+  "access": "PUBLIC",
+  "categories": ["open data", "agriculture", "france", "RPG"],
+  "description": "Table propre à la diffusion du RPG : La notion de groupe de culture dans cette table ne correspond pas à la notion de groupe de cultures du règlement PAC ni à celle des référentiels ISIS. Dans cette table, chaque code culture est expliqué par un libellé et lié à un code de groupe de culture et son libellé.",
+  "provider": "OKP4",
+  "creator": "IGN",
+  "size": 19122,
+  "format": "csv",
+  "quality": 5,
+  "completude": 100,
+  "createdOn": "2022-08-22T00:09:03Z",
+  "updatedOn": "2022-08-22T00:09:03Z"
+}

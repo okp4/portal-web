@@ -1,0 +1,29 @@
+{
+  "id": "ca752b42-9740-4436-a86f-cd3c5e084d33",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "RPG AGRESTE 2020",
+  "access": "PUBLIC",
+  "categories": [
+    "open data",
+    "agriculture",
+    "france",
+    "departement",
+    "rendement",
+    "production",
+    "superficie",
+    "RPG"
+  ],
+  "description": "Jeu de données issu de la jointure entre les données du RPG et de l'AGRESTE. Obtenu grâce à un enchainement de traitements de la donnée à l'aide du protocole OKP4.",
+  "provider": "OKP4",
+  "creator": "OKP4",
+  "size": 3656306176,
+  "format": "csv",
+  "final_dataset": true,
+  "knowledge_graph": "graph_rpg_agreste.dot",
+  "quality": 4,
+  "completude": 90,
+  "createdOn": "2022-10-16T16:51:28Z",
+  "updatedOn": "2022-10-16T16:51:28Z"
+}

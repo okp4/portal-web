@@ -1,0 +1,19 @@
+{
+  "id": "0d513ee9-f861-47ba-a021-4510ba303f7b",
+  "dataspaceId": "ti847285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://okp4.network/wp-content/themes/okp4/img/know.png",
+  "type": "dataset",
+  "name": "Evmos transactions labelled",
+  "access": "PUBLIC",
+  "categories": ["evmos", "blockchain", "okp4"],
+  "description": "Ce jeu de données référence les transactions de la blockchain evmos où les adresses des validateurs ont été labellisées à l'aide d'un service du protocole OKP4.",
+  "provider": "OKP4",
+  "creator": "Numia Data",
+  "size": 9621769,
+  "format": "json",
+  "final_dataset": true,
+  "quality": 4,
+  "completude": 87,
+  "createdOn": "2022-06-19T11:03:47Z",
+  "updatedOn": "2022-06-19T11:03:47Z"
+}

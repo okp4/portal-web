@@ -1,0 +1,18 @@
+{
+  "id": "6be4c7c2-c749-40dc-ac27-2653fa591356",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "REGION - DEPARTEMENT - COMMUNE",
+  "access": "PUBLIC",
+  "categories": ["open data", "INSEE", "entreprise", "france"],
+  "description": "Ce jeu de données est obtenu à l'aide de la jointure entre 3 jeux de données de l'ADMIN EXPRESS contenant les différentes couches du territoire Français : Région, Département et Commune.",
+  "provider": "OKP4",
+  "creator": "INSEE",
+  "size": 1784492,
+  "format": "csv",
+  "quality": 4,
+  "completude": 99,
+  "createdOn": "2022-06-15T21:25:21Z",
+  "updatedOn": "2022-06-15T21:25:21Z"
+}

@@ -1,27 +1,32 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { DatasetDto } from '../../../../../../dto/DatasetDto'
-import { datasets } from '../../../../store'
-import type { DeepReadonly } from '@okp4/ui'
+import { getDataspace, getDataset } from '../../../../store'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const handler = (req: NextApiRequest, res: NextApiResponse): void => {
+const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method !== 'GET') {
-    res.status(405).send(null)
+    res.status(405).end()
     return
   }
 
   const dataspaceId = req.query.dataspaceId as string
   const datasetId = req.query.datasetId as string
-  const dataset = datasets
-    .filter((item: DeepReadonly<DatasetDto>) => item.dataspaceId === dataspaceId)
-    .get(datasetId)
+  try {
+    const dataspace = await getDataspace(dataspaceId)
+    if (!dataspace) {
+      res.status(404).end()
+      return
+    }
 
-  if (dataset === undefined) {
-    res.status(404).send(null)
-    return
+    const dataset = await getDataset(dataspaceId, datasetId)
+    if (!dataset) {
+      res.status(404).end()
+      return
+    }
+    res.status(200).json(JSON.parse(dataset))
+  } catch (err: unknown) {
+    console.error(err)
+    res.status(500).end()
   }
-
-  res.status(200).json(dataset)
 }
 
 export default handler

@@ -1,0 +1,18 @@
+{
+  "id": "3545ec2f-13cd-4909-a52f-df938e8c7a61",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "RPG FRANCE 2020",
+  "access": "PUBLIC",
+  "categories": ["open data", "agriculture", "france"],
+  "description": "Le registre parcellaire graphique est une base de données géographiques servant de référence à l'instruction des aides de la politique agricole commune (PAC). La version anonymisée diffusée ici dans le cadre du service public de mise à disposition des données de référence contient les données graphiques des parcelles (depuis 2015) munis de leur culture principale. Ces données sont produites par l'agence de services et de paiement (ASP) depuis 2007",
+  "provider": "OKP4",
+  "creator": "IGN",
+  "size": 6656306176,
+  "format": "geopackage",
+  "quality": 4,
+  "completude": 90,
+  "createdOn": "2022-04-27T00:07:18Z",
+  "updatedOn": "2022-04-27T00:07:18Z"
+}

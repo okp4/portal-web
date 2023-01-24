@@ -1,0 +1,17 @@
+{
+  "id": "16c4cd10-521a-4829-b1bd-a1e2ac60459a",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "type": "service",
+  "name": "Data Connector",
+  "access": "PUBLIC",
+  "categories": ["opensearsh", "dataviz"],
+  "description": "Ce service permet d'injecter des fichiers de données dans OpenSearch afin de pouvoir connsommer la connaisance créée à l'aide de visualisation.",
+  "provider": "OKP4",
+  "creator": "OKP4",
+  "nbInputFiles": 1,
+  "inputFormat": ["csv", "json"],
+  "nbOutputFiles": 0,
+  "outputFormat": null,
+  "createdOn": "2022-09-16T03:54:18Z",
+  "updatedOn": "2022-09-16T03:54:18Z"
+}

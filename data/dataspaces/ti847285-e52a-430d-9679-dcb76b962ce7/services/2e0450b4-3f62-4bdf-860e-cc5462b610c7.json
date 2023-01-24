@@ -1,0 +1,17 @@
+{
+  "id": "2e0450b4-3f62-4bdf-860e-cc5462b610c7",
+  "dataspaceId": "ti847285-e52a-430d-9679-dcb76b962ce7",
+  "type": "service",
+  "name": "Cosmos Validator Labeller",
+  "access": "PUBLIC",
+  "categories": ["traitement de données", "labellisation"],
+  "description": "L'outil Cosmos Validator Labeller permet de labelliser les adresses des validateurs de l'univers Cosmos.",
+  "provider": "OKP4",
+  "creator": "OKP4",
+  "nbInputFiles": 1,
+  "inputFormat": ["json", "csv"],
+  "nbOutputFiles": 1,
+  "outputFormat": ["json"],
+  "createdOn": "2022-08-25T05:33:00Z",
+  "updatedOn": "2022-08-25T05:33:00Z"
+}

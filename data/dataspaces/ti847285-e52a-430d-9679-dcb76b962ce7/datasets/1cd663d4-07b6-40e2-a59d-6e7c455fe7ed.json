@@ -1,0 +1,19 @@
+{
+  "id": "1cd663d4-07b6-40e2-a59d-6e7c455fe7ed",
+  "dataspaceId": "ti847285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://okp4.network/wp-content/themes/okp4/img/know.png",
+  "type": "dataset",
+  "name": "Cosmos Hub transactions labelled",
+  "access": "PUBLIC",
+  "categories": ["cosmos", "blockchain", "opk4"],
+  "description": "Ce jeu de données référence les transactions de la blockchain Cosmos Hub où les adresses des validateurs ont été labellisées à l'aide d'un service du protocole OKP4.",
+  "provider": "OKP4",
+  "creator": "Numia Data",
+  "size": 59768179,
+  "format": "json",
+  "final_dataset": true,
+  "quality": 4,
+  "completude": 87,
+  "createdOn": "2022-06-18T10:03:47Z",
+  "updatedOn": "2022-06-18T10:03:47Z"
+}

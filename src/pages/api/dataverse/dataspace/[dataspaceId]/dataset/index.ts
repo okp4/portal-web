@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createDataset, getDataset, getDataspace, getDataspaceDatasets } from '../../../../store'
 

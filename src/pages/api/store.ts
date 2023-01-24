@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { DeepReadonly } from '@okp4/ui'
 import type { Dirent } from 'fs'
 import fs from 'fs'
 import path from 'path'
@@ -12,31 +14,25 @@ const servicesDir = `services`
 const lsDataspaces = async (): Promise<string[]> =>
   fsp
     .readdir(dataspacesPath, { withFileTypes: true })
-    .then((paths: Dirent[]) =>
-      paths.filter((e: Dirent) => e.isDirectory()).map((d: Dirent) => d.name)
+    .then((paths: DeepReadonly<Dirent[]>) =>
+      paths
+        .filter((dirent: DeepReadonly<Dirent>) => dirent.isDirectory())
+        .map((filteredDirent: DeepReadonly<Dirent>) => filteredDirent.name)
     )
+
+export const getDataspace = async (id: string): Promise<any> =>
+  fsp
+    .readFile(path.join(dataspacesPath, id, dataspaceFilename), { encoding: 'utf-8' })
+    .catch((err: any) => {
+      if (err.code === 'ENOENT') {
+        return null
+      }
+      throw err
+    })
 
 export const getDataspaces = async (): Promise<any[]> => {
   const dataspaces = await lsDataspaces()
-  return Promise.all(dataspaces.map(async (d: string) => getDataspace(d)))
-}
-
-export const getAllDatasets = async (): Promise<any[]> => {
-  const dataspaces = await lsDataspaces()
-  return Promise.all(
-    dataspaces.map(async (ds: string) =>
-      getDataspaceDatasets(ds).then((data: any[] | null) => (!data ? [] : data))
-    )
-  ).then((data: any[][]) => data.flat())
-}
-
-export const getAllServices = async (): Promise<any[]> => {
-  const dataspaces = await lsDataspaces()
-  return Promise.all(
-    dataspaces.map(async (ds: string) =>
-      getDataspaceServices(ds).then((data: any[] | null) => (!data ? [] : data))
-    )
-  ).then((data: any[][]) => data.flat())
+  return Promise.all(dataspaces.map(async (dataspace: string) => getDataspace(dataspace)))
 }
 
 export const getDataspaceDatasets = async (dataspaceId: string): Promise<any[] | null> => {
@@ -67,15 +63,27 @@ export const getDataspaceServices = async (dataspaceId: string): Promise<any[] |
   })
 }
 
-export const getDataspace = async (id: string): Promise<any> =>
-  fsp
-    .readFile(path.join(dataspacesPath, id, dataspaceFilename), { encoding: 'utf-8' })
-    .catch((err: any) => {
-      if (err.code === 'ENOENT') {
-        return null
-      }
-      throw err
-    })
+export const getAllDatasets = async (): Promise<any[]> => {
+  const dataspaces = await lsDataspaces()
+  return Promise.all(
+    dataspaces.map(async (dataspace: string) =>
+      getDataspaceDatasets(dataspace).then((data: DeepReadonly<any[]> | null) =>
+        !data ? [] : data
+      )
+    )
+  ).then((allData: DeepReadonly<any[][]>) => allData.flat())
+}
+
+export const getAllServices = async (): Promise<any[]> => {
+  const dataspaces = await lsDataspaces()
+  return Promise.all(
+    dataspaces.map(async (dataspace: string) =>
+      getDataspaceServices(dataspace).then((data: DeepReadonly<any[]> | null) =>
+        !data ? [] : data
+      )
+    )
+  ).then((allData: DeepReadonly<any[][]>) => allData.flat())
+}
 
 export const getDataset = async (dataspaceId: string, id: string): Promise<any> =>
   fsp

@@ -1,7 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createDataset, getDataset, getDataspace, getDataspaceDatasets } from '../../../../store'
 
-const getDatasets = async (dataspace: string, req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const getDatasets = async (
+  dataspace: string,
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   try {
     const datasets = await getDataspaceDatasets(dataspace)
     if (!datasets) {
@@ -9,15 +13,19 @@ const getDatasets = async (dataspace: string, req: NextApiRequest, res: NextApiR
       return
     }
     res.status(200).json(datasets.slice(0, 100).map((v: string) => JSON.parse(v)))
-  }catch (err: unknown) {
+  } catch (err: unknown) {
     console.error(err)
     res.status(500).end()
   }
 }
 
-const postDataset = async (dataspace: string, req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const postDataset = async (
+  dataspace: string,
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   try {
-    if (!await getDataspace(dataspace)) {
+    if (!(await getDataspace(dataspace))) {
       res.status(404).end()
       return
     }
@@ -29,7 +37,7 @@ const postDataset = async (dataspace: string, req: NextApiRequest, res: NextApiR
 
     await createDataset(dataspace, req.body)
     res.status(201).end()
-  }catch (err: unknown) {
+  } catch (err: unknown) {
     console.error(err)
     res.status(500).end()
   }
@@ -51,8 +59,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     default:
       res.status(405).end()
   }
-
-
 }
 
 export default handler

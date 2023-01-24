@@ -1,1 +1,17 @@
-{"id":"6272c8d0-f5ed-4394-8f54-a7b429faec13","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","type":"service","name":"Data Refactor","access":"PUBLIC","categories":["traitement de données","édition","standard"],"description":"L'outil Data Refactor permet d'éditer, de modifier un jeu de données afin de le standardiser.","provider":"OKP4","creator":"OKP4","nbInputFiles":1,"inputFormat":["geojson","shp","xlsx","xls","Xlsx","csv"],"nbOutputFiles":1,"outputFormat":["csv"],"createdOn":"2022-03-18T08:55:31Z","updatedOn":"2022-03-18T08:55:31Z"}
+{
+  "id": "6272c8d0-f5ed-4394-8f54-a7b429faec13",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "type": "service",
+  "name": "Data Refactor",
+  "access": "PUBLIC",
+  "categories": ["traitement de données", "édition", "standard"],
+  "description": "L'outil Data Refactor permet d'éditer, de modifier un jeu de données afin de le standardiser.",
+  "provider": "OKP4",
+  "creator": "OKP4",
+  "nbInputFiles": 1,
+  "inputFormat": ["geojson", "shp", "xlsx", "xls", "Xlsx", "csv"],
+  "nbOutputFiles": 1,
+  "outputFormat": ["csv"],
+  "createdOn": "2022-03-18T08:55:31Z",
+  "updatedOn": "2022-03-18T08:55:31Z"
+}

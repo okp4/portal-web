@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {getAllDatasets} from '../../store'
+import { getAllDatasets } from '../../store'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {

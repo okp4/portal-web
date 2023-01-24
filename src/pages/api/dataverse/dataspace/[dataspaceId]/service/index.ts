@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getDataspaceServices, } from '../../../../store'
+import { getDataspaceServices } from '../../../../store'
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
       return
     }
     res.status(200).json(services.slice(0, 100).map((v: string) => JSON.parse(v)))
-  }catch (err: unknown) {
+  } catch (err: unknown) {
     console.error(err)
     res.status(500).end()
   }

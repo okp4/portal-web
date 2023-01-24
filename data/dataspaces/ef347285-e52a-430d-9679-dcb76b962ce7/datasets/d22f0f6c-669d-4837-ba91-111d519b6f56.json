@@ -1,1 +1,18 @@
-{"id":"d22f0f6c-669d-4837-ba91-111d519b6f56","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","mainPicture":"https://images.unsplash.com/photo-1537721664796-76f77222a5d0","type":"dataset","name":"Table référentielle des codes NAF Rév2","access":"PUBLIC","categories":["open data","INSEE","entreprise","france"],"description":"La Nomenclature d'activités française (NAF), est une nomenclature des activités économiques productives, principalement élaborée pour faciliter l'organisation de l'information économique et sociale.","provider":"OKP4","creator":"INSEE","size":488960,"format":"xls","quality":5,"completude":100,"createdOn":"2022-06-15T21:25:21Z","updatedOn":"2022-06-15T21:25:21Z"}
+{
+  "id": "d22f0f6c-669d-4837-ba91-111d519b6f56",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "Table référentielle des codes NAF Rév2",
+  "access": "PUBLIC",
+  "categories": ["open data", "INSEE", "entreprise", "france"],
+  "description": "La Nomenclature d'activités française (NAF), est une nomenclature des activités économiques productives, principalement élaborée pour faciliter l'organisation de l'information économique et sociale.",
+  "provider": "OKP4",
+  "creator": "INSEE",
+  "size": 488960,
+  "format": "xls",
+  "quality": 5,
+  "completude": 100,
+  "createdOn": "2022-06-15T21:25:21Z",
+  "updatedOn": "2022-06-15T21:25:21Z"
+}

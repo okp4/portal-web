@@ -1,1 +1,18 @@
-{"id":"65eda3f4-ecb6-4322-90e7-1832ed3178e9","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","mainPicture":"https://images.unsplash.com/photo-1537721664796-76f77222a5d0","type":"dataset","name":"BASE SIRENE - STOCK ETABLISSEMENT - OCTOBRE 2022","access":"PUBLIC","categories":["open data","INSEE","entreprise","france"],"description":"Ensemble des établissements actifs et fermés dans leur état courant au répertoire.","provider":"OKP4","creator":"INSEE","size":5892021559,"format":"csv","quality":5,"completude":100,"createdOn":"2022-08-05T15:37:43Z","updatedOn":"2022-08-05T15:37:43Z"}
+{
+  "id": "65eda3f4-ecb6-4322-90e7-1832ed3178e9",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "BASE SIRENE - STOCK ETABLISSEMENT - OCTOBRE 2022",
+  "access": "PUBLIC",
+  "categories": ["open data", "INSEE", "entreprise", "france"],
+  "description": "Ensemble des établissements actifs et fermés dans leur état courant au répertoire.",
+  "provider": "OKP4",
+  "creator": "INSEE",
+  "size": 5892021559,
+  "format": "csv",
+  "quality": 5,
+  "completude": 100,
+  "createdOn": "2022-08-05T15:37:43Z",
+  "updatedOn": "2022-08-05T15:37:43Z"
+}

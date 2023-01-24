@@ -1,7 +1,7 @@
 export type ServiceDto = {
   id: string
   dataspaceId: string
-  type: "service"
+  type: 'service'
   name: string
   access: string
   categories: string[]

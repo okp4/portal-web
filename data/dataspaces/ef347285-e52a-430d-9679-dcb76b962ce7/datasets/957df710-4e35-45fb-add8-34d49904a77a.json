@@ -1,1 +1,26 @@
-{"id":"957df710-4e35-45fb-add8-34d49904a77a","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","mainPicture":"https://images.unsplash.com/photo-1537721664796-76f77222a5d0","type":"dataset","name":"AGRESTE 2020","access":"PUBLIC","categories":["open data","agriculture","france","departement","rendement","production","superficie"],"description":"Statistique agricole annuelle (SAA), constitué des superficies, des rendements et de la production du territoire français.","provider":"OKP4","creator":"AGRESTE","size":34297056,"format":"csv","quality":4,"completude":90,"createdOn":"2022-04-24T01:21:49Z","updatedOn":"2022-04-24T01:21:49Z"}
+{
+  "id": "957df710-4e35-45fb-add8-34d49904a77a",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "AGRESTE 2020",
+  "access": "PUBLIC",
+  "categories": [
+    "open data",
+    "agriculture",
+    "france",
+    "departement",
+    "rendement",
+    "production",
+    "superficie"
+  ],
+  "description": "Statistique agricole annuelle (SAA), constitué des superficies, des rendements et de la production du territoire français.",
+  "provider": "OKP4",
+  "creator": "AGRESTE",
+  "size": 34297056,
+  "format": "csv",
+  "quality": 4,
+  "completude": 90,
+  "createdOn": "2022-04-24T01:21:49Z",
+  "updatedOn": "2022-04-24T01:21:49Z"
+}

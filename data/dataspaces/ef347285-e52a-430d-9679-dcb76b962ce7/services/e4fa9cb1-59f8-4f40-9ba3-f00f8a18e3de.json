@@ -1,1 +1,17 @@
-{"id":"e4fa9cb1-59f8-4f40-9ba3-f00f8a18e3de","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","type":"service","name":"Data Join Geospatial","access":"PUBLIC","categories":["traitement de données","jointure"],"description":"L'outil Data Join Geospatial permet de joindre deux jeux de données géoréférencé.","provider":"OKP4","creator":"OKP4","nbInputFiles":2,"inputFormat":["geojson","shp","xlsx","xls","Xlsx","csv"],"nbOutputFiles":1,"outputFormat":["csv"],"createdOn":"2022-03-03T16:49:46Z","updatedOn":"2022-03-03T16:49:46Z"}
+{
+  "id": "e4fa9cb1-59f8-4f40-9ba3-f00f8a18e3de",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "type": "service",
+  "name": "Data Join Geospatial",
+  "access": "PUBLIC",
+  "categories": ["traitement de données", "jointure"],
+  "description": "L'outil Data Join Geospatial permet de joindre deux jeux de données géoréférencé.",
+  "provider": "OKP4",
+  "creator": "OKP4",
+  "nbInputFiles": 2,
+  "inputFormat": ["geojson", "shp", "xlsx", "xls", "Xlsx", "csv"],
+  "nbOutputFiles": 1,
+  "outputFormat": ["csv"],
+  "createdOn": "2022-03-03T16:49:46Z",
+  "updatedOn": "2022-03-03T16:49:46Z"
+}

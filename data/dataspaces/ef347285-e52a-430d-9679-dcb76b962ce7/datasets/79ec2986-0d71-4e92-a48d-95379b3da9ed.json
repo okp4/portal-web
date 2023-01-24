@@ -1,1 +1,18 @@
-{"id":"79ec2986-0d71-4e92-a48d-95379b3da9ed","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","mainPicture":"https://images.unsplash.com/photo-1537721664796-76f77222a5d0","type":"dataset","name":"ADMIN EXPRESS COG 2020 DEPARTEMENT","access":"PUBLIC","categories":["open data","INSEE","departement","territoire","france"],"description":"ADMIN EXPRESS permet d'effectuer des croisements avec d'autres sources de données dans le but de construire des représentations thématiques du territoire selon une granularité administrative (commune, arrondissement départementaux, département, région). ADMIN EXPRESS est décliné dans une édition « COG », conforme au code officiel géographique publié chaque année par l'INSEE.","provider":"OKP4","creator":"IGN","size":12297056,"format":"shapfile","quality":5,"completude":100,"createdOn":"2022-08-01T06:38:27Z","updatedOn":"2022-08-01T06:38:27Z"}
+{
+  "id": "79ec2986-0d71-4e92-a48d-95379b3da9ed",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "mainPicture": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0",
+  "type": "dataset",
+  "name": "ADMIN EXPRESS COG 2020 DEPARTEMENT",
+  "access": "PUBLIC",
+  "categories": ["open data", "INSEE", "departement", "territoire", "france"],
+  "description": "ADMIN EXPRESS permet d'effectuer des croisements avec d'autres sources de données dans le but de construire des représentations thématiques du territoire selon une granularité administrative (commune, arrondissement départementaux, département, région). ADMIN EXPRESS est décliné dans une édition « COG », conforme au code officiel géographique publié chaque année par l'INSEE.",
+  "provider": "OKP4",
+  "creator": "IGN",
+  "size": 12297056,
+  "format": "shapfile",
+  "quality": 5,
+  "completude": 100,
+  "createdOn": "2022-08-01T06:38:27Z",
+  "updatedOn": "2022-08-01T06:38:27Z"
+}

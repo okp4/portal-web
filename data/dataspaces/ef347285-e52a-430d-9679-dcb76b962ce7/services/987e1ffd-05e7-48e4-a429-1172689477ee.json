@@ -1,1 +1,17 @@
-{"id":"987e1ffd-05e7-48e4-a429-1172689477ee","dataspaceId":"ef347285-e52a-430d-9679-dcb76b962ce7","type":"service","name":"Data Grouping","access":"PUBLIC","categories":["traitement de données","regroupement"],"description":"L'outil Data Grouping permet organiser des données identiques en groupes.","provider":"OKP4","creator":"OKP4","nbInputFiles":1,"inputFormat":["geojson","shp","xlsx","xls","Xlsx","csv"],"nbOutputFiles":1,"outputFormat":["csv"],"createdOn":"2022-08-30T05:33:00Z","updatedOn":"2022-08-30T05:33:00Z"}
+{
+  "id": "987e1ffd-05e7-48e4-a429-1172689477ee",
+  "dataspaceId": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "type": "service",
+  "name": "Data Grouping",
+  "access": "PUBLIC",
+  "categories": ["traitement de données", "regroupement"],
+  "description": "L'outil Data Grouping permet organiser des données identiques en groupes.",
+  "provider": "OKP4",
+  "creator": "OKP4",
+  "nbInputFiles": 1,
+  "inputFormat": ["geojson", "shp", "xlsx", "xls", "Xlsx", "csv"],
+  "nbOutputFiles": 1,
+  "outputFormat": ["csv"],
+  "createdOn": "2022-08-30T05:33:00Z",
+  "updatedOn": "2022-08-30T05:33:00Z"
+}

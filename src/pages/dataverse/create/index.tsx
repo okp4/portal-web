@@ -1,5 +1,5 @@
 import type { DeepReadonly } from '@okp4/ui'
-import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
+import type { GetServerSideProps, GetServerSidePropsResult, NextPage } from 'next'
 import { CreateIntroduction, PreviousPageButton, WorkflowBuilder } from '../../../components'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
@@ -36,8 +36,8 @@ const Create: NextPage<CreateProps> = ({
 
 export default Create
 
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<Omit<CreateProps, 'config'>>
+export const getServerSideProps: GetServerSideProps = async (): Promise<
+  GetServerSidePropsResult<Omit<CreateProps, 'config'>>
 > => {
   const datasets = await fetch(`${process.env.API_URI}/dataverse/dataset`)
     .then(async (resp: DeepReadonly<Response>) => resp.json())

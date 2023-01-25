@@ -1,6 +1,5 @@
 import type { DeepReadonly } from '@okp4/ui'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { join } from 'path'
 
 type ArgoEngineResponse = Readonly<{
   items: Array<{
@@ -40,7 +39,7 @@ const retrieveWorkflow = async (id: string): Promise<WorkflowResponse | null> =>
       if (workflow.items?.length)
         return {
           status: workflow.items[0].status.phase,
-          visualizationUrl: join(process.env.WORKFLOW_ARGO_WEB_URL, workflow.items[0].metadata.name)
+          visualizationUrl: `${process.env.WORKFLOW_ARGO_WEB_URL}${workflow.items[0].metadata.name} `
         }
 
       return null

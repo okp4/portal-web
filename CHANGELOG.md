@@ -1,5 +1,33 @@
 # ØKP4 Portal-Web changelog
 
+# [1.1.0](https://github.com/okp4/portal-web/compare/v1.0.0...v1.1.0) (2023-01-25)
+
+
+### Bug Fixes
+
+* **api:** reverse join for workflow url ([d519209](https://github.com/okp4/portal-web/commit/d519209d0db00e1615d91e25850370e62b8bfd9e))
+* rename authentication by authorization ([e75d1c4](https://github.com/okp4/portal-web/commit/e75d1c42cd4414969ddd29cf7ab0f323a58674e1))
+* use getServerSideProps at runtime ([9f88558](https://github.com/okp4/portal-web/commit/9f88558f313fcabf9ac2749cc01022aab474a051))
+
+
+### Features
+
+* add introduction & return button to create page ([1c8f6a1](https://github.com/okp4/portal-web/commit/1c8f6a117b03eca71628173b58c40f23572fe746))
+* add workflow builder to create page ([cfb2492](https://github.com/okp4/portal-web/commit/cfb2492743f6c6e23d35bf111f854ffe328188a1))
+* **api:** add custom RouterError class ([552c43a](https://github.com/okp4/portal-web/commit/552c43a4e00756d63228172baf1302f691dbc9dd))
+* **api:** add workflow route for knowledge creation ([81d4bf2](https://github.com/okp4/portal-web/commit/81d4bf2bfc7b0c5bcb94f5048f0165806ca24a71))
+* **api:** export workflow response type ([8cdada7](https://github.com/okp4/portal-web/commit/8cdada737ce711405eb4f136c06969607be2ea79))
+* **api:** implement final filter & size on dataset and svc ([7d43b22](https://github.com/okp4/portal-web/commit/7d43b223dce3c52a3b8d85ad0a5aae6b5ff533cf))
+* **api:** implement post dataset ([f5a82a1](https://github.com/okp4/portal-web/commit/f5a82a1695955eb12b58b7430bc9a2121a92021b))
+* **api:** improve api implementation ([1976e39](https://github.com/okp4/portal-web/commit/1976e39fce89398ca551c7e7917613624155d01b))
+* **api:** rework rest endpoints with store ([a16e2de](https://github.com/okp4/portal-web/commit/a16e2de8926907735b1c5826b352377ceabe3949))
+* **api:** rework store based on fs ([197c9f1](https://github.com/okp4/portal-web/commit/197c9f1c884552d3e31933d23fae638a614b293f))
+* create page ([82b7bf5](https://github.com/okp4/portal-web/commit/82b7bf56d3f0c8b05c6ac7068cd3587716fdd48c))
+* **i18n:** update workflow translations ([7607c04](https://github.com/okp4/portal-web/commit/7607c045822fbe1c7f455a8a2fca8cfe61f68d4f))
+* redirect navigation item create to create page ([5b57c27](https://github.com/okp4/portal-web/commit/5b57c27c07f006c509cfd9b4829797ad664ca84b))
+* **ui:** add config into create page ([984cd8b](https://github.com/okp4/portal-web/commit/984cd8bdcdeacac075592cc4b2432e3203896c22))
+* **ui:** add workflow sync ([bb7f797](https://github.com/okp4/portal-web/commit/bb7f797fefdccfa38f0fef690cd2f33c317b37e9))
+
 # 1.0.0 (2023-01-12)
 
 

@@ -17,7 +17,7 @@ type WorkflowStatus = 'Failed' | 'Succeeded' | 'Pending' | 'Running'
 type WorkflowVisualizationUrl = string
 type WorkflowName = string
 
-type WorkflowResponse = {
+export type WorkflowResponse = {
   status: WorkflowStatus
   visualizationUrl: WorkflowVisualizationUrl
 }

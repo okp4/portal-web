@@ -1,14 +1,23 @@
-import { Button, Icon, Select, TextField, Typography, useTranslation } from '@okp4/ui'
-import type { DeepReadonly, UseState, UseTranslationResponse } from '@okp4/ui'
-import { useCallback, useMemo, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
+import { Button, Icon, Select, TextField, Toast, Typography, useTranslation } from '@okp4/ui'
+import short from 'short-uuid'
+import type { DeepReadonly, UseTranslationResponse } from '@okp4/ui'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { ChangeEvent } from 'react'
 import classNames from 'classnames'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
+import { keplrChainConfig } from '../../../chain/keplr'
+import { useSendTokens } from '../../../hooks/useSendTokens'
+import type { Config } from '../../../pages/api/config'
+import type { WorkflowResponse } from '../../../pages/api/dataverse/knowledge/workflow/[id]'
 
 type WorkflowBuilderProps = {
   datasets: DatasetDto[]
   services: ServiceDto[]
+  chain: Config['chain']
+  transaction: Config['transaction']
 }
 
 type DataInputValue = null | string
@@ -24,7 +33,25 @@ type MetaDataInput = {
   name: MetaDataInputValue
   description: MetaDataInputValue
   provider: MetaDataInputValue
-  categories: MetaDataInputValue | string[]
+  categories: string[] | null
+}
+
+type WorkflowState = 'idle' | 'txRunning' | 'workflowRunning' | 'datatetUploadRunning' | 'success'
+
+const rhizomeId = 'ef347285-e52a-430d-9679-dcb76b962ce7'
+
+const amountFinal = {
+  denom: 'uknow',
+  amount: '200000'
+}
+const fee = {
+  amount: [
+    {
+      denom: 'uknow',
+      amount: '5000'
+    }
+  ],
+  gas: '200000'
 }
 
 const labelSelectOptions = [
@@ -70,23 +97,52 @@ const labelSelectOptions = [
   }
 ]
 
+const defaultDataset = {
+  mainPicture: 'https://images.unsplash.com/photo-1537721664796-76f77222a5d0',
+  access: 'PUBLIC',
+  creator: 'OKP4',
+  size: 100525124,
+  format: 'csv',
+  final_dataset: true,
+  quality: 4,
+  completude: 95
+}
+
+const defaultDataInput = {
+  dataset1: null,
+  dataset2: null,
+  service: null
+}
+
+const defaultMetadataInput = {
+  name: null,
+  description: null,
+  provider: null,
+  categories: null
+}
+
 // eslint-disable-next-line max-lines-per-function
 const WorkflowBuilder = ({
   datasets,
-  services
+  services,
+  chain,
+  transaction
 }: DeepReadonly<WorkflowBuilderProps>): JSX.Element => {
   const { t }: UseTranslationResponse = useTranslation()
-  const [dataInput, setDataInput]: UseState<DataInput> = useState<DataInput>({
-    dataset1: null,
-    dataset2: null,
-    service: null
+  const [pollIntervall, setPollIntervall] = useState<NodeJS.Timer | null>(null)
+  const [worflowInfo, setWorkflowInfo] = useState<WorkflowResponse | null>(null)
+  const [memoId, setMemoId] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [dataInput, setDataInput] = useState<DataInput>(defaultDataInput)
+  const [metaDataInput, setMetaDataInput] = useState<MetaDataInput>(defaultMetadataInput)
+  const [workflowState, setWorkflowState] = useState<WorkflowState>('idle')
+  const [sendTokens, { data, error, loading }] = useSendTokens({
+    chainInfo: keplrChainConfig(chain)
   })
-  const [metaDataInput, setMetaDataInput]: UseState<MetaDataInput> = useState<MetaDataInput>({
-    name: null,
-    description: null,
-    provider: null,
-    categories: null
-  })
+
+  const clearErrorMessage = useCallback(() => {
+    setErrorMessage('')
+  }, [])
 
   const datasetOptions = useMemo(
     () =>
@@ -97,38 +153,43 @@ const WorkflowBuilder = ({
     [datasets]
   )
 
-  const handleMetaDataChange = useCallback(
-    (id: string) => {
-      switch (id) {
-        case 'name':
-          return (
-            // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-            event: DeepReadonly<ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
-          ) => {
-            setMetaDataInput({ ...metaDataInput, name: event.target.value })
-          }
+  const handleMetaDataChange = useCallback((id: string) => {
+    switch (id) {
+      case 'name':
+        return (event: DeepReadonly<ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>) => {
+          setMetaDataInput(prev => ({ ...prev, name: event.target.value }))
+        }
 
-        case 'description':
-          return (
-            // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-            event: DeepReadonly<ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
-          ) => {
-            setMetaDataInput({ ...metaDataInput, description: event.target.value })
-          }
-        case 'provider':
-          return (
-            // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-            event: DeepReadonly<ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
-          ) => {
-            setMetaDataInput({ ...metaDataInput, provider: event.target.value })
-          }
-        default:
-          console.error('Meta data could not be updated')
-          break
-      }
-    },
-    [metaDataInput]
-  )
+      case 'description':
+        return (event: DeepReadonly<ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>) => {
+          setMetaDataInput(prev => ({ ...prev, description: event.target.value }))
+        }
+      case 'provider':
+        return (event: DeepReadonly<ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>) => {
+          setMetaDataInput(prev => ({ ...prev, provider: event.target.value }))
+        }
+      default:
+        console.error('Meta data could not be updated')
+        break
+    }
+  }, [])
+
+  const flushState = useCallback(() => {
+    setWorkflowInfo(null)
+    setDataInput(defaultDataInput)
+    setMetaDataInput(defaultMetadataInput)
+  }, [])
+
+  const txMemoId = useCallback(() => {
+    const id = short.generate()
+    setMemoId(id)
+    return id
+  }, [])
+
+  const handleTx = useCallback(() => {
+    const txMemo = `${transaction.memo}?id=${txMemoId()}`
+    sendTokens(transaction.recipientAddress, amountFinal, fee, txMemo)
+  }, [sendTokens, transaction.memo, transaction.recipientAddress, txMemoId])
 
   const handleLabelsChange = useCallback(
     (value: string | readonly string[]) => {
@@ -142,17 +203,17 @@ const WorkflowBuilder = ({
       const selectValue = value as string
       switch (selectName) {
         case 'dataset1':
-          setDataInput({ ...dataInput, dataset1: selectValue })
+          setDataInput(prev => ({ ...prev, dataset1: selectValue }))
           break
         case 'dataset2':
-          setDataInput({ ...dataInput, dataset2: selectValue })
+          setDataInput(prev => ({ ...prev, dataset2: selectValue }))
           break
         case 'service':
-          setDataInput({ ...dataInput, service: selectValue })
+          setDataInput(prev => ({ ...prev, service: selectValue }))
           break
       }
     },
-    [dataInput]
+    []
   )
 
   const serviceSelectOptions = useMemo(
@@ -194,6 +255,128 @@ const WorkflowBuilder = ({
       ),
     [metaDataInput]
   )
+
+  const resetWorkflowState = useCallback(() => {
+    setWorkflowState('idle')
+  }, [])
+
+  const clearPollingInterval = useCallback(() => {
+    if (pollIntervall) {
+      clearInterval(pollIntervall)
+      setPollIntervall(null)
+    }
+  }, [pollIntervall])
+
+  const fetchWorkflow = useCallback(
+    async (cb: () => void) => {
+      fetch(`/api/dataverse/knowledge/workflow/${memoId}`)
+        .then(async (res: DeepReadonly<Response>) => {
+          if (res.ok) {
+            return res.json()
+          }
+          throw new Error()
+        })
+        .then((data: DeepReadonly<WorkflowResponse> | null) => {
+          setWorkflowInfo(data)
+        })
+        .catch((error: unknown) => {
+          console.error(error)
+          setErrorMessage(
+            'Oops.. An error occured while accessing workflow.. Please try again later.'
+          )
+          setPollIntervall(null)
+          setWorkflowState('idle')
+          cb()
+        })
+    },
+    [memoId]
+  )
+
+  const pollWorkflowInfo = useCallback(() => {
+    const interval = setInterval(async () => {
+      await fetchWorkflow(() => clearInterval(interval))
+    }, 1000)
+    setPollIntervall(interval)
+    setWorkflowState('workflowRunning')
+  }, [fetchWorkflow])
+
+  const uploadDataset = useCallback(async () => {
+    setWorkflowState('datatetUploadRunning')
+    const { name, description, provider, categories } = metaDataInput
+    const now = new Date().toISOString()
+    const dataset: Omit<DatasetDto, 'dataspaceId'> = {
+      ...defaultDataset,
+      type: 'dataset',
+      id: short.generate(),
+      name: name ?? '',
+      description: description ?? '',
+      categories: categories ?? [],
+      provider: provider ?? '',
+      createdOn: now,
+      updatedOn: now
+    }
+
+    fetch(`/api/dataverse/dataspace/${rhizomeId}/dataset`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataset)
+    })
+      .then((response: DeepReadonly<Response>) => {
+        if (response.ok) {
+          setWorkflowState('success')
+          flushState()
+        } else {
+          throw new Error()
+        }
+      })
+      .catch((error: unknown) => {
+        console.error(error)
+        setErrorMessage(
+          'Oops.. An error occured while creating knowledge.. Please try again later.'
+        )
+        setWorkflowState('idle')
+        setWorkflowInfo(null)
+      })
+  }, [flushState, metaDataInput])
+
+  const openWorkflowTab = useCallback(() => {
+    worflowInfo?.visualizationUrl && window.open(worflowInfo.visualizationUrl, '_blank')
+  }, [worflowInfo?.visualizationUrl])
+
+  useEffect(() => {
+    if (data?.txHash) {
+      pollWorkflowInfo()
+    }
+  }, [data?.txHash])
+
+  useEffect(() => {
+    if (worflowInfo?.status === 'Failed') {
+      setErrorMessage('Oops.. An error occured while executing workflow.. Please try again later.')
+      setWorkflowState('idle')
+    }
+    if (worflowInfo?.status === 'Succeeded') {
+      uploadDataset()
+    }
+  }, [worflowInfo?.status])
+
+  useEffect(() => {
+    if (worflowInfo?.status === 'Succeeded') {
+      clearPollingInterval()
+    }
+  }, [worflowInfo?.status])
+
+  useEffect(() => {
+    loading && setWorkflowState('txRunning')
+  }, [loading])
+
+  useEffect(() => {
+    if (error) {
+      setErrorMessage(error.message)
+      setWorkflowState('idle')
+    }
+  }, [error])
 
   return (
     <div className="okp4-workflow-builder-main">
@@ -268,17 +451,15 @@ const WorkflowBuilder = ({
           onChange={handleLabelsChange}
           options={labelSelectOptions}
           placeholder={`${t('create:metaData:fields:labels:placeholder')}*`}
-          value={metaDataInput.categories ?? ''}
+          value={metaDataInput.categories ?? []}
         />
         <div
           className={classNames('okp4-workflow-builder-meta-data-submit', {
             'button-only': !isMetaDataComplete
           })}
         >
-          {isMetaDataComplete && (
-            <div
-              className={classNames('okp4-workflow-builder-meta-data-submit-message', 'success')}
-            >
+          {isMetaDataComplete && workflowState === 'idle' && (
+            <div className={'okp4-workflow-builder-meta-data-submit-message'}>
               <div>
                 <Icon invertColor name="check" size={16} />
               </div>
@@ -287,16 +468,51 @@ const WorkflowBuilder = ({
               </Typography>
             </div>
           )}
-          <div className="okp4-workflow-builder-meta-data-submit-button">
-            <Button
-              backgroundColor="secondary"
-              disabled={!isMetaDataComplete}
-              label={t('create:metaData:submit:button')}
-              variant="secondary"
-            />
+          {workflowState !== 'idle' && workflowState !== 'success' && (
+            <div className="loader-container">
+              <div className="loader" />
+              <Typography as="p" color="inverted-text" fontSize="small" fontWeight="bold">
+                {t(`create:metaData:submit:workflowState:${workflowState}`)}
+              </Typography>
+            </div>
+          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <div className="okp4-workflow-builder-meta-data-submit-button">
+              <Button
+                backgroundColor="secondary"
+                disabled={!isMetaDataComplete || workflowState !== 'idle'}
+                label={t('create:metaData:submit:button')}
+                onClick={handleTx}
+                variant="secondary"
+              />
+            </div>
+            <div className="okp4-workflow-builder-meta-data-submit-button">
+              <Button
+                backgroundColor="secondary"
+                disabled={!worflowInfo?.visualizationUrl}
+                label={t('create:metaData:see:workflow')}
+                onClick={openWorkflowTab}
+                variant="secondary"
+              />
+            </div>
           </div>
         </div>
       </div>
+      <Toast
+        autoDuration={4000}
+        description={errorMessage}
+        isOpened={!!errorMessage}
+        onOpenChange={clearErrorMessage}
+        severityLevel="error"
+        title={'Error'}
+      />
+      <Toast
+        autoDuration={4000}
+        description={`${t('create:metaData:submit:workflowState:success')} 🚀`}
+        isOpened={workflowState === 'success'}
+        onOpenChange={resetWorkflowState}
+        severityLevel="success"
+      />
     </div>
   )
 }

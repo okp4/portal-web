@@ -35,7 +35,16 @@
         "loading": "Workflow en train de charger",
         "error": "Workflow erreur",
         "success": "Toutes les règles de gouvernance de Rhizome sont respectées"
+      },
+      "workflowState": {
+        "txRunning": "Exécution de la transaction...",
+        "workflowRunning": "Votre workflow est en cours d'exécution...",
+        "datatetUploadRunning": "Votre connaissance est en cours de création...",
+        "success": "Votre connaissance a bien été créee!"
       }
+    },
+    "see": {
+      "workflow": "Voir le workflow"
     }
   }
 }

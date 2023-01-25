@@ -34,11 +34,10 @@
       }
 
       .okp4-workflow-builder-meta-data-submit {
-        display: grid;
         gap: 20px;
-        grid-template-columns: auto auto;
-        align-items: flex-end;
-        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &.button-only {
           justify-content: right;
@@ -53,17 +52,24 @@
         padding: 10px;
         border-radius: 9px;
         max-width: 300px;
+        background: themed('success');
+      }
 
-        &.loading {
-          background: themed('field');
-        }
+      .loader-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
 
-        &.error {
-          background: themed('error');
-        }
-
-        &.success {
-          background: themed('success');
+        .loader {
+          width: 28px;
+          height: 28px;
+          border: 5px solid themed('inverted-text');
+          border-bottom-color: transparent;
+          border-radius: 50%;
+          display: inline-block;
+          box-sizing: border-box;
+          animation: rotation 1s linear infinite;
         }
       }
     }

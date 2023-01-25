@@ -4,8 +4,30 @@ import type { ThemeContextType, DeepReadonly, UseState } from '@okp4/ui'
 import type { DatasetDto } from '../../../dto/DatasetDto'
 import type { ServiceDto } from '../../../dto/ServiceDto'
 import classNames from 'classnames'
+import Link from 'next/link'
 
 type DataverseEntity = DatasetDto | ServiceDto
+
+type EntityCardProps = {
+  name: string
+  type: string
+}
+
+const EntityCard = ({ name, type }: DeepReadonly<EntityCardProps>): JSX.Element => (
+  <Card
+    footer={
+      <div className="okp4-dataspace-card-footer">
+        <Typography>{name}</Typography>
+      </div>
+    }
+    header={
+      <div className="okp4-dataspace-card-header">
+        <Typography>{type}</Typography>
+      </div>
+    }
+    size="small"
+  />
+)
 
 const fetchEntities = async (id: string): Promise<DataverseEntity[]> => {
   return await Promise.all(
@@ -24,6 +46,7 @@ const fetchEntities = async (id: string): Promise<DataverseEntity[]> => {
 const DataspaceEntities = ({ dataspaceId }: DeepReadonly<{ dataspaceId: string }>): JSX.Element => {
   const [entities, setEntities]: UseState<DataverseEntity[]> = useState<DataverseEntity[]>([])
   const { theme }: ThemeContextType = useTheme()
+
   useEffect(() => {
     fetchEntities(dataspaceId).then(setEntities)
   }, [dataspaceId])
@@ -31,22 +54,14 @@ const DataspaceEntities = ({ dataspaceId }: DeepReadonly<{ dataspaceId: string }
   return (
     <div className={classNames('okp4-dashboard-dataspace-content', theme)}>
       {entities.map(
-        (entity: DeepReadonly<DataverseEntity>): JSX.Element => (
-          <Card
-            footer={
-              <div className="okp4-dataspace-card-footer">
-                <Typography>{entity.name}</Typography>
-              </div>
-            }
-            header={
-              <div className="okp4-dataspace-card-header">
-                <Typography>{entity.type}</Typography>
-              </div>
-            }
-            key={entity.id}
-            size="small"
-          />
-        )
+        ({ id, name, type }: DeepReadonly<DataverseEntity>): JSX.Element =>
+          type === 'dataset' ? (
+            <Link href={`/dataverse/explore/dataspace/${dataspaceId}/dataset/${id}`} key={id}>
+              <EntityCard name={name} type={type} />
+            </Link>
+          ) : (
+            <EntityCard key={id} name={name} type={type} />
+          )
       )}
     </div>
   )

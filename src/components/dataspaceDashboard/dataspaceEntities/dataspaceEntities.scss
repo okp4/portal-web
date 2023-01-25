@@ -21,15 +21,19 @@
     padding-bottom: 10px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   &.dark {
-    > div > div {
+    .okp4-card-container {
       background: center/cover no-repeat
         url('../../../assets/images/card-background-dataspace-content_dark.png') !important;
     }
   }
 
   &.light {
-    > div > div {
+    .okp4-card-container {
       background: center/cover no-repeat
         url('../../../assets/images/card-background-dataspace-content_light.png') !important;
     }

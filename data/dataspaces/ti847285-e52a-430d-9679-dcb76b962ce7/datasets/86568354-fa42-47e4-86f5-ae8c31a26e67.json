@@ -1,7 +1,7 @@
 {
   "id": "86568354-fa42-47e4-86f5-ae8c31a26e67",
   "dataspaceId": "ti847285-e52a-430d-9679-dcb76b962ce7",
-  "mainPicture": "https://okp4.network/wp-content/themes/okp4/img/know.png",
+  "mainPicture": "/image-know-universe-dataset.webp",
   "type": "dataset",
   "name": "Cosmos Hub transactions",
   "access": "PUBLIC",

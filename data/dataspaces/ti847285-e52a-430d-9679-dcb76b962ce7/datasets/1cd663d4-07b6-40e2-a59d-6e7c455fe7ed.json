@@ -1,7 +1,7 @@
 {
   "id": "1cd663d4-07b6-40e2-a59d-6e7c455fe7ed",
   "dataspaceId": "ti847285-e52a-430d-9679-dcb76b962ce7",
-  "mainPicture": "/image-know-universe-dataset.webp",
+  "mainPicture": "/images/image-know-universe-dataset.webp",
   "type": "dataset",
   "name": "Cosmos Hub transactions labelled",
   "access": "PUBLIC",

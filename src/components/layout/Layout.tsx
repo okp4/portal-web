@@ -282,7 +282,7 @@ const Layout = ({ config, children }: DeepReadonly<LayoutProps>): JSX.Element =>
           name="keywords"
         />
         <meta content={publicRuntimeConfig.version} name="version" />
-        <link href="/okp4-logo.png" rel="icon" type="image/x-icon" />
+        <link href="/images/okp4-logo.png" rel="icon" type="image/x-icon" />
       </Head>
       <div className="layout">
         <Header firstElement={<Logo size="small" />} navigationMenu={navigationItems} />

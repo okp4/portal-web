@@ -1,7 +1,7 @@
 {
   "id": "6e5d7a1b-0cf4-4466-b678-878d55bcad74",
   "dataspaceId": "ti847285-e52a-430d-9679-dcb76b962ce7",
-  "mainPicture": "https://okp4.network/wp-content/themes/okp4/img/know.png",
+  "mainPicture": "/images/image-know-universe-dataset.webp",
   "type": "dataset",
   "name": "Evmos transactions",
   "access": "PUBLIC",

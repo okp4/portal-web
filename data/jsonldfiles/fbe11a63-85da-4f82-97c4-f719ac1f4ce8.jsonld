@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "okp4core": "https://ontology.okp4.space/core/",
+    "okp4th": "https://ontology.okp4.space/thesaurus/",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "@id": "fbe11a63-85da-4f82-97c4-f719ac1f4ce8",
+  "@type": "okp4core:Service",
+  "okp4core:belongsTo": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "okp4core:hasCreator": "OKP4",
+  "okp4core:hasDescription": "L'outil Data Selector permet de s\u00e9lectionner un \u00e9chantillon de l'ensemble de donn\u00e9es, en sp\u00e9cifiant un nombre de lignes. Il est possible de supprimer ou de conserver des colonnes. Un autre param\u00e8tre permet de s\u00e9lectionner les donn\u00e9es d'une colonne en fonction de sa (ses) valeur(s).",
+  "okp4core:hasIdentifier": "fbe11a63-85da-4f82-97c4-f719ac1f4ce8",
+  "okp4core:hasTitle": "Data Selector",
+  "okp4core:providedBy": "OKP4",
+  "nbInputFiles": 1,
+  "inputFormat": [
+    "geojson",
+    "shp",
+    "xlsx",
+    "xls",
+    "Xlsx",
+    "csv"
+  ],
+  "nbOutputFiles": 1,
+  "createdOn": "2022-09-28T11:13:13Z",
+  "updatedOn": "2022-09-28T11:13:13Z",
+  "outputFormat": [
+    "csv"
+  ],
+  "categories": [
+    "traitement de donn\u00e9es",
+    "selection"
+  ],
+  "access": "PUBLIC"
+}

@@ -1,0 +1,121 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "okp4core": "https://ontology.okp4.space/core/",
+    "okp4th": "https://ontology.okp4.space/thesaurus/",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "@id": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "@type": "okp4core:Dataspace",
+  "okp4core:hasCreator": "OKP4",
+  "okp4core:hasDescription": "Rhizome est un data space exploit\u00e9 par OKP4, actuellement en cours de d\u00e9veloppement sur la base de la technologie OKP4. Rhizome d\u00e9montre la puissance du traitement et du partage des donn\u00e9es, et la valeur que nous pouvons obtenir en connectant efficacement diff\u00e9rentes sources de donn\u00e9es agricoles en libre acc\u00e8s sous diff\u00e9rents formats de donn\u00e9es. Rhizome vise \u00e0 connecter autant de donn\u00e9es que possible et \u00e0 fournir des visuels et m\u00e9triques de grande valeur dans diff\u00e9rents domaines li\u00e9s \u00e0 l'agriculture, tels que l'utilisation des terres et la gestion du territoire, la gestion des cultures et du b\u00e9tail, ainsi que les ressources foresti\u00e8res et l'industrie du bois.",
+  "okp4core:hasIdentifier": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "okp4core:hasTitle": "Rhizome",
+  "createdOn": "2022-10-30T15:29:16.507Z",
+  "updatedOn": "2022-10-30T15:29:16.507Z",
+  "categories": [
+    "agriculture",
+    "open data",
+    "demonstrateur",
+    "dataviz"
+  ],
+  "access": "PUBLIC",
+  "token": "KNOW",
+  "members": 1178,
+  "datasets": 822,
+  "services": 674,
+  "governance": {
+    "accessControl": [
+      {
+        "subCategory": "data spaces",
+        "rules": [
+          {
+            "title": "authentication",
+            "rule": "Login with wallet"
+          }
+        ]
+      },
+      {
+        "subCategory": "datasets",
+        "rules": [
+          {
+            "title": "uploading",
+            "rule": "User is authenticated"
+          }
+        ]
+      }
+    ],
+    "dataManagement": [
+      {
+        "rules": [
+          {
+            "title": "field",
+            "rule": "Agriculture or food"
+          },
+          {
+            "title": "size",
+            "rule": "Smaller than 5 GB"
+          },
+          {
+            "title": "licence",
+            "rule": "Etalab-2.0, 0GL, CC-BY 2.0, ODC-BY or 0Dbl 1.0"
+          },
+          {
+            "title": "geographical area",
+            "rule": "Metropolitan France, French Overseas Territories or Europe"
+          },
+          {
+            "title": "metadata",
+            "rule": "To be specified"
+          },
+          {
+            "title": "authorship",
+            "rule": "To be specified"
+          },
+          {
+            "title": "personal data",
+            "rule": "To be excluded"
+          }
+        ]
+      }
+    ],
+    "serviceManagement": [
+      {
+        "rules": [
+          {
+            "title": "language",
+            "rule": "English or French"
+          }
+        ]
+      }
+    ],
+    "businessModel": [
+      {
+        "rules": [
+          {
+            "title": "open",
+            "rule": "Demonstrator available for free"
+          }
+        ]
+      }
+    ],
+    "governance": [
+      {
+        "rules": [
+          {
+            "title": "can modify",
+            "rule": "OKP4"
+          },
+          {
+            "title": "can moderate",
+            "rule": "OKP4"
+          }
+        ]
+      }
+    ]
+  }
+}

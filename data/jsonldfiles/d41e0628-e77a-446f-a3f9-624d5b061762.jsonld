@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "okp4core": "https://ontology.okp4.space/core/",
+    "okp4th": "https://ontology.okp4.space/thesaurus/",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "@id": "d41e0628-e77a-446f-a3f9-624d5b061762",
+  "@type": "okp4core:Dataset",
+  "okp4core:belongsTo": "ef347285-e52a-430d-9679-dcb76b962ce7",
+  "okp4core:hasCreator": "OKP4",
+  "okp4core:hasDescription": "Ce jeu de donn\u00e9es r\u00e9f\u00e9rence toutes les entreprises de l'agriculture, de la sylviculture et de la p\u00eache en France en activit\u00e9. Obtenu gr\u00e2ce \u00e0 un enchainement de traitements de la donn\u00e9e \u00e0 l'aide du protocole OKP4.",
+  "okp4core:hasIdentifier": "d41e0628-e77a-446f-a3f9-624d5b061762",
+  "okp4core:hasImage": {
+    "@id": "https://images.unsplash.com/photo-1537721664796-76f77222a5d0"
+  },
+  "okp4core:hasTitle": "BASE SIRENE - agriculture sylviculture p\u00eache",
+  "okp4core:providedBy": "OKP4",
+  "format": "csv",
+  "size": 100525124,
+  "completude": 95,
+  "createdOn": "2022-05-14T20:03:47Z",
+  "updatedOn": "2022-05-14T20:03:47Z",
+  "quality": 4,
+  "categories": [
+    "open data",
+    "INSEE",
+    "agriculture",
+    "sylviculture",
+    "p\u00eache"
+  ]
+}

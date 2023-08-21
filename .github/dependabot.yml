@@ -10,12 +10,10 @@ updates:
       - fredericvilcot
       - ErikssonJoakim
       - lolottetheclash
-      - JoeyDjr
     assignees:
       - ccamel
       - fredericvilcot
       - lolottetheclash
-      - JoeyDjr
     open-pull-requests-limit: 5
   - package-ecosystem: npm
     directory: /
@@ -26,10 +24,8 @@ updates:
       - fredericvilcot
       - ErikssonJoakim
       - lolottetheclash
-      - JoeyDjr
     assignees:
       - ccamel
       - fredericvilcot
       - lolottetheclash
-      - JoeyDjr
     open-pull-requests-limit: 5

@@ -32,7 +32,7 @@
     "@keplr-wallet/types": "^0.11.51",
     "@okp4/eslint-config": "^1.1.0",
     "@okp4/ui": "^3.0.0",
-    "@types/node": "18.16.0",
+    "@types/node": "20.11.17",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.2.4",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
